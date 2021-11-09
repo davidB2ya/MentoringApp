@@ -1,27 +1,11 @@
-// const bcrypt = require('bcrypt')
+const Person = require('../db/models/Students')
 
 //se crea una variable para definir el controlador de la ruta login
-const loginRouter = require('express').Router()
-const User = require('../db/models/User')
+const pruebaRouter = require('express').Router()
 
-//la peticion se hace acorde a la variable loginRouter
-loginRouter.post('/', async (req, res, next) => {
-  const { username, password } = req.body
-  const user = await User.findOne({ username })
-  const passwordCorrect = user === null
-    ? false
-    : await bcrypt.compare(password, user.passwordHash)
-
-  if (!passwordCorrect) {
-    res.status(401).json({
-      error: 'Invalid password or user'
-    })
-  }
-
-  res.send({
-    name: user.name,
-    username: user.username
-  })
+pruebaRouter.get('/', async (request, response) => {
+  const users = await Person.find({})
+  response.json(users)
 })
 
-module.exports = loginRouter
+module.exports = pruebaRouter
