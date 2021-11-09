@@ -1,7 +1,7 @@
 {
-  "name": "agora",
+  "name": "mentoring-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app to manage the Mentoring process",
   "main": "index.js",
   "workspaces": [
     "api",
@@ -29,6 +29,6 @@
     "standard": "16.0.3"
   },
   "keywords": [],
-  "author": "",
+  "author": "The Best Team",
   "license": "ISC"
 }
