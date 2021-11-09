@@ -2,22 +2,24 @@ const mongoose = require('mongoose')
 
 const { MONGO_DB_URI, MONGO_DB_URI_TEST, NODE_ENV } = process.env
 
-const connectionString = NODE_ENV === 'test'
-  ? MONGO_DB_URI_TEST
-  : MONGO_DB_URI
+const connectionString = NODE_ENV === 'test' ? MONGO_DB_URI_TEST : MONGO_DB_URI
 
 if (!connectionString) {
-  console.error('Remember that you have to have a .env file with the environment variables defined and the MONGO_DB_URI')
+  console.error(
+    'Remember that you have to have a .env file with the environment variables defined and the MONGO_DB_URI'
+  )
 }
 
 // Conection a mongoDB
-mongoose.connect(connectionString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose
+  .connect(connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => {
     console.log('Database connected')
-  }).catch(err => {
+  })
+  .catch(err => {
     console.log(err)
   })
 

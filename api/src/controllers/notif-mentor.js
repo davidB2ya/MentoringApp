@@ -5,8 +5,7 @@ const notifMentorRouter = require('express').Router()
 const email = 'dbeodya0408@gmail.com'
 
 notifMentorRouter.post('/notif_mentor', async (req, res) => {
-  const contentHTML =
-  `<h1>User Information</h1>
+  const contentHTML = `<h1>User Information</h1>
     <ul>
         <li>Username: David </li>
         <li>User Email: prueba@gmail.com</li>
