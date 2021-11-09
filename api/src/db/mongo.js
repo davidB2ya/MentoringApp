@@ -7,7 +7,7 @@ const connectionString = NODE_ENV === 'test'
   : MONGO_DB_URI
 
 if (!connectionString) {
-  console.error('Recuerda que tienes que tener un archivo .env con las variables de entorno definidas y el MONGO_DB_URI que servirá de connection string. En las clases usamos MongoDB Atlas pero puedes usar cualquier base de datos de MongoDB (local incluso).')
+  console.error('Remember that you have to have a .env file with the environment variables defined and the MONGO_DB_URI')
 }
 
 // Conection a mongoDB
@@ -25,5 +25,3 @@ process.on('uncaughtException', error => {
   console.error(error)
   mongoose.disconnect()
 })
-
-

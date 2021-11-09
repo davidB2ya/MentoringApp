@@ -1,10 +1,10 @@
-// const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 
-//se crea una variable para definir el controlador de la ruta login
+// se crea una variable para definir el controlador de la ruta login
 const loginRouter = require('express').Router()
 const User = require('../db/models/User')
 
-//la peticion se hace acorde a la variable loginRouter
+// la peticion se hace acorde a la variable loginRouter
 loginRouter.post('/', async (req, res, next) => {
   const { username, password } = req.body
   const user = await User.findOne({ username })

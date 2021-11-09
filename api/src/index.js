@@ -24,9 +24,9 @@ app.set('port', port)
 // Init Server
 app.listen(app.get('port'), (error) => {
   if (error) {
-    console.error('Error al iniciar el servidor')
+    console.error('Server failed to start')
   } else {
-    console.log('Servidor iniciado en el puerto:' + port)
+    console.log('Server started on port:' + port)
   }
 })
 
