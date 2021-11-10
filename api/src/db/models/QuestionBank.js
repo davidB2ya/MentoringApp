@@ -33,10 +33,10 @@ questionBankSchema.set('toJSON', {
 const QuestionBank = model('QuestionBank', questionBankSchema)
 
 // create a document
-QuestionBank.create({
-  idSession: '618bc84fb45bddcf56a374ee',
-  question: 'Como te llamas',
-  respType: 'Respuesta simple'
-})
+// QuestionBank.create({
+//   idSession: '618bc84fb45bddcf56a374ee',
+//   question: 'Como te llamas',
+//   respType: 'Respuesta simple'
+// })
 
 module.exports = QuestionBank
