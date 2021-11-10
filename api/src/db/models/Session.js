@@ -50,19 +50,4 @@ sessionSchema.set('toJSON', {
 
 const Session = model('Session', sessionSchema)
 
-// create user
-
-Session.create({
-  numSession: 1,
-  sessionObjective: 'Conocer al estudiante',
-  program: 'Administración de empresas',
-  cohort: 1,
-  startDate: 10 - 11 - 2021,
-  endDate: 10 - 12 - 2021,
-  state: true,
-  fecha1: 11 - 11 - 2021,
-  fecha2: 15 - 11 - 2021,
-  fecha3: 25 - 11 - 2021
-})
-
 module.exports = Session
