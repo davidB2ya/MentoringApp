@@ -5,6 +5,7 @@ const assignedsessionRouter = require('express').Router()
 
 assignedsessionRouter.get('/', async (request, response) => {
   const assignedsession = await Assignedsession.find({})
+    .populate('session_number', { numSession: 1 })
   response.json(assignedsession)
 })
 
