@@ -27,7 +27,7 @@ const adminSchema = new Schema({
 
   },
 
-  estado: {
+  state: {
     type: Boolean,
     default: true
   },
@@ -52,16 +52,16 @@ const Admin = model('Admin', adminSchema)
 
 // create user
 
-Admin.create({
+/* Admin.create({
   firstName: 'lorena',
   middleName: 'maria',
   lastName: 'avila',
   secondSurname: 'lopez',
   email: 'lore123@gmail.com',
   contactNumber: 123456,
-  estado: true,
+  state: true,
   passwordHash: 'lorena'
 
-})
+}) */
 
 module.exports = Admin

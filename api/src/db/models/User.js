@@ -46,7 +46,7 @@ const userSchema = new Schema({
     },
   },
 
-  programa: {
+  Program: {
     type: String,
     default: "Programate"
   },
@@ -85,7 +85,7 @@ const User = model('User', userSchema)
 
 // create user
 
-User.create({
+/* User.create({
   firstName: 'sebas',
   middleName: 'sebas2',
   lastName: 'ocampo',
@@ -93,8 +93,8 @@ User.create({
   email: 'sebas123@gmail.com',
   gender: 'masculine',
   contactNumber: 123456,
-  programa: 'sebas',
+  Program: 'sebas',
   state: true
-})
+}) */
 
 module.exports = User
