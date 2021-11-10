@@ -1,11 +1,14 @@
 const { Router } = require('express')
-const pruebaRouter = require('../controllers/login')
+
+const mentorRouter = require('../controllers/mentor')
+const sessionRouter = require('../controllers/session')
 // const loginRouter = require('../controllers/login')
 // const notifMentorRouter = require('../controllers/notif-mentor')
 
 const router = Router()
 
-router.use('/api/prueba', pruebaRouter)
+router.use('/api/mentor', mentorRouter)
+router.use('/api/session', sessionRouter)
 
 // router.use('/api/login', loginRouter)
 
