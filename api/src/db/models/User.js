@@ -21,28 +21,28 @@ const userSchema = new Schema({
   email: {
     type: String,
     trim: true,
-    lowercase: true,
+    lowercase: true
   },
   contactNumber: {
-    type: Number,
+    type: Number
 
   },
   img: {
     type: String,
-    trim: true,
+    trim: true
   },
   rol: {
     candidate: {
       type: Boolean,
-      default: true,
+      default: true
     },
     student: {
       type: Boolean,
-      default: false,
+      default: false
     },
     developer: {
       type: Boolean,
-      default: false,
+      default: false
     },
   },
 
@@ -53,11 +53,11 @@ const userSchema = new Schema({
 
   cohorte: {
     num: {
-      type: Number,
+      type: Number
 
     },
     name: {
-      type: String,
+      type: String
 
     }
 
