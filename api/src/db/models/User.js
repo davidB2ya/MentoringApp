@@ -2,19 +2,19 @@ const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema({
   firstName: {
-        type: String,
-        required: true,
-        maxlength: 45
+    type: String,
+    required: true,
+    maxlength: 45
   },
   middleName: {
-        type: String,
-        required: true,
-        maxlength: 45
+    type: String,
+    required: true,
+    maxlength: 45
   },
   lastName: {
-        type: String,
-        required: true,
-        maxlength: 45
+    type: String,
+    required: true,
+    maxlength: 45
   },
   secondSurname: {
     type: String,
@@ -26,57 +26,56 @@ const userSchema = new Schema({
     trim: true,
     require: true,
     unique: true,
-    lowercase: true,
+    lowercase: true
   },
   contactNumber: {
     type: Number,
     required: true
-},
-  img:{
+  },
+  img: {
     type: String,
-    trim: true,
+    trim: true
   },
   rol: {
-      candidate:{
-        type: Boolean,
-        default: true,
-      },
-      student:{
-        type: Boolean,
-        default: false,
-      },
-      developer:{
-        type: Boolean,
-        default: false,
-      },
-  },
-  
-  programa:{
-    type : String,
-    default : "Programate"
-  },
-
-  cohorte:{
-      num:{
-        type : Number,
-        require: true
-      },
-      name:{
-        type : String,
-        require: true
-      }
-
-  },
-  estado:{
+    candidate: {
       type: Boolean,
-      default : true
+      default: true
+    },
+    student: {
+      type: Boolean,
+      default: false
+    },
+    developer: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  programa: {
+    type: String,
+    default: 'Programate'
+  },
+
+  cohorte: {
+    num: {
+      type: Number,
+      require: true
+    },
+    name: {
+      type: String,
+      require: true
+    }
+  },
+  estado: {
+    type: Boolean,
+    default: true
   },
 
   passwordHash: {
     type: String,
     require: true,
-    min :8,
-  },
+    min: 8
+  }
 })
 
 userSchema.set('toJSON', {
@@ -97,8 +96,7 @@ User.create({
   middleName: 'sebas2',
   lastName: 'ocampo',
   secondSurname: 'lopez',
-  email: 'sebas123@gmail.com',
-
+  email: 'sebas123@gmail.com'
 })
 
 module.exports = User
