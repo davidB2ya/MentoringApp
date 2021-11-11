@@ -1,17 +1,23 @@
 const { Schema, model } = require('mongoose')
-// const idSession = mongoose.model('Session')
-// const idStudent = mongoose.model('Student')
-// const idQuestion = mongoose.model('Question')
 
+// required models
+const Session = require('../models/Session')
+const User = require('../models/User.js')
+const Question = require('../models/QuestionBank')
+
+// schema creation for answer bank 
 const answerBankSchema = new Schema({
   idSession: {
-    type: Number
+    type: Schema.ObjectId,
+    ref: Session
   },
-  idStudent: {
-    type: Number
+  idUser: {
+    type: Schema.ObjectId,
+    ref: User
   },
   idQuestion: {
-    type: Number
+    type: Schema.ObjectId,
+    ref: Question
   },
   answer: {
     type: String,
@@ -19,6 +25,7 @@ const answerBankSchema = new Schema({
   }
 })
 
+// fixes in answerBankSchema
 answerBankSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id
@@ -27,15 +34,8 @@ answerBankSchema.set('toJSON', {
   }
 })
 
-// compile our model
+// compilation of answer bank model
 const AnswerBank = model('AnswerBank', answerBankSchema)
 
-// create a document
-AnswerBank.create({
-  idSession: 1,
-  idStudent: 2,
-  idQuestion: 3,
-  answer: 'David Bedoya'
-})
 
 module.exports = AnswerBank

@@ -1,19 +1,30 @@
 const { Schema, model } = require('mongoose')
-// const idSession = mongoose.model('Session')
 
+// required models
+const Session = require('../models/Session')
+
+// schema creation for question bank 
 const questionBankSchema = new Schema({
   idSession: {
-    type: Number
+    type: Schema.ObjectId,
+    ref: Session
   },
-  numSession: {
-    type: Number
+  respType: {
+    type: String
+  },
+  option: {
+    type: Array
   },
   question: {
     type: String,
     maxlength: 128
+  },
+  vote: {
+    type: Boolean
   }
 })
 
+// fixes in questionBankSchema
 questionBankSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id
@@ -22,14 +33,7 @@ questionBankSchema.set('toJSON', {
   }
 })
 
-// compile our model
+// compilation of answer bank model
 const QuestionBank = model('QuestionBank', questionBankSchema)
-
-// create a document
-QuestionBank.create({
-  idSession: '1',
-  numSession: 1,
-  question: 'Como te llamas'
-})
 
 module.exports = QuestionBank
