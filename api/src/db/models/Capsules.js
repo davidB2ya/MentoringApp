@@ -1,8 +1,10 @@
 const { Schema, model } = require('mongoose')
+const Session = require('../models/Session')
 
 const capsuleSchema = new Schema({
-  cohort: {
-    type: Number
+  idSession: {
+    type: Schema.ObjectId,
+    ref: Session
   },
   theme_1: {
     type: Number
@@ -12,6 +14,9 @@ const capsuleSchema = new Schema({
   },
   theme_3: {
     type: Number
+  },
+  WinCapsule: {
+    type: String
   }
 })
 
@@ -27,11 +32,12 @@ capsuleSchema.set('toJSON', {
 const Capsules = model('Capsules', capsuleSchema)
 
 // create a document
-Capsules.create({
-  cohort: 1,
-  theme_1: 0,
-  theme_2: 0,
-  theme_3: 0
-})
+// Capsules.create({
+//   idSession: '618c50083adc233c425bc0be',
+//   theme_1: 0,
+//   theme_2: 0,
+//   theme_3: 0,
+//   WinCapsule: 'Trabajo en Equipo'
+// })
 
 module.exports = Capsules

@@ -85,16 +85,16 @@ const User = model('User', userSchema)
 
 // create user
 
-User.create({
-  firstName: 'sebas',
-  middleName: 'sebas2',
-  lastName: 'ocampo',
-  secondSurname: 'lopez',
-  email: 'sebas123@gmail.com',
-  gender: 'masculine',
-  contactNumber: 123456,
-  programa: 'sebas',
-  state: true
-})
+// User.create({
+//   firstName: 'sebas',
+//   middleName: 'sebas2',
+//   lastName: 'ocampo',
+//   secondSurname: 'lopez',
+//   email: 'sebas123@gmail.com',
+//   gender: 'masculine',
+//   contactNumber: 123456,
+//   programa: 'sebas',
+//   state: true
+// })
 
 module.exports = User

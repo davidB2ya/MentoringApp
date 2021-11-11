@@ -35,10 +35,10 @@ const AnswerBank = model('AnswerBank', answerBankSchema)
 
 // create a document
 // AnswerBank.create({
-//   idSession: '618bfd01d225ca76abda7314',
-//   idUser: '618c023bd49fa62adcc82139',
-//   idQuestion: '618c4556f14590d7b47b16a8',
-//   answer: 'David Bedoya'
+//   idSession: '618c50083adc233c425bc0be',
+//   idUser: '618d69634878ade58ceaba22',
+//   idQuestion: '618d7acd318adb3d279d77a9',
+//   answer: '23 años'
 // })
 
 module.exports = AnswerBank
