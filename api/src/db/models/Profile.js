@@ -195,10 +195,10 @@ const profileSchema = new Schema({
     required: true,
     minlength: 6
   },
-  documentPdf: {
-    type: binData,
-    required: true
-  },
+  // documentPdf: {
+  //   type: binData,
+  //   required: true
+  // },
   secondContactNumber: {
     type: Number,
     required: true
@@ -283,12 +283,12 @@ const profileSchema = new Schema({
     minlength: 6
   },
   status: {
-    inscrito: true,
-    espera: false,
-    citado: false,
-    agendado: false,
-    entrevistado: false,
-    paso: false
+    inscrito: Boolean,
+    espera: Boolean,
+    citado: Boolean,
+    agendado: Boolean,
+    entrevistado: Boolean,
+    paso: Boolean
   },
   convocatoria: String,
   resultados: Number,
@@ -308,13 +308,12 @@ profileSchema.set('toJSON', {
 })
 
 const Profile = model('Profile', profileSchema)
-Profile.create({
-  gender: 'hombre',
-  mentorAssigment: 'maria',
-  prev_studes: 'avila',
-  actualAge: 17,
-  sesiones: 1,
-  interest: 123456
-
-})
+// Profile.create({
+//   gender: 'hombre',
+//   mentorAssigment: 'maria',
+//   prev_studes: 'avila',
+//   actualAge: 17,
+//   sesiones: 1,
+//   interest: 123456
+// })
 module.exports = Profile

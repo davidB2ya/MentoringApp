@@ -1,6 +1,6 @@
 const Session = require('../db/models/Session')
 
-// se crea una variable para definir el controlador de la ruta login
+// A variable is created to define the controller of the Session path
 const sessionRouter = require('express').Router()
 
 sessionRouter.get('/', async (request, response) => {
