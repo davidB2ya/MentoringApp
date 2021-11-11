@@ -1,36 +1,32 @@
 const { Schema, model } = require('mongoose')
 
+// 
 const userSchema = new Schema({
   firstName: {
     type: String,
-    required: true,
     maxlength: 45
   },
   middleName: {
     type: String,
-    required: true,
     maxlength: 45
   },
   lastName: {
     type: String,
-    required: true,
     maxlength: 45
   },
   secondSurname: {
     type: String,
-    required: true,
     maxlength: 45
   },
+
   email: {
     type: String,
     trim: true,
-    require: true,
-    unique: true,
     lowercase: true
   },
   contactNumber: {
-    type: Number,
-    required: true
+    type: Number
+
   },
   img: {
     type: String,
@@ -48,32 +44,31 @@ const userSchema = new Schema({
     developer: {
       type: Boolean,
       default: false
-    }
+    },
   },
 
-  programa: {
+  Program: {
     type: String,
-    default: 'Programate'
+    default: "Programate"
   },
 
   cohorte: {
     num: {
-      type: Number,
-      require: true
+      type: Number
+
     },
     name: {
-      type: String,
-      require: true
+      type: String
+
     }
+
   },
-  estado: {
+  state: {
     type: Boolean,
     default: true
   },
-
   passwordHash: {
     type: String,
-    require: true,
     min: 8
   }
 })
@@ -88,15 +83,5 @@ userSchema.set('toJSON', {
 })
 
 const User = model('User', userSchema)
-
-// create user
-
-User.create({
-  firstName: 'sebas',
-  middleName: 'sebas2',
-  lastName: 'ocampo',
-  secondSurname: 'lopez',
-  email: 'sebas123@gmail.com'
-})
 
 module.exports = User
