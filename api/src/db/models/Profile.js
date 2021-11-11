@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose')
 
 const profileSchema = new Schema({
-  user_id: {
+  userId: {
     type: String
   },
 
@@ -120,33 +120,33 @@ const profileSchema = new Schema({
   /* mentoria */
 
   gender: {
-    type: Number,
-    required: true
+    type: String
   },
 
   mentorAssigment: {
-    type: String,
-    require: true
+    type: String
   },
 
   prev_studes: {
-    type: String,
-    require: true
+    type: String
+  },
+
+  studys:{
+    type: String
   },
 
   actualAge: {
-    type: Number,
-    required: true
-  },
-  sesiones: {
-    type: Number,
-    require: true
+    type: Number
   },
 
   interest: {
-    type: Array,
-    require: true
+    type: Array
   },
+
+  photo:{
+    data: Buffer, 
+    contentType: String
+  }
 
   /* fin mentoria */
 
@@ -155,31 +155,31 @@ const profileSchema = new Schema({
   experience: {
     type: 'string',
     trim: true,
-    require: true,
+
     lowercase: true
   },
   description: {
     type: 'string',
     trim: true,
-    require: true,
+
     lowercase: true
   },
   github: {
     type: 'string',
     trim: true,
-    require: true,
+
     lowercase: true
   },
   softSkills: {
     type: 'string',
     trim: true,
-    require: true,
+
     lowercase: true
   },
   technicalSkills: {
     type: 'string',
     trim: true,
-    require: true,
+
     lowercase: true
   },
 
@@ -187,108 +187,88 @@ const profileSchema = new Schema({
 
   /* Proceso de seleccion */
   documentType: {
-    type: Number,
-    required: true
+    type: Number
   },
   documentNumber: {
     type: Number,
-    required: true,
     minlength: 6
   },
   documentPdf: {
-    type: binData,
-    required: true
+    binData: Buffer
   },
   secondContactNumber: {
-    type: Number,
-    required: true
+    type: Number
   },
   nacionality: {
-    type: String,
-    required: true
+    type: String
   },
   residencyDepartment: String,
   municipalityOfResidency: String,
   locationInBogota: String,
   socioeconomicStratus: {
-    type: Number,
-    required: true
+    type: Number
   },
   migrant: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   livesInColombia: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   address: {
     type: String,
-    required: true,
     maxlength: 45
   },
   dateOfBirth: {
-    type: Date,
-    required: true
+    type: Date
   },
   birthdayOnFormation: Date,
 
   maritalStatus: {
-    type: Number,
-    required: true
+    type: Number
   },
   academicLevel: {
-    type: Number,
-    required: true
+    type: Number
   },
   degreeTitle: {
     type: String,
     maxlength: 45
   },
   currentOccupation: {
-    type: Number,
-    required: true
+    type: Number
   },
   unemployedTime: String,
   formaltOccupation: {
     type: Boolean,
-    required: true,
     maxlength: 45
   },
   victimArmedConflict: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   pcAccess: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   programataPrevoiousTimes: {
-    type: Number,
-    required: true
+    type: Number
   },
   motivation: {
     type: String,
-    required: true,
     maxlength: 300
   },
   dreams: {
     type: String,
-    required: true,
     maxlength: 300
   },
   soloLearnProfile: {
     type: Number,
-    reuired: true,
     minlength: 6
   },
   status: {
-    inscrito: true,
-    espera: false,
-    citado: false,
-    agendado: false,
-    entrevistado: false,
-    paso: false
+    inscrito: Boolean,
+    espera: Boolean,
+    citado: Boolean,
+    agendado: Boolean,
+    entrevistado: Boolean,
+    paso: Boolean
   },
   convocatoria: String,
   resultados: Number,
@@ -308,13 +288,42 @@ profileSchema.set('toJSON', {
 })
 
 const Profile = model('Profile', profileSchema)
+
 Profile.create({
-  gender: 'hombre',
+  gender: 1,
   mentorAssigment: 'maria',
-  prev_studes: 'avila',
+  prev_studes: 'Ingeniero',
   actualAge: 17,
   sesiones: 1,
-  interest: 123456
+  interest: ['tecnologia', 'base de datos', 'DevOps']
 
+  // gender: {
+  //   type: Number,
+  //   required: true
+  // },
+
+  // mentorAssigment: {
+  //   type: String,
+  //   require: true
+  // },
+
+  // prev_studes: {
+  //   type: String,
+  //   require: true
+  // },
+
+  // actualAge: {
+  //   type: Number,
+  //   required: true
+  // },
+  // sesiones: {
+  //   type: Number,
+  //   require: true
+  // },
+
+  // interest: {
+  //   type: Array,
+  //   require: true
+  // },
 })
 module.exports = Profile

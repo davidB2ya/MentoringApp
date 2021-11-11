@@ -1,66 +1,70 @@
 const { Schema, model } = require('mongoose')
 
 // schema creation for users
-const userSchema = new Schema({
-  name: {
+const userSchema = new Schema(
+  {
+    name: {
       type: String,
-      required: [true, "Please enter your name!"],
+      required: [true, 'Please enter your name!'],
       trim: true
-  },
-  email: {
+    },
+    email: {
       type: String,
-      required: [true, "Please enter your email!"],
+      required: [true, 'Please enter your email!'],
       trim: true,
       unique: true
-  },
-  passwordHash: {
+    },
+    passwordHash: {
       type: String,
-      required: [true, "Please enter your password!"]
-  },
-  middleName: {
-          type: String,
-          maxlength: 45
-  },
-  lastName: {
-          type: String,
-          maxlength: 45
-  },
-  secondSurname: {
-          type: String,
-          maxlength: 45
-  },
-  contactNumber: {
-          type: Number,
-  },
-  role: {
+      required: [true, 'Please enter your password!']
+    },
+    middleName: {
+      type: String,
+      maxlength: 45
+    },
+    lastName: {
+      type: String,
+      maxlength: 45
+    },
+    secondSurname: {
+      type: String,
+      maxlength: 45
+    },
+    contactNumber: {
+      type: Number
+    },
+    role: {
       type: Number,
-      default: 0 // 0 = aspirante, 1 = estudiante 2 = egresado, 3 = formador, 4 = mentor 5=admin 
-  },
-  avatar: {
+      default: 0 // 0 = aspirante, 1 = estudiante 2 = egresado, 3 = formador, 4 = mentor 5=admin
+    },
+    avatar: {
       type: String,
-      default: "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"
+      default:
+        'https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png'
+    },
+    program: {
+      type: String,
+      default: 'Programate'
+    },
+
+    cohort: {
+      num: {
+        type: Number
+      },
+      name: {
+        type: String
+      }
+    },
+    state: {
+      ///habilitarlo
+      type: Boolean,
+      default: true
+    }
   },
-  programa:{
-      type : String,
-      default : "Programate"
-    },
-  
-    cohorte:{
-        num:{
-          type : Number,
-        },
-        name:{
-          type : String,
-        }
-  
-    },
-    estado:{   ///habilitarlo
-        type: Boolean,
-        default : true
-    },
-}, {
-  timestamps: true
-})
+  {
+    timestamps: true
+  }
+)
 
 // fixes in userSchema
 userSchema.set('toJSON', {
