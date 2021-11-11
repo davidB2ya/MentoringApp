@@ -28,7 +28,7 @@ const adminSchema = new Schema({
 
   },
 
-  estado: {
+  state: {
     type: Boolean,
     default: true
   },

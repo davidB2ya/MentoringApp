@@ -1,15 +1,30 @@
 const { Schema, model } = require('mongoose')
+const Session = require('../models/Session')
+const User = require('../models/User')
+const Mentor = require('../models/Mentor')
 
-const assignedsessionSchema = new Schema({
-  numSession: {
-    type: Number
+// schema creation for assigned session
+const assignedSessionSchema = new Schema({
+  idSession: {
+    type: Schema.ObjectId,
+    ref: Session
+  },
+  idStudent: {
+    type: Schema.ObjectId,
+    ref: User
+  },
+  idMentor: {
+    type: Schema.ObjectId,
+    ref: Mentor
   },
   dateAsig: {
     type: Date
-  }
+  },
+  link: String
 })
 
-assignedsessionSchema.set('toJSON', {
+// fixes in assignedSessionSchema
+assignedSessionSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id
     delete returnedObject._id
@@ -17,7 +32,8 @@ assignedsessionSchema.set('toJSON', {
   }
 })
 
-const Assignedsession = model('Assignedsession', assignedsessionSchema)
+// compilation of assigned session
+const Assignedsession = model('Assignedsession', assignedSessionSchema)
 
 
 module.exports = Assignedsession
