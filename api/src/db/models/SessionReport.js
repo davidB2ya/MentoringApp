@@ -5,7 +5,7 @@ const Session = require('../models/Session')
 const User = require('../models/User')
 const Mentor = require('../models/Mentor')
 
-// schema creation for session report 
+// schema creation for session report
 const sessionReportSchema = new Schema({
   session_number: { type: Schema.ObjectId, ref: Session },
   student: { type: Schema.ObjectId, ref: User },

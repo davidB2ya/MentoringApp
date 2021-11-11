@@ -12,7 +12,10 @@ const capsuleSchema = new Schema({
   },
   theme_3: {
     type: Number
-  }
+  },
+  /*  winning_capsule: {
+     
+   }, */
 })
 
 capsuleSchema.set('toJSON', {
@@ -25,6 +28,5 @@ capsuleSchema.set('toJSON', {
 
 // compile our model
 const Capsules = model('Capsules', capsuleSchema)
-
 
 module.exports = Capsules

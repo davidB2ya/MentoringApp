@@ -123,30 +123,16 @@ const profileSchema = new Schema({
     type: String
   },
 
-  mentorAssigment: {
-    type: String
+  academic_level: {
+    type: Number
   },
-
-  prev_studes: {
-    type: String
-  },
-
-  studys:{
-    type: String
-  },
-
   actualAge: {
     type: Number
   },
 
-  interest: {
-    type: Array
+  photo: {
+    type: String
   },
-
-  photo:{
-    data: Buffer, 
-    contentType: String
-  }
 
   /* fin mentoria */
 
@@ -155,9 +141,9 @@ const profileSchema = new Schema({
   experience: {
     type: 'string',
     trim: true,
-
     lowercase: true
   },
+
   description: {
     type: 'string',
     trim: true,
@@ -289,13 +275,13 @@ profileSchema.set('toJSON', {
 
 const Profile = model('Profile', profileSchema)
 
-Profile.create({
+/* Profile.create({
   gender: 1,
   mentorAssigment: 'maria',
-  prev_studes: 'Ingeniero',
+  academic_level: 1,
   actualAge: 17,
   sesiones: 1,
-  interest: ['tecnologia', 'base de datos', 'DevOps']
+  photo: 'https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png'
 
   // gender: {
   //   type: Number,
@@ -325,5 +311,5 @@ Profile.create({
   //   type: Array,
   //   require: true
   // },
-})
+}) */
 module.exports = Profile

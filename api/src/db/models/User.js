@@ -35,19 +35,19 @@ const userSchema = new Schema(
     },
     role: {
       type: Number,
-      default: 0 // 0 = aspirante, 1 = estudiante 2 = egresado, 3 = formador, 4 = mentor 5=admin
+      default: 0 // 0 = aspirante, 1 = estudiante 2 = egresado, 3 = formador, 4 = mentor 5=monitor 6=entrevistador 7=observador 8=entreobservador =admin
     },
     avatar: {
       type: String,
       default:
         'https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png'
     },
-    program: {
+    programa: {
       type: String,
       default: 'Programate'
     },
 
-    cohort: {
+    cohorte: {
       num: {
         type: Number
       },
@@ -65,7 +65,6 @@ const userSchema = new Schema(
     timestamps: true
   }
 )
-
 // fixes in userSchema
 userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
@@ -78,5 +77,19 @@ userSchema.set('toJSON', {
 
 // compilation of user model
 const User = model('User', userSchema)
+/* User.create({
+  name: 'maria',
+  email: 'maria@gmail.com',
+  passwordHash: 1234565,
+  middleName: 'guadalupe',
+  lastName: 'Avila',
+  secondSurname: 'Herrera',
+  contactNumber: 2373012,
+  role: 1,
+  avatar: 'https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png',
+  programa: 'Programate',
+  cohorte: 1,
+  state: true
 
+}) */
 module.exports = User

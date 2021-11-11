@@ -35,5 +35,4 @@ assignedSessionSchema.set('toJSON', {
 // compilation of assigned session
 const Assignedsession = model('Assignedsession', assignedSessionSchema)
 
-
 module.exports = Assignedsession
