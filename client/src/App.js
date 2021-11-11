@@ -2,6 +2,7 @@ import { useState } from "react"
 import LoginForm from "./components/LoginForm"
 import Notification from "./components/Notification"
 import loginService from './services/login'
+import CrudStudent from'./views/Administrator/Cruds/students/index'
 
 function App() {
   const [username, setUsername] = useState('')
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <div className="App">
+      {/*
       <Notification message={errorMessage} />
         {
         user
@@ -52,7 +54,12 @@ function App() {
               }
               handleSubmit={handleLogin}
             />
-      }
+            
+      }*/}
+
+      <CrudStudent/>
+
+
     </div>
   );
 }
