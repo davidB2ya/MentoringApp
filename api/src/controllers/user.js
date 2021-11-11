@@ -1,11 +1,11 @@
-const Person = require('../db/models/Students')
+const User = require('../db/models/User')
 
-//se crea una variable para definir el controlador de la ruta login
-const pruebaRouter = require('express').Router()
+// se crea una variable para definir el controlador de la ruta login
+const userRouter = require('express').Router()
 
-pruebaRouter.get('/', async (request, response) => {
-  const users = await Person.find({})
-  response.json(users)
+userRouter.get('/', async (request, response) => {
+  const user = await User.find({})
+  response.json(user)
 })
 
-module.exports = pruebaRouter
+module.exports = userRouter

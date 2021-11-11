@@ -1,14 +1,13 @@
-const Question = require("../db/models/Question");
-const SessionReport = require("../db/models/SessionReport");
+const QuestionSession = require('../db/models/QuestionSession')
 
 // se crea una variable para definir el controlador de la ruta login
-const SessionReportRouter = require("express").Router();
+const QuestionSessionRouter = require('express').Router()
 
-SessionReportRouter.get("/", async (request, response) => {
-    const Question = await SessionReport.find({})
-        .populate("idSession", { idSesion: 1 })
-        .populate("idStudent", { iStudent: 1 });
-    response.json(Question);
-});
+QuestionSessionRouter.get('/', async (request, response) => {
+  const questionSession = await QuestionSession.find({})
+    .populate('idSession', { idSesion: 1 })
+    .populate('idStudent', { iStudent: 1 })
+  response.json(questionSession)
+})
 
-module.exports = Question;
+module.exports = QuestionSessionRouter

@@ -18,11 +18,11 @@ app.use(express.static('../client/build'))
 app.use(allRoutes)
 
 // Setting
-const port = (process.env.PORT || 3001)
+const port = process.env.PORT || 3001
 app.set('port', port)
 
 // Init Server
-app.listen(app.get('port'), (error) => {
+app.listen(app.get('port'), error => {
   if (error) {
     console.error('Error al iniciar el servidor')
   } else {

@@ -1,29 +1,20 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose')
+const Session = require('./Session')
 
-const QuestionSchema = new Schema({
-    idSesion: {
-        type: Number,
-    },
+const QuestionSessionSchema = new Schema({
+  idSesion: { type: Schema.ObjectId, ref: Session },
 
-    idStudient: {
-        type: Number,
-    },
+  idStundent: { type: Schema.ObjectId, ref: Session }
+})
 
-    mentor: {
-        type: String,
-    },
-});
+QuestionSessionSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
 
-QuestionSchema.set("toJSON", {
-    transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id;
-        delete returnedObject._id;
-        delete returnedObject.__v;
-    },
-});
+const QuestionSession = model('Question', QuestionSessionSchema)
 
-const Question = model("Question", QuestionSchema);
-
-Question.create({});
-
-module.exports = Question;
+module.exports = QuestionSession
