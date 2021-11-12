@@ -40,13 +40,4 @@ capsuleSchema.set('toJSON', {
 // compilation of answer bank model
 const Capsules = model('Capsules', capsuleSchema)
 
-// create a document
-// Capsules.create({
-//   idSession: '618c50083adc233c425bc0be',
-//   theme_1: 0,
-//   theme_2: 0,
-//   theme_3: 0,
-//   WinCapsule: 'Trabajo en Equipo'
-// })
-
 module.exports = Capsules

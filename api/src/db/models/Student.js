@@ -7,17 +7,17 @@ const Profile = require('../models/Profile')
 
 // schema creation for students
 const studentSchema = new Schema({
-  //the idUser key store the id of the model user
+  // the idUser key store the id of the model user
   idUser: {
     type: Schema.ObjectId,
     ref: User
   },
-  //the idProfile key store the id of the model profile
+  // the idProfile key store the id of the model profile
   idProfile: {
     type: Schema.ObjectId,
     ref: Profile
   },
-  //the assignedMentor key stores the mentor assigned to the student
+  // the assignedMentor key stores the mentor assigned to the student
   assignedMentor: {
     type: String
   },
@@ -44,7 +44,7 @@ studentSchema.set('toJSON', {
 //   assignedMentor: 'Juan de los Palotes'
 // })
 
-// compilation of session report student
+// compilation of Student model
 const Student = model('Student', studentSchema)
 
 module.exports = Student

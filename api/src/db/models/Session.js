@@ -2,46 +2,54 @@ const { Schema, model } = require('mongoose')
 
 // schema creation for sessions
 const sessionSchema = new Schema({
+  // the numSession key stores the number of the session
   numSession: {
     type: Number
   },
+  // the sessionObjective key stores the objective of the session
   sessionObjective: {
     type: String,
     lowercase: true,
     maxlenght: 45
   },
+  // the program key stores the program of the session
   program: {
     type: String,
     default: 'Programate',
     maxlength: 45
   },
+  // the cohort key stores the cohort of the session
   cohort: {
     type: Number
   },
+  // the startDate key stores the start date of the session
   startDate: {
     type: Date
   },
+  // the endDate key stores the end date of the session
   endDate: {
     type: Date
   },
+  // the file key stores the files of the session
   file: {
     type: String
   },
+  // the state key stores the state of the session
   state: {
     type: Boolean,
     default: true
   },
-  availability: {
-    fecha1: {
-      type: Date
-    },
-    fecha2: {
-      type: Date
-    },
-    fecha3: {
-      type: Date
-    }
-  }
+  // availability: {
+  //   fecha1: {
+  //     type: Date
+  //   },
+  //   fecha2: {
+  //     type: Date
+  //   },
+  //   fecha3: {
+  //     type: Date
+  //   }
+  // }
 })
 
 // fixes in sessionSchema
@@ -56,23 +64,4 @@ sessionSchema.set('toJSON', {
 // compilation of session model
 const Session = model('Session', sessionSchema)
 
-<<<<<<< HEAD
 module.exports = Session
-=======
-// create a document
-// Session.create({
-//   numSession: 1,
-//   sessionObjective: 'Programación Web',
-//   cohort: 3,
-//   startDate: '1948-09-20T00:00:00.000+00:00',
-//   endDate: '1948-09-20T00:00:00.000+00:00',
-//   file: 'Link para capsula ganadora',
-//   availability: {
-//     fecha1: '1948-09-20T00:00:00.000+00:00',
-//     fecha2: '1948-09-20T00:00:00.000+00:00',
-//     fecha3: '1948-09-20T00:00:00.000+00:00'
-//   }
-// })
-
-module.exports = Session
->>>>>>> 43af684adbfde17bc3171b44576d2f82e09ff39e

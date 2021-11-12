@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose')
 
+// schema creation for profiles
 const profileSchema = new Schema({
   user_id: {
     type: String
@@ -119,33 +120,26 @@ const profileSchema = new Schema({
 
   /* mentoria */
 
+  // the ft key stores the gender profile
   gender: {
     type: Number,
     required: true
   },
 
-  mentorAssigment: {
-    type: String,
-    require: true
+  // the academic_level key stores the academic level of the profile
+  academic_level: {
+    type: Number
   },
 
-  prev_studes: {
-    type: String,
-    require: true
-  },
-
+  // the idUser key stores the age of the profile
   actualAge: {
     type: Number,
     required: true
   },
-  sesiones: {
-    type: Number,
-    require: true
-  },
 
-  interest: {
-    type: Array,
-    require: true
+  // the idUser key stores the profile photo
+  photo: {
+    type: String
   },
 
   /* fin mentoria */
@@ -155,9 +149,9 @@ const profileSchema = new Schema({
   experience: {
     type: 'string',
     trim: true,
-    require: true,
     lowercase: true
   },
+
   description: {
     type: 'string',
     trim: true,
@@ -299,6 +293,7 @@ const profileSchema = new Schema({
   /* fin proceso seleccion  */
 })
 
+// fixes in profileSchema
 profileSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id
@@ -307,13 +302,8 @@ profileSchema.set('toJSON', {
   }
 })
 
+// compilation of Profile model
 const Profile = model('Profile', profileSchema)
-// Profile.create({
-//   gender: 'hombre',
-//   mentorAssigment: 'maria',
-//   prev_studes: 'avila',
-//   actualAge: 17,
-//   sesiones: 1,
-//   interest: 123456
-// })
+
+
 module.exports = Profile
