@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema({
-  firstName: {
+  /*firstName: {
     type: String,
     maxlength: 45
   },
@@ -22,7 +22,7 @@ const userSchema = new Schema({
     type: String,
     trim: true,
     lowercase: true
-  },
+  },*/
   contactNumber: {
     type: Number
   },
@@ -81,7 +81,7 @@ const User = model('User', userSchema)
 
 // create user
 
-User.create({
+/*User.create({
   firstName: 'sebas',
   middleName: 'sebas2',
   lastName: 'ocampo',
@@ -91,6 +91,6 @@ User.create({
   contactNumber: 123456,
   programa: 'sebas',
   state: true
-})
+})*/
 
 module.exports = User

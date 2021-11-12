@@ -2,7 +2,6 @@ const { Schema, model } = require('mongoose')
 
 const User = require('./User')
 
-
 const MentorSchema = new Schema({
   user: {
     type: Schema.ObjectId,
@@ -14,17 +13,17 @@ const MentorSchema = new Schema({
     ref: User
   },
 
-  CargoActual: { type: String },
+  ActualJobPosition: { type: String, default: 'backend' },
 
-  Empresa: { type: String },
+  Company: { type: String },
 
-  hijos: { type: Number },
+  sons: { type: Number },
 
-  interesesMentores: { type: String },
+  mentoringInterests: { type: String },
 
   numeroDeEstudiantes: { type: Number },
 
-  AsignacionEstudiante: { type: Schema.ObjectId, ref: User }
+  NumberOfStudents: { type: Schema.ObjectId, ref: User }
 })
 
 MentorSchema.set('toJSON', {
@@ -36,4 +35,13 @@ MentorSchema.set('toJSON', {
   }
 })
 
-const Mentor = model('Mentor', MentorSchema)((module.exports = Mentor))
+const Mentor = model('Mentor', MentorSchema)
+
+Mentor.create({
+  ActualJobPosition: 'backend',
+  Company: 'Educamas',
+  sons: '1',
+  mentoringInterests: 'viajar'
+})
+
+module.exports = Mentor
