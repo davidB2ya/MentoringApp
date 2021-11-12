@@ -1,11 +1,20 @@
 import React from 'react'
 
-const Navbar = () => {
+import '../Navbar/Navbar.css'
+import Dropdown from '../Dropdown/Dropdown'
+
+function Navbar () {
     return (
-        <div>
-            
-        </div>
+        <>
+          <nav className='navbar'>
+              <a href= '/' 
+              className='navbar-logo'>
+               MENTORING
+            </a>
+              </nav>  
+        </>
+
     )
 }
 
-export default Navbar
+export default Navbar;
