@@ -2,24 +2,39 @@ const { Schema, model } = require('mongoose')
 
 // required models
 const Session = require('../models/Session')
+const User = require('../models/User')
 
 // schema creation for question bank 
 const questionBankSchema = new Schema({
+  // the idSession key store the id of the model session
   idSession: {
     type: Schema.ObjectId,
     ref: Session
   },
+  // the idUser key store the id of the model user
+  idUser: {
+    type: Schema.ObjectId,
+    ref: User
+  },
+  // the respType key stores the type of response that the question will have
   respType: {
     type: String
   },
+  // the option key stores the options when the question is multiple-choice or voting
   option: {
     type: Array
   },
+  // the question key stores the question
   question: {
     type: String,
-    maxlength: 128
+    maxlength: 256
   },
+  // the vote key stores if the question is a vote or not
   vote: {
+    type: Boolean
+  },
+  // the receiver key stores if the question is for the form or for the report, if the receiver key equals true, it means the question is for the form, otherwise it is for the report
+  receiver: {
     type: Boolean
   }
 })
@@ -33,7 +48,17 @@ questionBankSchema.set('toJSON', {
   }
 })
 
-// compilation of answer bank model
+// compilation of question bank model
 const QuestionBank = model('QuestionBank', questionBankSchema)
+
+// create a document
+// QuestionBank.create({
+//   idSession: '618c50083adc233c425bc0be',
+//   idUser: '618d69634878ade58ceaba22',
+//   respType: 'Respuesta simple',
+//   question: 'Que edad tienes',
+//   vote: false,
+//   receiver: false
+// })
 
 module.exports = QuestionBank
