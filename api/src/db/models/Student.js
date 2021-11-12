@@ -4,7 +4,6 @@ const { Schema, model } = require('mongoose')
 const User = require('../models/User')
 const Profile = require('../models/Profile')
 
-
 // schema creation for students
 const studentSchema = new Schema({
   // the idUser key store the id of the model user

@@ -13,10 +13,6 @@ const sessionRouter = require('../controllers/session')
 const SessionReportRouter = require('../controllers/sessionReport')
 const userRouter = require('../controllers/user')
 
-
-
-
-
 const router = Router()
 router.use('/api/student', studentRouter)
 router.use('/api/mentor', mentorRouter)

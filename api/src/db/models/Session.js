@@ -53,5 +53,4 @@ sessionSchema.set('toJSON', {
 // compilation of session model
 const Session = model('Session', sessionSchema)
 
-
 module.exports = Session

@@ -2,10 +2,10 @@ const { Schema, model } = require('mongoose')
 
 // required models
 const Session = require('../models/Session')
-const QuestionBank =require('../models/QuestionBank')
+const QuestionBank = require('../models/QuestionBank')
 const Student = require('../models/User')
 
-// schema creation for session form 
+// schema creation for session form
 const formSessionSchema = new Schema({
   // the idSession key store the id of the model session
   idSession: { type: Schema.ObjectId, ref: Session },
@@ -28,6 +28,5 @@ formSessionSchema.set('toJSON', {
 
 // compilation of FormSesion model
 const FormSession = model('FormSesion', formSessionSchema)
-
 
 module.exports = FormSession
