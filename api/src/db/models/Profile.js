@@ -305,5 +305,4 @@ profileSchema.set('toJSON', {
 // compilation of Profile model
 const Profile = model('Profile', profileSchema)
 
-
 module.exports = Profile

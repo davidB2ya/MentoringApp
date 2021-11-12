@@ -27,10 +27,12 @@ const MentorSchema = new Schema({
   // The numeStudents key stores the number of students the mentor wants
   numeStudents: Number,
   // The idUser key stores the assigned students
-  studentAssignment: [{
-    type: Schema.ObjectId,
-    ref: User
-  }] 
+  studentAssignment: [
+    {
+      type: Schema.ObjectId,
+      ref: User
+    }
+  ]
 })
 
 // fixes in MentorSchema

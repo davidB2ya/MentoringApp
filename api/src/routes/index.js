@@ -12,10 +12,7 @@ const profileRouter = require('../controllers/profile')
 const sessionRouter = require('../controllers/session')
 const SessionReportRouter = require('../controllers/sessionReport')
 const userRouter = require('../controllers/user')
-
-
-
-
+// const notifMentorRouter = require('../controllers/notif-mentor')
 
 const router = Router()
 router.use('/api/student', studentRouter)
@@ -29,5 +26,6 @@ router.use('/api/profile', profileRouter)
 router.use('/api/session', sessionRouter)
 router.use('/api/session-report', SessionReportRouter)
 router.use('/api/user', userRouter)
+// router.use('/api/notif-mentor', notifMentorRouter)
 
 module.exports = router
