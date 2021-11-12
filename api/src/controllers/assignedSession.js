@@ -4,8 +4,9 @@ const Assignedsession = require('../db/models/AssignedSession')
 const assignedsessionRouter = require('express').Router()
 
 assignedsessionRouter.get('/', async (request, response) => {
-  const assignedsession = await Assignedsession.find({})
-    .populate('idSession', { numSession: 1 })
+  const assignedsession = await Assignedsession.find({}).populate('idSession', {
+    numSession: 1
+  })
   response.json(assignedsession)
 })
 
