@@ -36,14 +36,6 @@ studentSchema.set('toJSON', {
   }
 })
 
-// create a document
-// Student.create({
-//   idUser: ''
-//   idSession: '618c50083adc233c425bc0be',
-//   idProfile: '618d539da4628ba840e676a0',
-//   assignedMentor: 'Juan de los Palotes'
-// })
-
 // compilation of Student model
 const Student = model('Student', studentSchema)
 

@@ -51,14 +51,4 @@ questionBankSchema.set('toJSON', {
 // compilation of question bank model
 const QuestionBank = model('QuestionBank', questionBankSchema)
 
-// create a document
-// QuestionBank.create({
-//   idSession: '618c50083adc233c425bc0be',
-//   idUser: '618d69634878ade58ceaba22',
-//   respType: 'Respuesta simple',
-//   question: 'Que edad tienes',
-//   vote: false,
-//   receiver: false
-// })
-
 module.exports = QuestionBank

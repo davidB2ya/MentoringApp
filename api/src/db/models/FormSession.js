@@ -6,11 +6,11 @@ const QuestionBank =require('../models/QuestionBank')
 const Student = require('../models/User')
 
 // schema creation for session form 
-const formSesionSchema = new Schema({
+const formSessionSchema = new Schema({
   // the idSession key store the id of the model session
   idSession: { type: Schema.ObjectId, ref: Session },
-  // the Student key store the id of the model User
-  Student: { type: Schema.ObjectId, ref: Student },
+  // the idStudent key store the id of the model User
+  idStudent: { type: Schema.ObjectId, ref: Student },
   // the idQuestionBank key store the id of the model QuestionBank
   idQuestionBank: { type: Schema.ObjectId, ref: QuestionBank },
   // the FilledOut key stores if the form was filled out or not
@@ -18,7 +18,7 @@ const formSesionSchema = new Schema({
 })
 
 // fixes in formSesionSchema
-formSesionSchema.set('toJSON', {
+formSessionSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id
     delete returnedObject._id
@@ -27,13 +27,13 @@ formSesionSchema.set('toJSON', {
 })
 
 // compilation of FormSesion model
-const FormSesion = model('FormSesion', formSesionSchema)
+const FormSession = model('FormSesion', formSessionSchema)
 
-FormSesion.create({
+FormSession.create({
   idSession: '618c4f9bd9222aaf6922ab0c',
-  Student: '618d9dc4fd3828e8550731c3',
+  idStudent: '618d9dc4fd3828e8550731c3',
   idQuestionBank: '618d78f66d3cf89d7abfe0cd',
   FilledOut: false
 })
 
-module.exports = FormSesion
+module.exports = FormSession

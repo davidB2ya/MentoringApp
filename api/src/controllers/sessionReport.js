@@ -5,9 +5,9 @@ const SessionReportRouter = require('express').Router()
 
 SessionReportRouter.get('/', async (request, response) => {
   const sessionReport = await SessionReport.find({})
-    .populate('session_number', { numSession: 1 })
-    .populate('student', { firstName: 1 })
-    .populate('mentor', { firstName: 1 })
+    .populate('idSession', { numSession: 1 })
+    .populate('idStudent', { firstName: 1 })
+    .populate('idMentor', { firstName: 1 })
   response.json(sessionReport)
 })
 

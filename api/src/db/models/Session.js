@@ -38,18 +38,7 @@ const sessionSchema = new Schema({
   state: {
     type: Boolean,
     default: true
-  },
-  // availability: {
-  //   fecha1: {
-  //     type: Date
-  //   },
-  //   fecha2: {
-  //     type: Date
-  //   },
-  //   fecha3: {
-  //     type: Date
-  //   }
-  // }
+  }
 })
 
 // fixes in sessionSchema
@@ -63,5 +52,16 @@ sessionSchema.set('toJSON', {
 
 // compilation of session model
 const Session = model('Session', sessionSchema)
+
+Session.create({
+  numSession: 1,
+  sessionObjective: 'programación web',
+  program: 'Programate',
+  cohort: 3,
+  startDate: '1948-09-20T00:00:00.000+00:00',
+  endDate: '1948-11-20T00:00:00.000+00:00',
+  file: 'Link para capsula ganadora',
+  state: true
+})
 
 module.exports = Session

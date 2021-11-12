@@ -77,19 +77,5 @@ userSchema.set('toJSON', {
 
 // compilation of user model
 const User = model('User', userSchema)
-/* User.create({
-  name: 'maria',
-  email: 'maria@gmail.com',
-  passwordHash: 1234565,
-  middleName: 'guadalupe',
-  lastName: 'Avila',
-  secondSurname: 'Herrera',
-  contactNumber: 2373012,
-  role: 1,
-  avatar: 'https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png',
-  programa: 'Programate',
-  cohorte: 1,
-  state: true
 
-}) */
 module.exports = User
