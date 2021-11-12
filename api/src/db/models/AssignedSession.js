@@ -42,12 +42,4 @@ assignedSessionSchema.set('toJSON', {
 // compilation of assigned session
 const assignedSession = model('assignedsession', assignedSessionSchema)
 
-assignedSession.create({
-  idSession: '618c4f9bd9222aaf6922ab0c',
-  idStudent: '618d9dc4fd3828e8550731c3',
-  idMentor: '618d78f66d3cf89d7abfe0cd',
-  dateAsig: '1969-12-31T23:59:57.978+00:00',
-  link: 'https://meet.google.com/swf-unxg-otr'
-})
-
 module.exports = assignedSession

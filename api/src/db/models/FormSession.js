@@ -29,11 +29,5 @@ formSessionSchema.set('toJSON', {
 // compilation of FormSesion model
 const FormSession = model('FormSesion', formSessionSchema)
 
-FormSession.create({
-  idSession: '618c4f9bd9222aaf6922ab0c',
-  idStudent: '618d9dc4fd3828e8550731c3',
-  idQuestionBank: '618d78f66d3cf89d7abfe0cd',
-  FilledOut: false
-})
 
 module.exports = FormSession

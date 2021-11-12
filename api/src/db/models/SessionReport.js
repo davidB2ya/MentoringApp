@@ -31,12 +31,4 @@ sessionReportSchema.set('toJSON', {
 // compilation of session report model
 const SessionReport = model('SessionReport', sessionReportSchema)
 
-SessionReport.create({
-  idSession: '618c4f9bd9222aaf6922ab0c',
-  idStudent: '618d9dc4fd3828e8550731c3',
-  idMentor: '618d78f66d3cf89d7abfe0cd',
-  filledOut_date: '1969-12-31T23:59:57.978+00:00',
-  filledOut: false
-})
-
 module.exports = SessionReport

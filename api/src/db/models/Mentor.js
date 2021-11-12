@@ -46,15 +46,4 @@ MentorSchema.set('toJSON', {
 // compilation of mentor model
 const Mentor = model('Mentor', MentorSchema)
 
-Mentor.create({
-  idUser: '618d9dc4fd3828e8550731c3',
-  idProfile: '618d9e0e993fc8285f0a4bed',
-  ActualJobPosition: 'full stack developer',
-  Company: 'Twillio',
-  sons: 2,
-  interests: ['tecnologia','blockchain','database'],
-  numeStudents: 1,
-  studentAssignment: ['618d9dc4fd3828e8550731c3','618d9dc4fd3828e8550731c3','618d9dc4fd3828e8550731c3']
-})
-
 module.exports = Mentor
