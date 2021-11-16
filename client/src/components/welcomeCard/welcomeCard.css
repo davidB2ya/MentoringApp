@@ -1,16 +1,17 @@
 @font-face {
-    font-family: Gilroy-Light ;
-    src: url(../../assets/Font/Gilroy-Light.otf);
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Roboto, sans-serif;
-  }
-  
-  .all {
+  font-family: Gilroy-Light ;
+  src: url(../../assets/Font/Gilroy-Light.otf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+
+.all {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,14 +23,12 @@
     background-color: #ffcc02;
     color: #ffcc02
   }
-
+  
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    max-width: 80%;
-    margin: 40px 0;
   }
   
   .back{
@@ -64,6 +63,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  
+  body .container .card .box .content {
+    padding: 20px;
+    text-align: center;
   }
   
   h3 {

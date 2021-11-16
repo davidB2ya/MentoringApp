@@ -1,6 +1,5 @@
 import React from 'react'
-import GeneralView from '../../../General/GeneralView'
-import WelcomeStudent from '../../../Student/WelcomeStudent'
+import WelcomeStudent from '../../../Student/Welcome/WelcomeStudent'
 
 const Notification = () => {
   

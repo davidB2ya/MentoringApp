@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
+import '../welcomeCard/welcomeCard.css'
 
-const WelcomeStudent = () => {
+const WelcomeCard = () => {
     return (
-        <div>
-             <div>
-          <h1 className="barnav">BARNAV</h1>
+        <div>   
             <div className="container">
               <div className="back">
                 <div className="card">
@@ -23,12 +22,9 @@ const WelcomeStudent = () => {
                   {/* <h1 className="little">.hola.</h1> */}
                 </div>
               </div>  
-            
           </div>
-          <h1 className="footer">FOOTER</h1>
-        </div>
         </div>
     )
 }
 
-export default WelcomeStudent
+export default WelcomeCard
