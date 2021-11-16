@@ -3,8 +3,8 @@ import LoginForm from "./components/LoginForm"
 import Notification from "./components/Notification"
 import loginService from './services/login'
 import CrudStudent from'./views/Administrator/Cruds/students/index'
-import Navbar from './components/Navbar/Navbar.jsx'
-import Footer from './components/Footer/Footer.jsx'
+import NavBar from './components/Navbar/Navbar';
+
 
 function App() {
   const [username, setUsername] = useState('')
@@ -60,8 +60,7 @@ function App() {
       }*/}
 
       <CrudStudent/>
-      <Navbar/>
-      <Footer/>
+      
 
 
     </div>
