@@ -3,7 +3,12 @@ import LoginForm from "./components/LoginForm"
 import Notification from "./components/Notification"
 import loginService from './services/login'
 import CrudStudent from'./views/Administrator/Cruds/students/index'
+<<<<<<< HEAD
 import Navbar from './components/Navbar/Navbar'
+=======
+import NavBar from './components/Navbar/Navbar';
+
+>>>>>>> 2978b12a13929fe38deb0cf9e20cacc6afd9cc62
 function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
