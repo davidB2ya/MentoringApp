@@ -6,8 +6,7 @@ const Notification = () => {
 
   return (
     <>
-      {/* <h1>Hola mundo</h1> */}
-      <WelcomeStudent/>
+     
     </>
   )
 }
