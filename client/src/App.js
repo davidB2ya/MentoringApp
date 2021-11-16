@@ -1,8 +1,13 @@
 import { useState } from "react"
+import Styles from './App.module.css'
 import LoginForm from "./components/LoginForm"
 import Notification from "./components/Notification"
 import loginService from './services/login'
-import CrudStudent from'./views/Administrator/Cruds/students/index'
+import CrudStudents from'./views/Administrator/Cruds/CrudStudents/CrudStudents'
+import CrudEditAndAdd from "./components/CrudEditAndAdd/CrudEditAndAdd"
+import CrudSessions from "./views/Administrator/Cruds/CrudSessions/CrudSessions"
+import CrudSessionDetail from "./views/Administrator/Cruds/CrudSessionDetail/CrudSessionDetail"
+import CrudMentor from "./views/Administrator/Cruds/CrudMentor/CrudMentor"
 
 function App() {
   const [username, setUsername] = useState('')
@@ -37,8 +42,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      {/*
+    <div className={Styles.App}>
+      
       <Notification message={errorMessage} />
         {
         user
@@ -55,13 +60,12 @@ function App() {
               handleSubmit={handleLogin}
             />
             
-      }*/}
+      }
 
-      <CrudStudent/>
-
+     
 
     </div>
-  );
+  );  
 }
 
 export default App;
