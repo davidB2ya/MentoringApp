@@ -4,7 +4,7 @@ import Notification from "./components/Notification"
 import loginService from './services/login'
 //import CrudStudent from'./views/Administrator/Cruds/students/index'
 //import Navbar from './components/Navbar/Navbar'
-import { Link } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Testing Router React</h1>
+      <h1>Bienvenido Usuario genérico</h1>
       <nav
         style={{
           borderBottom: "solid 1px",
@@ -20,9 +20,12 @@ function App() {
         }}
       >
       {/*<CrudStudent/>*/}
-      <Link to="/welcome-user"></Link>
-      <Link to="/welcome-student"></Link>
+      <Link to="/welcome-user">| Pagina Bienvenida Usuario |</Link>
+      <Link to="/welcome-student">| Pagina Bienvenida estudiante |</Link>
+      <Link to="/student-profile-interests">| Perfil de estudiante |</Link>
+      <Link to="/student-sessions">| Sesiones |</Link>
       </nav>
+      <Outlet />
     </div>
   );
 }
