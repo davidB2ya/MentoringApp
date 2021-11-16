@@ -12,7 +12,7 @@ import WelcomeUser from './routes/welcome-user'
 import WelcomeStudent from './routes/welcome-student' 
 import StudentProfile from './routes/student-profile'
 import StudentSession from './routes/student-sessions';
-
+import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 const rootElement = document.getElementById("root")
 
 render(
@@ -23,7 +23,8 @@ render(
         <Route path="/welcome-user" element={<WelcomeUser/>}/>
         <Route path="/welcome-student" element={<WelcomeStudent/>}/>  
         <Route path="/student-profile-interests" element={<StudentProfile/>}/>  
-        <Route path="/student-sessions" element={<StudentSession/>}/>  
+        <Route path="/student-sessions" element={<StudentSession/>}/>
+        <Route path="/CrudStudents" element={<CrudStudents/>}/>  
       </Routes>
     </React.StrictMode>
   </BrowserRouter>,

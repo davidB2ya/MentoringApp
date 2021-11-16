@@ -30,6 +30,7 @@ function App() {
       <Link to="/welcome-student">| Pagina Bienvenida estudiante |</Link>
       <Link to="/student-profile-interests">| Perfil de estudiante |</Link>
       <Link to="/student-sessions">| Sesiones |</Link>
+      <Link to="/CrudStudents">||CrudStudents||</Link>
       </nav>
       <Outlet />
     </div>
