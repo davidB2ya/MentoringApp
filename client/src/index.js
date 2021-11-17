@@ -13,6 +13,8 @@ import WelcomeStudent from './routes/welcome-student'
 import StudentProfile from './routes/student-profile'
 import StudentSession from './routes/student-sessions';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
+import MultipleChoice from './views/Students/MultipleChoice/MultipleChoice';
+
 const rootElement = document.getElementById("root")
 
 render(
@@ -25,6 +27,7 @@ render(
         <Route path="/student-profile-interests" element={<StudentProfile/>}/>  
         <Route path="/student-sessions" element={<StudentSession/>}/>
         <Route path="/CrudStudents" element={<CrudStudents/>}/>  
+        <Route path="/MultipleChoice" element={<MultipleChoice/>}/> 
       </Routes>
     </React.StrictMode>
   </BrowserRouter>,
