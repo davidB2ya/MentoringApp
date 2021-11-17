@@ -14,7 +14,6 @@ const FormStudentRouter = require('../controllers/formStudent')
 
 // const notifMentorRouter = require('../controllers/notif-mentor')
 
-
 const router = Router()
 
 router.use('/api/mentor-availability', menAvailRouter)
