@@ -1,8 +1,8 @@
 @font-face {
     font-family: Gilroy-Light ;
-    src: url(../../assets/Font/Gilroy-Light.otf);
+    src: url(../../../assets/Font/Gilroy-Light.otf);
   }
-  
+
   * {
     margin: 0;
     padding: 0;
@@ -16,7 +16,7 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      background: #fefefe;
+      background: #693939;
     }
     
     .container {

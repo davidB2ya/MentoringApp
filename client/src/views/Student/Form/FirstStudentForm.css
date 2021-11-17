@@ -1,6 +1,6 @@
 @font-face {
     font-family: Gilroy-Light ;
-    src: url(../../assets/Font/Gilroy-Light.otf);
+    src: url(../../../assets/Font/Gilroy-Light.otf);
   }
   
   * {
@@ -11,4 +11,5 @@
   }
   .advice{
     background-color:aqua;
+    margin: 10%;
   }

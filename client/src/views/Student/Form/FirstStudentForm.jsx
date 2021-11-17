@@ -1,15 +1,16 @@
 import React from 'react'
 import Footer from '../../../components/Footer/Footer'
 import Navbar from '../../../components/Navbar/Navbar'
-// import Styles from '../Form/FirstForm.module.css'
+import '../Form/FirstStudentForm.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const FirstStudentForm = () => {
     return (
         <div>
             <Navbar/>
-			<div >
-				<p className="advice">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
+			<p>Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
+			<div className="advice">
+				<p>Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 				<div>
 				<div class="mb-3">
 					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>

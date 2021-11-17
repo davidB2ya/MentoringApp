@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../../../components/Footer/Footer';
 import Navbar from '../../../components/Navbar/Navbar';
-
+import '../Thanks/thanks.css'
 
 const Thanks = () => {
     return (
