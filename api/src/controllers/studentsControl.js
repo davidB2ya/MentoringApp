@@ -10,6 +10,7 @@ const Profile = require('../db/models/Profile')
 const User = require('../db/models/User')
 
 getAllStudentsRouter.get('/', async (req, res) => {
+<<<<<<< HEAD
   // const getAllStudents = 
   await Profile.find({})
   .populate("user_id:", { 
@@ -64,18 +65,52 @@ updatedUserRouter.post("/", async (req, res) => {
   },
   function(error, info) {
     if (error) {
+=======
+  // const getAllStudents =
+  await Student.find({})
+    .populate('idProfile', { actualAge: 1, gender: 1 })
+    .populate('idUser', {
+      name: 1,
+      middleName: 1,
+      lastName: 1,
+      secondSurname: 1,
+      programa: 1,
+      state: 1
+    })
+    .then(getAllStudents => {
+      if (getAllStudents.length) return res.status(200).send({ getAllStudents })
+      return res.status(204).json({ message: 'NO CONTENT' })
+    })
+    .catch(err => res.status(500).json({ err }))
+
+  // res.json(getAllStudents)
+})
+
+updatedStateRouter.post('/', async (req, res) => {
+  let body = req.body
+  User.updateOne(
+    { _id: body._id },
+    {
+      $set: {
+        state: body.state
+      }
+    },
+    function (error, info) {
+      if (error) {
+>>>>>>> 5eb35b70c1dcdd3fc8048bf9123a1a6d9af7ae49
         res.json({
-            resultado: false,
-            msg: 'No se pudo modificar el cliente',
-            err
-        });
-    } else {
-        res.json({
-            resultado: true,
-            info: info
+          resultado: false,
+          msg: 'No se pudo modificar el cliente',
+          err
         })
+      } else {
+        res.json({
+          resultado: true,
+          info: info
+        })
+      }
     }
-  })
+  )
 })
 
 // updatedStateRouter.post("/", async (req, res) => {
@@ -101,16 +136,19 @@ updatedUserRouter.post("/", async (req, res) => {
 //   })
 // })
 
+<<<<<<< HEAD
 // updatedMentorRouter.post('/', async (req, res) => {
 //   let body = req.body;
   
 // })
-
-
-
+=======
+updatedMentorRouter.post('/', async (req, res) => {
+  let body = req.body
+})
+>>>>>>> 5eb35b70c1dcdd3fc8048bf9123a1a6d9af7ae49
 
 // createStudentRouter.post("/:id", async (req, res) => {
-  
+
 // })
 
 // AnswerBankRouter.post('/', (req, res) => {
@@ -130,8 +168,12 @@ updatedUserRouter.post("/", async (req, res) => {
 //   })
 // })
 
+<<<<<<< HEAD
 
 
 module.exports = { getAllStudentsRouter, updatedUserRouter, postUserRouter }
+=======
+module.exports = { getAllStudentsRouter, updatedStateRouter }
+>>>>>>> 5eb35b70c1dcdd3fc8048bf9123a1a6d9af7ae49
 
 // module.exports = createStudentRouter
