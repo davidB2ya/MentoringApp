@@ -12,6 +12,7 @@ const profileRouter = require('../controllers/profile')
 const sessionRouter = require('../controllers/session')
 const SessionReportRouter = require('../controllers/sessionReport')
 const userRouter = require('../controllers/user')
+const dashBoardRouter = require('../controllers/dashBoard')
 // const notifMentorRouter = require('../controllers/notif-mentor')
 
 const router = Router()
@@ -26,6 +27,8 @@ router.use('/api/profile', profileRouter)
 router.use('/api/session', sessionRouter)
 router.use('/api/session-report', SessionReportRouter)
 router.use('/api/user', userRouter)
+router.use('/api/dashboard/users', dashBoardRouter.userRouter)
+router.use('/api/dashboard/answer', dashBoardRouter.answerRouter)
 // router.use('/api/notif-mentor', notifMentorRouter)
 
 module.exports = router
