@@ -1,5 +1,9 @@
 const getAllStudentsRouter = require('express').Router()
+
+const postUserRouter = require('express').Router()
+
 const updatedUserRouter = require('express').Router()
+
 const updatedProfileRouter = require('express').Router()
 
 const Profile = require('../db/models/Profile')
@@ -21,6 +25,24 @@ getAllStudentsRouter.get('/', async (req, res) => {
   
   // res.json(getAllStudents)
 })
+
+postUserRouter.post('/', async (req, res) => {
+  await User.create( req.body )
+  .then(function(dbProfile) {
+    // If we were able to successfully create a Product, send it back to the client
+    Profile.create({
+      user_id: dbProfile.id,
+      gender: dbProfile.gender
+    })
+    res.json(dbProfile);
+  })
+    
+  .catch(function(err) {
+    res.json(err);
+  })
+})
+
+
 
 updatedUserRouter.post("/", async (req, res) => {
   let body = req.body;
@@ -110,6 +132,6 @@ updatedUserRouter.post("/", async (req, res) => {
 
 
 
-module.exports = { getAllStudentsRouter, updatedUserRouter }
+module.exports = { getAllStudentsRouter, updatedUserRouter, postUserRouter }
 
 // module.exports = createStudentRouter
