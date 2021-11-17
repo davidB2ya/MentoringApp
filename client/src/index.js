@@ -9,9 +9,10 @@ import {
 } from "react-router-dom";
 import App from './App';
 import WelcomeUser from './routes/welcome-user'
-import WelcomeStudent from './routes/welcome-student' 
+import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
 import StudentProfile from './routes/student-profile'
 import StudentSession from './routes/student-sessions';
+
 
 const rootElement = document.getElementById("root")
 
