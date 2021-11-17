@@ -17,7 +17,7 @@ const FirstStudentForm = () => {
 					<br></br>
 					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				</div>
-				<div class="mb-3">
+				{/* <div class="mb-3">
 					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
 					<br></br>
 					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -61,7 +61,7 @@ const FirstStudentForm = () => {
 					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
 					<br></br>
 					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
+				</div> */}
 				
 				{/* <select class="form-select" multiple aria-label="multiple select example">
 					<option selected>Open this select menu</option>
