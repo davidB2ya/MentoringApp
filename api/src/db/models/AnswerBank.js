@@ -41,5 +41,4 @@ answerBankSchema.set('toJSON', {
 // compilation of answer bank model
 const AnswerBank = model('AnswerBank', answerBankSchema)
 
-
 module.exports = AnswerBank

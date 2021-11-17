@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose')
 const Session = require('../models/Session')
 const User = require('../models/User')
 
-// schema creation for question bank 
+// schema creation for question bank
 const questionBankSchema = new Schema({
   // the idSession key store the id of the model session
   idSession: {
