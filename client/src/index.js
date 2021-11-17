@@ -24,6 +24,7 @@ render(
         <Route path="/welcome-student" element={<WelcomeStudent/>}/>  
         <Route path="/student-profile-interests" element={<StudentProfile/>}/>  
         <Route path="/student-sessions" element={<StudentSession/>}/>  
+        <Route path="/admin-panel" element={<admin-panel/>}/>  
       </Routes>
     </React.StrictMode>
   </BrowserRouter>,
