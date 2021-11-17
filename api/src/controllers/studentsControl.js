@@ -1,21 +1,18 @@
 const getAllStudentsRouter = require('express').Router()
-const updatedStateRouter = require('express').Router()
-const updatedMentorRouter = require('express').Router()
+const updatedUserRouter = require('express').Router()
+const updatedProfileRouter = require('express').Router()
 
-// const Student = require('../db/models/Student')
+const Profile = require('../db/models/Profile')
 const User = require('../db/models/User')
 
 getAllStudentsRouter.get('/', async (req, res) => {
   // const getAllStudents = 
-  await Student.find({})
-  .populate("idProfile", { actualAge: 1, gender: 1})
-  .populate("idUser", {
+  await Profile.find({})
+  .populate("user_id:", { 
     name: 1,
     middleName: 1,
     lastName: 1,
-    secondSurname: 1,
-    programa: 1,
-    state: 1
+    secondSurname: 1
   })
   .then(getAllStudents => {
     if(getAllStudents.length) return res.status(200).send({getAllStudents})
@@ -25,11 +22,22 @@ getAllStudentsRouter.get('/', async (req, res) => {
   // res.json(getAllStudents)
 })
 
-updatedStateRouter.post("/", async (req, res) => {
+updatedUserRouter.post("/", async (req, res) => {
   let body = req.body;
   User.updateOne({ _id: body._id }, {
     $set: {
-      state: body.state,
+      name: body.name,
+      email: body.email,
+      passwordHash: body.passwordHash,
+      middleName: body.middleName,
+      lastName: body.lastName,
+      secondSurname: body.secondSurname,
+      contactNumber: body.contactNumber,
+      role: body.role,
+      avatar: body.avatar,
+      program: body.program,
+      cohorte: body.cohorte,
+      state: body.state
     }
   },
   function(error, info) {
@@ -71,10 +79,10 @@ updatedStateRouter.post("/", async (req, res) => {
 //   })
 // })
 
-updatedMentorRouter.post('/', async (req, res) => {
-  let body = req.body;
+// updatedMentorRouter.post('/', async (req, res) => {
+//   let body = req.body;
   
-})
+// })
 
 
 
@@ -102,6 +110,6 @@ updatedMentorRouter.post('/', async (req, res) => {
 
 
 
-module.exports = { getAllStudentsRouter, updatedStateRouter }
+module.exports = { getAllStudentsRouter, updatedUserRouter }
 
 // module.exports = createStudentRouter
