@@ -56,7 +56,7 @@ const userSchema = new Schema(
       }
     },
     state: {
-      ///habilitarlo
+      // habilitarlo
       type: Boolean,
       default: true
     }
