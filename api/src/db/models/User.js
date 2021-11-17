@@ -35,14 +35,14 @@ const userSchema = new Schema(
     },
     role: {
       type: Number,
-      default: 0 // 0 = aspirante, 1 = estudiante 2 = egresado, 3 = formador, 4 = mentor 5=monitor 6=entrevistador 7=observador 8=entreobservador =admin
+      default: 0 // 0 = aspirante, 1 = estudiante 2 = egresado, 3 = formador, 4 = mentor 5=monitor 6=entrevistador 7=observador 8=entreobservador 9=admin 10
     },
     avatar: {
       type: String,
       default:
         'https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png'
     },
-    programa: {
+    program: {
       type: String,
       default: 'Programate'
     },
@@ -56,7 +56,7 @@ const userSchema = new Schema(
       }
     },
     state: {
-      ///habilitarlo
+      // habilitarlo
       type: Boolean,
       default: true
     }

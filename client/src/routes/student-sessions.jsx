@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { getStudents } from '../testdata/testdata'
-
+import SessionsBoard from "../views/Student/SessionsBoard/sessionsBoard";
 
 export default function studentSessions() {
     let students = getStudents();
     
     return (
-        <div style={{ display: "flex" }}>
+       <div>
+      {/*<div style={{ display: "flex" }}>
       <nav
         style={{
           borderRight: "solid 1px",
@@ -22,7 +23,8 @@ export default function studentSessions() {
             {student.idUser}
           </Link>
         ))}
-      </nav>
+        </nav>*/}
+      <SessionsBoard></SessionsBoard>
     </div>
 
       
