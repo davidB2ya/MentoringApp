@@ -14,6 +14,7 @@ import StudentProfile from './routes/student-profile'
 import StudentSession from './routes/student-sessions';
 import Thanks from './views/Student/Thanks/Thanks';
 import FirstStudentForm from './views/Student/Form/FirstStudentForm';
+import FirstStudentInform from './views/Student/Inform/FirstStudentInfrom';
 
 
 const rootElement = document.getElementById("root")
@@ -27,6 +28,8 @@ render(
         <Route path="/welcome-student" element={<WelcomeStudent/>}/>
         <Route path="/form-student" element={<FirstStudentForm/>}/>
         <Route path="/thanks-student" element={<Thanks/>}/>
+        <Route path="/inform-student" element={<FirstStudentInform/>}/>
+        FirstStudentInfrom
         <Route path="/student-profile-interests" element={<StudentProfile/>}/>  
         <Route path="/student-sessions" element={<StudentSession/>}/>  
         <Route path="/admin-panel" element={<admin-panel/>}/>  
