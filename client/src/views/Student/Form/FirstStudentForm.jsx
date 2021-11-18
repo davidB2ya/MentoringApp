@@ -37,6 +37,7 @@ const FirstStudentForm = () => {
 				</div>
 				))}
 				</div>
+				
 			</div>
 			 <Footer/>
         </div>

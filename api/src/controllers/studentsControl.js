@@ -24,7 +24,7 @@ getAllStudentsRouter.get('/', async (req, res) => {
 })
 
 updatedUserRouter.post('/', async (req, res) => {
-  const body = req.body
+  let body = req.body
   User.updateOne(
     { _id: body._id },
     {

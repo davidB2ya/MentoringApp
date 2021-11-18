@@ -17,9 +17,13 @@ router.use('/api/formStudent', FormStudentRouter.FormStudentRouter)
 router.use('/api/answerform', FormStudentRouter.AnswerFormRouter)
 router.use('/api/votingCapsules', VotingCapsulesRouter.VotingCapsulesRouter)
 router.use('/api/updateCapsules', VotingCapsulesRouter.UpdateCapsulesRouter)
+
 router.use('/api/mentor-availability', menAvailRouter)
+
 router.use('/api/students-control', StudentsRouter.getAllStudentsRouter)
+
 router.use('/api/students-control-post', StudentsRouter.updatedUserRouter)
+
 router.use('/api/session', sessionRouter)
 
 // router.use('/api/notif-mentor', notifMentorRouter)
