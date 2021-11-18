@@ -30,5 +30,9 @@
   },
   "keywords": [],
   "author": "The Best Team",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "components": "^0.1.0",
+    "styled": "^1.0.0"
+  }
 }
