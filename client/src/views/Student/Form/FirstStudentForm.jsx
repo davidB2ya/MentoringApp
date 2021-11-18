@@ -5,6 +5,11 @@ import '../Form/FirstStudentForm.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const FirstStudentForm = () => {
+
+	/* fetch('http://localhost:3001/api/formStudent')
+		.then(response => response.json())
+		.then(data => console.log(data)); */
+
     return (
         <div>
             <Navbar/>
