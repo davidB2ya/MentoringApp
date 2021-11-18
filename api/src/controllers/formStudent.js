@@ -21,7 +21,7 @@ AnswerFormRouter.post('/', (req, res) => {
   console.log(req.body)
   res.status(200).send({ message: 'se ha recibido' })
 
-  let answerform = new AnswerForm()
+  const answerform = new AnswerForm()
   answerform.idSession = req.body.idSession
   answerform.idUser = req.body.idUser
   answerform.idQuestion = req.body.idQuestion

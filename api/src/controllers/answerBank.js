@@ -15,7 +15,7 @@ AnswerBankRouter.post('/', (req, res) => {
   console.log(req.body)
   res.status(200).send({ message: 'se ha recibido' })
 
-  let answer = new AnswerBank()
+  const answer = new AnswerBank()
   answer.idSession = req.body.idSession
   answer.idUser = req.body.idUser
   answer.idQuestion = req.body.idQuestion

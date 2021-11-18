@@ -16,7 +16,7 @@ VotingCapsulesRouter.get('/', async (request, response) => {
 
 // update method to bring the capsules colection documents
 UpdateCapsulesRouter.post('/updateCapsules', function (req, res) {
-  let body = req.body
+  const body = req.body
   UpdateCapsules.updateOne(
     { _id: body._id },
     {
