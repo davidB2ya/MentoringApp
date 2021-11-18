@@ -15,11 +15,12 @@ import StudentSession from './routes/student-sessions';
 import Thanks from './views/Student/Thanks/Thanks';
 import FirstStudentForm from './views/Student/Form/FirstStudentForm';
 import FirstStudentInform from './views/Student/Inform/FirstStudentInfrom';
-
+import { Context } from "./Context";
 
 const rootElement = document.getElementById("root")
 
 render(
+  <Context.Provider>
   <BrowserRouter>
     <React.StrictMode>
       <Routes>
@@ -34,6 +35,7 @@ render(
         <Route path="/admin-panel" element={<admin-panel/>}/>  
       </Routes>
     </React.StrictMode>
-  </BrowserRouter>,
+  </BrowserRouter>
+  </Context.Provider>,
   rootElement
 );
