@@ -47,41 +47,42 @@ postUserRouter.post('/', async (req, res) => {
         interestsStudent: profile.interestsStudent,
         assignedMentor: profile.assignedMentor
       })
-      res.json(dbProfile);
+      res.json(dbProfile)
     })
 
     .catch(function (err) {
-      res.json(err);
+      res.json(err)
     })
 })
 
-updatedUserRouter.post("/", (req, res) => {
-
-  let body = req.body;
-
-  User.updateOne({ _id: body._id }, {
-    $set: {
-      name: body.name,
-      email: body.email,
-      passwordHash: body.passwordHash,
-      middleName: body.middleName,
-      lastName: body.lastName,
-      secondSurname: body.secondSurname,
-      contactNumber: body.contactNumber,
-      role: body.role,
-      avatar: body.avatar,
-      program: body.program,
-      cohorte: body.cohorte,
-      state: body.state
+updatedUserRouter.post('/', (req, res) => {
+  let body = req.body
+  User.updateOne(
+    { _id: body._id },
+    {
+      $set: {
+        name: body.name,
+        email: body.email,
+        passwordHash: body.passwordHash,
+        middleName: body.middleName,
+        lastName: body.lastName,
+        secondSurname: body.secondSurname,
+        contactNumber: body.contactNumber,
+        role: body.role,
+        avatar: body.avatar,
+        program: body.program,
+        cohorte: body.cohorte,
+        state: body.state
+      }
     }
-  }),
+  ),
     function (error, info) {
       if (error) {
         res.json({
           result: false,
           msg: 'No se pudo modificar el usuario',
           err
-        });
+        })
       } else {
         res.json({
           result: true,
@@ -89,50 +90,52 @@ updatedUserRouter.post("/", (req, res) => {
         })
       }
     }
-
-
 })
 
-updatedProfileRouter.post("/", async (req, res) => {
-
-  let body = req.body;
+updatedProfileRouter.post('/', async (req, res) => {
+  let body = req.body
 
   let profile = {
     gender: req.body.gender,
     actualAge: req.body.actualAge,
     interestsStudent: req.body.interestsStudent,
     assignedMentor: req.body.assignedMentor
-  };
+  }
 
   let idprofile = await Profile.find({ user_id: body._id }, { _id: 1 })
 
   // console.log(idprofile)
 
-  Profile.updateOne({ _id: idprofile[0]._id }, {
-    $set: {
-      gender: profile.gender,
-      actualAge: profile.actualAge,
-      interestsStudent: profile.interestsStudent,
-      assignedMentor: profile.assignedMentor
-    }
-  },
+  Profile.updateOne(
+    { _id: idprofile[0]._id },
+    {
+      $set: {
+        gender: profile.gender,
+        actualAge: profile.actualAge,
+        interestsStudent: profile.interestsStudent,
+        assignedMentor: profile.assignedMentor
+      }
+    },
     function (error, info) {
       if (error) {
         res.json({
           result: false,
           msg: 'No se pudo modificar el perfil',
           err
-        });
+        })
       } else {
         res.json({
           result: true,
           info: info
         })
       }
-    })
-
+    }
+  )
 })
 
-
-
-module.exports = { getAllStudentsRouter, updatedUserRouter, postUserRouter, updatedProfileRouter }
+module.exports = {
+  getAllStudentsRouter,
+  updatedUserRouter,
+  postUserRouter,
+  updatedProfileRouter
+}
