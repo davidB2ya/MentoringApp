@@ -14,8 +14,14 @@ const FormStudentRouter = require('../controllers/formStudent')
 
 // const notifMentorRouter = require('../controllers/notif-mentor')
 
+const VotingCapsulesRouter = require('../controllers/votingCapsules')
 
 const router = Router()
+
+router.use('/api/formStudent', FormStudentRouter.FormStudentRouter)
+router.use('/api/answerform', FormStudentRouter.AnswerFormRouter)
+router.use('/api/votingCapsules', VotingCapsulesRouter.VotingCapsulesRouter)
+router.use('/api/updateCapsules', VotingCapsulesRouter.UpdateCapsulesRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
