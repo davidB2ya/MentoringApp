@@ -1,6 +1,6 @@
-/* @font-face {
+@font-face {
     font-family: Gilroy-Light ;
-    src: url(../../assets/Font/Gilroy-Light.otf);
+    src: url(../../../assets/Font/Gilroy-Light.otf);
   }
   
   * {
@@ -9,13 +9,7 @@
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
   }
-  
-  .barnav{
-    background-color: #ffcc02;
-    color: #ffcc02
+  .advice{
+    background-color:aqua;
+    margin: 10%;
   }
-
-  
-  .footer{
-    background-color: #000;
-  } */
