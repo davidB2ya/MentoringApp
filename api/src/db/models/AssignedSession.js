@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose')
 // required models
 const Session = require('../models/Session')
 const User = require('../models/User')
-const Mentor = require('../models/Mentor')
+const Profile = require('../models/Profile')
 
 // schema creation for assigned session
 const assignedSessionSchema = new Schema({
@@ -13,14 +13,14 @@ const assignedSessionSchema = new Schema({
     ref: Session
   },
   // the idStudent key store the id of the model User
-  idStudent: {
+  idUser: {
     type: Schema.ObjectId,
     ref: User
   },
   // the idMentor key store the id of the model mentor
-  idMentor: {
+  idProfile: {
     type: Schema.ObjectId,
-    ref: Mentor
+    ref: Profile
   },
   // The dateAsig key stores the date assigned for the session
   dateAsig: {
