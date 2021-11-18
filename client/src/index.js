@@ -13,6 +13,7 @@ import WelcomeStudent from './routes/welcome-student'
 import StudentProfile from './routes/student-profile'
 import StudentSession from './routes/student-sessions';
 
+
 const rootElement = document.getElementById("root")
 
 render(
@@ -24,7 +25,7 @@ render(
         <Route path="/welcome-student" element={<WelcomeStudent/>}/>  
         <Route path="/student-profile-interests" element={<StudentProfile/>}/>  
         <Route path="/student-sessions" element={<StudentSession/>}/>  
-        <Route path="/admin-panel" element={<admin-panel/>}/>  
+        <Route path="/AdminPanel" element={<AdminPanel/>}/>  
       </Routes>
     </React.StrictMode>
   </BrowserRouter>,
