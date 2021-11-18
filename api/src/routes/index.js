@@ -4,6 +4,8 @@ const FormStudentRouter = require('../controllers/formStudent')
 
 const VotingCapsulesRouter = require('../controllers/votingCapsules')
 
+const ViewStudentRouter = require('../controllers/mentorViewStudent')
+
 const menAvailRouter = require('../controllers/mentorAvailability')
 
 const StudentsRouter = require('../controllers/studentsControl')
@@ -27,6 +29,10 @@ router.use('/api/formStudent', FormStudentRouter.FormStudentRouter)
 router.use('/api/answerform', FormStudentRouter.AnswerFormRouter)
 
 router.use('/api/votingCapsules', VotingCapsulesRouter.VotingCapsulesRouter)
+
+router.use('/api/mentorViewStudent', ViewStudentRouter.ViewStudentRouter)
+
+router.use('/api/questionFormRouter', ViewStudentRouter.QuestionFormRouter)
 
 router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
