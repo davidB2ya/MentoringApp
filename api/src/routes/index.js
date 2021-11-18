@@ -29,6 +29,7 @@ router.use('/api/session-report', SessionReportRouter)
 router.use('/api/user', userRouter)
 router.use('/api/dashboard/users', dashBoardRouter.userRouter)
 router.use('/api/dashboard/answer', dashBoardRouter.answerRouter)
+router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
 // router.use('/api/notif-mentor', notifMentorRouter)
 
 module.exports = router
