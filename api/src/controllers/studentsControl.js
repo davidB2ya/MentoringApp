@@ -29,14 +29,14 @@ getAllStudentsRouter.get('/', async (req, res) => {
 })
 
 postUserRouter.post('/', async (req, res) => {
-  let profile = {
+  const profile = {
     gender: req.body.gender,
     actualAge: req.body.actualAge,
     interestsStudent: req.body.interestsStudent,
     assignedMentor: req.body.assignedMentor
   }
-  // let gender = (req.body.gender);
-  // let actualAge = (req.body.actualAge)
+  // const gender = (req.body.gender);
+  // const actualAge = (req.body.actualAge)
   await User.create(req.body)
     .then(function (dbProfile) {
       // If we were able to successfully create a Product, send it back to the client
@@ -56,7 +56,8 @@ postUserRouter.post('/', async (req, res) => {
 })
 
 updatedUserRouter.post('/', (req, res) => {
-  let body = req.body
+  const body = req.body
+
   User.updateOne(
     { _id: body._id },
     {
@@ -75,34 +76,33 @@ updatedUserRouter.post('/', (req, res) => {
         state: body.state
       }
     }
-  ),
-    function (error, info) {
-      if (error) {
-        res.json({
-          result: false,
-          msg: 'No se pudo modificar el usuario',
-          err
-        })
-      } else {
-        res.json({
-          result: true,
-          info: info
-        })
-      }
+  ).then(function (error, info) {
+    if (error) {
+      res.json({
+        result: false,
+        msg: 'No se pudo modificar el usuario',
+        error
+      })
+    } else {
+      res.json({
+        result: true,
+        info: info
+      })
     }
+  })
 })
 
 updatedProfileRouter.post('/', async (req, res) => {
-  let body = req.body
+  const body = req.body
 
-  let profile = {
+  const profile = {
     gender: req.body.gender,
     actualAge: req.body.actualAge,
     interestsStudent: req.body.interestsStudent,
     assignedMentor: req.body.assignedMentor
   }
 
-  let idprofile = await Profile.find({ user_id: body._id }, { _id: 1 })
+  const idprofile = await Profile.find({ user_id: body._id }, { _id: 1 })
 
   // console.log(idprofile)
 
@@ -121,7 +121,7 @@ updatedProfileRouter.post('/', async (req, res) => {
         res.json({
           result: false,
           msg: 'No se pudo modificar el perfil',
-          err
+          error
         })
       } else {
         res.json({
