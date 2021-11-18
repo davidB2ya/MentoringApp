@@ -28,7 +28,7 @@ router.use('/api/answerform', FormStudentRouter.AnswerFormRouter)
 
 router.use('/api/votingCapsules', VotingCapsulesRouter.VotingCapsulesRouter)
 
-router.use('/api/updateCapsules', VotingCapsulesRouter.UpdateCapsulesRouter)
+router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
@@ -38,7 +38,10 @@ router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
 
 router.use('/api/students-control-post', StudentsRouter.postUserRouter)
 
-router.use('/api/studentsPerfil-control-update', StudentsRouter.updatedProfileRouter)
+router.use(
+  '/api/studentsPerfil-control-update',
+  StudentsRouter.updatedProfileRouter
+)
 
 router.use('/api/session', sessionRouter)
 
