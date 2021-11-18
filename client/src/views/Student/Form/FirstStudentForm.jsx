@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import Footer from '../../../components/Footer/Footer'
 import Navbar from '../../../components/Navbar/Navbar'
-import '../Form/FirstStudentForm.css'
+import '../Form/FirstStudentForm.css';
+import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const FirstStudentForm = () => {
-
-	/* fetch('http://localhost:3001/api/formStudent')
-		.then(response => response.json())
-		.then(data => console.log(data)); */
+	
+	const [list, setList] = useState([]);
+	useEffect(() => {
+	  Axios({
+		url: "http://localhost:3001/api/formStudent",
+	  })
+		.then((response) => {
+		  setList(response.data);
+		  console.log(response.data);
+		})
+		.catch((error) => {
+		  console.log(error);
+		});
+	}, [setList]);
 
     return (
         <div>
@@ -17,63 +28,14 @@ const FirstStudentForm = () => {
 			<div className="advice">
 				<p>Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 				<div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				{/* <div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<br></br>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div> */}
 				
-				{/* <select class="form-select" multiple aria-label="multiple select example">
-					<option selected>Open this select menu</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select> */}
+				{list.map((item) => (
+				<div class="mb-3" key={item.id}>
+					<label for="exampleFormControlTextarea1" class="form-label">{item.question}</label>
+					<br></br>
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				</div>
+				))}
 				</div>
 			</div>
 			 <Footer/>
