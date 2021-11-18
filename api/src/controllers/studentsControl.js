@@ -74,7 +74,7 @@ updatedUserRouter.post("/", (req, res) => {
       cohorte: body.cohorte,
       state: body.state
     }
-  },
+  }),
   function(error, info) {
     if (error) {
         res.json({
@@ -89,7 +89,7 @@ updatedUserRouter.post("/", (req, res) => {
         })
       }
     }
-})
+  
   
 })
 
