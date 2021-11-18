@@ -29,7 +29,6 @@ render(
         <Route path="/form-student" element={<FirstStudentForm/>}/>
         <Route path="/thanks-student" element={<Thanks/>}/>
         <Route path="/inform-student" element={<FirstStudentInform/>}/>
-        FirstStudentInfrom
         <Route path="/student-profile-interests" element={<StudentProfile/>}/>  
         <Route path="/student-sessions" element={<StudentSession/>}/>  
         <Route path="/admin-panel" element={<admin-panel/>}/>  
