@@ -7,7 +7,7 @@ const Navbar = () => {
         <>
         <nav className= "main-nav">
           <div className="Img">
-              <img src={Image} width="120px" height="30px" alt="Logo Educamás" />
+              <img src={Image} width="120px" height="25px" alt="Logo Educamás" />
         </div>
         </nav>
         <h1>Sesiones</h1>
