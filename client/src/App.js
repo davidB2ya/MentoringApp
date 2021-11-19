@@ -11,13 +11,11 @@
 //import CrudStudent from'./views/Administrator/Cruds/students/index'
 //import Navbar from './components/Navbar/Navbar'
 import { Outlet, Link } from "react-router-dom"
-import { Context } from "./Context";
 
 
 function App() {
 
   return (
-    <Context.Provider>
     <div className="App">
       <h1>Bienvenido Usuario genérico</h1>
       <nav
@@ -36,7 +34,6 @@ function App() {
       </nav>
       <Outlet />
     </div>
-    </Context.Provider>
   );  
 }
 
