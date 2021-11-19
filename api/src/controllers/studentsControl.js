@@ -1,6 +1,10 @@
 const getAllStudentsRouter = require('express').Router()
+
+const postUserRouter = require('express').Router()
+
 const updatedUserRouter = require('express').Router()
-// const updatedProfileRouter = require('express').Router()
+
+const updatedProfileRouter = require('express').Router()
 
 const Profile = require('../db/models/Profile')
 
@@ -25,15 +29,19 @@ getAllStudentsRouter.get('/', async (req, res) => {
 })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 updatedUserRouter.post('/', async (req, res) => {
   const body = req.body
 =======
+=======
+>>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
 postUserRouter.post('/', async (req, res) => {
   const profile = {
     gender: req.body.gender,
     actualAge: req.body.actualAge,
     interestsStudent: req.body.interestsStudent,
-    assignedMentor: req.body.assignedMentor
+    assignedMentor: req.body.assignedMentor,
+    interestsMentor: req.body.interestsMentor
   }
   // const gender = (req.body.gender);
   // const actualAge = (req.body.actualAge)
@@ -45,7 +53,8 @@ postUserRouter.post('/', async (req, res) => {
         gender: profile.gender,
         actualAge: profile.actualAge,
         interestsStudent: profile.interestsStudent,
-        assignedMentor: profile.assignedMentor
+        assignedMentor: profile.assignedMentor,
+        interestsMentor: profile.interestsMentor
       })
       res.json(dbProfile)
     })
@@ -58,7 +67,10 @@ postUserRouter.post('/', async (req, res) => {
 updatedUserRouter.post('/', (req, res) => {
   const body = req.body
 
+<<<<<<< HEAD
 >>>>>>> d0cb9d5359e95e79fd3ae5cb3a67e504a14ab9e5
+=======
+>>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
   User.updateOne(
     { _id: body._id },
     {
@@ -93,8 +105,7 @@ updatedUserRouter.post('/', (req, res) => {
   })
 })
 
-updatedProfileRouter.post('/', async (req, res) => {
-  const body = req.body
+updatedProfileRouter.post('/:id', async (req, res) => {
 
   const profile = {
     gender: req.body.gender,
@@ -103,7 +114,7 @@ updatedProfileRouter.post('/', async (req, res) => {
     assignedMentor: req.body.assignedMentor
   }
 
-  const idprofile = await Profile.find({ user_id: body._id }, { _id: 1 })
+  const idprofile = await Profile.find({ user_id: request.params.id }, { _id: 1 })
 
   // console.log(idprofile)
 
@@ -121,12 +132,17 @@ updatedProfileRouter.post('/', async (req, res) => {
       if (error) {
         res.json({
 <<<<<<< HEAD
+<<<<<<< HEAD
           resultado: false,
           msg: 'No se pudo modificar el cliente',
 =======
           result: false,
           msg: 'No se pudo modificar el perfil',
 >>>>>>> d0cb9d5359e95e79fd3ae5cb3a67e504a14ab9e5
+=======
+          result: false,
+          msg: 'No se pudo modificar el perfil',
+>>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
           error
         })
       } else {
@@ -139,6 +155,7 @@ updatedProfileRouter.post('/', async (req, res) => {
   )
 })
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 // updatedStateRouter.post("/", async (req, res) => {
 // let body = req.body;
@@ -193,10 +210,16 @@ module.exports = { getAllStudentsRouter, updatedUserRouter }
 
 // module.exports = createStudentRouter
 =======
+=======
+>>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
 module.exports = {
   getAllStudentsRouter,
   updatedUserRouter,
   postUserRouter,
   updatedProfileRouter
+<<<<<<< HEAD
 }
 >>>>>>> d0cb9d5359e95e79fd3ae5cb3a67e504a14ab9e5
+=======
+}
+>>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
