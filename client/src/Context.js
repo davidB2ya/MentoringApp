@@ -4,7 +4,7 @@ const Context = React.createContext(
     
     fetch('http://localhost:3001/api/session')
         .then(response => response.json())
-        .then(data => console.log(data[0].id))
+        .then(data => console.log(data))
 );
 
 export { Context };
