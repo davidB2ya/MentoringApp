@@ -12,10 +12,11 @@
     height: 100vh;
     background-color: var(--gray);
     display:flex;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap:wrap;
-    justify-content: center;
+    /* justify-content: center;
     display:grid;
     grid-template-columns: repeat(auto-fit,minmax(360px,1fr));
-    gap:1rem; 
+    gap:1rem;  */
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import Footer from '../../../components/Footer/Footer'
 import Navbar from '../../../components/Navbar/Navbar'
 import '../Form/FirstStudentForm.css';
@@ -8,9 +9,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const FirstStudentForm = () => {
 	
 	const [list, setList] = useState([]);
+
+	let { id } = useParams();
+
 	useEffect(() => {
 	  Axios({
-		url: "http://localhost:3001/api/formStudent",
+		url: `http://localhost:3001/api/formStudent/${id}`,
 	  })
 		.then((response) => {
 		  setList(response.data);
