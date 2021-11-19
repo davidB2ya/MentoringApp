@@ -3,7 +3,9 @@ import React from "react";
 const TableSectionManager = () => {
     return ( 
     <div>
-        <h1>Hola mundo</h1>
+       <div>
+           <h3></h3>
+       </div>
     </div> 
     );
 }
