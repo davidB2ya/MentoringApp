@@ -28,11 +28,8 @@ const FirstStudentForm = () => {
     return (
         <div>
             <Navbar/>
-			<p>Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
+			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 			<div className="advice">
-				<p>Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
-				<div>
-				
 				{list.map((item) => (
 				<div class="mb-3" key={item.id}>
 					<label for="exampleFormControlTextarea1" class="form-label">{item.question}</label>
@@ -40,8 +37,6 @@ const FirstStudentForm = () => {
 					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				</div>
 				))}
-				</div>
-				
 			</div>
 			 <Footer/>
         </div>
