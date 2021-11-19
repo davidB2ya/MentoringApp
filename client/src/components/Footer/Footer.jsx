@@ -14,11 +14,11 @@ const Footer = () => {
     <hr className="footer-seperator" />
     <section className="footer-social-media">
       
-    <a href="/" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.facebook.com/somoseducamas" target="_blank" rel="noopener noreferrer">
       <img className="facebook" src={Facebook} width="20px" height="20px"/></a>
-      <a href="/" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.instagram.com/programate_escueladecodigo/" target="_blank" rel="noopener noreferrer">
       <img className="instagram"src={Instagram} width="20px" height="20px"/></a>
-      <a href="/" target="_blank" rel="noopener noreferrer">
+      <a href="https://www.youtube.com/channel/UCmnr_sLPZ1E8H1VgUtaHGPQ" target="_blank" rel="noopener noreferrer">
       <img className="youtube"src={Youtube} width="20px" height="20px"/></a>
       
     </section>
