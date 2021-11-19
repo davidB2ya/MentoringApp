@@ -11,7 +11,7 @@ const AnswerFormRouter = require('express').Router()
 FormStudentRouter.get('/:id', async (request, response) => {
 
   try{
-    const formStudent = await FormStudent.find({idSession: request.params.id, receiver: true }, { question: 1 })
+    const formStudent = await FormStudent.find({idSession: request.params.id, receiver: true }, { question: 1, respType: 1, option: 1, vote: 1 })
 
     response.json(formStudent)
   }

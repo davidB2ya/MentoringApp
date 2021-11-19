@@ -94,8 +94,7 @@ updatedUserRouter.post('/', (req, res) => {
   })
 })
 
-updatedProfileRouter.post('/', async (req, res) => {
-  const body = req.body
+updatedProfileRouter.post('/:id', async (req, res) => {
 
   const profile = {
     gender: req.body.gender,
@@ -104,7 +103,7 @@ updatedProfileRouter.post('/', async (req, res) => {
     assignedMentor: req.body.assignedMentor
   }
 
-  const idprofile = await Profile.find({ user_id: body._id }, { _id: 1 })
+  const idprofile = await Profile.find({ user_id: request.params.id }, { _id: 1 })
 
   // console.log(idprofile)
 
