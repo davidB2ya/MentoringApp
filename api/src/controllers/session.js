@@ -16,7 +16,9 @@ sessionRouter.get('/', async (req, res, next) => {
 // Creates a new session
 sessionRouter.post('/new', async (req, res, next) => {
   const body = req.body
+  // console.log(body)
   const newSession = new Session(body)
+  console.log(newSession)
   await newSession.save()
   res.send('saved')
 })
