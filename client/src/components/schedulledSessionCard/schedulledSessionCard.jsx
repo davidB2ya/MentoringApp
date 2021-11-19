@@ -20,6 +20,7 @@ const schedulledSessionCard = () => {
                 <a className={styles.linkSession} href="https://us02web.zoom.us/j/89970425043?pwd=UUxGdERFa3BSbHU5OG5qYVdWeEtOQT09">
                     https://us02web.zoom.us/j/89970425043?pwd=UUxGdERFa3BSbHU5OG5qYVdWeEtOQT09
                 </a>
+                <p></p>
                 <p className={styles.message}>¡ Recuerda  debes diligenciar el formulario de la sesión antes de asistir a esta !</p>
                 <button className={styles.btn}>Ir al formulario de la sesión</button> 
                 </div>
