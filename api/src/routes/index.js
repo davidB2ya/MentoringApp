@@ -22,6 +22,9 @@ const questionBankRouter = require('../controllers/questionBank')
 
 const UpdateMentorRouter = require('../controllers/editMentor')
 // const notifMentorRouter = require('../controllers/notif-mentor')
+const profilEditRouter = require('../controllers/profilEdit')
+
+const notifMentorRouter = require('../controllers/notif-mentor')
 
 const router = Router()
 
@@ -54,7 +57,7 @@ router.use('/api/session', sessionRouter)
 
 router.use('/api/user', userRouter)
 
-router.use('/api/dashboard/users', dashBoardRouter.userRouter)
+router.use('/api/dashboard', dashBoardRouter.userRouter)
 
 router.use('/api/dashboard/answer', dashBoardRouter.answerRouter)
 
@@ -66,5 +69,13 @@ router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
 
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)
+
+router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
+
+router.use('/api/profile-edit', profilEditRouter.profilEditRouter)
+
+router.use('/api/updated-profile-edit', profilEditRouter.updatedprofilEditRouter)
+
+router.use('/api/notif-mentor', notifMentorRouter)
 
 module.exports = router
