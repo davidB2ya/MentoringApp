@@ -1,4 +1,6 @@
 import React from 'react';
+import Footer from '../../../components/Footer/Footer.jsx';
+import Navbar from '../../../components/Navbar/Navbar.jsx';
 // import '../Welcome/WelcomeStudent.css';
 import WelcomeCard from '../../../components/welcomeCard/WelcomeCard.jsx';
 
@@ -6,9 +8,9 @@ import WelcomeCard from '../../../components/welcomeCard/WelcomeCard.jsx';
 const WelcomeStudent = () => {
     return (
         <div>
-          <h1 className="barnav">BARNAV</h1>
+          <Navbar/>
           <WelcomeCard/>
-          <h1 className="footer">FOOTER</h1>
+          <Footer/>
         </div>
     )
 }

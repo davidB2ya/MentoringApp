@@ -1,19 +1,21 @@
 const FormStudent = require('../db/models/QuestionBank')
 const AnswerForm = require('../db/models/AnswerBank')
 
-// get method: questions that have the session number equal to the form number
-
+// constant for the get method that fetches questions from the question bank
 const FormStudentRouter = require('express').Router()
+
+// constant for the post method that brings up responses from the response bank
 const AnswerFormRouter = require('express').Router()
 
-FormStudentRouter.get('/:questionBank', async (request, response) => {
+// get method to fetch questions from the question bank
+FormStudentRouter.get('/', async (request, response) => {
   const formStudent = await FormStudent.find({})
     .populate('idSession', { numSession: 1 })
-    .populate('idQuestionBank', { question: 1 })
+    .populate('idUser', { role: 1 })
   response.json(formStudent)
 })
 
-// post
+// post method to fetch load responses from response bank
 AnswerFormRouter.post('/', (req, res) => {
   console.log('POST /api/answerform')
   console.log(req.body)
