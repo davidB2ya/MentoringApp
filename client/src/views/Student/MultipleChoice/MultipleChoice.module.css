@@ -1,3 +1,11 @@
+.contenedor{
+    width:100vw;
+    height: 100vh;
+    background-color: #D7D7D7;
+      
+    
+}
+
 .heder{
     width: auto;
     height: auto;
@@ -12,7 +20,7 @@
 }  
 
 h3{
-    font-family: Gilroy-ExtraBold;
+   
     font-size: 6.5vw;
     color: #92C149;
 }
@@ -21,8 +29,18 @@ p{
     font-size: 3.4vw;
 }
 button{
+    width: 50%;
+    border-radius: 10px;
+    background-color: #FFCC02;
     max-width: 200px;
+    padding: 1rem;
+    font-size: 1.5vw;
 }
+
+.select{
+    background-color: black;
+}
+
 
 @media (min-width:450px ) {
     .heder p{

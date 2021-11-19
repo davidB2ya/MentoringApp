@@ -17,12 +17,11 @@ import Thanks from './views/Student/Thanks/Thanks';
 //import FirstStudentForm from './views/Student/Form/FirstStudentForm';
 import FirstStudentInform from './views/Student/Inform/FirstStudentInfrom';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
-//import MultipleChoice from './views/Students/MultipleChoice/MultipleChoice';
+import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import WelcomeCard from './components/welcomeCard/WelcomeCard';
-// import FirstStudentInform from './views/Student/Inform/FirstStudentInfrom';
-// import FirstStudentForm from './views/Student/Form/FirstStudentForm';
-// import Thanks from './views/Student/Thanks/Thanks';
-// import PanelAdmin from './views/Administrator/PanelAdmin/PanelAdmin';
+import TableSectionManager from './views/Student/TableSectionManager/TableSectionManager';
+
+
 
 const rootElement = document.getElementById("root")
 
@@ -42,14 +41,10 @@ render(
         <Route path="/student-sessions" element={<StudentSession/>}/>  
         <Route path="/admin-panel" element={<admin-panel/>}/> 
         <Route path="/CrudStudents" element={<CrudStudents/>}/>  
-        {/* <Route path="/MultipleChoice" element={<MultipleChoice/>}/>  */}
-        <Route path="/WelcomeCard" element={<WelcomeCard/>}/>  
-        <Route path="*" element={
-        <main style={{ padding: "1rem" }}>
-          <p>There's nothing here!</p>
-        </main>
-      }
-    />     
+        <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
+        <Route path="/WelcomeCard" element={<WelcomeCard/>}/> 
+        <Route path="/TableSectionManager" element={<TableSectionManager/>}/> 
+        
       </Routes>
       <Footer></Footer>
     </React.StrictMode>
