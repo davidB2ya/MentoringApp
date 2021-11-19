@@ -1,10 +1,12 @@
 const { Schema, model } = require('mongoose')
+const User = require('../models/User')
 
 // schema creation for profiles
 const profileSchema = new Schema({
   user_id: {
-    type: String
-  },
+    type: Schema.ObjectId,
+    ref: User
+  },  
 
   /* Agora */
 
@@ -122,8 +124,7 @@ const profileSchema = new Schema({
 
   // the ft key stores the gender profile
   gender: {
-    type: Number,
-    required: true
+    type: Number
   },
 
   // the academic_level key stores the academic level of the profile
@@ -133,14 +134,61 @@ const profileSchema = new Schema({
 
   // the idUser key stores the age of the profile
   actualAge: {
-    type: Number,
-    required: true
+    type: Number
   },
 
   // the idUser key stores the profile photo
   photo: {
     type: String
   },
+
+  // The ActualJobPosition key stores the current position of the mentor
+  ActualJobPosition: String,
+
+  // The Company key stores the mentor's current job
+  Company: String,
+
+  // The sons key stores the mentor's children
+  sons: Number,
+
+  // The interests key stores the mentor's interests
+  interestsMentor: [String],
+
+  // The numeStudents key stores the number of students the mentor wants
+  numeStudents: Number,
+
+  // The idUser key stores the assigned students
+  studentAssignment: [
+    {
+      type: Schema.ObjectId,
+      ref: User
+    }
+  ],
+
+  // the assignedMentor key stores the mentor assigned to the student
+  assignedMentor: {
+    type: String
+  },
+
+  // the interests key stores the student's selected interests
+  interestsStudent: {
+    type: Array
+  },
+
+  // The commitment key stores a participation score that is used to determine the student and mentor assignment.
+  commitment: Number,
+
+  // The achievementOrientation key stores the achievement orientation score that is used to determine the student and mentor assignment.
+  achievementOrientation: Number,
+
+  // The flexibility key stores the flexibility score that is used to determine the student and mentor assignment.
+  flexibility: Number,
+
+  // The assertiveCommunication key stores the assertive communication score that is used to determine the student and mentor assignment.
+  assertiveCommunication: Number,
+
+  // The studentsGenderPrefer key stores the student's gender preference score that is used to determine the student and mentor assignment.
+  studentsGenderPrefer: Number, // 1=Man 2=Women 3=other
 
   /* fin mentoria */
 
@@ -181,99 +229,80 @@ const profileSchema = new Schema({
 
   /* Proceso de seleccion */
   documentType: {
-    type: Number,
-    required: true
+    type: Number
   },
   documentNumber: {
     type: Number,
-    required: true,
     minlength: 6
   },
   // documentPdf: {
   //   type: binData,
-  //   required: true
+  //
   // },
   secondContactNumber: {
-    type: Number,
-    required: true
+    type: Number
   },
   nacionality: {
-    type: String,
-    required: true
+    type: String
   },
   residencyDepartment: String,
   municipalityOfResidency: String,
   locationInBogota: String,
   socioeconomicStratus: {
-    type: Number,
-    required: true
+    type: Number
   },
   migrant: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   livesInColombia: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   address: {
     type: String,
-    required: true,
     maxlength: 45
   },
   dateOfBirth: {
-    type: Date,
-    required: true
+    type: Date
   },
   birthdayOnFormation: Date,
 
   maritalStatus: {
-    type: Number,
-    required: true
+    type: Number
   },
   academicLevel: {
-    type: Number,
-    required: true
+    type: Number
   },
   degreeTitle: {
     type: String,
     maxlength: 45
   },
   currentOccupation: {
-    type: Number,
-    required: true
+    type: Number
   },
   unemployedTime: String,
   formaltOccupation: {
     type: Boolean,
-    required: true,
     maxlength: 45
   },
   victimArmedConflict: {
     type: Boolean,
-    required: true
   },
   pcAccess: {
     type: Boolean,
-    required: true
   },
   programataPrevoiousTimes: {
     type: Number,
-    required: true
   },
   motivation: {
     type: String,
-    required: true,
     maxlength: 300
   },
   dreams: {
     type: String,
-    required: true,
     maxlength: 300
   },
   soloLearnProfile: {
     type: Number,
-    reuired: true,
     minlength: 6
   },
   status: {

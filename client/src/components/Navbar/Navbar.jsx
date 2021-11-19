@@ -10,7 +10,7 @@ const Navbar = () => {
               
         </div>
         </nav>
-        <h1>contenido</h1>
+        <h1>Sesiones</h1>
         <br>
         </br>
         </>

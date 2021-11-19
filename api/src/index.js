@@ -19,6 +19,7 @@ app.use(allRoutes)
 
 // Setting
 const port = process.env.PORT || 3001
+// defines a port and passes the value to it
 app.set('port', port)
 
 // Init Server
