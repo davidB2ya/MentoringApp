@@ -16,7 +16,7 @@ const Card = (props) => {
   
                       </div>
                   </div> 
-
+                  <br/>
                   <>{props.bottom}</>
   
                   

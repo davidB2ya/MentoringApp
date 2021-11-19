@@ -1,13 +1,13 @@
 
-import Styles from './App.module.css'
-import LoginForm from "./components/LoginForm"
-import Notification from "./components/Notification"
-import loginService from './services/login'
-import CrudStudents from'./views/Administrator/Cruds/CrudStudents/CrudStudents'
-import CrudEditAndAdd from "./components/CrudEditAndAdd/CrudEditAndAdd"
-import CrudSessions from "./views/Administrator/Cruds/CrudSessions/CrudSessions"
-import CrudSessionDetail from "./views/Administrator/Cruds/CrudSessionDetail/CrudSessionDetail"
-import CrudMentor from "./views/Administrator/Cruds/CrudMentor/CrudMentor"
+//import Styles from './App.module.css'
+//import LoginForm from "./components/LoginForm"
+//import Notification from "./components/Notification"
+//import loginService from './services/login'
+//import CrudStudents from'./views/Administrator/Cruds/CrudStudents/CrudStudents'
+//import CrudEditAndAdd from "./components/CrudEditAndAdd/CrudEditAndAdd"
+//import CrudSessions from "./views/Administrator/Cruds/CrudSessions/CrudSessions"
+//import CrudSessionDetail from "./views/Administrator/Cruds/CrudSessionDetail/CrudSessionDetail"
+//import CrudMentor from "./views/Administrator/Cruds/CrudMentor/CrudMentor"
 //import Styles from './App.module.css'
 //import LoginForm from "./components/LoginForm"
 //import Notification from "./components/Notification"
@@ -43,6 +43,7 @@ function App() {
       <Link to="/WelcomeCard">| WelcomeCard |</Link>
       <Link to="/CrudStudents">| CrudStudents |</Link>
       <Link to="/MultipleChoice">| MultipleChoice |</Link>
+      <Link to="/TableSectionManager">| TableSectionManager |</Link>
 
 
       </nav>
