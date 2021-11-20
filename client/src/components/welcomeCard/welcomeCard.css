@@ -19,16 +19,12 @@
     background: #fefefe;
   }
   
-  .barnav{
-    background-color: #ffcc02;
-    color: #ffcc02
-  }
-  
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    height: 66vh;
   }
   
   .back{
@@ -42,7 +38,7 @@
   
   .card {
     position: relative;
-    width: 400px;
+    width: 373px;
     height: 300px;
   }
   .little{
@@ -85,7 +81,7 @@
     font-family: Gilroy-Light;
   }
   
-  a {
+  .next{
     position: relative;
     display: inline-block;
     padding: 8px 20px;
@@ -98,12 +94,8 @@
     transition: 0.5s;
   }
   
-  a:hover {
+  .next:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
     background: #000;
     color: #ffcc02;
-  }
-  
-  .footer{
-    background-color: #000;
   }
