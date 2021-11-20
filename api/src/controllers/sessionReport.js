@@ -1,21 +1,21 @@
-const FormStudent = require('../db/models/QuestionBank')
+const QuestionBank = require('../db/models/QuestionBank')
 const AnswerForm = require('../db/models/AnswerBank')
 
 // constant for the get method that fetches questions from the question bank
-const FormStudentRouter = require('express').Router()
+const SessionReportRouter = require('express').Router()
 
 // constant for the post method that brings up responses from the response bank
 const AnswerFormRouter = require('express').Router()
 
 // get method to fetch questions from the question bank
-FormStudentRouter.get('/:id', async (request, response) => {
+SessionReportRouter.get('/:id', async (request, response) => {
   try {
-    const formStudent = await FormStudent.find(
-      { idSession: request.params.id, receiver: true },
-      { question: 1, respType: 1, option: 1, vote: 1, idUser: 1 }
-    ).populate('idUser', { program: 1, cohorte: 1 })
+    const SessionReport = await QuestionBank.find(
+      { idSession: request.params.id, receiver: false },
+      { question: 1, respType: 1, option: 1, vote: 1 }
+    )
 
-    response.json(formStudent)
+    response.json(SessionReport)
   } catch (err) {
     return response.status(500).json({ msg: err.message })
   }
@@ -41,5 +41,5 @@ AnswerFormRouter.post('/', (req, res) => {
 
 module.exports = {
   AnswerFormRouter,
-  FormStudentRouter
+  SessionReportRouter
 }

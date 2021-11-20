@@ -18,7 +18,11 @@ const answerBankRouter = require('../controllers/answerBank')
 
 const questionBankRouter = require('../controllers/questionBank')
 
+<<<<<<< HEAD
 const UpdateMentorRouter = require('../controllers/editMentor')
+=======
+const SessionReportRouter = require('../controllers/sessionReport')
+>>>>>>> 815cd61f230f145eb5a03e5bf721636f56db0c64
 // const notifMentorRouter = require('../controllers/notif-mentor')
 
 const router = Router()
@@ -45,7 +49,7 @@ router.use('/api/session', sessionRouter)
 
 router.use('/api/user', userRouter)
 
-router.use('/api/dashboard/users', dashBoardRouter.userRouter)
+router.use('/api/dashboard', dashBoardRouter.userRouter)
 
 router.use('/api/dashboard/answer', dashBoardRouter.answerRouter)
 
@@ -58,4 +62,5 @@ router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)
 
+router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
 module.exports = router
