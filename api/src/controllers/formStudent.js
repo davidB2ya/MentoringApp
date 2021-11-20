@@ -8,7 +8,7 @@ const FormStudentRouter = require('express').Router()
 const AnswerFormRouter = require('express').Router()
 
 // get method to fetch questions from the question bank
-FormStudentRouter.get('/', async (request, response) => {
+FormStudentRouter.get('/:id', async (request, response) => {
   const formStudent = await FormStudent.find({})
     .populate('idSession', { numSession: 1 })
     .populate('idUser', { role: 1 })
