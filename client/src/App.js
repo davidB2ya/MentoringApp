@@ -39,7 +39,7 @@ import ForgotPassword from './components/login/ForgotPassword.jsx'
 //others
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
-import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
+import StudentSession from './views/Student/SessionsBoard/sessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -60,7 +60,7 @@ function UserLogged (){
          {/* <Route path= '/forgot_password' element={<ForgotPassword/>} exact/> */}
  
          {/* others */}
-         <Route path="/" element={<PrincipalView/>}/>
+         <Route path="/home" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={<WelcomeUser/>}/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
@@ -115,8 +115,10 @@ function App() {
 
   return(
     <>
-      { userLogged ? <UserLogged/> : <UserNotLogged/> }
+     { userLogged ? <UserLogged/> : <UserNotLogged/> }
     </>
+    
+
   ) 
   
   
