@@ -6,7 +6,7 @@ const profileSchema = new Schema({
   user_id: {
     type: Schema.ObjectId,
     ref: User
-  },  
+  },
 
   /* Agora */
 
@@ -285,13 +285,13 @@ const profileSchema = new Schema({
     maxlength: 45
   },
   victimArmedConflict: {
-    type: Boolean,
+    type: Boolean
   },
   pcAccess: {
-    type: Boolean,
+    type: Boolean
   },
   programataPrevoiousTimes: {
-    type: Number,
+    type: Number
   },
   motivation: {
     type: String,

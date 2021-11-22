@@ -28,12 +28,14 @@ getAllStudentsRouter.get('/', async (req, res) => {
   // res.json(getAllStudents)
 })
 
+
 postUserRouter.post('/', async (req, res) => {
   const profile = {
     gender: req.body.gender,
     actualAge: req.body.actualAge,
     interestsStudent: req.body.interestsStudent,
-    assignedMentor: req.body.assignedMentor
+    assignedMentor: req.body.assignedMentor,
+    interestsMentor: req.body.interestsMentor
   }
   // const gender = (req.body.gender);
   // const actualAge = (req.body.actualAge)
@@ -45,7 +47,8 @@ postUserRouter.post('/', async (req, res) => {
         gender: profile.gender,
         actualAge: profile.actualAge,
         interestsStudent: profile.interestsStudent,
-        assignedMentor: profile.assignedMentor
+        assignedMentor: profile.assignedMentor,
+        interestsMentor: profile.interestsMentor
       })
       res.json(dbProfile)
     })
@@ -57,6 +60,7 @@ postUserRouter.post('/', async (req, res) => {
 
 updatedUserRouter.post('/', (req, res) => {
   const body = req.body
+
 
   User.updateOne(
     { _id: body._id },
@@ -92,8 +96,7 @@ updatedUserRouter.post('/', (req, res) => {
   })
 })
 
-updatedProfileRouter.post('/', async (req, res) => {
-  const body = req.body
+updatedProfileRouter.post('/:id', async (req, res) => {
 
   const profile = {
     gender: req.body.gender,
@@ -102,7 +105,7 @@ updatedProfileRouter.post('/', async (req, res) => {
     assignedMentor: req.body.assignedMentor
   }
 
-  const idprofile = await Profile.find({ user_id: body._id }, { _id: 1 })
+  const idprofile = await Profile.find({ user_id: request.params.id }, { _id: 1 })
 
   // console.log(idprofile)
 
@@ -119,8 +122,9 @@ updatedProfileRouter.post('/', async (req, res) => {
     function (error, info) {
       if (error) {
         res.json({
-          result: false,
-          msg: 'No se pudo modificar el perfil',
+
+          resultado: false,
+          msg: 'No se pudo modificar el cliente',
           error
         })
       } else {
@@ -138,4 +142,5 @@ module.exports = {
   updatedUserRouter,
   postUserRouter,
   updatedProfileRouter
+
 }
