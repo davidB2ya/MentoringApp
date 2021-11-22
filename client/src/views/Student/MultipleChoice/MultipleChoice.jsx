@@ -42,15 +42,17 @@ const MultipleChoice = () => {
         entry.map((e)=>{
                             
           e.interestsMentor.map((a)=>{
-            return(save.push(a) )   
+            return(save.push(a) 
+            )
           })
+            //
              
      })}
 
      debugDat(data)
       
-      //console.log(save)
-      console.log()
+      console.log(save)
+      
       
     return ( 
        <div className={Styles.contenedor}>
