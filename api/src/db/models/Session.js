@@ -9,7 +9,6 @@ const sessionSchema = new Schema({
   // the sessionObjective key stores the objective of the session
   sessionObjective: {
     type: String,
-    lowercase: true,
     maxlenght: 45
   },
   // the program key stores the program of the session

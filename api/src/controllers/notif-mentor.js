@@ -1,11 +1,11 @@
-const nodemailer = require('nodemailer')
 const notifMentorRouter = require('express').Router()
+const transporter = require('../config/mailer')
 
 // const [email, setemail] = useState(initialState)
-const email = 'dbeodya0408@gmail.com'
+const email = 'dbedoya0408@gmail.com'
 
-notifMentorRouter.post('/notif_mentor', async (req, res) => {
-  const contentHTML = `<h1>User Information</h1>
+const contentHTML = `
+  <h1>User Information</h1>
     <ul>
         <li>Username: David </li>
         <li>User Email: prueba@gmail.com</li>
@@ -13,29 +13,21 @@ notifMentorRouter.post('/notif_mentor', async (req, res) => {
     </ul>
     <p>Prueba de Correo</p>`
 
-  const transporter = nodemailer.createTransport({
-    host: 'info@educamas.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-      user: 'info@educamas.com.co',
-      pass: 'Educamas2021'
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  })
+notifMentorRouter.put('/', async (req, res) => {
+  try {
+    const info = await transporter.sendMail({
+      from: '"Confirmación de Mentoria" <info@educamas.com.co>',
+      to: email,
+      subject: 'Asignación de Mentoria',
+      html: contentHTML
+    })
 
-  const info = await transporter.sendMail({
-    from: '"Confirmacion de Mentoria" <info@educamas.com.co>',
-    to: email,
-    subject: 'Asignación de Mentoria',
-    html: contentHTML
-  })
+    console.log('Messages sent', info)
+  } catch (error) {
+    console.error(error)
+  }
 
-  console.log('Messages sent', info.messageId)
-
-  res.redirect('Email sent successfully')
+  res.send('send')
 })
 
 module.exports = notifMentorRouter

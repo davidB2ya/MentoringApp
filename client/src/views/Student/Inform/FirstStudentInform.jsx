@@ -25,21 +25,14 @@ const FirstStudentInform = () => {
 		});
 	}, [setList]);
 
-	/* useEffect(() => {
-		const article = { title: 'React Hooks POST Request Example' };
-		axios.post('https://reqres.in/api/articles', article)
-			.then(response => setArticleId(response.data.id));
-	
-	}, []); */
 	return (
 		<div>
 			<Navbar/>
 			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
-			<form className="advice">
+			<div className="advice">
 				{list.map((item) => (
 				<div class="mb-3" key={item.id}>
 					<label for="exampleFormControlTextarea1" class="form-label">{item.question}</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 					<p>{item.question1}</p>
 					<p>{item.question2}</p>
 					<p>{item.question3}</p>
@@ -53,9 +46,10 @@ const FirstStudentInform = () => {
 					<p>{item.question11}</p>
 					<p>{item.question12}</p>
 					<p>{item.question13}</p>
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				</div>
 				))}
-			</form>
+			</div>
 		 <Footer/>
         </div>
     )
