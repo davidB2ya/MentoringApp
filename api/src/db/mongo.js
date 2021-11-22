@@ -13,7 +13,9 @@ if (!connectionString) {
 // Conection a mongoDB
 mongoose
   .connect(connectionString, {
+    // it allow users to fall back to the old parser if they find a bug in the new parser.
     useNewUrlParser: true,
+    // it allows to use the new connection management engine of the MongoDB driver
     useUnifiedTopology: true
   })
   .then(() => {

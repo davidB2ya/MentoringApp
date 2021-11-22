@@ -28,6 +28,7 @@ getAllStudentsRouter.get('/', async (req, res) => {
   // res.json(getAllStudents)
 })
 
+
 postUserRouter.post('/', async (req, res) => {
   const profile = {
     gender: req.body.gender,
@@ -59,6 +60,7 @@ postUserRouter.post('/', async (req, res) => {
 
 updatedUserRouter.post('/', (req, res) => {
   const body = req.body
+
 
   User.updateOne(
     { _id: body._id },
@@ -120,8 +122,9 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     function (error, info) {
       if (error) {
         res.json({
-          result: false,
-          msg: 'No se pudo modificar el perfil',
+
+          resultado: false,
+          msg: 'No se pudo modificar el cliente',
           error
         })
       } else {
@@ -139,4 +142,5 @@ module.exports = {
   updatedUserRouter,
   postUserRouter,
   updatedProfileRouter
+
 }
