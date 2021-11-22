@@ -1,8 +1,27 @@
 import React from 'react';
+import {useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
 import Image from '../assets/images/programate-solo-color.png';
 import '../Navbar/Navbar.css';
 
 const Navbar = () => {
+
+    const auth = useSelector(state => state.auth)
+
+    const {user, isLogged} = auth
+
+    const handleLogout = async () => {
+        try {
+            // await axios.get('/user/logout')
+            localStorage.removeItem('firstLogin')
+            localStorage.removeItem('loggedAgoraUser')
+            localStorage.removeItem('isLogged')
+            window.location.href = "/";
+        } catch (err) {
+            window.location.href = "/";
+        }
+    }
+
     return (
         <>
         <nav className= "main-nav">
@@ -15,7 +34,11 @@ const Navbar = () => {
         </br>
 
 
-        <div style={{width: "100px", height: "100px", backgroundColor: "red"}}> logout </div>
+        <div style={{width: "100px", height: "100px", backgroundColor: "red"}}>
+            <Link to='/' onClick={handleLogout}> 
+                logout
+            </Link> 
+        </div>
         </>
 
     
