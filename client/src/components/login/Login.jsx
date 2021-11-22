@@ -6,13 +6,15 @@ import {
     showSuccessMsg
   } from '../notification/Notification'
 import { dispatchLogin } from '../../redux/actions/authActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './login.css'
-import logo from '../../assets/Logo/programateLogo.png'
-import Input from '../Input/Input'
+import Input from './Input'
+import logo from '../assets/images/programate-fblanco.png'
 
 
 const Login = () => {
+
+  
 
   //Inicializo hooks
   const [user, setUser] = useState({
@@ -26,7 +28,8 @@ const Login = () => {
   const navigate = useNavigate() 
 
   const { email, password, err, success } = user
-  //console.log(user)
+
+
   const handleChangeInput = e => {
     const { name, value } = e.target
     //console.log(name, value)
@@ -47,7 +50,11 @@ const Login = () => {
         'loggedAgoraUser', JSON.stringify(res.data)
       )
       dispatch(dispatchLogin())
-      navigate('/home')
+
+      
+
+      
+      navigate('/welcome-user')
     } catch (err) {
       err.response.data.error &&
         setUser({ ...user, err: err.response.data.error, success: '' })
