@@ -13,6 +13,9 @@ const Navbar = () => {
         <h1>Sesiones</h1>
         <br>
         </br>
+
+
+        <div style={{width: "100px", height: "100px", backgroundColor: "red"}}> logout </div>
         </>
 
     

@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const auth = require('../middleware/auth')
 
 const FormStudentRouter = require('../controllers/formStudent')
 
@@ -61,13 +62,17 @@ router.use('/api/session', sessionRouter)
 
 router.use('/api/login', userRouter.loginRouter)
 
-router.use('/api/info', userRouter.userRouter)
+router.use('/api/info', auth, userRouter.userRouter)
 
 router.use('/api/forgot', userRouter.forgotPassRouter)
 
 router.use('/api/register_admin', userRouter.registerAdminRouter)
 
 router.use('/api/register', userRouter.registerRouter)
+
+router.use('/api/activation', userRouter.activateEmailRouter)
+
+router.use('/api/refresh_token', userRouter.getAccessToken)
 
 //others
 

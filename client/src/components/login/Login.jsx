@@ -45,7 +45,7 @@ const Login = () => {
         'loggedAgoraUser', JSON.stringify(res.data)
       )
       dispatch(dispatchLogin())
-      navigate('/welcome-user')
+      navigate('/')
     } catch (err) {
       err.response.data.error &&
         setUser({ ...user, err: err.response.data.error, success: '' })
