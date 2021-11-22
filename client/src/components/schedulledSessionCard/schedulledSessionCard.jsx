@@ -1,14 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from '../schedulledSessionCard/schedulledSessionCard.module.css'
 
 
-const schedulledSessionCard = () => {
+
+const schedulledSessionCard = ({numSession, sessionObjective, id }) => {
     return (
-        <div>
-            <div className={styles.card}>
+            <>
                 <div className={styles.whitebox}>
                 <h3 className={styles.title}>
-                Sesión 1
+                {`Sesión ${numSession}`} 
                 </h3>
                 <h4 className={styles.subtitles} >
                     El encuentro con tu mentor será el día
@@ -20,11 +21,10 @@ const schedulledSessionCard = () => {
                 <a className={styles.linkSession} href="https://us02web.zoom.us/j/89970425043?pwd=UUxGdERFa3BSbHU5OG5qYVdWeEtOQT09">
                     https://us02web.zoom.us/j/89970425043?pwd=UUxGdERFa3BSbHU5OG5qYVdWeEtOQT09
                 </a>
-                <p className={styles.message}>¡ Recuerda  debes diligenciar el formulario de la sesión antes de asistir a esta !</p>
-                <button className={styles.btn}>Ir al formulario de la sesión</button> 
+                <p className={styles.message}>{sessionObjective}</p>
+                <Link to={`/form-student/${id}`} className={styles.btn}>Ir al formulario de la sesión</Link> 
                 </div>
-            </div>
-        </div>
+            </>
     )
 }
 
