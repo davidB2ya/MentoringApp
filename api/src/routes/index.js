@@ -18,11 +18,8 @@ const answerBankRouter = require('../controllers/answerBank')
 
 const questionBankRouter = require('../controllers/questionBank')
 
-<<<<<<< HEAD
 const UpdateMentorRouter = require('../controllers/editMentor')
-=======
 const SessionReportRouter = require('../controllers/sessionReport')
->>>>>>> 815cd61f230f145eb5a03e5bf721636f56db0c64
 // const notifMentorRouter = require('../controllers/notif-mentor')
 
 const router = Router()
