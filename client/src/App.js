@@ -44,7 +44,7 @@ function App() {
       <Link to="/CrudStudents">| CrudStudents |</Link>
       <Link to="/MultipleChoice">| MultipleChoice |</Link>
       <Link to="/TableSectionManager">| TableSectionManager |</Link>
-      <Link to="/CrudSessions">| CrudSessions |</Link>
+ 
 
       </nav>
       <Outlet />
