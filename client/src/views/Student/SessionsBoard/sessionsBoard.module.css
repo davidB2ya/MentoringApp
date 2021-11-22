@@ -4,15 +4,12 @@
     --gray: #D7D7D7;
 }
 
-
-
-
 .board{
     width: 100vw;
-    height: 100vh;
+    padding: 10%;
     background-color: var(--gray);
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: row;
     flex-wrap:wrap;
     /* justify-content: center;

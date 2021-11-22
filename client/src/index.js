@@ -13,7 +13,7 @@ import WelcomeStudent from './views/Student/Welcome/WelcomeStudent'
 import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
 import FirstStudentForm from './views/Student/Form/FirstStudentForm';
-import FirstStudentInform from './views/Student/Inform/FirstStudentInfrom';
+import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
 // import { Context } from "./Context";
 
 //Context
