@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import '../Calendar/calendar.modules.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
+
+const auth = useSelector(state => state.auth)
 
 class Calendar extends Component {
   state = {
@@ -9,7 +12,7 @@ class Calendar extends Component {
   }
   componentDidMount () {
     axios
-      .get()
+      .get(`http://localhost:5001/api/mentor-availability/`)
       .then(Response => {
         console.log(Response)
         this.setState({ fechas: Response.data })
@@ -18,6 +21,7 @@ class Calendar extends Component {
         console.log(error)
       })
   }
+  //   const dates = Response.data.map()
 
   render () {
     return (
