@@ -73,13 +73,16 @@ const useStyles = makeStyles((theme) => ({
     color:"#92C149"
   },
   Button:{
+    
     backgroundColor:"#FFCC02",
     color:"#010101",
     margin:"0rem 0.5rem 0rem 0rem",
     "&:hover":{
       backgroundColor:"#92C149"
-    }
-  },
+    },
+  
+  }
+  
   
 }));
 
@@ -158,7 +161,7 @@ const petitionPost=async()=>{
     <br />
     <TextField name="Género" className={Styles.inputMaterial} label="Sesión N°" onChange={InsertData} value={SavedData && SavedData.Nombres}/>
     <br /><br />
-    <div align="right">
+    <div  className={Styles.button}>
       <Button className={Styles.Button } onClick={()=>petitionPost()}>Insertar</Button>
       <Button className={Styles.Button }  onClick={()=>openedClosedModalInsertar()}>Cancelar</Button>
     </div>
