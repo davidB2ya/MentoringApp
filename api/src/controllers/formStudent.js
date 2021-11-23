@@ -9,14 +9,15 @@ const AnswerFormRouter = require('express').Router()
 
 // get method to fetch questions from the question bank
 FormStudentRouter.get('/:id', async (request, response) => {
-
-  try{
-    const formStudent = await FormStudent.find({idSession: request.params.id, receiver: true }, { question: 1, respType: 1, option: 1, vote: 1 })
+  try {
+    const formStudent = await FormStudent.find(
+      { idSession: request.params.id, receiver: true },
+      { question: 1, respType: 1, option: 1, vote: 1 }
+    )
 
     response.json(formStudent)
-  }
-  catch (err) {
-    return response.status(500).json({msg: err.message})
+  } catch (err) {
+    return response.status(500).json({ msg: err.message })
   }
 })
 

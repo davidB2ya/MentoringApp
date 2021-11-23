@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const auth = require('../middleware/auth')
 
 const FormStudentRouter = require('../controllers/formStudent')
 
@@ -48,6 +49,8 @@ router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
 
 router.use('/api/students-control-post', StudentsRouter.postUserRouter)
 
+
+
 router.use(
   '/api/studentsPerfil-control-update',
   StudentsRouter.updatedProfileRouter
@@ -55,7 +58,27 @@ router.use(
 
 router.use('/api/session', sessionRouter)
 
-router.use('/api/user', userRouter)
+// login
+
+router.use('/api/login', userRouter.loginRouter)
+
+router.use('/api/info', auth, userRouter.userRouter)
+
+router.use('/api/forgot', userRouter.forgotPassRouter)
+
+router.use('/api/register_admin', userRouter.registerAdminRouter)
+
+router.use('/api/register', userRouter.registerRouter)
+
+router.use('/api/activation', userRouter.activateEmailRouter)
+
+router.use('/api/refresh_token', userRouter.getAccessToken)
+
+// InterestStudent
+
+router.use('/api/student-interest', StudentsRouter.getInterestStudent)
+
+//others
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)
 

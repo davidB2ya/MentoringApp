@@ -6,6 +6,8 @@ const updatedUserRouter = require('express').Router()
 
 const updatedProfileRouter = require('express').Router()
 
+const getInterestStudent = require('express').Router()
+
 const Profile = require('../db/models/Profile')
 
 const User = require('../db/models/User')
@@ -28,13 +30,7 @@ getAllStudentsRouter.get('/', async (req, res) => {
   // res.json(getAllStudents)
 })
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-updatedUserRouter.post('/', async (req, res) => {
-  const body = req.body
-=======
-=======
->>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
+
 postUserRouter.post('/', async (req, res) => {
   const profile = {
     gender: req.body.gender,
@@ -67,17 +63,14 @@ postUserRouter.post('/', async (req, res) => {
 updatedUserRouter.post('/', (req, res) => {
   const body = req.body
 
-<<<<<<< HEAD
->>>>>>> d0cb9d5359e95e79fd3ae5cb3a67e504a14ab9e5
-=======
->>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
+
   User.updateOne(
     { _id: body._id },
     {
       $set: {
         name: body.name,
         email: body.email,
-        passwordHash: body.passwordHash,
+        password: body.password,
         middleName: body.middleName,
         lastName: body.lastName,
         secondSurname: body.secondSurname,
@@ -114,7 +107,7 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     assignedMentor: req.body.assignedMentor
   }
 
-  const idprofile = await Profile.find({ user_id: request.params.id }, { _id: 1 })
+  const idprofile = await Profile.find({ user_id: req.params.id }, { _id: 1 })
 
   // console.log(idprofile)
 
@@ -131,18 +124,9 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     function (error, info) {
       if (error) {
         res.json({
-<<<<<<< HEAD
-<<<<<<< HEAD
+
           resultado: false,
           msg: 'No se pudo modificar el cliente',
-=======
-          result: false,
-          msg: 'No se pudo modificar el perfil',
->>>>>>> d0cb9d5359e95e79fd3ae5cb3a67e504a14ab9e5
-=======
-          result: false,
-          msg: 'No se pudo modificar el perfil',
->>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
           error
         })
       } else {
@@ -155,71 +139,16 @@ updatedProfileRouter.post('/:id', async (req, res) => {
   )
 })
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-// updatedStateRouter.post("/", async (req, res) => {
-// let body = req.body;
-// User.updateOne({ _id: body._id }, {
-// $set: {
-// state: body.state,
-// }
-// },
-// function(error, info) {
-// if (error) {
-// res.json({
-// resultado: false,
-// msg: 'No se pudo modificar el cliente',
-// err
-// });
-// } else {
-// res.json({
-// resultado: true,
-// info: info
-// })
-// }
-// })
-// })
+getInterestStudent.get('/:id', async (req, res) => {
+  const interestsStudent = await Profile.find({ user_id: req.params.id }, { interestsStudent: 1 })
+  res.json(interestsStudent)
+})
 
-// updatedMentorRouter.post('/', async (req, res) => {
-// let body = req.body;
-
-// })
-
-// createStudentRouter.post("/:id", async (req, res) => {
-
-// })
-
-// AnswerBankRouter.post('/', (req, res) => {
-// console.log('POST /api/answerBank')
-// console.log(req.body)
-// res.status(200).send({ message: 'se ha recibido' })
-
-// let answer = new AnswerBank()
-// answer.idSession = req.body.idSession
-// answer.idUser = req.body.idUser
-// answer.idQuestion = req.body.idQuestion
-// answer.answer = req.body.answer
-
-// answer.save((err, answerStored) => {
-// if (err) res.status(500).send({ message: 'error a salvar' })
-// res.status(200).send({ answer: answerStored })
-// })
-// })
-
-module.exports = { getAllStudentsRouter, updatedUserRouter }
-
-// module.exports = createStudentRouter
-=======
-=======
->>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
 module.exports = {
   getAllStudentsRouter,
   updatedUserRouter,
   postUserRouter,
-  updatedProfileRouter
-<<<<<<< HEAD
+  updatedProfileRouter,
+  getInterestStudent
+
 }
->>>>>>> d0cb9d5359e95e79fd3ae5cb3a67e504a14ab9e5
-=======
-}
->>>>>>> c9cca310f46c619c4ccd0e90f7032634501cd6cb
