@@ -39,6 +39,7 @@ import PrincipalView from './views/Principal/PrincipalView';
 
 
 
+
 function App() {
   
   
@@ -126,6 +127,7 @@ function App() {
          <Route path="/admin-panel" element={<admin-panel/>}/> 
          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
+        
          <Route path="*" element={
          <main style={{ padding: "1rem" }}>
            <p>There's nothing here!</p>
