@@ -36,6 +36,17 @@ const questionBankSchema = new Schema({
   // the receiver key stores if the question is for the form or for the report, if the receiver key equals true, it means the question is for the form, otherwise it is for the report
   receiver: {
     type: Boolean
+  },
+  // the description key stores the description of the question
+  description: {
+    type: String
+  },
+  // the position key stores the order of the question
+  position: {
+    type: Number
+  },
+  amountAnswer: {
+    type: Number
   }
 })
 

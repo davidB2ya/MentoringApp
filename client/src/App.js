@@ -23,9 +23,9 @@
 import { Outlet, Link } from "react-router-dom"
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux'
-import Styles from'./index.module.css'
+import Styles from './index.module.css'
 import { render } from 'react-dom';
-import { 
+import {
   BrowserRouter,
   Routes,
   Route,
@@ -38,7 +38,7 @@ import ForgotPassword from './components/login/ForgotPassword.jsx'
 
 //others
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
-import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
+import WelcomeStudent from './views/Student/Welcome/WelcomeStudent'
 import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
 import NavBar from './components/Navbar/Navbar'
@@ -49,54 +49,54 @@ import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
 
-function UserLogged (){
+function UserLogged() {
 
   return (
     <>
-    <NavBar></NavBar>
-       <Routes>
-         {/* login */}
-         
-         {/* <Route path= '/forgot_password' element={<ForgotPassword/>} exact/> */}
- 
-         {/* others */}
-         <Route path="/" element={<PrincipalView/>}/>
-         <Route path="/welcome-user" element={<WelcomeUser/>}/>
-         <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
-         <Route path="/thanks-student" element={<Thanks/>}/>
-         <Route path="/inform-student" element={<FirstStudentInform/>}/> 
-         <Route path="/student-sessions" element={<StudentSession/>}/>   
-         <Route path="/admin-panel" element={<admin-panel/>}/> 
-         <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
-         <Route path="/CrudStudents" element={<CrudStudents/>}/>
-         <Route path="*" element={
-         <main style={{ padding: "1rem" }}>
-           <p>There's nothing here!</p>
-         </main>
-         }/>
- 
- 
-  
-       </Routes>
-       
-       <Footer></Footer>
-    </> 
-   ) 
+      <NavBar></NavBar>
+      <Routes>
+        {/* login */}
+
+        {/* <Route path= '/forgot_password' element={<ForgotPassword/>} exact/> */}
+
+        {/* others */}
+        <Route path="/" element={<PrincipalView />} />
+        <Route path="/welcome-user" element={<WelcomeUser />} />
+        <Route path="/welcome-student" element={<WelcomeStudent />} />
+        <Route path="/form-student/:id" element={<FirstStudentForm />} />
+        <Route path="/thanks-student" element={<Thanks />} />
+        <Route path="/inform-student" element={<FirstStudentInform />} />
+        <Route path="/student-sessions" element={<StudentSession />} />
+        <Route path="/admin-panel" element={<admin-panel />} />
+        <Route path="/MultipleChoice" element={<MultipleChoice />} />
+        <Route path="/CrudStudents" element={<CrudStudents />} />
+        <Route path="*" element={
+          <main style={{ padding: "1rem" }}>
+            <p>There's nothing here!</p>
+          </main>
+        } />
+
+
+
+      </Routes>
+
+      <Footer></Footer>
+    </>
+  )
 
 }
 
-function UserNotLogged (){
-  return(
+function UserNotLogged() {
+  return (
     <>
       <Routes>
-        <Route path= '/' element={<Login/>} exact/>
-        <Route path= '/forgot_password' element={<ForgotPassword/>} exact/>
+        <Route path='/' element={<Login />} exact />
+        <Route path='/forgot_password' element={<ForgotPassword />} exact />
         <Route path="*" element={
-         <main style={{ padding: "1rem" }}>
-           <p>There's nothing here!</p>
-         </main>
-         }/>
+          <main style={{ padding: "1rem" }}>
+            <p>There's nothing here!</p>
+          </main>
+        } />
       </Routes>
     </>
   )
@@ -105,7 +105,7 @@ function UserNotLogged (){
 
 function App() {
   const auth = useSelector(state => state.auth)
-  const {isLogged, isAdmin} = auth
+  const { isLogged, isAdmin } = auth
 
   useEffect(() => {
     window.localStorage.setItem('isLogged', isLogged)
@@ -113,13 +113,13 @@ function App() {
 
   const userLogged = localStorage.getItem("isLogged");
 
-  return(
+  return (
     <>
-      { userLogged ? <UserLogged/> : <UserNotLogged/> }
+      {userLogged === true ? <UserLogged /> : <UserNotLogged />}
     </>
-  ) 
-  
-  
+  )
+
+
 }
 
 export default App;
