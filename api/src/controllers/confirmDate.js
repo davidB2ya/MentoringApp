@@ -1,10 +1,10 @@
 const ConfirmDate = require('../db/models/AssignedSession')
 const ConfirmDateRouter = require('express').Router()
 
-ConfirmDateRouter.post('/', (req, res) => {
+ConfirmDateRouter.post('/', async (req, res) => {
   res.status(200).send({ message: 'se ha recibido' })
 
-  const confirm = new ConfirmDate()
+  const confirm = await new ConfirmDate()
   confirm.idSession = req.body.idSession
   confirm.idUser = req.body.idUser
   confirm.idProfile = req.body.idProfile
@@ -13,7 +13,7 @@ ConfirmDateRouter.post('/', (req, res) => {
 
   confirm.save((err, confirmStored) => {
     if (err) res.status(500).send({ message: 'error al guardar' })
-    res.status(200).send({ confirm: confirmStored })
+    return res.status(200).send({ confirm: confirmStored })
   })
 })
 

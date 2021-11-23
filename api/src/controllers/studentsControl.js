@@ -6,6 +6,8 @@ const updatedUserRouter = require('express').Router()
 
 const updatedProfileRouter = require('express').Router()
 
+const getInterestStudent = require('express').Router()
+
 const Profile = require('../db/models/Profile')
 
 const User = require('../db/models/User')
@@ -66,7 +68,7 @@ updatedUserRouter.post('/', (req, res) => {
       $set: {
         name: body.name,
         email: body.email,
-        passwordHash: body.passwordHash,
+        password: body.password,
         middleName: body.middleName,
         lastName: body.lastName,
         secondSurname: body.secondSurname,
@@ -102,10 +104,7 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     assignedMentor: req.body.assignedMentor
   }
 
-  const idprofile = await Profile.find(
-    { user_id: req.params.id },
-    { _id: 1 }
-  )
+  const idprofile = await Profile.find({ user_id: req.params.id }, { _id: 1 })
 
   // console.log(idprofile)
 
@@ -136,9 +135,18 @@ updatedProfileRouter.post('/:id', async (req, res) => {
   )
 })
 
+getInterestStudent.get('/:id', async (req, res) => {
+  const interestsStudent = await Profile.find(
+    { user_id: req.params.id },
+    { interestsStudent: 1 }
+  )
+  res.json(interestsStudent)
+})
+
 module.exports = {
   getAllStudentsRouter,
   updatedUserRouter,
   postUserRouter,
-  updatedProfileRouter
+  updatedProfileRouter,
+  getInterestStudent
 }

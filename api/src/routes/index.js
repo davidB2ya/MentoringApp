@@ -80,6 +80,10 @@ router.use('/api/activation', userRouter.activateEmailRouter)
 
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
+// InterestStudent
+
+router.use('/api/student-interest', StudentsRouter.getInterestStudent)
+
 // others
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)

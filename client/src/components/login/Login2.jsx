@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { 
     showErrMsg,
@@ -8,13 +8,11 @@ import {
 import { dispatchLogin } from '../../redux/actions/authActions'
 import { useDispatch } from 'react-redux'
 import './login.css'
-import Input from './Input'
-import logo from '../assets/images/programate-fblanco.png'
+import logo from '../../assets/Logo/programateLogo.png'
+import Input from '../Input/Input'
 
 
 const Login = () => {
-
-  
 
   //Inicializo hooks
   const [user, setUser] = useState({
@@ -24,16 +22,14 @@ const Login = () => {
     success: ''
   }) 
 
-  // const [state, setstate] = useState(initialState)
-
   const dispatch = useDispatch() 
   const navigate = useNavigate() 
 
   const { email, password, err, success } = user
-
-
+  //console.log(user)
   const handleChangeInput = e => {
     const { name, value } = e.target
+    //console.log(name, value)
     setUser({ ...user, [name]: value, err: '', success: '' })
   }
 
@@ -44,24 +40,19 @@ const Login = () => {
         email,
         password
       })
-      
+      console.log(res)
       setUser({ ...user, err: '', success: res.data.msg })
       window.localStorage.setItem('firstLogin', true)
       window.localStorage.setItem(
         'loggedAgoraUser', JSON.stringify(res.data)
       )
       dispatch(dispatchLogin())
-
-      
-
-      
-      navigate('/welcome-user')
+      navigate('/home')
     } catch (err) {
       err.response.data.error &&
         setUser({ ...user, err: err.response.data.error, success: '' })
     }
   }
-
 
   return (
     <div className='container-login-main'>
@@ -97,6 +88,10 @@ const Login = () => {
           </button>
         
       </form>
+
+      <p>
+        New Customer? <Link to='/register'>Register</Link>
+      </p>
       </div>
     </div>
   )
