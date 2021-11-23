@@ -3,7 +3,7 @@ import styles from './Style.module.css';
 import Table from '../../../../components/Table/Table';
 import SearchContainer from'../../../../components/SearchContainer/SearchContainer';
 import {FontAwesomeIcon}from'@fortawesome/react-fontawesome';
-import {faEdit,faTrashAlt,faPlusSquare}from'@fortawesome/free-solid-svg-icons'
+import {faEdit,faTrashAlt} from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';
 import { Modal, Button,TextField} from '@material-ui/core';
 import axios from 'axios';

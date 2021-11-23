@@ -7,7 +7,6 @@ const WelcomeCard = () => {
             <div className="container">
               <div className="back">
                 <div className="card">
-                  
                   <div className="box">
                     <div className="content">
                       <h3>Querido/a estudiante</h3>
@@ -16,7 +15,7 @@ const WelcomeCard = () => {
                           <li>No olvides completar los 3 pasos para empezar tu proceso de mentoría.</li>
                           <li>Puedes contactar con tus formadores, si tienes alguna duda.</li>
                       </ul>
-                      <a href="#" >Siguiente</a>
+                      <a href="#n" className="next">Siguiente</a>
                     </div>              
                   </div>
                   {/* <h1 className="little">.hola.</h1> */}

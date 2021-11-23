@@ -13,6 +13,8 @@ sessionRouter.get('/', async (req, res, next) => {
   }
 })
 
+
+
 // Creates a new session
 sessionRouter.post('/new', async (req, res, next) => {
   const body = req.body

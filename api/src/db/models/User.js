@@ -14,7 +14,7 @@ const userSchema = new Schema(
       trim: true,
       unique: true
     },
-    passwordHash: {
+    password: {
       type: String,
       required: [true, 'Please enter your password!']
     },
