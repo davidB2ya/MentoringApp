@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Image from '../assets/images/programate-solo-color.png';
+// import Image from '../assets/images/programate-solo-color.png';
 import '../Navbar/Navbar.css';
 import UserLink from './UserLink'
 

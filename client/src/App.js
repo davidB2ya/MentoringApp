@@ -1,5 +1,5 @@
-import { Outlet, Link } from "react-router-dom"
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 
 
@@ -17,7 +17,7 @@ import {
 
 // login
 import Login from './components/login/Login.jsx'
-import NotFound from './views/General/NotFound'
+// import NotFound from './views/General/NotFound'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
 
 //others
@@ -38,6 +38,7 @@ import PrincipalView from './views/Principal/PrincipalView';
 
 
 
+
 function App() {
   
   
@@ -45,11 +46,14 @@ function App() {
   const dispatch = useDispatch()
   const token = useSelector(state => state.token)
   const auth = useSelector(state => state.auth)
+  
 
-  const {isLogged, isAdmin} = auth
+  // console.log(idStudent)
 
+  const {isLogged} = auth
 
-
+  const [interest, setInterest] = useState(false)
+ 
   useEffect(()=> {
     const loggedUserJSON = window.localStorage.getItem('loggedAgoraUser')
     const firstLogin = localStorage.getItem('firstLogin')
@@ -71,7 +75,7 @@ function App() {
 
   useEffect(()=> {
     if(token){
-      console.log(token, "user")
+      // console.log(token, "user")
       const getUser = () => {
         dispatch(dispatchLogin())
         return fetchUser(token).then(res => {
@@ -82,7 +86,25 @@ function App() {
     }
     
   }, [token, dispatch])
-  
+
+
+  const idStudent = useSelector(state => state.auth.user.id)
+
+  useEffect(()=> {
+
+    if(idStudent){
+      
+      axios.get(`http://localhost:3001/api/student-interest/${idStudent}`)
+      .then(res => {
+        const interest = res.data;
+        if(interest[0].interestsStudent.length > 0){
+          setInterest(true)
+        }
+      })
+    }
+    
+  }, [idStudent, auth.isLogged])
+
 
   return(
     <>
@@ -91,11 +113,11 @@ function App() {
          {/* login */}
          
          <Route path= '/login' element={ isLogged ? <WelcomeUser/> :<Login/>} exact/>
-        <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<Login/>} exact/>
+        <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
  
          {/* others */}
-         <Route path="/home" element={<PrincipalView/>}/>
-         <Route path="/welcome-user" element={<WelcomeUser/>}/>
+         <Route path="/" element={<PrincipalView/>}/>
+         <Route path="/welcome-user" element={interest ? <WelcomeUser/> : <MultipleChoice/> }/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          <Route path="/thanks-student" element={<Thanks/>}/>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { 
     showErrMsg,
     showSuccessMsg
   } from '../notification/Notification'
 import { dispatchLogin } from '../../redux/actions/authActions'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import './login.css'
 import Input from './Input'
 import logo from '../assets/images/programate-fblanco.png'
@@ -23,6 +23,8 @@ const Login = () => {
     err: '',
     success: ''
   }) 
+
+  // const [state, setstate] = useState(initialState)
 
   const dispatch = useDispatch() 
   const navigate = useNavigate() 
@@ -61,6 +63,7 @@ const Login = () => {
     }
   }
 
+
   return (
     <div className='container-login-main'>
       <div className='container-login-page'>
@@ -95,10 +98,6 @@ const Login = () => {
           </button>
         
       </form>
-
-      <p>
-        New Customer? <Link to='/register'>Register</Link>
-      </p>
       </div>
     </div>
   )
