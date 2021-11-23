@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { dispatchGetUser, dispatchLogin, fetchUser } from '../../redux/actions/authActions'
-import { Outlet, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const PrincipalView = () => {
 
@@ -32,7 +32,7 @@ const PrincipalView = () => {
 
   useEffect(()=> {
     if(token){
-      console.log(token, "user")
+      // console.log(token, "user")
       const getUser = () => {
         dispatch(dispatchLogin())
         return fetchUser(token).then(res => {
