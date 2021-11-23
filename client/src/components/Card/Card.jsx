@@ -7,7 +7,7 @@ const Card = (props) => {
         <div>
             <div className={Styles.bottom}>
                   
-
+                   <br /> <br /> <br />
                   <div className={Styles.green}>
                       
                       <div className={Styles.container}>

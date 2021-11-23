@@ -1,32 +1,16 @@
-
-//import Styles from './App.module.css'
-//import LoginForm from "./components/LoginForm"
-//import Notification from "./components/Notification"
-//import loginService from './services/login'
-//import CrudStudents from'./views/Administrator/Cruds/CrudStudents/CrudStudents'
-//import CrudEditAndAdd from "./components/CrudEditAndAdd/CrudEditAndAdd"
-//import CrudSessions from "./views/Administrator/Cruds/CrudSessions/CrudSessions"
-//import CrudSessionDetail from "./views/Administrator/Cruds/CrudSessionDetail/CrudSessionDetail"
-//import CrudMentor from "./views/Administrator/Cruds/CrudMentor/CrudMentor"
-//import Styles from './App.module.css'
-//import LoginForm from "./components/LoginForm"
-//import Notification from "./components/Notification"
-//import loginService from './services/login'
-//import CrudStudents from'./views/Administrator/Cruds/CrudStudents/CrudStudents'
-//import CrudEditAndAdd from "./components/CrudEditAndAdd/CrudEditAndAdd"
-//import CrudSessions from "./views/Administrator/Cruds/CrudSessions/CrudSessions"
-//import CrudSessionDetail from "./views/Administrator/Cruds/CrudSessionDetail/CrudSessionDetail"
-//import CrudMentor from "./views/Administrator/Cruds/CrudMentor/CrudMentor"
-//import CrudStudent from'./views/Administrator/Cruds/students/index'
-
-
 import { Outlet, Link } from "react-router-dom"
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux'
-import Styles from'./index.module.css'
-import { render } from 'react-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+
+
+import axios from 'axios'
+
+import { dispatchGetUser, dispatchLogin, fetchUser } from './redux/actions/authActions'
+
+// import Styles from'./index.module.css'
+// import { render } from 'react-dom';
 import { 
-  BrowserRouter,
+  // BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -49,15 +33,65 @@ import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
 
-function UserLogged (){
 
-  return (
+
+
+
+
+function App() {
+  
+  
+
+  const dispatch = useDispatch()
+  const token = useSelector(state => state.token)
+  const auth = useSelector(state => state.auth)
+
+  const {isLogged, isAdmin} = auth
+
+
+
+  useEffect(()=> {
+    const loggedUserJSON = window.localStorage.getItem('loggedAgoraUser')
+    const firstLogin = localStorage.getItem('firstLogin')
+    // console.log(firstLogin && loggedUserJSON)
+    if(firstLogin && loggedUserJSON){
+      const user = JSON.parse(loggedUserJSON)
+      const refreshtoken = user.refresh_token
+      
+      const getToken = async () =>{
+        const res = await axios.post('http://localhost:3001/api/refresh_token', {refreshtoken})
+        // console.log(res)
+        dispatch({type:'GET_TOKEN', payload: res.data.access_token})
+      }
+      getToken()
+      
+    }
+  }, [auth.isLogged, dispatch])
+
+
+  useEffect(()=> {
+    if(token){
+      // console.log(token, "user")
+      const getUser = () => {
+        dispatch(dispatchLogin())
+        return fetchUser(token).then(res => {
+          dispatch(dispatchGetUser(res))
+        })
+      }
+      getUser()
+    }
+    
+  }, [token, dispatch])
+  
+
+  return(
     <>
-    <NavBar></NavBar>
+      <NavBar></NavBar>
        <Routes>
          {/* login */}
          
-         {/* <Route path= '/forgot_password' element={<ForgotPassword/>} exact/> */}
+         <Route path= '/login' element={ isLogged ? <WelcomeUser/> :<Login/>} exact/>
+        <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<Login/>} exact/>
  
          {/* others */}
          <Route path="/" element={<PrincipalView/>}/>
@@ -81,46 +115,35 @@ function UserLogged (){
        </Routes>
        
        <Footer></Footer>
-    </> 
-   ) 
-
-}
-
-function UserNotLogged (){
-  return(
-    <>
-      <Routes>
-        <Route path= '/' element={<Login/>} exact/>
-        <Route path= '/forgot_password' element={<ForgotPassword/>} exact/>
-        <Route path="*" element={
-         <main style={{ padding: "1rem" }}>
-           <p>There's nothing here!</p>
-         </main>
-         }/>
-      </Routes>
-    </>
-  )
-}
-
-
-function App() {
-  const auth = useSelector(state => state.auth)
-  const {isLogged, isAdmin} = auth
-
-  useEffect(() => {
-    window.localStorage.setItem('isLogged', isLogged)
-  }, [isLogged])
-
-  const userLogged = localStorage.getItem("isLogged");
-
-  return(
-    <>
-      { userLogged ? <UserLogged/> : <UserNotLogged/> }
-    
     </>
   ) 
   
   
+  // return (
+  //   <div className="App">
+  //     <h1>Bienvenido Usuario genérico</h1>
+  //     <nav
+  //       style={{
+  //         borderBottom: "solid 1px",
+  //         paddingBottom: "1rem"
+  //       }}
+  //     >
+  //     {/*<CrudStudent/>*/}
+  //     <Link to="/welcome-user">| Pagina Bienvenida Usuario |</Link>
+  //     <Link to="/welcome-student">| Pagina Bienvenida estudiante |</Link>
+  //     <Link to="/student-profile-interests">| Perfil de estudiante |</Link>
+  //     <Link to="/student-sessions">| Sesiones |</Link>
+  //     <Link to="/admin-panel">| admin |</Link>
+  //     <Link to="/WelcomeCard">| WelcomeCard |</Link>
+  //     <Link to="/CrudStudents">| CrudStudents |</Link>
+  //     <Link to="/MultipleChoice">| MultipleChoice |</Link>
+  //     <Link to="/TableSectionManager">| TableSectionManager |</Link>
+ 
+
+  //     </nav>
+  //     <Outlet />
+  //   </div>
+  // );  
 }
 
 export default App;

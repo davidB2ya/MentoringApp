@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router";
 import Footer from '../../../components/Footer/Footer'
 import Navbar from '../../../components/Navbar/Navbar'
 import '../Form/FirstStudentForm.css';
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from 'react-redux'
+
 
 const FirstStudentForm = () => {
 	
@@ -25,9 +27,32 @@ const FirstStudentForm = () => {
 		});
 	}, [setList]);
 
+	 const auth = useSelector(state => state.auth)
+
+ 	function postAnswer () {
+		const {user} = auth
+		// console.log(user.id)
+		const answer = {
+			idSession : id,
+			idUser : user.id,
+			idQuestion : "hola",
+			answer : "answer"
+		};
+		// Axios.post(`http://localhost:3001/api/answerBank`)
+	}
+	const resRef = useRef(null);
+	const getValues = (e) => {e.preventDefault();
+		console.log(resRef.current?.value)}
+		// setAnswerState(resRef.current)}
+
+	const [answerState, setAnswerState] = useState()
+	const answer = []
+	
+	// console.log(resRef.current.value)
+
     return (
         <div>
-            <Navbar/>
+           
 			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 			<form className="advice">
 				{list.map((item) => (
@@ -47,12 +72,11 @@ const FirstStudentForm = () => {
 					<p>{item.question11}</p>
 					<p>{item.question12}</p>
 					<p>{item.question13}</p>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					<textarea ref={resRef} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				</div>
 				))}
-			<a href="#hola" >ENVIAR</a>
+			<button type="button" onClick ={getValues}>ENVIAR</button>
 			</form>
-			 <Footer/>
         </div>
     )
 }
