@@ -6,7 +6,6 @@ import '../Thanks/thanks.css'
 const Thanks = () => {
     return (
         <div> 
-            <Navbar/>
             <div className="container">
               <div className="back">
                 <div className="card">
@@ -21,7 +20,6 @@ const Thanks = () => {
                 </div>
               </div>  
             </div>
-            <Footer/>
         </div>
     )
 }
