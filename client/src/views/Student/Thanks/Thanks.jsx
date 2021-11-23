@@ -1,6 +1,4 @@
 import React from 'react';
-import Footer from '../../../components/Footer/Footer';
-import Navbar from '../../../components/Navbar/Navbar';
 import '../Thanks/thanks.css'
 
 const Thanks = () => {
@@ -12,8 +10,8 @@ const Thanks = () => {
                   <div className="box">
                     <div className="content">
                       <h3>¡Hemos recibido tus respuestas!</h3>
-                      <p>Te notificaremos por correo cuándo se haya realizado la asginación de tu mentor.</p>
-                      <a href="#n" className="next">Siguiente</a>
+                      <p>Te notificaremos por correo cuándo se haya realizado la asignación de tu mentor.</p>
+                      
                     </div>              
                   </div>
                   {/* <h1 className="little">.hola.</h1> */}

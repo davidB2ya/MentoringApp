@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Styles from './MultipleChoice.module.css'
 import Card from '../../../components/Card/Card'
 import Select from 'react-select'
