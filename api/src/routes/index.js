@@ -43,7 +43,7 @@ router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
-router.use('/api/students-control', StudentsRouter.getAllStudentsRouter)
+router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
 
 router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
 

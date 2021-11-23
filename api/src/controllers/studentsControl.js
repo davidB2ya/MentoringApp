@@ -13,21 +13,20 @@ const Profile = require('../db/models/Profile')
 const User = require('../db/models/User')
 
 getAllStudentsRouter.get('/', async (req, res) => {
-  // const getAllStudents =
-  await Profile.find({})
+  const getAllStudents = await Profile.find({})
     .populate('user_id:', {
       name: 1,
       middleName: 1,
       lastName: 1,
       secondSurname: 1
     })
-    .then(getAllStudents => {
-      if (getAllStudents.length) return res.status(200).send({ getAllStudents })
-      return res.status(204).json({ message: 'NO CONTENT' })
-    })
-    .catch(err => res.status(500).json({ err }))
+    // .then(getAllStudents => {
+    //   if (getAllStudents.length) return res.status(200).send({ getAllStudents })
+    //   return res.status(204).json({ message: 'NO CONTENT' })
+    // })
+    // .catch(err => res.status(500).json({ err }))
 
-  // res.json(getAllStudents)
+  res.json(getAllStudents)
 })
 
 
