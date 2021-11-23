@@ -17,7 +17,7 @@ import {
 
 // login
 import Login from './components/login/Login.jsx'
-// import NotFound from './views/General/NotFound'
+import NotFound from './views/General/NotFound'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
 
 //others
