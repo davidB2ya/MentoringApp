@@ -21,7 +21,7 @@ const answerBankRouter = require('../controllers/answerBank')
 
 const questionBankRouter = require('../controllers/questionBank')
 
-const SessionReportRouter = require('../controllers/sessionReport')
+//const SessionReportRouter = require('../controllers/sessionReport')
 
 const UpdateMentorRouter = require('../controllers/editMentor')
 // const notifMentorRouter = require('../controllers/notif-mentor')
@@ -97,7 +97,10 @@ router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
 
 router.use('/api/profile-edit', profilEditRouter.profilEditRouter)
 
-router.use('/api/updated-profile-edit', profilEditRouter.updatedprofilEditRouter)
+router.use(
+  '/api/updated-profile-edit',
+  profilEditRouter.updatedprofilEditRouter
+)
 
 router.use('/api/notif-mentor', notifMentorRouter)
 
