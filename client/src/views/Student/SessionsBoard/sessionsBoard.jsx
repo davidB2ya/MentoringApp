@@ -38,7 +38,6 @@ function SessionsBoard () {
 
   return (
     <div>
-      <Navbar/>
       <div className={Styles.board}>
         {sessions.map(session => (
           <SchedulledSession
@@ -49,7 +48,6 @@ function SessionsBoard () {
           ></SchedulledSession>
         ))}
       </div>
-      <Footer/>
     </div>
   )
 }
