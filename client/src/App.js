@@ -94,34 +94,21 @@ function App() {
     if (idStudent) {
 
       axios.get(`http://localhost:3001/api/student-interest/${idStudent}`)
-<<<<<<< HEAD
         .then(res => {
           const interest = res.data;
+          // console.log(interest)
           if (interest[0].interestsStudent.length > 0) {
             setInterest(true)
           }
         })
-=======
-      .then(res => {
-        const interest = res.data;
-        // console.log(interest)
-        if(interest[0].interestsStudent.length > 0){
-          setInterest(true)
-        }
-      })
->>>>>>> b8b723f9ab452070f61559aa224ef18b2bac28b2
     }
 
   }, [idStudent, auth.isLogged])
 
 
-<<<<<<< HEAD
-  return (
-=======
 
-  
-  return(
->>>>>>> b8b723f9ab452070f61559aa224ef18b2bac28b2
+
+  return (
     <>
       <NavBar></NavBar>
       <Routes>
