@@ -20,11 +20,11 @@ getAllStudentsRouter.get('/', async (req, res) => {
       lastName: 1,
       secondSurname: 1
     })
-  /* .then(getAllStudents => {
-    if (getAllStudents.length) return res.status(200).send({ getAllStudents })
-    return res.status(204).json({ message: 'NO CONTENT' })
-  })
-  .catch(err => res.status(500).json({ err })) */
+  // .then(getAllStudents => {
+  //   if (getAllStudents.length) return res.status(200).send({ getAllStudents })
+  //   return res.status(204).json({ message: 'NO CONTENT' })
+  // })
+  // .catch(err => res.status(500).json({ err }))
 
   res.json(getAllStudents)
 })
