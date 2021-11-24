@@ -12,7 +12,11 @@ FormStudentRouter.get('/:id', async (request, response) => {
   try {
     const formStudent = await FormStudent.find(
       { idSession: request.params.id, receiver: true },
+<<<<<<< HEAD
       { question: 1, respType: 1, option: 1, vote: 1, idUser: 1 }
+=======
+      { question: 1, question1: 1, question2: 1, question3: 1, question4: 1, question5: 1, question6: 1, question7: 1, question8: 1, question9: 1, question10: 1, question11: 1, question12: 1, question13: 1, respType: 1, option: 1, vote: 1, idUser: 1 }
+>>>>>>> df09ee0343ab1967b1f9d85b540e94c50f4e8caa
     ).populate('idUser', { program: 1, cohorte: 1 })
 
     response.json(formStudent)

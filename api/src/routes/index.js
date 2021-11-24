@@ -21,8 +21,14 @@ const answerBankRouter = require('../controllers/answerBank')
 
 const questionBankRouter = require('../controllers/questionBank')
 
+<<<<<<< HEAD
 const UpdateMentorRouter = require('../controllers/editMentor')
 const SessionReportRouter = require('../controllers/sessionReport')
+=======
+const SessionReportRouter = require('../controllers/sessionReport')
+
+const UpdateMentorRouter = require('../controllers/editMentor')
+>>>>>>> df09ee0343ab1967b1f9d85b540e94c50f4e8caa
 // const notifMentorRouter = require('../controllers/notif-mentor')
 const profilEditRouter = require('../controllers/profilEdit')
 
@@ -73,12 +79,15 @@ router.use('/api/activation', userRouter.activateEmailRouter)
 
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
+<<<<<<< HEAD
 // InterestStudent
 
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
 //others
 
+=======
+>>>>>>> df09ee0343ab1967b1f9d85b540e94c50f4e8caa
 router.use('/api/dashboard', dashBoardRouter.userRouter)
 
 router.use('/api/dashboard/answer', dashBoardRouter.answerRouter)
