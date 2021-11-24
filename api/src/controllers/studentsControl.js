@@ -6,26 +6,27 @@ const updatedUserRouter = require('express').Router()
 
 const updatedProfileRouter = require('express').Router()
 
+const getInterestStudent = require('express').Router()
+
 const Profile = require('../db/models/Profile')
 
 const User = require('../db/models/User')
 
 getAllStudentsRouter.get('/', async (req, res) => {
-  // const getAllStudents =
-  await Profile.find({})
+  const getAllStudents = await Profile.find({})
     .populate('user_id:', {
       name: 1,
       middleName: 1,
       lastName: 1,
       secondSurname: 1
     })
-    .then(getAllStudents => {
-      if (getAllStudents.length) return res.status(200).send({ getAllStudents })
-      return res.status(204).json({ message: 'NO CONTENT' })
-    })
-    .catch(err => res.status(500).json({ err }))
+    // .then(getAllStudents => {
+    //   if (getAllStudents.length) return res.status(200).send({ getAllStudents })
+    //   return res.status(204).json({ message: 'NO CONTENT' })
+    // })
+    // .catch(err => res.status(500).json({ err }))
 
-  // res.json(getAllStudents)
+  res.json(getAllStudents)
 })
 
 postUserRouter.post('/', async (req, res) => {
@@ -66,7 +67,7 @@ updatedUserRouter.post('/', (req, res) => {
       $set: {
         name: body.name,
         email: body.email,
-        passwordHash: body.passwordHash,
+        password: body.password,
         middleName: body.middleName,
         lastName: body.lastName,
         secondSurname: body.secondSurname,
@@ -136,9 +137,16 @@ updatedProfileRouter.post('/:id', async (req, res) => {
   )
 })
 
+getInterestStudent.get('/:id', async (req, res) => {
+  const interestsStudent = await Profile.find({ user_id: req.params.id }, { interestsStudent: 1 })
+  res.json(interestsStudent)
+})
+
 module.exports = {
   getAllStudentsRouter,
   updatedUserRouter,
   postUserRouter,
-  updatedProfileRouter
+  updatedProfileRouter,
+  getInterestStudent
+
 }

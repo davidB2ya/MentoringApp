@@ -45,7 +45,7 @@ router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
-router.use('/api/students-control', StudentsRouter.getAllStudentsRouter)
+router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
 
 router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
 
@@ -73,6 +73,10 @@ router.use('/api/register', userRouter.registerRouter)
 router.use('/api/activation', userRouter.activateEmailRouter)
 
 router.use('/api/refresh_token', userRouter.getAccessToken)
+
+// InterestStudent
+
+router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
 // others
 
