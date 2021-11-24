@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import SchedulledSession from '../../../components/schedulledSessionCard/schedulledSessionCard'
-import Styles from './sessionsBoard.module.css'
+import Styles from './SessionsBoard.module.css'
 import Axios from "axios";
+import Navbar from '../../../components/Navbar/Navbar';
+import Footer from '../../../components/Footer/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SessionsBoard () {
   const [sessions, setSessions] = useState([])
@@ -34,15 +37,19 @@ function SessionsBoard () {
   //   })
 
   return (
-    <div className={Styles.board}>
-      {sessions.map(session => (
-        <SchedulledSession
-          numSession={session.numSession}
-          sessionObjective={session.sessionObjective}
-          key={session.id}
-          id={session.id}
-        ></SchedulledSession>
-      ))}
+    <div>
+      <Navbar/>
+      <div className={Styles.board}>
+        {sessions.map(session => (
+          <SchedulledSession
+            numSession={session.numSession}
+            sessionObjective={session.sessionObjective}
+            key={session.id}
+            id={session.id}
+          ></SchedulledSession>
+        ))}
+      </div>
+      <Footer/>
     </div>
   )
 }
