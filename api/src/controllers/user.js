@@ -133,11 +133,7 @@ const createAccessToken = payload => {
 
 registerRouter.post('/', async (req, res) => {
   try {
-<<<<<<< HEAD
     let { name, email, password } = req.body
-=======
-    const { name, email, password } = req.body
->>>>>>> c3c820ef26aea154d8b8ef60f1c89d00a81fc451
 
     console.log(name, email, password)
 

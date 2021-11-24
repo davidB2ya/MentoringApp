@@ -74,15 +74,6 @@ router.use('/api/activation', userRouter.activateEmailRouter)
 
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
-<<<<<<< HEAD
-=======
-// InterestStudent
-
-router.use('/api/student-interest', StudentsRouter.getInterestStudent)
-
-//others
-
->>>>>>> c3c820ef26aea154d8b8ef60f1c89d00a81fc451
 router.use('/api/dashboard', dashBoardRouter.userRouter)
 
 router.use('/api/dashboard/answer', dashBoardRouter.answerRouter)
