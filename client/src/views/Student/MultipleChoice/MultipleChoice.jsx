@@ -3,7 +3,8 @@ import Styles from './MultipleChoice.module.css'
 import Card from '../../../components/Card/Card'
 import Select from 'react-select'
 import axios from 'axios'
-import Multiselect from 'multiselect-react-dropdown'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const MultipleChoice = () => {
   const [value, setValue] = useState(null)
@@ -39,45 +40,51 @@ const MultipleChoice = () => {
   function debugDat (data) {
     data.map(interest => {
       interest.interestsMentor.map((oneInterest, index) => {
-        return save.push({ name: oneInterest, id: index })
+        return save.push({ value: oneInterest, label: oneInterest })
       })
     })
   }
 
   debugDat(data)
 
-  // console.log(save)
+  // const handleChange = (selectedOption) => {
 
-  let interestsSelected = useRef();
+  // }
+
+  const maxOptions = 3;
   
+  const [selectedOption, setSelectedOption] = useState([]);
   
+  const handleTypeSelect = e => {
+      setSelectedOption(e);
+  };
 
-  const getValues = function(interestsSelected){
-    
-    const values = interestsSelected.current?.state.selectedValues
-    // const values = [{name: "sebastian"},{name: "sebastian1"},{name: "sebastian2"}]
-    
-    
-    return values
+  const sendSelect = []
+
+  selectedOption.map(option => {sendSelect.push(option.value)});
+  // console.log(sendSelect)
+
+  const auth = useSelector(state => state.auth)
+  // console.log(auth)
+
+  const { user }= auth
+
+  const navigate = useNavigate() 
+
+  const handleUpdateInterest = () => {
+    const userinterestsStudent = sendSelect
+    // console.log(userinterestsStudent)
+    const idStudent = user.id
+    // console.log(idStudent)
+    axios
+    .post(`http://localhost:3001/api/studentsPerfil-control-update/${idStudent}`, { interestsStudent:userinterestsStudent})
+    navigate('/thanks-student')
   }
-
-  const getValuesFinal = () => {
-    const finalValues = getValues(interestsSelected)
-    let interestsArray = []
-    if (finalValues > 0){
-      finalValues.forEach(interest => interestsArray.push(interest.name));
-    }
-    console.log(interestsArray)
-  }
-
-  //const finalInterest = getValues.getSelectedItems()
-
-  // console.log(getValues(interestsSelected))
 
   return (
     <div className={Styles.contenedor}>
       <div className={Styles.heder}>
-        <p>Completa la siguiente información para avanzar en la plataforma.</p>
+        <p>Bienvenido Estudiante. Por favor Completa la siguiente información para avanzar en la plataforma</p>
       </div>
 
       <Card
@@ -86,21 +93,24 @@ const MultipleChoice = () => {
             <h3>Intereses generales</h3>
             <p>Elige máximo tres intereses</p>
 
-            <Multiselect
-              options={save} // Options to display in the dropdown
-              selectionLimit={3}
-              selectedValues={save.selectedValue} // Preselected value to persist in dropdown
-              ref={interestsSelected}
-              onSelect={() => {}} // Function will trigger on select event
-              // onRemove={this.onRemove} // Function will trigger on remove event
-              displayValue='name' // Property name to display in the dropdown options
+            <Select
+              name="interest"
+              options={selectedOption.length === maxOptions ? [] : save}
+              isMulti
+              onChange={handleTypeSelect}
+              
+              noOptionsMessage={() => {
+                return selectedOption.length === maxOptions
+                    ? 'You have reached the max options value'
+                    : 'No options available';
+              }}
             />
 
-          {console.log()}
+          
             <br />
           </>
         }
-        bottom={<button onClick={getValuesFinal()}>Finalizar</button>}
+        bottom={<button onClick={handleUpdateInterest}>Finalizar</button>}
       />
     </div>
   )

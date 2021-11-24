@@ -30,8 +30,8 @@ const Login = () => {
   const navigate = useNavigate() 
 
   const { email, password, err, success } = user
-  console.log(user)
-
+/*   console.log(user)
+ */
 
   const handleChangeInput = e => {
     const { name, value } = e.target
@@ -96,7 +96,7 @@ const Login = () => {
         
         <button className='button-login' type='submit'>
             INGRESAR
-          </button>
+        </button>
         
       </form>
       </div>
