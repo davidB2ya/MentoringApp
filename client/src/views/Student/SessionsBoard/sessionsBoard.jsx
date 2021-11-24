@@ -3,7 +3,7 @@ import SchedulledSession from '../../../components/schedulledSessionCard/schedul
 import Styles from './sessionsBoard.module.css'
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'  
 
 function SessionsBoard () {
   const idStudent = useSelector(state => state.auth.user.id)
