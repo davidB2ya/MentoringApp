@@ -121,10 +121,10 @@ function App() {
  
          {/* others */}
          <Route path="/principal-view" element={<PrincipalView/>}/>
-         <Route path="/welcome-user" element={interest ? <WelcomeUser/> : <MultipleChoice/> }/>
+         <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
-         <Route path="/thanks-student" element={<Thanks/>}/>
+         {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
          <Route path="/student-sessions" element={<StudentSession/>}/>   
           <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
@@ -146,32 +146,6 @@ function App() {
 
   ) 
   
-  
-  // return (
-  //   <div className="App">
-  //     <h1>Bienvenido Usuario genérico</h1>
-  //     <nav
-  //       style={{
-  //         borderBottom: "solid 1px",
-  //         paddingBottom: "1rem"
-  //       }}
-  //     >
-  //     {/*<CrudStudent/>*/}
-  //     <Link to="/welcome-user">| Pagina Bienvenida Usuario |</Link>
-  //     <Link to="/welcome-student">| Pagina Bienvenida estudiante |</Link>
-  //     <Link to="/student-profile-interests">| Perfil de estudiante |</Link>
-  //     <Link to="/student-sessions">| Sesiones |</Link>
-  //     <Link to="/admin-panel">| admin |</Link>
-  //     <Link to="/WelcomeCard">| WelcomeCard |</Link>
-  //     <Link to="/CrudStudents">| CrudStudents |</Link>
-  //     <Link to="/MultipleChoice">| MultipleChoice |</Link>
-  //     <Link to="/TableSectionManager">| TableSectionManager |</Link>
- 
-
-  //     </nav>
-  //     <Outlet />
-  //   </div>
-  // );  
 }
 
 export default App;

@@ -8,7 +8,7 @@ import {
 import { dispatchLogin } from '../../redux/actions/authActions'
 import { useDispatch } from 'react-redux'
 import './login.css'
-import Input from './Input'
+import Input from '../Input/Input'
 import logo from '../assets/images/programate-fblanco.png'
 
 
@@ -46,7 +46,7 @@ const Login = () => {
         email,
         password
       })
-      console.log(res)
+      // console.log(res)
       setUser({ ...user, err: '', success: res.data.msg })
       window.localStorage.setItem('firstLogin', true)
       window.localStorage.setItem(

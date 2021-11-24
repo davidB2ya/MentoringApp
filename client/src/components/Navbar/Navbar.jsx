@@ -61,7 +61,7 @@ const Navbar = () => {
                 {
                     isLogged
                     ? <UserLink user = {user} handleLogout = {handleLogout}/>
-                    :<li><Link to="/login"><i className="login">Iniciar sesión</i> </Link></li>
+                    :<li style={{display: 'none'}}><Link to="/login"><i className="login">Iniciar sesión</i> </Link></li>
                 }
                 
             </ul>
