@@ -25,6 +25,8 @@ const answerBankRouter = require('../controllers/answerBank')
 
 const questionBankRouter = require('../controllers/questionBank')
 
+const SessionReportRouter = require('../controllers/sessionReport')
+
 const UpdateMentorRouter = require('../controllers/editMentor')
 // const notifMentorRouter = require('../controllers/notif-mentor')
 const profilEditRouter = require('../controllers/profilEdit')
@@ -80,12 +82,6 @@ router.use('/api/activation', userRouter.activateEmailRouter)
 
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
-// InterestStudent
-
-router.use('/api/student-interest', StudentsRouter.getInterestStudent)
-
-// others
-
 router.use('/api/dashboard', dashBoardRouter.userRouter)
 
 router.use('/api/dashboard/answer', dashBoardRouter.answerRouter)
@@ -110,4 +106,5 @@ router.use(
 
 router.use('/api/notif-mentor', notifMentorRouter)
 
+router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
 module.exports = router
