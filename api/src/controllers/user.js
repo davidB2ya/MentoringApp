@@ -65,6 +65,7 @@ forgotPassRouter.post('/', async (req, res) => {
     const access_token = createAccessToken({ id: user._id })
     const url = `${CLIENT_URL}/user/reset/${access_token}`
 
+
     sendMail(email, url, 'Reset your password')
     res.json({ msg: 'Re-send the password, please check your email.' })
   } catch (err) {
@@ -145,7 +146,8 @@ registerRouter.post('/', async (req, res) => {
 
     const user = await User.findOne({ email })
 
-    if (user) return res.status(400).json({ msg: 'This email already exists.' })
+    if
+(user) return res.status(400).json({ msg: 'This email already exists.' })
 
     if (password.length < 6)
       return res

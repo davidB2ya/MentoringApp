@@ -1,4 +1,3 @@
-
 import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -17,7 +16,7 @@ import {
 
 // login
 import Login from './components/login/Login.jsx'
-// import NotFound from './views/General/NotFound'
+import NotFound from './views/General/NotFound'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
 
 //others
@@ -32,6 +31,8 @@ import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
 import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
+import MatchForm from './views/Administrator/Match/MatchForm';
+
 
 
 
@@ -126,9 +127,9 @@ function App() {
          <Route path="/thanks-student" element={<Thanks/>}/>
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
          <Route path="/student-sessions" element={<StudentSession/>}/>   
-         <Route path="/admin-panel" element={<admin-panel/>}/> 
-         <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
+          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
+        
          <Route path="*" element={
          <main style={{ padding: "1rem" }}>
            <p>There's nothing here!</p>
@@ -141,6 +142,8 @@ function App() {
        
        <Footer></Footer>
     </>
+    
+
   ) 
   
   
