@@ -82,15 +82,12 @@ router.use('/api/activation', userRouter.activateEmailRouter)
 
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
-<<<<<<< HEAD
-=======
 // InterestStudent
 
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
 //others
 
->>>>>>> 3f3075acafd0412f5bd7659345c7fea49a4400a8
 router.use('/api/dashboard', dashBoardRouter.userRouter)
 
 router.use('/api/dashboard/answer', dashBoardRouter.answerRouter)
