@@ -19,7 +19,7 @@ import {
 
 // login
 import Login from './components/login/Login.jsx'
-// import NotFound from './views/General/NotFound'
+import NotFound from './views/General/NotFound'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
 
 //others
@@ -30,11 +30,10 @@ import Thanks from './views/Student/Thanks/Thanks'
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import FirstStudentForm from './views/Student/Form/FirstStudentForm'
-import FirstStudentInform from './views/Student/Inform/FirstStudentInfrom'
+import FirstStudentInform from './views/Student/Inform/FirstStudentInform'
 import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice'
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents'
 import PrincipalView from './views/Principal/PrincipalView'
-import Calendar from './components/Calendar/calendar'
 
 function App () {
   const dispatch = useDispatch()
@@ -122,12 +121,12 @@ function App () {
         <Route path='/welcome-student' element={<WelcomeStudent />} />
         <Route path='/form-student/:id' element={<FirstStudentForm />} />
         <Route path='/thanks-student' element={<Thanks />} />
-        <Route path='/inform-student' element={<FirstStudentInform />} />
+        <Route path='/inform-student/:id' element={<FirstStudentInform />} />
         <Route path='/student-sessions' element={<StudentSession />} />
-        <Route path='/calendar' element={<Calendar />} />
         <Route path='/admin-panel' element={<admin-panel />} />
         <Route path='/MultipleChoice' element={<MultipleChoice />} />
         <Route path='/CrudStudents' element={<CrudStudents />} />
+
         <Route
           path='*'
           element={

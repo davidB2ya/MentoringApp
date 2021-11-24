@@ -25,6 +25,8 @@ const answerBankRouter = require('../controllers/answerBank')
 
 const questionBankRouter = require('../controllers/questionBank')
 
+const SessionReportRouter = require('../controllers/sessionReport')
+
 const UpdateMentorRouter = require('../controllers/editMentor')
 // const notifMentorRouter = require('../controllers/notif-mentor')
 const profilEditRouter = require('../controllers/profilEdit')
@@ -110,4 +112,8 @@ router.use(
 
 router.use('/api/notif-mentor', notifMentorRouter)
 
+<<<<<<< HEAD
+=======
+router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
+>>>>>>> 081bd874e14c9e49c91ce015684a4cbcd22645ac
 module.exports = router

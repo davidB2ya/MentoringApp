@@ -30,10 +30,12 @@ const Login = () => {
   const navigate = useNavigate() 
 
   const { email, password, err, success } = user
-
+/*   console.log(user)
+ */
 
   const handleChangeInput = e => {
     const { name, value } = e.target
+    //console.log(name, value)
     setUser({ ...user, [name]: value, err: '', success: '' })
   }
 
@@ -44,7 +46,7 @@ const Login = () => {
         email,
         password
       })
-      
+      console.log(res)
       setUser({ ...user, err: '', success: res.data.msg })
       window.localStorage.setItem('firstLogin', true)
       window.localStorage.setItem(
