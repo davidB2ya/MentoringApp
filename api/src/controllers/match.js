@@ -8,6 +8,10 @@ const arrayEstudentsNotAssigned = []
 const arrayMentorAvailable = []
 // const match = []
 
+// const Match = function{
+
+// }
+
 // Get all info the student
 assignedRouter.get('/students', async (req, res, next) => {
   const user = {
@@ -71,6 +75,11 @@ assignedRouter.get('/mentor', async (req, res, next) => {
     }
   }
   res.json(arrayMentorAvailable)
+})
+
+// Get all info the mentor
+assignedRouter.get('/result', async (req, res, next) => {
+  res.json(arrayEstudentsNotAssigned)
 })
 
 module.exports = { assignedRouter }
