@@ -115,11 +115,11 @@ function App() {
        <Routes>
          {/* login */}
          
-         <Route path= '/login' element={ isLogged ? <WelcomeUser/> :<Login/>} exact/>
-        <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
+         <Route path= '/' element={ isLogged ? <PrincipalView/> :<Login/>} exact/>
+         <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
  
          {/* others */}
-         <Route path="/" element={<PrincipalView/>}/>
+         <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <WelcomeUser/> : <MultipleChoice/> }/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>

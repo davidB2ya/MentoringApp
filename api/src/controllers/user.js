@@ -38,9 +38,9 @@ loginRouter.post('/', async (req, res) => {
     const isMatch =
       user === null ? false : await bcrypt.compare(password, user.password)
     if (!isMatch) {
-      res.status(401).json({
+       return res.status(401).json({
         error: 'Invalid password or user'
-      })
+        })
     }
 
     const refresh_token = createRefreshToken({ id: user._id })
