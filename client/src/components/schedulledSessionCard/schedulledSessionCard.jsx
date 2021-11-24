@@ -14,7 +14,7 @@ const schedulledSessionCard = ({numSession, sessionObjective, id }) => {
                 <h4 className={styles.subtitles} >
                     El encuentro con tu mentor será el día
                 </h4>
-                <p className={styles.info}>12-Noviembre / 2021</p>
+                <p className={styles.info}></p>
                 <h4 className={styles.subtitles}>Hora de inicio</h4>
                 <p>17:30</p>
                 <h4 className={styles.subtitles}>Link de la sesión</h4>
@@ -22,8 +22,9 @@ const schedulledSessionCard = ({numSession, sessionObjective, id }) => {
                     https://us02web.zoom.us/j/89970425043?pwd=UUxGdERFa3BSbHU5OG5qYVdWeEtOQT09
                 </a>
                 <p className={styles.message}>{sessionObjective}</p>
-                <Link to={`/form-student/${id}`} className={styles.btn}>Ir al formulario de la sesión</Link> 
-                <Link to={`/inform-student/${id}`} className={styles.btn}>Ir al informe de la sesión</Link> 
+                <Link to={`/form-student/${id}`} className={styles.btn}>ver formulario </Link> 
+                <Link to={`/inform-student/${id}`} className={styles.btn}> ver informe </Link> 
+                <Link to={`/inform-student/${id}`} className={styles.btn}>agendar sesión</Link> 
                 </div>
             </>
     )
