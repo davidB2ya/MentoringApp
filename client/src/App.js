@@ -1,4 +1,3 @@
-
 import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -32,6 +31,7 @@ import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
 import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
+import MatchForm from './views/Administrator/Match/MatchForm';
 
 
 
@@ -127,8 +127,7 @@ function App() {
          <Route path="/thanks-student" element={<Thanks/>}/>
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
          <Route path="/student-sessions" element={<StudentSession/>}/>   
-         <Route path="/admin-panel" element={<admin-panel/>}/> 
-         <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
+          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
         
          <Route path="*" element={
