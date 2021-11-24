@@ -42,14 +42,44 @@ const FirstStudentForm = () => {
 	}
 
 	const [answerState, setAnswerState] = useState()
-	const getValues = (e) => {e.preventDefault();
-		// console.log(e.target.value)}
-		setAnswerState(e.target.value)}
+	const firstArrayAnswer = []
+	const finalArrayAnswer= []
+	const getValues = (e) => {
+		e.preventDefault();
+		const { name, value } = e.target
+		
+		firstArrayAnswer.push({[name]: value})
+
+		
+
+		
+
+		console.log(firstArrayAnswer)
+	}
+		// setAnswerState(e.target.value)}
 
 	
 	function handleSubmit(e){
-		console.log("La respuesta es:" + answerState)
+		// console.log( firstArrayAnswer )
 		e.preventDefault();
+		
+		if(firstArrayAnswer.length > 0){
+				
+			for(let answer = 0; answer < firstArrayAnswer.length; answer++) {
+	 
+				const elementPush = firstArrayAnswer[ answer ]
+
+				const element = Object.keys(firstArrayAnswer[answer]);
+
+		
+				console.log(element)
+				 
+				if (!finalArrayAnswer.includes(firstArrayAnswer[answer])) {
+					finalArrayAnswer.push(elementPush);
+				}
+			}
+		}
+		
 	}
 
 	const answer = []
@@ -78,7 +108,7 @@ const FirstStudentForm = () => {
 					<p>{item.question11}</p>
 					<p>{item.question12}</p>
 					<p>{item.question13}</p>
-					<textarea onChange={getValues}  class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					<textarea onChange={getValues} name={item.id}  class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				</div>
 				))}
 			<button type="submit">ENVIAR</button>
