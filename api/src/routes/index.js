@@ -112,8 +112,8 @@ router.use(
 
 router.use('/api/notif-mentor', notifMentorRouter)
 
-<<<<<<< HEAD
-=======
 router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
->>>>>>> 081bd874e14c9e49c91ce015684a4cbcd22645ac
+
+module.exports = router
+
 module.exports = router
