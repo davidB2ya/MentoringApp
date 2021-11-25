@@ -42,27 +42,6 @@ const FirstStudentForm = () => {
 	}
 
 	const [answerState, setAnswerState] = useState()
-<<<<<<< HEAD
-	const firstArrayAnswer = []
-	const finalArrayAnswer= []
-	const getValues = (e) => {
-		e.preventDefault();
-		const { name, value } = e.target
-		
-		firstArrayAnswer.push({[name]: value})
-
-		
-
-		
-
-		console.log(firstArrayAnswer)
-	}
-		// setAnswerState(e.target.value)}
-
-	
-	function handleSubmit(e){
-		// console.log( firstArrayAnswer )
-=======
 	const getValues = (e) => {
 		e.preventDefault();
 		// console.log(e.target.value)}
@@ -72,7 +51,6 @@ const FirstStudentForm = () => {
 
 	function handleSubmit(e) {
 		console.log("La respuesta es:" + answerState)
->>>>>>> 42f08bbbc34a3f5c69b7cadf2f90eda02cc237ea
 		e.preventDefault();
 		
 		if(firstArrayAnswer.length > 0){
@@ -104,26 +82,6 @@ const FirstStudentForm = () => {
 			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 			<form onSubmit={handleSubmit} className="advice">
 				{list.map((item) => (
-<<<<<<< HEAD
-				<div class="mb-3" key={item.id}>
-					<label for="exampleFormControlTextarea1" class="form-label">{item.question}</label>
-					<br></br>
-					<p>{item.question1}</p>
-					<p>{item.question2}</p>
-					<p>{item.question3}</p>
-					<p>{item.question4}</p>
-					<p>{item.question5}</p>
-					<p>{item.question6}</p>
-					<p>{item.question7}</p>
-					<p>{item.question8}</p>
-					<p>{item.question9}</p>
-					<p>{item.question10}</p>
-					<p>{item.question11}</p>
-					<p>{item.question12}</p>
-					<p>{item.question13}</p>
-					<textarea onChange={getValues} name={item.id}  class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-=======
 					<div class="mb-3" key={item.id}>
 						<label for="exampleFormControlTextarea1" class="form-label">{item.question}</label>
 						<br></br>
@@ -142,7 +100,6 @@ const FirstStudentForm = () => {
 						<p>{item.question13}</p>
 						<textarea onChange={getValues} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 					</div>
->>>>>>> 42f08bbbc34a3f5c69b7cadf2f90eda02cc237ea
 				))}
 				<button type="submit">ENVIAR</button>
 			</form>
