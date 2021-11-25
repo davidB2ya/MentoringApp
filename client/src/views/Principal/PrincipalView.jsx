@@ -59,7 +59,8 @@ const PrincipalView = () => {
       <Link to="/admin-panel">| admin |</Link>
       <Link to="/WelcomeCard">| WelcomeCard |</Link>
       <Link to="/CrudStudents">| CrudStudents |</Link>
-      <Link to="/MultipleChoice">| MultipleChoice |</Link>                                                
+      <Link to="/MultipleChoice">| MultipleChoice |</Link>    
+      <Link to="/CrudMentor">| CrudMentor |</Link>                                              
     </div>  
     )
 }

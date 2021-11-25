@@ -31,7 +31,7 @@ import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
 import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
-
+import CrudMentor from './views/Administrator/Cruds/CrudMentor/CrudMentor'
 
 
 
@@ -129,6 +129,7 @@ function App() {
          <Route path="/admin-panel" element={<admin-panel/>}/> 
          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
+         <Route path="/CrudMentor" element={<CrudMentor/>}/>
         
          <Route path="*" element={
          <main style={{ padding: "1rem" }}>

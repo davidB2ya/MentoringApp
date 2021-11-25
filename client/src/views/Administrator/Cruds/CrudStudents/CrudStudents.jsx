@@ -9,7 +9,7 @@ import { Modal, Button,TextField} from '@material-ui/core';
 import axios from 'axios';
 
 const Articles=[{
-  Id:"id" ,
+   
   Estudiante:"Estudiante",
   Nombres :"Nombres" ,
   Apellidos:"Apellidos",
