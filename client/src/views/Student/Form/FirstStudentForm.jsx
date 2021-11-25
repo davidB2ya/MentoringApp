@@ -59,47 +59,34 @@ const FirstStudentForm = () => {
 	// console.log(resRef.current.value)
 
 	return (
-        <div>
-           
+		<div>
+
 			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 			<form onSubmit={handleSubmit} className="advice">
 				{list.map((item) => (
-<<<<<<< HEAD
 					<div class="mb-3" key={item.id}>
 						<label for="exampleFormControlTextarea1" class="form-label">{item.question}</label>
 						<br></br>
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						<p>{item.question1}</p>
+						<p>{item.question2}</p>
+						<p>{item.question3}</p>
+						<p>{item.question4}</p>
+						<p>{item.question5}</p>
+						<p>{item.question6}</p>
+						<p>{item.question7}</p>
+						<p>{item.question8}</p>
+						<p>{item.question9}</p>
+						<p>{item.question10}</p>
+						<p>{item.question11}</p>
+						<p>{item.question12}</p>
+						<p>{item.question13}</p>
+						<textarea onChange={getValues} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 					</div>
 				))}
-			</div>
-			<Footer />
-		</div >
-	)
-=======
-				<div class="mb-3" key={item.id}>
-					<label for="exampleFormControlTextarea1" class="form-label">{item.question}</label>
-					<br></br>
-					<p>{item.question1}</p>
-					<p>{item.question2}</p>
-					<p>{item.question3}</p>
-					<p>{item.question4}</p>
-					<p>{item.question5}</p>
-					<p>{item.question6}</p>
-					<p>{item.question7}</p>
-					<p>{item.question8}</p>
-					<p>{item.question9}</p>
-					<p>{item.question10}</p>
-					<p>{item.question11}</p>
-					<p>{item.question12}</p>
-					<p>{item.question13}</p>
-					<textarea onChange={getValues}  class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				))}
-			<button type="submit">ENVIAR</button>
+				<button type="submit">ENVIAR</button>
 			</form>
-        </div>
-    )
->>>>>>> df09ee0343ab1967b1f9d85b540e94c50f4e8caa
+		</div>
+	)
 }
 
 export default FirstStudentForm

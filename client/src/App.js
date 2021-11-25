@@ -21,13 +21,8 @@ import ForgotPassword from './components/login/ForgotPassword.jsx'
 
 //others
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
-<<<<<<< HEAD
-import WelcomeStudent from './views/Student/Welcome/WelcomeStudent'
-import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
-=======
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent'
 import StudentSession from './views/Student/SessionsBoard/sessionsBoard';
->>>>>>> df09ee0343ab1967b1f9d85b540e94c50f4e8caa
 import Thanks from './views/Student/Thanks/Thanks';
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -77,13 +72,8 @@ function App() {
   }, [auth.isLogged, dispatch])
 
 
-<<<<<<< HEAD
   useEffect(() => {
     if (token) {
-=======
-  useEffect(()=> {
-    if(token){
->>>>>>> df09ee0343ab1967b1f9d85b540e94c50f4e8caa
       // console.log(token, "user")
       const getUser = () => {
         dispatch(dispatchLogin())

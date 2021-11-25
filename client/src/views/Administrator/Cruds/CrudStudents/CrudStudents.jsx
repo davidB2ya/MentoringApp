@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { makeStyles } from '@material-ui/core/styles';
 import { Modal, Button, TextField } from '@material-ui/core';
-import axios from 'axios';
+import Axios from 'axios';
 
 const Articles = [{
   Id: "id",
@@ -142,22 +142,37 @@ const CrudStudents = () => {
     console.log(SavedData)
   }
   //function that searches the database for data
-  const petitionGet = async () => {
-    await axios.get(`http://localhost:3001/api/students-control`)
-      .then(response => {
-        console.log(response.data)
-      })
+  /* const petitionGet=async()=>{
+   await axios.get(Database)
+    .then(response=>{
+      console.log(response.data)
+    })
   }
-  useEffect(async () => {
-    await petitionGet();
-  }, [])
+  useEffect(async()=>{
+   await petitionGet();
+  },[]) */
+
+  const [students, setStudents] = useState([])
+
+  useEffect(() => {
+    Axios({
+      url: 'http://localhost:5001/api/students/control'
+    })
+      .then(response => {
+        setStudents(response.data)
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [setStudents])
 
 
 
   //function that inserts data into the database
 
   const petitionPost = async () => {
-    await axios.post(Database, SavedData)
+    await Axios.post(Database, SavedData)
       .then(response => {
         setData(data.concat(response.data),
           openedClosedModalInsertar()
@@ -210,18 +225,16 @@ const CrudStudents = () => {
     <div className={styles.container}>
       <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
         onClick={() => openedClosedModalInsertar()} />
-      <Table th={Articles.map((e) => {
+      <Table th={students.map((e) => {
         return (
           <tr className={styles.column}>
-            <th>{e.Id}</th>
-            <th>{e.Estudiante}</th>
-            <th>{e.Nombres}</th>
-            <th>{e.Apellidos}</th>
-            <th>{e.Edad}</th>
-            <th>{e.Género}</th>
-            <th>{e.Intereses}</th>
-            <th>{e.Programa}</th>
-            <th>{e.AsignacióndeMentor}</th>
+            <th>{e.user_id.name}</th>
+            <th>{e.user_id.middleName}</th>
+            <th>{e.user_id.lastName}</th>
+            <th>{e.user_id.secondSurname}</th>
+            <th>{e.user_id.email}</th>
+            <th>{e.user_id.state}</th>
+            <th>{e.user_id.role} </th>
             <th>Editar</th>
             <th>Eliminar</th>
 
@@ -229,18 +242,16 @@ const CrudStudents = () => {
         )
       })
       }
-        th2={Database.map((e) => {
+        th2={students.map((e) => {
           return (
             <tr className={styles.row}>
-              <td className={styles.rowone}>{e.Id}</td>
-              <td className={styles.rowone}>{e.Estudiante}</td>
-              <td className={styles.rowone}>{e.Nombres}</td>
-              <td className={styles.rowone}> {e.Apellidos}</td>
-              <td className={styles.rowone}>{e.Edad}</td>
-              <td className={styles.rowone}>{e.Género}</td>
-              <td className={styles.rowone}>{e.Intereses}</td>
-              <td className={styles.rowone}>{e.Programa}</td>
-              <td className={styles.rowone}>{e.AsignacióndeMentor}</td>
+              <td className={styles.rowone}>{e.user_id.name}</td>
+              <td className={styles.rowone}>{e.user_id.middleName}</td>
+              <td className={styles.rowone}>{e.user_id.lastName}</td>
+              <td className={styles.rowone}> {e.user_id.secondSurname}</td>
+              <td className={styles.rowone}>{e.user_id.role}</td>
+              <td className={styles.rowone}>{e.user_id.email}</td>
+              <td className={styles.rowone}>{e.user_id.state}</td>
               <>
                 <td><button className={styles.update}><FontAwesomeIcon icon={faEdit} /></button></td>
                 <td><button className={styles.delete}><FontAwesomeIcon icon={faTrashAlt} /></button></td>
@@ -255,8 +266,8 @@ const CrudStudents = () => {
       <Modal
         open={modalinsertar}
         onClose={openedClosedModalInsertar}>
-
-        {bodyInsertar}
+        {/* 
+        {bodyInsertar} */}
 
       </Modal>
 
