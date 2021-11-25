@@ -8,11 +8,14 @@ import { useNavigate } from 'react-router-dom'
 
 const MultipleChoice = () => {
   const [value, setValue] = useState(null)
-  const onDropdownCange = value => {
-    setValue(value)
-  }
+  
+  // const onDropdownCange = value => {
+  //   setValue(value)
+  // }
+  
   const [data, setData] = useState([])
   const save = []
+  // console.log(save)
   // const [dataselec, setDataselect]=useState([]);
   /*const petitionGet=async()=>{
         await axios.get("http://localhost:3001/api/profile-edit")
