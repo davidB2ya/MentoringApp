@@ -52,10 +52,10 @@ const Login = () => {
   return (
     <div className='container-login-main'>
       <div className='container-login-page'>
-        <img className='logo' src={logo} alt='logo-programate' />
-        <h2>Ingresa a Okhos</h2>
-        {err && showErrMsg(err)}
-        {success && showSuccessMsg(success)}
+      <img className='logo' src={logo} alt='logo-programate' />
+      <h2>Ingresa a Okhlos</h2>
+      {err && showErrMsg(err)}
+      {success && showSuccessMsg(success)}
 
         <form className='form' onSubmit={handleSubmit}>
           <div className='container-login-form-content'>
