@@ -2,23 +2,17 @@ import React, { useEffect, useState } from 'react'
 import SchedulledSession from '../../../components/schedulledSessionCard/schedulledSessionCard'
 import Styles from './sessionsBoard.module.css'
 import Axios from "axios";
-import Navbar from '../../../components/Navbar/Navbar';
-import Footer from '../../../components/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from 'react-redux'  
 
 function SessionsBoard () {
+  const idStudent = useSelector(state => state.auth.user.id)
   const [sessions, setSessions] = useState([])
 
-//   useEffect(() => {
-//     axios.get('http://localhost:3001/api/session').then(res => {
-//       const sessionsGet = res.data
-//       setSessions(sessionsGet)
-//     })
-//   })
 
   useEffect(() => {
     Axios({
-      url: 'http://localhost:3001/api/session'
+      url: `http://localhost:3001/api/dashboard/assignedsession/${idStudent}`
     })
       .then(response => {
         setSessions(response.data)
@@ -35,10 +29,10 @@ function SessionsBoard () {
   //     const sessions = res.data;
   //     console.log(sessions)
   //   })
-
+  function transformStringArray(){}
   return (
     <div>
-      <Navbar/>
+      
       <div className={Styles.board}>
         {sessions.map(session => (
           <SchedulledSession
@@ -49,7 +43,7 @@ function SessionsBoard () {
           ></SchedulledSession>
         ))}
       </div>
-      <Footer/>
+      
     </div>
   )
 }

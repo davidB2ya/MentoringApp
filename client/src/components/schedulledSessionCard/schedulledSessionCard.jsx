@@ -5,7 +5,7 @@ import styles from '../schedulledSessionCard/schedulledSessionCard.module.css'
 
 
 
-const schedulledSessionCard = ({numSession, sessionObjective, id }) => {
+const schedulledSessionCard = ({numSession, startDate, endDate, id }) => {
     return (
             <>
                 <div className={styles.whitebox}>
@@ -16,10 +16,9 @@ const schedulledSessionCard = ({numSession, sessionObjective, id }) => {
                             Rango de fechas para agendar tu sesión de mentoria
                         </h4>
                         <h4 className={styles.subtitles}>Fecha inicial</h4>
-                        <p className={styles.info}>12-Noviembre / 2021</p>
+                        <p className={styles.info}>{startDate}</p>
                         <h4 className={styles.subtitles}>Fecha final</h4>
-                        <p className={styles.info}>12-Noviembre / 2021</p>
-                    {/* <p className={styles.message}>{sessionObjective}</p> */}
+                        <p className={styles.info}>{endDate}</p>
                     <Link to={`/inform-student/${id}`} className={styles.btn}>Agendar sesión</Link> 
                     <p className={styles.note}>*Al dar click en el botón podrás escoger la fecha de tu sesión de mentoria</p>
                     {/* <div className={styles.green}>

@@ -1,5 +1,7 @@
 const getAllStudentsRouter = require('express').Router()
 
+const getOneStudentRouter =  require('express').Router()
+
 const postUserRouter = require('express').Router()
 
 const updatedUserRouter = require('express').Router()
@@ -29,6 +31,18 @@ getAllStudentsRouter.get('/', async (req, res) => {
   res.json(getAllStudents)
 })
 
+
+getOneStudentRouter.get('/:id', async (req, res) => {
+  const getOneStudent = await Profile.find({user_id: req.params.id})
+    .populate('user_id', {
+      name: 1,
+      middleName: 1,
+      lastName: 1,
+      secondSurname: 1
+    })
+
+    res.json(getOneStudent)
+})
 
 postUserRouter.post('/', async (req, res) => {
   const profile = {
@@ -145,6 +159,7 @@ getInterestStudent.get('/:id', async (req, res) => {
 
 module.exports = {
   getAllStudentsRouter,
+  getOneStudentRouter,
   updatedUserRouter,
   postUserRouter,
   updatedProfileRouter,

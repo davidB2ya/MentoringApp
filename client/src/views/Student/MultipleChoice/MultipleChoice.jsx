@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Styles from './MultipleChoice.module.css'
 import Card from '../../../components/Card/Card'
 import Select from 'react-select'
@@ -7,12 +7,15 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const MultipleChoice = () => {
-  const [value, setValue] = useState(null)
-  const onDropdownCange = value => {
-    setValue(value)
-  }
+  // const [value, setValue] = useState(null)
+  
+  // const onDropdownCange = value => {
+  //   setValue(value)
+  // }
+  
   const [data, setData] = useState([])
   const save = []
+  // console.log(save)
   // const [dataselec, setDataselect]=useState([]);
   /*const petitionGet=async()=>{
         await axios.get("http://localhost:3001/api/profile-edit")
@@ -38,9 +41,9 @@ const MultipleChoice = () => {
 
   //function to transform API data from string to array
   function debugDat (data) {
-    data.map(interest => {
+    const interes = data.map(interest => {
       interest.interestsMentor.map((oneInterest, index) => {
-        return save.push({ value: oneInterest, label: oneInterest })
+        save.push({ value: oneInterest, label: oneInterest })
       })
     })
   }
@@ -84,7 +87,7 @@ const MultipleChoice = () => {
   return (
     <div className={Styles.contenedor}>
       <div className={Styles.heder}>
-        <p>Completa la siguiente información para avanzar en la plataforma.</p>
+        <p>Bienvenido Estudiante. Por favor Completa la siguiente información para avanzar en la plataforma</p>
       </div>
 
       <Card
