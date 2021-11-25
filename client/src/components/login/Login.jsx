@@ -50,7 +50,7 @@ const Login = () => {
       setUser({ ...user, err: '', success: res.data.msg })
       window.localStorage.setItem('firstLogin', true)
       window.localStorage.setItem(
-        'loggedAgoraUser', JSON.stringify(res.data)
+        'loggedOkhlosUser', JSON.stringify(res.data)
       )
       dispatch(dispatchLogin())
 

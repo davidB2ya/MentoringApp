@@ -109,6 +109,8 @@ registerAdminRouter.post('/', async (req, res) => {
   }
 })
 
+//
+
 const createRefreshToken = payload => {
   return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: '7d'
@@ -126,6 +128,7 @@ const createActivationToken = payload => {
   })
 }
 
+// create access to token
 const createAccessToken = payload => {
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '15m'
@@ -201,20 +204,25 @@ activateEmailRouter.post('/', async (req, res) => {
   }
 })
 
+// get access token
 getAccessToken.post('/', async (req, res) => {
   try {
-    // console.log(req.body.refreshtoken)
+    // collect the token sent
     const rf_token = req.body.refreshtoken
+    // check if the token exists
     if (!rf_token) return res.status(400).json({ msg: 'Please login now!' })
-
+    // verify token
     jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
       if (err) return res.status(400).json({ msg: 'Please login now!' })
-
+      // save the created token
       const access_token = createAccessToken({ id: user.id })
+      // send the token
       res.json({ access_token })
     })
     // res.json({msg: 'ok'})
-  } catch (err) {
+  }
+  // pick up any error
+  catch (err) {
     return res.status(500).json({ msg: err.message })
   }
 })

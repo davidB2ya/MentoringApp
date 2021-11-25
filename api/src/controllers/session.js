@@ -5,8 +5,9 @@ const sessionRouter = require('express').Router()
 
 // Get all session
 sessionRouter.get('/', async (req, res, next) => {
+  const program = req.body.program
   try {
-    const session = await Session.find({})
+    const session = await Session.find({state: true, program: program })
     res.json(session)
   } catch (error) {
     next(error)
