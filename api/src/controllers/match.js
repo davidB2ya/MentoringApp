@@ -10,25 +10,29 @@ const match = []
 const listMatches = []
 let resultInterest = 0
 
-async function Match () {
+function Match () {
   for (let est = 0; est < arrayEstudentsNotAssigned.length; est++) {
     for (let m = 0; m < arrayMentorAvailable.length; m++) {
-      for (let i = 0; i < 2; i++) {
-        if (
-          arrayEstudentsNotAssigned[est].interestsStudent[i].includes(
-            arrayMentorAvailable[m]
-          )
-        ) {
-          if (resultInterest === 0) {
-            resultInterest = 5
-          } else {
-            resultInterest = resultInterest + 10
+      while (arrayMentorAvailable[m].studentAssignment.length < arrayMentorAvailable[m].numeStudents) {
+        for (let i = 0; i < 2; i++) {
+          if (
+            arrayEstudentsNotAssigned[est].interestsStudent[i].includes(
+              arrayMentorAvailable[m]
+            )
+          ) {
+            if (resultInterest === 0) {
+              resultInterest = 5
+            } else {
+              resultInterest = resultInterest + 10
+            }
           }
         }
-      }match.push(resultInterest)
-    }listMatches.push(match)
+      }
+      match.push(resultInterest)
+    }
+    listMatches.push(match)
   }
-  return await listMatches
+  return listMatches
 }
 
 // Get all info the student
