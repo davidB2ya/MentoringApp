@@ -1,5 +1,5 @@
-import React, { useEffect,useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 import axios from 'axios'
@@ -8,7 +8,7 @@ import { dispatchGetUser, dispatchLogin, fetchUser } from './redux/actions/authA
 
 // import Styles from'./index.module.css'
 // import { render } from 'react-dom';
-import { 
+import {
   // BrowserRouter,
   Routes,
   Route,
@@ -21,8 +21,8 @@ import ForgotPassword from './components/login/ForgotPassword.jsx'
 
 //others
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
-import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
-import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
+import WelcomeStudent from './views/Student/Welcome/WelcomeStudent'
+import StudentSession from './views/Student/SessionsBoard/sessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -40,41 +40,41 @@ import CrudMentor from './views/Administrator/Cruds/CrudMentor/CrudMentor'
 
 
 function App() {
-  
-  
+
+
 
   const dispatch = useDispatch()
   const token = useSelector(state => state.token)
   const auth = useSelector(state => state.auth)
-  
+
 
   // console.log(idStudent)
 
-  const {isLogged} = auth
+  const { isLogged } = auth
 
   const [interest, setInterest] = useState(false)
- 
-  useEffect(()=> {
+
+  useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedAgoraUser')
     const firstLogin = localStorage.getItem('firstLogin')
     // console.log(firstLogin && loggedUserJSON)
-    if(firstLogin && loggedUserJSON){
+    if (firstLogin && loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       const refreshtoken = user.refresh_token
-      
-      const getToken = async () =>{
-        const res = await axios.post('http://localhost:3001/api/refresh_token', {refreshtoken})
+
+      const getToken = async () => {
+        const res = await axios.post('http://localhost:3001/api/refresh_token', { refreshtoken })
         // console.log(res)
-        dispatch({type:'GET_TOKEN', payload: res.data.access_token})
+        dispatch({ type: 'GET_TOKEN', payload: res.data.access_token })
       }
       getToken()
-      
+
     }
   }, [auth.isLogged, dispatch])
 
 
-  useEffect(()=> {
-    if(token){
+  useEffect(() => {
+    if (token) {
       // console.log(token, "user")
       const getUser = () => {
         dispatch(dispatchLogin())
@@ -84,70 +84,66 @@ function App() {
       }
       getUser()
     }
-    
+
   }, [token, dispatch])
 
 
   const idStudent = useSelector(state => state.auth.user.id)
 
-  useEffect(()=> {
+  useEffect(() => {
 
-    if(idStudent){
-      
+    if (idStudent) {
+
       axios.get(`http://localhost:3001/api/student-interest/${idStudent}`)
-      .then(res => {
-        const interest = res.data;
-        // console.log(interest)
-        if(interest[0].interestsStudent.length > 0){
-          setInterest(true)
-        }
-      })
+        .then(res => {
+          const interest = res.data;
+          // console.log(interest)
+          if (interest[0].interestsStudent.length > 0) {
+            setInterest(true)
+          }
+        })
     }
-    
+
   }, [idStudent, auth.isLogged])
 
 
 
-  
-  return(
+
+  return (
     <>
       <NavBar></NavBar>
-       <Routes>
-         {/* login */}
-         
-         <Route path= '/login' element={ isLogged ? <WelcomeUser/> :<Login/>} exact/>
-        <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
- 
-         {/* others */}
-         <Route path="/" element={<PrincipalView/>}/>
-         <Route path="/welcome-user" element={interest ? <WelcomeUser/> : <MultipleChoice/> }/>
-         <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
-         <Route path="/thanks-student" element={<Thanks/>}/>
-         <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
-         <Route path="/student-sessions" element={<StudentSession/>}/>   
-         <Route path="/admin-panel" element={<admin-panel/>}/> 
-         <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
-         <Route path="/CrudStudents" element={<CrudStudents/>}/>
-         <Route path="/CrudMentor" element={<CrudMentor/>}/>
-        
-         <Route path="*" element={
-         <main style={{ padding: "1rem" }}>
-           <p>There's nothing here!</p>
-         </main>
-         }/>
- 
- 
-  
-       </Routes>
-       
-       <Footer></Footer>
-    </>
-    
+      <Routes>
+        {/* login */}
 
-  ) 
-  
-  
+        <Route path='/login' element={isLogged ? <WelcomeUser /> : <Login />} exact />
+        <Route path='/forgot_password' element={isLogged ? <WelcomeUser /> : <Login />} exact />
+
+        {/* others */}
+        <Route path="/" element={<PrincipalView />} />
+        <Route path="/welcome-user" element={<WelcomeUser />} />
+        <Route path="/welcome-student" element={<WelcomeStudent />} />
+        <Route path="/form-student/:id" element={<FirstStudentForm />} />
+        <Route path="/thanks-student" element={<Thanks />} />
+        <Route path="/inform-student/:id" element={<FirstStudentInform />} />
+        <Route path="/student-sessions" element={<StudentSession />} />
+        <Route path="/admin-panel" element={<admin-panel />} />
+        <Route path="/MultipleChoice" element={<MultipleChoice />} />
+        <Route path="/CrudStudents" element={<CrudStudents />} />
+        <Route path="*" element={
+          <main style={{ padding: "1rem" }}>
+            <p>There's nothing here!</p>
+          </main>
+        } />
+
+
+
+      </Routes>
+
+      <Footer></Footer>
+    </>
+  )
+
+
   // return (
   //   <div className="App">
   //     <h1>Bienvenido Usuario genérico</h1>
@@ -167,7 +163,7 @@ function App() {
   //     <Link to="/CrudStudents">| CrudStudents |</Link>
   //     <Link to="/MultipleChoice">| MultipleChoice |</Link>
   //     <Link to="/TableSectionManager">| TableSectionManager |</Link>
- 
+
 
   //     </nav>
   //     <Outlet />
