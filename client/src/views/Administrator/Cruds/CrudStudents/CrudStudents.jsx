@@ -148,8 +148,8 @@ const petitionGet=async()=>{
     console.log(response.data)
   })
 }
-useEffect(async()=>{
- await petitionGet();
+useEffect(()=>{
+  petitionGet();
 },[])
 
 

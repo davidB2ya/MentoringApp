@@ -5,7 +5,7 @@ import { showErrMsg, showSuccessMsg } from '../notification/Notification'
 import { dispatchLogin } from '../../redux/actions/authActions'
 import { useDispatch } from 'react-redux'
 import './login.css'
-import Input from './Input'
+import Input from '../Input/Input'
 import logo from '../assets/images/programate-fblanco.png'
 
 const Login = () => {
@@ -36,10 +36,12 @@ const Login = () => {
         email,
         password
       })
-
+      // console.log(res)
       setUser({ ...user, err: '', success: res.data.msg })
       window.localStorage.setItem('firstLogin', true)
-      window.localStorage.setItem('loggedAgoraUser', JSON.stringify(res.data))
+      window.localStorage.setItem(
+        'loggedOkhlosUser', JSON.stringify(res.data)
+      )
       dispatch(dispatchLogin())
 
       navigate('/welcome-user')

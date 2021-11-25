@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import Styles from './matchform.css'
 import Card from '../../../components/Card/Card'
-import Select from 'react-select'
+// import Select from 'react-select'
 import axios from 'axios'
 import Multiselect from 'multiselect-react-dropdown'
 
 const MatchForm = () => {
-  const [value, setValue] = useState(null)
-  const onDropdownCange = value => {
-    setValue(value)
-  }
+  // const [value, setValue] = useState(null)
+  // const onDropdownCange = value => {
+  //   setValue(value)
+  // }
   const [data, setData] = useState([])
   const save = []
   // const [dataselec, setDataselect]=useState([]);
