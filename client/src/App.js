@@ -20,6 +20,15 @@ import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
 // import MatchForm from './views/Administrator/Match/MatchForm';
+import Calendar from './components/Calendar/calendar';
+import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard.jsx';
+
+
+
+
+
+
+
 
 function App() {
   
@@ -57,7 +66,6 @@ function App() {
 
       // the getToken function is called
       getToken()
-      
     }
   }, [auth.isLogged, dispatch])
 
@@ -76,37 +84,28 @@ function App() {
       // the getUser function is called
       getUser()
     }
-    
   }, [token, dispatch])
-
 
   const idStudent = useSelector(state => state.auth.user.id)
 
-  useEffect(()=> {
-
-    if(idStudent){
-      
-      axios.get(`http://localhost:3001/api/student-interest/${idStudent}`)
-      .then(res => {
-        const interest = res.data;
-        // console.log(interest)
-        if(interest[0].interestsStudent.length > 0){
-          setInterest(true)
-        }
-      })
+  useEffect(() => {
+    if (idStudent) {
+      axios
+        .get(`http://localhost:3001/api/student-interest/${idStudent}`)
+        .then(res => {
+          const interest = res.data
+          // console.log(interest)
+          if (interest[0].interestsStudent.length > 0) {
+            setInterest(true)
+          }
+        })
     }
-    
   }, [idStudent, auth.isLogged])
 
-
-
-  
-  return(
+  return (
     <>
       <NavBar></NavBar>
        <Routes>
-         {/* login */}
-         
          <Route path= '/' element={ isLogged ? <PrincipalView/> :<Login/>} exact/>
          <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
  
@@ -114,12 +113,13 @@ function App() {
          <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
+         <Route path="/calendar" element={<Calendar/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
          <Route path="/student-sessions" element={<StudentSession/>}/> 
-           
-          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
+         <Route path="/student-assignment-sessions" element={<AssigmentSessionBoard/>}/>
+         <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
         
          <Route path="*" element={
@@ -140,4 +140,4 @@ function App() {
   
 }
 
-export default App;
+export default App

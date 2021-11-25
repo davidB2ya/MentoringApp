@@ -76,7 +76,6 @@ postUserRouter.post('/', async (req, res) => {
 updatedUserRouter.post('/', (req, res) => {
   const body = req.body
 
-
   User.updateOne(
     { _id: body._id },
     {
@@ -112,7 +111,6 @@ updatedUserRouter.post('/', (req, res) => {
 })
 
 updatedProfileRouter.post('/:id', async (req, res) => {
-
   const profile = {
     gender: req.body.gender,
     actualAge: req.body.actualAge,
@@ -137,7 +135,6 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     function (error, info) {
       if (error) {
         res.json({
-
           resultado: false,
           msg: 'No se pudo modificar el cliente',
           error
@@ -153,7 +150,10 @@ updatedProfileRouter.post('/:id', async (req, res) => {
 })
 
 getInterestStudent.get('/:id', async (req, res) => {
-  const interestsStudent = await Profile.find({ user_id: req.params.id }, { interestsStudent: 1 })
+  const interestsStudent = await Profile.find(
+    { user_id: req.params.id },
+    { interestsStudent: 1 }
+  )
   res.json(interestsStudent)
 })
 
@@ -164,5 +164,4 @@ module.exports = {
   postUserRouter,
   updatedProfileRouter,
   getInterestStudent
-
 }
