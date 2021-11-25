@@ -3,76 +3,73 @@ import Styles from './matchform.css'
 import Card from '../../../components/Card/Card'
 import Select from 'react-select'
 import axios from 'axios'
-import Multiselect from 'multiselect-react-dropdown'
 
 const MatchForm = () => {
-  const [value, setValue] = useState(null)
-  const onDropdownCange = value => {
-    setValue(value)
-  }
-  const [data, setData] = useState([])
-  const save = []
-  // const [dataselec, setDataselect]=useState([]);
-  /*const petitionGet=async()=>{
-        await axios.get("http://localhost:3001/api/profile-edit")
-         .then(response=>{
-             console.log(response.data)
-           
-         })   
-         
-       }*/
-
-  useEffect(() => {
-    axios({
-      url: 'http://localhost:3001/api/profile-edit'
-    })
-      .then(response => {
-        setData(response.data)
-        //  console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [setData])
-
-  //function to transform API data from string to array
-  function debugDat (data) {
-    data.map(interest => {
-      interest.interestsMentor.map((oneInterest, index) => {
-        return save.push({ name: oneInterest, id: index })
-      })
-    })
-  }
-
-  debugDat(data)
-
-  // console.log(save)
-
-  let interestsSelected = useRef();
   
   
 
-  const getValues = function(interestsSelected){
-    
-    const values = interestsSelected.current?.state.selectedValues
-    // const values = [{name: "sebastian"},{name: "sebastian1"},{name: "sebastian2"}]
-    
-    
-    return values
-  }
+  
 
-  const getValuesFinal = () => {
-    const finalValues = getValues(interestsSelected)
-    let interestsArray = []
-    if (finalValues > 0){
-      finalValues.forEach(interest => interestsArray.push(interest.name));
+  const cohorte= [ 
+      { 
+        value: 1, 
+        label: 1
+        
+        
+      },
+      { 
+        value: 2, 
+        label: 2
+        
+    },
+    { 
+
+        value: 3, 
+        label: 3
+        
+    },
+    { 
+        value: 4, 
+        label: 4
+        
     }
-    console.log(interestsArray)
+
+  ]
+
+  const programs= [ 
+    { 
+        value: "programate" ,
+        label: "programate"
+    },
+    { 
+        value: "administración de empresas" ,
+        label: "administración de empresas"
   }
-
-  //const finalInterest = getValues.getSelectedItems()
-
-  // console.log(getValues(interestsSelected))
+  ]
+  const [cohort, setCohort] = useState(0)
+  const [program, setProgram] = useState('')
+  const handleTypeSelect = e => {
+    const cohortChoice=e.label
+    // console.log (cohortChoice)
+    setCohort(cohortChoice)
+    // console.log(cohort)
+};
+const handleSelectPrograms = i => {
+    setProgram(i.label)
+    // console.log(program)
+}
+const getValuesFinal=async() => {
+    // console.log("la corte es"+cohort)
+    // console.log("el programa es"+program)
+    try {
+        const res=await axios.get ()
+    }
+    catch (err) {
+        // err.response.data.error &&
+        //       console.log(err.response.data.error)
+      }
+   
+}
 
   return (
     <div className={Styles.contenedor}>
@@ -87,24 +84,35 @@ const MatchForm = () => {
             </h3>
             <p>Elige la cohorte</p>
 
-            <Multiselect
-              options={save} // Options to display in the dropdown
-              selectionLimit={3}
-              selectedValues={save.selectedValue} // Preselected value to persist in dropdown
-              ref={interestsSelected}
-              onSelect={() => {}} // Function will trigger on select event
-              // onRemove={this.onRemove} // Function will trigger on remove event
-              displayValue='name' // Property name to display in the dropdown options
+            <Select
+                name="cohorte"
+                
+
+              options={cohorte} // Options to display in the dropdown
+              onChange={handleTypeSelect}
+
+            />
+             
+            <p>Elige el programa</p>
+
+            <Select
+              name="programs"
+            options={programs} // Options to display in the dropdown
+              onChange={handleSelectPrograms}
             />
 
-          {console.log()}
+
+        
             <br />
           </>
         }
-        bottom={<button onClick={getValuesFinal()}>Ejecutar match</button>}
+        bottom={<button onClick={getValuesFinal()}></button>}
       />
+      
     </div>
   )
 }
+
+
 
 export default MatchForm;

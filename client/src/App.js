@@ -129,6 +129,7 @@ function App() {
          <Route path="/student-sessions" element={<StudentSession/>}/>   
           <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
+         <Route path="/MatchForm" element={<MatchForm/>}/>
         
          <Route path="*" element={
          <main style={{ padding: "1rem" }}>
