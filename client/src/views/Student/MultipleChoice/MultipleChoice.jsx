@@ -84,7 +84,7 @@ const MultipleChoice = () => {
   return (
     <div className={Styles.contenedor}>
       <div className={Styles.heder}>
-        <p>Completa la siguiente información para avanzar en la plataforma.</p>
+        <p>Bienvenido Estudiante. Por favor Completa la siguiente información para avanzar en la plataforma</p>
       </div>
 
       <Card
