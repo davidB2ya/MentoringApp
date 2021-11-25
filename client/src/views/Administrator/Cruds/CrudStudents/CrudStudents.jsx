@@ -74,7 +74,6 @@ const CrudStudents = () => {
     Empresa: "",
     AsignaciónEst: ""
   })
-<<<<<<< HEAD
   //Function to insert the data written in the module.
   const InsertData = e => {
     const { name, value } = e.target;
@@ -122,27 +121,6 @@ const CrudStudents = () => {
         )
       })
   }*/
-=======
-//Function to insert the data written in the module.
-const InsertData=e=>{
-  const {name,value}=e.target;
-  setSavedData(prevState=>({
-   ...prevState,
-    [name]:value
-  }))
-  console.log(SavedData)
-}
-//function that searches the database for data
-const petitionGet=async()=>{
- await axios.get(Database)
-  .then(response=>{
-    console.log(response.data)
-  })
-}
-useEffect(()=>{
-  petitionGet();
-},[])
->>>>>>> 76db570f0f6f3f84523aa91ad47de0f279be38ea
 
 
 

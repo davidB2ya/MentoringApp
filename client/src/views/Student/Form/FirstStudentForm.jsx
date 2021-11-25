@@ -19,26 +19,10 @@ const FirstStudentForm = () => {
 		axios({
 			url: `http://localhost:3001/api/formStudent/${id}`,
 		})
-<<<<<<< HEAD
-			.then((response) => {
-				setList(response.data);
-
-				// console.log(response.data);
-			})
-			.then((response) => {
-				setList(response.data);
-				console.log(response.data);
-			})
 			.catch((error) => {
 				console.log(error);
 			});
-	}, [setList]);
-=======
-		.catch((error) => {
-		  console.log(error);
-		});
 	}, [list, id]);
->>>>>>> 76db570f0f6f3f84523aa91ad47de0f279be38ea
 
 	const initialState = list.map((question) => question.id)
 
@@ -86,13 +70,8 @@ const FirstStudentForm = () => {
 					idQuestion: answer,
 					answer: answerState[answer]
 				}
-<<<<<<< HEAD
 
-				const res = await axios.post(`http://localhost:3001/api/answerBank`, {
-=======
-	
-					await axios.post(`http://localhost:3001/api/answerBank`,{
->>>>>>> 76db570f0f6f3f84523aa91ad47de0f279be38ea
+				await axios.post(`http://localhost:3001/api/answerBank`, {
 					idSession: finalAnswer.idSession,
 					idUser: finalAnswer.idUser,
 					idQuestion: finalAnswer.idQuestion,
