@@ -9,73 +9,16 @@ import { Modal, Button, TextField } from '@material-ui/core';
 import Axios from 'axios';
 
 const Articles = [{
-  Id: "id",
-  Estudiante: "Estudiante",
   Nombres: "Nombres",
   Apellidos: "Apellidos",
   Edad: "Edad",
   Género: "Género",
   Intereses: "Intereses ",
   Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
+  AsignacióndeMentor: "Asignación de Mentor",
+  Estado: "Estado"
 }]
 
-const Database = [{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
-},
-{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
-},
-{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
-},
-{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
-},
-{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea animi vel nam esse ipsam soluta totam perspiciatis saepe accusamus quae consectetur, voluptatum earum recusandae perferendis. Eveniet laborum illo culpa. ",
-  AsignacióndeMentor: "Asignación de Mentor"
-}
-]
 
 
 //Modal styles
@@ -121,7 +64,6 @@ const CrudStudents = () => {
   const [modalinsertar, setmodalinsertar] = useState(false);
   //Insert saved module data
   const [SavedData, setSavedData] = useState({
-    id: "",
     Nombres: "",
     Apellidos: "",
     Edad: "",
@@ -171,14 +113,14 @@ const CrudStudents = () => {
 
   //function that inserts data into the database
 
-  const petitionPost = async () => {
+  /*const petitionPost = async () => {
     await Axios.post(Database, SavedData)
       .then(response => {
         setData(data.concat(response.data),
           openedClosedModalInsertar()
         )
       })
-  }
+  }*/
 
 
 
@@ -214,7 +156,7 @@ const CrudStudents = () => {
 
       <br /><br />
       <div align="right">
-        <Button className={Styles.Button} onClick={() => petitionPost()}>Insertar</Button>
+        <Button className={Styles.Button} >Insertar</Button>
         <Button className={Styles.Button} onClick={() => openedClosedModalInsertar()}>Cancelar</Button>
       </div>
     </div>
@@ -222,23 +164,22 @@ const CrudStudents = () => {
 
 
   return (
+
     <div className={styles.container}>
       <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
         onClick={() => openedClosedModalInsertar()} />
-      <Table th={students.map((e) => {
+      <Table th={Articles.map((e) => {
         return (
           <tr className={styles.column}>
-            <th>{e.user_id.name}</th>
-            <th>{e.user_id.middleName}</th>
-            <th>{e.user_id.lastName}</th>
-            <th>{e.user_id.secondSurname}</th>
-            <th>{e.user_id.email}</th>
-            <th>{e.user_id.state}</th>
-            <th>{e.user_id.role} </th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-
-          </tr>
+            <th>{e.Nombres}</th>
+            <th>{e.Apellidos}</th>
+            <th>{e.Edad}</th>
+            <th>{e.Género}</th>
+            <th>{e.Intereses}</th>
+            <th>{e.Programa}</th>
+            <th>{e.AsignacióndeMentor}</th>
+            <th>{e.Estado}</th>
+            <th>Editar</th> <th>Eliminar</th> </tr>
         )
       })
       }
@@ -246,9 +187,8 @@ const CrudStudents = () => {
           return (
             <tr className={styles.row}>
               <td className={styles.rowone}>{e.user_id.name}</td>
-              <td className={styles.rowone}>{e.user_id.middleName}</td>
               <td className={styles.rowone}>{e.user_id.lastName}</td>
-              <td className={styles.rowone}> {e.user_id.secondSurname}</td>
+
               <td className={styles.rowone}>{e.user_id.role}</td>
               <td className={styles.rowone}>{e.user_id.email}</td>
               <td className={styles.rowone}>{e.user_id.state}</td>
@@ -266,12 +206,13 @@ const CrudStudents = () => {
       <Modal
         open={modalinsertar}
         onClose={openedClosedModalInsertar}>
-        {/* 
-        {bodyInsertar} */}
+        {bodyInsertar}
 
       </Modal>
 
-    </div>
+
+    </div >
+
 
   )
 }

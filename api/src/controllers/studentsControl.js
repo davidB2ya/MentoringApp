@@ -17,9 +17,12 @@ getAllStudentsRouter.get('/', async (req, res) => {
     name: 1,
     middleName: 1,
     lastName: 1,
+    age: 1,
+    gender: 1,
     secondSurname: 1,
     role: 1,
     email: 1,
+    interestsStudent: 1,
     state: 1
   })
   // .then(getAllStudents => {
