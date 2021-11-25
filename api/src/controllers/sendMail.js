@@ -56,17 +56,10 @@ const sendEmail = (to, url, txt) => {
         `
   }
 
-<<<<<<< HEAD
   smtpTransport.sendMail(mailOptions, (err, infor) => {
     if (err) return err
     return infor
   })
-=======
-  smtpTransport.sendMail(mailOptions, (err, infor) => {
-    if (err) return err
-    return infor
-  })
->>>>>>> 1a90122ddc7ca474191e5bcf930726ae57ce07ac
 }
 
 module.exports = sendEmail
