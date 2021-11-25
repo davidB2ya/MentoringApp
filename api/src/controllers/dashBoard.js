@@ -13,10 +13,7 @@ const infoStudentRouter = require('express').Router()
 // Get all students active
 userRouter.get('/students-active', async (req, res, next) => {
   try {
-    const user = await users.find(
-      { state: true, role: 1 },
-      { _id: 1, program: 1 }
-    )
+    const user = await users.find({ state: true, role: 1 }, { _id: 1, program: 1 })
     res.json(user)
   } catch (error) {
     next(error)
@@ -26,10 +23,7 @@ userRouter.get('/students-active', async (req, res, next) => {
 // Get all mentor active
 userRouter.get('/mentor-active', async (req, res, next) => {
   try {
-    const mentor = await users.find(
-      { state: true, role: 4 },
-      { _id: 1, program: 1 }
-    )
+    const mentor = await users.find({ state: true, role: 4 }, { _id: 1, program: 1 })
     res.json(mentor)
   } catch (error) {
     next(error)
@@ -77,24 +71,11 @@ infoStudentRouter.get('/show', async (req, res, next) => {
   try {
     const info = await profile
       .find({})
-      .populate('user_id', {
-        name: 1,
-        email: 1,
-        middleName: 1,
-        lastName: 1,
-        secondSurname: 1,
-        contactNumber: 1,
-        state: 1
-      })
+      .populate('user_id', { name: 1, email: 1, middleName: 1, lastName: 1, secondSurname: 1, contactNumber: 1, state: 1 })
     res.json(info)
   } catch (error) {
     next(error)
   }
 })
 
-module.exports = {
-  userRouter,
-  answerRouter,
-  assigSessionRouter,
-  infoStudentRouter
-}
+module.exports = { userRouter, answerRouter, assigSessionRouter, infoStudentRouter }

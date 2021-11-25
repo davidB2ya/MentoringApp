@@ -29,6 +29,8 @@ const profilEditRouter = require('../controllers/profilEdit')
 
 const notifMentorRouter = require('../controllers/notif-mentor')
 
+const matchRouter = require('../controllers/match')
+
 const router = Router()
 
 router.use('/api/formStudent', FormStudentRouter.FormStudentRouter)
@@ -78,7 +80,7 @@ router.use('/api/refresh_token', userRouter.getAccessToken)
 
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
-//others
+// others
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)
 
@@ -93,7 +95,7 @@ router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)
 
-router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
+// router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
 
 router.use('/api/profile-edit', profilEditRouter.profilEditRouter)
 
@@ -102,4 +104,7 @@ router.use('/api/updated-profile-edit', profilEditRouter.updatedprofilEditRouter
 router.use('/api/notif-mentor', notifMentorRouter)
 
 router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
+
+router.use('/api/match', matchRouter.assignedRouter)
+
 module.exports = router

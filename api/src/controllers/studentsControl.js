@@ -29,7 +29,6 @@ getAllStudentsRouter.get('/', async (req, res) => {
   res.json(getAllStudents)
 })
 
-
 postUserRouter.post('/', async (req, res) => {
   const profile = {
     gender: req.body.gender,
@@ -61,7 +60,6 @@ postUserRouter.post('/', async (req, res) => {
 
 updatedUserRouter.post('/', (req, res) => {
   const body = req.body
-
 
   User.updateOne(
     { _id: body._id },
@@ -98,7 +96,6 @@ updatedUserRouter.post('/', (req, res) => {
 })
 
 updatedProfileRouter.post('/:id', async (req, res) => {
-
   const profile = {
     gender: req.body.gender,
     actualAge: req.body.actualAge,
@@ -106,7 +103,10 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     assignedMentor: req.body.assignedMentor
   }
 
-  const idprofile = await Profile.find({ user_id: req.params.id }, { _id: 1 })
+  const idprofile = await Profile.find(
+    { user_id: req.params.id },
+    { _id: 1 }
+  )
 
   // console.log(idprofile)
 
@@ -123,7 +123,6 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     function (error, info) {
       if (error) {
         res.json({
-
           resultado: false,
           msg: 'No se pudo modificar el cliente',
           error

@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Styles from './matchform.css'
 import Card from '../../../components/Card/Card'
 import Select from 'react-select'
 import axios from 'axios'
+
+
 
 const MatchForm = () => {
   
@@ -38,8 +40,8 @@ const MatchForm = () => {
 
   const programs= [ 
     { 
-        value: "programate" ,
-        label: "programate"
+        value: "Programate" ,
+        label: "Programate"
     },
     { 
         value: "administración de empresas" ,
@@ -48,6 +50,9 @@ const MatchForm = () => {
   ]
   const [cohort, setCohort] = useState(0)
   const [program, setProgram] = useState('')
+  console.log(program)
+  console.log(cohort)
+  const [chosenProgram, setChosenProgram] = useState(false)
   const handleTypeSelect = e => {
     const cohortChoice=e.label
     // console.log (cohortChoice)
@@ -62,55 +67,76 @@ const getValuesFinal=async() => {
     // console.log("la corte es"+cohort)
     // console.log("el programa es"+program)
     try {
-        const res=await axios.get ()
+        const res=await axios.get ('http://localhost:3001/api/match/students',{
+            cohorte: cohort,
+            program: program
+        })
+        console.log (res)
+        if(res.status===200){
+            setChosenProgram(true) 
+            console.log("se cambio a true")
+        }
     }
     catch (err) {
-        // err.response.data.error &&
-        //       console.log(err.response.data.error)
+        console.log (err)
       }
    
 }
 
+const ListStudentMentor=()=>{
+    return (
+        <p>Soy la lista de estudiantes</p>
+    )
+}
+const ProgramAndCohort=()=>{
+    return (
+        <div className={Styles.contenedor}>
+          <div className={Styles.heder}>
+            
+          </div>
+    
+          <Card
+            container={
+              <>
+                <h3>Elige la cohorte para realizar el Match
+                </h3>
+                <p>Elige la cohorte</p>
+    
+                <Select
+                    name="cohorte"
+                    
+    
+                  options={cohorte} // Options to display in the dropdown
+                  onChange={handleTypeSelect}
+    
+                />
+                 
+                <p>Elige el programa</p>
+    
+                <Select
+                  name="programs"
+                options={programs} // Options to display in the dropdown
+                  onChange={handleSelectPrograms}
+                />
+    
+    
+            
+                <br />
+              </>
+            }
+            bottom={<button onClick={getValuesFinal}></button>}
+          />
+          
+        </div>
+      )   
+}
+
   return (
-    <div className={Styles.contenedor}>
-      <div className={Styles.heder}>
-        
-      </div>
-
-      <Card
-        container={
-          <>
-            <h3>Elige la cohorte para realizar el Match
-            </h3>
-            <p>Elige la cohorte</p>
-
-            <Select
-                name="cohorte"
-                
-
-              options={cohorte} // Options to display in the dropdown
-              onChange={handleTypeSelect}
-
-            />
-             
-            <p>Elige el programa</p>
-
-            <Select
-              name="programs"
-            options={programs} // Options to display in the dropdown
-              onChange={handleSelectPrograms}
-            />
-
-
-        
-            <br />
-          </>
-        }
-        bottom={<button onClick={getValuesFinal()}></button>}
-      />
-      
-    </div>
+      <>
+      {chosenProgram ? <ListStudentMentor/> : <ProgramAndCohort/>}
+      </>
   )
+  
 }
 
 
