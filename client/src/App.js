@@ -26,6 +26,7 @@ import ForgotPassword from './components/login/ForgotPassword.jsx'
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent'
 import StudentSession from './views/Student/SessionsBoard/SessionsBoard'
+
 import Thanks from './views/Student/Thanks/Thanks'
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -34,6 +35,7 @@ import FirstStudentInform from './views/Student/Inform/FirstStudentInform'
 import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice'
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents'
 import PrincipalView from './views/Principal/PrincipalView'
+import Calendar from './components/Calendar/calendar'
 
 function App () {
   const dispatch = useDispatch()
@@ -117,6 +119,7 @@ function App () {
         <Route path='/welcome-user' element={<WelcomeUser />} />
         <Route path='/welcome-student' element={<WelcomeStudent />} />
         <Route path='/form-student/:id' element={<FirstStudentForm />} />
+        <Route path='/calendar' element={<Calendar />} />
         <Route path='/thanks-student' element={<Thanks />} />
         <Route path='/inform-student/:id' element={<FirstStudentInform />} />
         <Route path='/student-sessions' element={<StudentSession />} />
