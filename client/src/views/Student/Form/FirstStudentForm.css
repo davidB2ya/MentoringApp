@@ -16,7 +16,7 @@
   .advice{
     margin: 5% 10%;
   }
-  a {
+  /* a {
     position: relative;
     display: inline-block;
     padding: 8px 20px;
@@ -33,4 +33,4 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
     background: #000;
     color: #ffcc02;
-  }
+  } */

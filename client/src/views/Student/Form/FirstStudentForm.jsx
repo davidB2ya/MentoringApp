@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import Footer from '../../../components/Footer/Footer'
-import Navbar from '../../../components/Navbar/Navbar'
+import { useNavigate } from 'react-router-dom'
 import '../Form/FirstStudentForm.css';
-import Axios from "axios";
+import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux'
 
@@ -14,71 +13,109 @@ const FirstStudentForm = () => {
 
 	let { id } = useParams();
 
+	// const initialState = []
+
 	useEffect(() => {
-		Axios({
+	  axios({
 			url: `http://localhost:3001/api/formStudent/${id}`,
+	  })
+		.then((response) => {
+		  setList(response.data);
+
+			// console.log(response.data);
 		})
-			.then((response) => {
-				setList(response.data);
-				console.log(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, [setList]);
+		.catch((error) => {
+		  console.log(error);
+		});
+	}, [list, id]);
 
-	const auth = useSelector(state => state.auth)
+	const initialState = list.map((question) => question.id)
 
-	function postAnswer() {
-		const { user } = auth
-		// console.log(user.id)
-		const answer = {
-			idSession: id,
-			idUser: user.id,
-			idQuestion: "hola",
-			answer: "answer"
-		}
-		// Axios.post(`http://localhost:3001/api/answerBank`)
+	const initialAnswer = {}
+
+	function pushObject(){
+		initialState.forEach(e =>  initialAnswer[e] = "")
 	}
 
-	const [answerState, setAnswerState] = useState()
+	pushObject()
+
+
+	
+	//  console.log(initialState)
+	
+	// console.log(initialAnswer)
+
+	
+	const [answerState, setAnswerState] = useState(initialAnswer)
+
+	
 	const getValues = (e) => {
 		e.preventDefault();
-		// console.log(e.target.value)}
-		setAnswerState(e.target.value)
+		const { name, value } = e.target
+		
+		setAnswerState({...answerState, [name]: value})
+		
+		// 
 	}
+	
+	const auth = useSelector(state => state.auth)
 
+	const navigate = useNavigate() 
 
-	function handleSubmit(e) {
-		console.log("La respuesta es:" + answerState)
+	const handleSubmit = async e => {
+		
 		e.preventDefault();
-		
-		if(firstArrayAnswer.length > 0){
-				
-			for(let answer = 0; answer < firstArrayAnswer.length; answer++) {
-	 
-				const elementPush = firstArrayAnswer[ answer ]
 
-				const element = Object.keys(firstArrayAnswer[answer]);
-
-		
-				console.log(element)
-				 
-				if (!finalArrayAnswer.includes(firstArrayAnswer[answer])) {
-					finalArrayAnswer.push(elementPush);
+		try{
+			const {user} = auth
+			for(const answer in answerState){
+				const finalAnswer = {
+					idSession : id,
+					idUser : user.id,
+					idQuestion : answer,
+					answer : answerState[answer]
 				}
+	
+					await axios.post(`http://localhost:3001/api/answerBank`,{
+					idSession: finalAnswer.idSession,
+					idUser: finalAnswer.idUser,
+					idQuestion: finalAnswer.idQuestion,
+					answer: finalAnswer.answer
+				})
+				// console.log(res)
 			}
+			navigate('/student-sessions')
 		}
+		catch (err) {
+      err.response.data.error &&
+			console.log(err.response.data.error)
+    }
+		// console.log("se envio los resultados:" )
+		
+		
+		// console.log(answerState)
 		
 	}
+	 
 
-	const answer = []
+	
 
-	// console.log(resRef.current.value)
+ 	// function postAnswer () {
+	// 	const {user} = auth
+	// 	// console.log(user.id)
+	// 	const answer = {
+	// 		idSession : id,
+	// 		idUser : user.id,
+	// 		idQuestion : "hola",
+	// 		answer : "answer"
+	// 	}
+		
+	// }
 
-	return (
-		<div>
-
+	
+    return (
+        <div>
+           
 			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 			<form onSubmit={handleSubmit} className="advice">
 				{list.map((item) => (

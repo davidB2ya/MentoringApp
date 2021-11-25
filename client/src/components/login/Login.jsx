@@ -8,7 +8,7 @@ import {
 import { dispatchLogin } from '../../redux/actions/authActions'
 import { useDispatch } from 'react-redux'
 import './login.css'
-import Input from './Input'
+import Input from '../Input/Input'
 import logo from '../assets/images/programate-fblanco.png'
 
 
@@ -46,11 +46,11 @@ const Login = () => {
         email,
         password
       })
-      console.log(res)
+      // console.log(res)
       setUser({ ...user, err: '', success: res.data.msg })
       window.localStorage.setItem('firstLogin', true)
       window.localStorage.setItem(
-        'loggedAgoraUser', JSON.stringify(res.data)
+        'loggedOkhlosUser', JSON.stringify(res.data)
       )
       dispatch(dispatchLogin())
 
@@ -69,7 +69,7 @@ const Login = () => {
     <div className='container-login-main'>
       <div className='container-login-page'>
       <img className='logo' src={logo} alt='logo-programate' />
-      <h2>Ingresa a Okhos</h2>
+      <h2>Ingresa a Okhlos</h2>
       {err && showErrMsg(err)}
       {success && showSuccessMsg(success)}
 

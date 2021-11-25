@@ -95,16 +95,10 @@ const CrudSessions = () => {
   const[modalinsertar,setmodalinsertar]=useState(false);
   //Insert saved module data
   const[SavedData,setSavedData]=useState({
-    id:"",
-    Nombres:"",
-    Apellidos:"",
-    Edad:"",
-    Género:"",
-    Intereses:"",
-    Programa:"",
-    Carrera:"",
-    Empresa:"",
-    AsignaciónEst:""
+    IdEstudiante:"" ,
+  Estudiante:"",
+  FechaDiligenciamiento  :"",
+  SesiónN:""
   })
 //Function to insert the data written in the module.
 const InsertData=e=>{
@@ -116,7 +110,7 @@ const InsertData=e=>{
   console.log(SavedData)
 }
 //function that searches the database for data
-const petitionGet=async()=>{
+/*const petitionGet=async()=>{
  await axios.get(Database)
   .then(response=>{
     console.log(response.data)
@@ -124,20 +118,20 @@ const petitionGet=async()=>{
 }
 useEffect(async()=>{
  await petitionGet();
-},[])
+},[])*/
 
 
 
 //function that inserts data into the database
 
-const petitionPost=async()=>{
+/*const petitionPost=async()=>{
   await axios.post(Database,SavedData)
   .then(response=>{
     setData(data.concat(response.data),
     openedClosedModalInsertar()
   )
   })
-}
+}*/
 
 
 

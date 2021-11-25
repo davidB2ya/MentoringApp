@@ -170,7 +170,7 @@ const [students, setStudents] = useState([])
 
   useEffect(() => {
     Axios({
-      url: 'http://localhost:3001/api/students/control'
+      url: 'http://localhost:3001/api/mentorViewStudent'
     })
       .then(response => {
         setStudents(response.data)
@@ -205,8 +205,7 @@ const [students, setStudents] = useState([])
  const bodyInsertar=(
   <div className={Styles.modal}>
     <h3 className={Styles.h3} >AGREGAR NUEVO MENTOR</h3>
-    <TextField name="id" className={Styles.inputMaterial} label="id" onChange={InsertData} value={SavedData && SavedData.Nombres}/>
-    <br />
+    
     <TextField name="Nombres" className={Styles.inputMaterial} label="Nombre" onChange={InsertData} value={SavedData && SavedData.Nombres}/>
     <br />
     <TextField name="Apellidos" className={Styles.inputMaterial} label="Apellido" onChange={InsertData} value={SavedData && SavedData.Nombres}/>
@@ -214,6 +213,8 @@ const [students, setStudents] = useState([])
     <TextField name="Género" className={Styles.inputMaterial} label="Género" onChange={InsertData} value={SavedData && SavedData.Nombres}/>
     <br />
     <TextField name="Edad" className={Styles.inputMaterial} label="Edad" onChange={InsertData}/>
+    <br />
+    <TextField name="Hijos" className={Styles.inputMaterial} label="Hijos" onChange={InsertData}/>
     <br />
     <TextField name="Intereses" className={Styles.inputMaterial} label="Intereses" onChange={InsertData} value={SavedData && SavedData.Nombres}/>
     <br />

@@ -38,9 +38,9 @@ loginRouter.post('/', async (req, res) => {
     const isMatch =
       user === null ? false : await bcrypt.compare(password, user.password)
     if (!isMatch) {
-      res.status(401).json({
+       return res.status(401).json({
         error: 'Invalid password or user'
-      })
+        })
     }
 
     const refresh_token = createRefreshToken({ id: user._id })
@@ -64,6 +64,7 @@ forgotPassRouter.post('/', async (req, res) => {
 
     const access_token = createAccessToken({ id: user._id })
     const url = `${CLIENT_URL}/user/reset/${access_token}`
+
 
     sendMail(email, url, 'Reset your password')
     res.json({ msg: 'Re-send the password, please check your email.' })
@@ -108,6 +109,8 @@ registerAdminRouter.post('/', async (req, res) => {
   }
 })
 
+//
+
 const createRefreshToken = payload => {
   return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: '7d'
@@ -125,6 +128,7 @@ const createActivationToken = payload => {
   })
 }
 
+// create access to token
 const createAccessToken = payload => {
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '15m'
@@ -135,7 +139,7 @@ registerRouter.post('/', async (req, res) => {
   try {
     let { name, email, password } = req.body
 
-    console.log(name, email, password)
+    // console.log(name, email, password)
 
     if (!name || !email || !password)
       return res.status(400).json({ msg: 'Please fill in all fields.' })
@@ -145,7 +149,8 @@ registerRouter.post('/', async (req, res) => {
 
     const user = await User.findOne({ email })
 
-    if (user) return res.status(400).json({ msg: 'This email already exists.' })
+    if
+(user) return res.status(400).json({ msg: 'This email already exists.' })
 
     if (password.length < 6)
       return res
@@ -199,20 +204,25 @@ activateEmailRouter.post('/', async (req, res) => {
   }
 })
 
+// get access token
 getAccessToken.post('/', async (req, res) => {
   try {
-    // console.log(req.body.refreshtoken)
+    // collect the token sent
     const rf_token = req.body.refreshtoken
+    // check if the token exists
     if (!rf_token) return res.status(400).json({ msg: 'Please login now!' })
-
+    // verify token
     jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
       if (err) return res.status(400).json({ msg: 'Please login now!' })
-
+      // save the created token
       const access_token = createAccessToken({ id: user.id })
+      // send the token
       res.json({ access_token })
     })
     // res.json({msg: 'ok'})
-  } catch (err) {
+  }
+  // pick up any error
+  catch (err) {
     return res.status(500).json({ msg: err.message })
   }
 })

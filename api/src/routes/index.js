@@ -44,17 +44,14 @@ router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
-router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
 
-router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
 
-router.use('/api/students-control-post', StudentsRouter.postUserRouter)
 
-router.use(
-  '/api/studentsPerfil-control-update',
-  StudentsRouter.updatedProfileRouter
-)
 
+
+
+
+// brings all enabled sessions and those that coincide with the student's program
 router.use('/api/session', sessionRouter)
 
 // login
@@ -71,7 +68,37 @@ router.use('/api/register', userRouter.registerRouter)
 
 router.use('/api/activation', userRouter.activateEmailRouter)
 
+//
 router.use('/api/refresh_token', userRouter.getAccessToken)
+
+// InterestStudent
+
+router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
+
+router.use('/api/one/student', StudentsRouter.getOneStudentRouter)
+
+router.use('/api/students-control-post', StudentsRouter.postUserRouter)
+
+router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
+
+router.use(
+  '/api/studentsPerfil-control-update',
+  StudentsRouter.updatedProfileRouter
+)
+
+router.use('/api/student-interest', StudentsRouter.getInterestStudent)
+
+
+
+//others
+
+
+// students controller
+
+
+
+
+// end
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)
 
@@ -99,4 +126,5 @@ router.use(
 
 router.use('/api/notif-mentor', notifMentorRouter)
 
+router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
 module.exports = router

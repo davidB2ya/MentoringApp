@@ -6,7 +6,7 @@ import {FontAwesomeIcon}from'@fortawesome/react-fontawesome';
 import {faEdit,faTrashAlt} from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';
 import { Modal, Button,TextField} from '@material-ui/core';
-import axios from 'axios';
+import Axios from 'axios';
 
 const Articles=[{
    
@@ -132,31 +132,31 @@ const CrudStudents = () => {
     Empresa: "",
     AsignaciónEst: ""
   })
-  //Function to insert the data written in the module.
-  const InsertData = e => {
-    const { name, value } = e.target;
-    setSavedData(prevState => ({
-      ...prevState,
-      [name]: value
-    }))
-    console.log(SavedData)
-  }
-  //function that searches the database for data
-  /* const petitionGet=async()=>{
-   await axios.get(Database)
-    .then(response=>{
-      console.log(response.data)
-    })
-  }
-  useEffect(async()=>{
-   await petitionGet();
-  },[]) */
+//Function to insert the data written in the module.
+const InsertData=e=>{
+  const {name,value}=e.target;
+  setSavedData(prevState=>({
+   ...prevState,
+    [name]:value
+  }))
+  console.log(SavedData)
+}
+//function that searches the database for data
+const petitionGet=async()=>{
+ await Axios.get(Database)
+  .then(response=>{
+    console.log(response.data)
+  })
+}
+useEffect(()=>{
+  petitionGet();
+},[])
 
   const [students, setStudents] = useState([])
 
   useEffect(() => {
     Axios({
-      url: 'http://localhost:5001/api/students/control'
+      url: 'http://localhost:3001/api/students/control'
     })
       .then(response => {
         setStudents(response.data)
@@ -225,18 +225,17 @@ const CrudStudents = () => {
     <div className={styles.container}>
       <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
         onClick={() => openedClosedModalInsertar()} />
-      <Table th={students.map((e) => {
+      <Table th={Articles.map((e) => {
         return (
           <tr className={styles.column}>
-            <th>{e.user_id.name}</th>
-            <th>{e.user_id.middleName}</th>
-            <th>{e.user_id.lastName}</th>
-            <th>{e.user_id.secondSurname}</th>
-            <th>{e.user_id.email}</th>
-            <th>{e.user_id.state}</th>
-            <th>{e.user_id.role} </th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th>{e.Estudiante}</th>
+            <th>{e.Nombres}</th>
+            <th>{e.Apellidos}</th>
+            <th>{e.Edad}</th>
+            <th>{e.Género}</th>
+            <th>{e.Intereses}</th>
+            <th>{e.Programa}</th>
+
 
           </tr>
         )
@@ -266,8 +265,8 @@ const CrudStudents = () => {
       <Modal
         open={modalinsertar}
         onClose={openedClosedModalInsertar}>
-        {/* 
-        {bodyInsertar} */}
+        
+        {bodyInsertar} 
 
       </Modal>
 
