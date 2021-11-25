@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
-const allRoutes = require('./routes')
+const allRoutes = require('./routes/index')
 
 // Conection MongoDB
 require('./db/mongo')

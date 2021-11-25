@@ -146,7 +146,9 @@ const profileSchema = new Schema({
   ActualJobPosition: String,
 
   // The Company key stores the mentor's current job
-  Company: String,
+  Company: {
+    type: String
+  },
 
   // The sons key stores the mentor's children
   sons: Number,
