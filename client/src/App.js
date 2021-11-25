@@ -1,28 +1,16 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-
-
 import axios from 'axios'
-
 import { dispatchGetUser, dispatchLogin, fetchUser } from './redux/actions/authActions'
+import { Routes, Route } from "react-router-dom";
 
-// import Styles from'./index.module.css'
-// import { render } from 'react-dom';
-import { 
-  // BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-
-// login
+// components
 import Login from './components/login/Login.jsx'
-import NotFound from './views/General/NotFound'
+// import NotFound from './views/General/NotFound'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
-
-//others
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
-import StudentSession from './views/Student/SessionsBoard/sessionsBoard';
+import StudentSession from './views/Student/SessionsBoard/SessionsBoard.jsx';
 import Thanks from './views/Student/Thanks/Thanks';
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -31,43 +19,43 @@ import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
 import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
-import MatchForm from './views/Administrator/Match/MatchForm';
-
-
-
-
-
-
-
+// import MatchForm from './views/Administrator/Match/MatchForm';
 
 function App() {
   
-  
 
+  // it gives us the store's dispatch method as its result
   const dispatch = useDispatch()
+  // save the token stored in the redux store
   const token = useSelector(state => state.token)
+  // save auth state stored in redux store
   const auth = useSelector(state => state.auth)
-  
-
-  // console.log(idStudent)
-
+  // save isL0gged from auth
   const {isLogged} = auth
-
+  // this useState is used to see if the student has already filled the interests
   const [interest, setInterest] = useState(false)
  
   useEffect(()=> {
-    const loggedUserJSON = window.localStorage.getItem('loggedAgoraUser')
+    // collects the value of loggedOkhlosUser from localStorage
+    const loggedUserJSON = window.localStorage.getItem('loggedOkhlosUser')
+    // collects the value of firstLogin from localStorage
     const firstLogin = localStorage.getItem('firstLogin')
-    // console.log(firstLogin && loggedUserJSON)
+    // if firstLogin and loggedUserJSON exist run the following
     if(firstLogin && loggedUserJSON){
+      // convert received data to javascript object
       const user = JSON.parse(loggedUserJSON)
+      // save the user's refresToken
       const refreshtoken = user.refresh_token
       
+      
       const getToken = async () =>{
+        // send the refreshToken to the backend path
         const res = await axios.post('http://localhost:3001/api/refresh_token', {refreshtoken})
-        // console.log(res)
+        // calls an action to trigger a state change
         dispatch({type:'GET_TOKEN', payload: res.data.access_token})
       }
+
+      // the getToken function is called
       getToken()
       
     }
@@ -75,14 +63,17 @@ function App() {
 
 
   useEffect(()=> {
+    // check if the token exists
     if(token){
-      // console.log(token, "user")
+      // 
       const getUser = () => {
+        //
         dispatch(dispatchLogin())
         return fetchUser(token).then(res => {
           dispatch(dispatchGetUser(res))
         })
       }
+      // the getUser function is called
       getUser()
     }
     
@@ -126,7 +117,8 @@ function App() {
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
-         <Route path="/student-sessions" element={<StudentSession/>}/>   
+         <Route path="/student-sessions" element={<StudentSession/>}/> 
+           
           <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
         

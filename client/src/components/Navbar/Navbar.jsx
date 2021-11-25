@@ -55,7 +55,7 @@ const Navbar = () => {
 
         <header>
             <div className="logo">
-                <Link to="/"><img src={Image} /> </Link>
+                <Link to="/"><img src={Image} alt="programate" /> </Link>
             </div>
             <ul style={transForm}>
                 {

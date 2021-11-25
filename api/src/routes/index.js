@@ -52,7 +52,7 @@ router.use('/api/mentor-availability', menAvailRouter)
 
 
 
-
+// brings all enabled sessions and those that coincide with the student's program
 router.use('/api/session', sessionRouter)
 
 // login
@@ -69,6 +69,7 @@ router.use('/api/register', userRouter.registerRouter)
 
 router.use('/api/activation', userRouter.activateEmailRouter)
 
+//
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
 // InterestStudent

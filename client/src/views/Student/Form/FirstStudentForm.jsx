@@ -27,7 +27,7 @@ const FirstStudentForm = () => {
 		.catch((error) => {
 		  console.log(error);
 		});
-	}, [setList]);
+	}, [list, id]);
 
 	const initialState = list.map((question) => question.id)
 
@@ -76,7 +76,7 @@ const FirstStudentForm = () => {
 					answer : answerState[answer]
 				}
 	
-				const res = await axios.post(`http://localhost:3001/api/answerBank`,{
+					await axios.post(`http://localhost:3001/api/answerBank`,{
 					idSession: finalAnswer.idSession,
 					idUser: finalAnswer.idUser,
 					idQuestion: finalAnswer.idQuestion,
