@@ -13,7 +13,7 @@ const AnswerBankRouter = require('express').Router()
 AnswerBankRouter.post('/', (req, res) => {
   console.log('POST /api/answerBank')
   console.log(req.body)
-  res.status(200).send({ message: 'se ha recibido' })
+  // res.status(200).send({ message: 'se ha recibido' })
 
   const answer = new AnswerBank()
   answer.idSession = req.body.idSession

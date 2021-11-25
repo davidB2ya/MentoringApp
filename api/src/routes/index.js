@@ -53,16 +53,13 @@ router.use('/api/confirmDate', ConfirmDateRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
-router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
 
-router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
 
-router.use('/api/students-control-post', StudentsRouter.postUserRouter)
 
-router.use(
-  '/api/studentsPerfil-control-update',
-  StudentsRouter.updatedProfileRouter
-)
+
+
+
+
 
 router.use('/api/session', sessionRouter)
 
@@ -84,9 +81,32 @@ router.use('/api/refresh_token', userRouter.getAccessToken)
 
 // InterestStudent
 
+router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
+
+router.use('/api/one/student', StudentsRouter.getOneStudentRouter)
+
+router.use('/api/students-control-post', StudentsRouter.postUserRouter)
+
+router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
+
+router.use(
+  '/api/studentsPerfil-control-update',
+  StudentsRouter.updatedProfileRouter
+)
+
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
+
+
 //others
+
+
+// students controller
+
+
+
+
+// end
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)
 

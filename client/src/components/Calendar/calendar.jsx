@@ -1,11 +1,16 @@
 import '../Calendar/calendar.module.css'
 import React from 'react'
-import {useSelector} from 'react-redux'
+import axios from 'axios'
+import { useSelector } from 'react-redux'
+
+
 
 
 
 const Calendar = () => {
   const [equipo, setEquipo] = React.useState([])
+
+  const idStudent = useSelector(state => state.auth.user.id)
 
   React.useEffect(() => {
     //console.log('useEffect')
@@ -13,10 +18,15 @@ const Calendar = () => {
   }, [])
 
   const obtenerDatos = async () => {
-    const data = await fetch('http://localhost:5001/api/mentor-availability/618d78f66d3cf89d7abfe0cd')
-    const Users = await data.json()
-    console.log(Users)
-    setEquipo(Users)
+
+    // const data = await axios.get('http://localhost:3001/api/mentor-availability/',{
+    //   idUser:
+    // })
+
+
+    // const Users = await data.json()
+    // console.log(data)
+    // setEquipo(Users)
   }
 
   return (
@@ -48,7 +58,7 @@ const Calendar = () => {
         </div>
       </div>
       <div>
-        <select className='select-date' value='seleccione una fecha'>
+        <select className='select-date' placeholder='seleccione una fecha'>
           {equipo.map(item => (
             <option key='item.id'>
               {item.name} - {item.email}

@@ -11,7 +11,9 @@ menAvailRouter.get('/', async (request, response) => {
     numSession: 1,
     program: 1,
     cohort: 1,
-    state: 1
+    state: 1,
+    startDate: 1,
+    endDate: 1
   })
   response.json(availability)
 })

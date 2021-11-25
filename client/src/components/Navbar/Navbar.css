@@ -18,19 +18,25 @@
 /* styles juan esteves */
 header{
   width: 100%;
-  min-height: 100px;
-  background: #282c34;
+  height: 60px;
+  background: #fefefe;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 10px 20px -10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: row-wrap;
   padding: 0 30px;
+  
 }
 header a{
-  color: white;
+  color: #FFCC02;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
+  padding-top: 10px;
 }
+
+
 header ul li{
   display: inline-block;
   padding: 10px 20px;
@@ -45,6 +51,18 @@ header ul li img{
   height: 30px;
   transform: translateY(10px);
   border-radius: 50%;
+}
+.logo Img
+{
+  height:50px;
+  width: 130px;
+  padding: 10px;
+}
+header ul li i {
+  display:flex;
+  flex-direction: column;
+  padding-top: 20px;
+  font-size: 14px;
 }
 
 /* --------- Dropdown ---------- */
@@ -70,3 +88,4 @@ header ul li img{
 .drop-nav:hover .dropdown{
   display: block;
 }
+
