@@ -118,7 +118,10 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     assignedMentor: req.body.assignedMentor
   }
 
-  const idprofile = await Profile.find({ user_id: req.params.id }, { _id: 1 })
+  const idprofile = await Profile.find(
+    { user_id: req.params.id },
+    { _id: 1 }
+  )
 
   // console.log(idprofile)
 
