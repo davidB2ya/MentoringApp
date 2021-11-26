@@ -39,7 +39,8 @@ header a{
 
 header ul li{
   display: inline-block;
-  padding: 10px 20px;
+  color: #000;
+  padding: 20px 20px;
   opacity: 0.7;
 }
 header ul li:hover{
@@ -52,10 +53,9 @@ header ul li img{
   transform: translateY(10px);
   border-radius: 50%;
 }
-.logo Img
+Img
 {
   height:50px;
-  width: 130px;
   padding: 10px;
 }
 header ul li i {
@@ -67,22 +67,18 @@ header ul li i {
 
 /* --------- Dropdown ---------- */
 .drop-nav{
-  position: relative;
-  padding: 10px 0;
+  margin-top: 20px;
 }
-.drop-nav a{
-  text-transform: capitalize;
-  overflow: hidden;
-}
+
 .drop-nav .dropdown{
   position: absolute;
-  background: #282c34;
+  background: #ffffff;
   width: 100%;
-  width: calc(100% + 30px);
-  top: 50px;
+  width: calc(100% + 100px);
   display: none;
 }
 .drop-nav .dropdown li{
+  color:#000;
   display: block;
 }
 .drop-nav:hover .dropdown{

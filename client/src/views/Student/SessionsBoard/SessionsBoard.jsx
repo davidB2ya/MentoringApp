@@ -4,7 +4,7 @@ import Styles from './sessionsBoard.module.css'
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux'  
-
+import NavRes from '../../../components/NavRes/NavRes';
 function SessionsBoard () {
   const [sessions, setSessions] = useState([])
   const auth = useSelector(state => state.auth)
@@ -22,7 +22,7 @@ function SessionsBoard () {
   
   return (
     <div>
-      
+      <NavRes/>
       <div className={Styles.board}>
         {sessions.map(session => (
           <SchedulledSession

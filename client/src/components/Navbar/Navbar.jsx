@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Image from '../assets/images/programate-solo-color.png';
@@ -27,8 +27,10 @@ const Navbar = () => {
         transform: isLogged ? "translateY(-5px)" : 0
     }
 
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <>
+        
         {/* <nav className= "main-nav">
           <div className="Img">
               <img src={Image} width="120px" height="25px" alt="Logo Educamás" />
@@ -44,7 +46,7 @@ const Navbar = () => {
                 logout
             </Link> 
         </div> */}
-     <nav className= "main-nav">
+     <nav className= "main-nav" navbar-collapse>
          
         </nav>
         
@@ -55,9 +57,8 @@ const Navbar = () => {
 
         <header>
             <div className="logo">
-                <Link to="/"><img src={Image} alt="programate" /> </Link>
-               {/*  <Link to="/"><p/>SESIONES</Link>
-                <Link to="/"><p/>ASIGNADAS</Link> */}
+                <Link to="/"><img src={Image} alt="programate" /> </Link> 
+
             </div>
             <ul style={transForm}>
                 {
