@@ -36,7 +36,6 @@ getAllStudentsRouter.get('/', async (req, res) => {
   res.json(getAllStudents)
 })
 
-
 getOneStudentRouter.get('/:id', async (req, res) => {
   const getOneStudent = await Profile.find({ user_id: req.params.id })
     .populate('user_id', {

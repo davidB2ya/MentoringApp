@@ -10,13 +10,11 @@ import Axios from 'axios';
 
 
 
-
-
-
 const Articles = [{
   Nombres: "Nombres",
   Apellidos: "Apellidos",
   Email: "Email",
+  Role: "Role"
 
   /* Programa: "Programa ",
   AsignacióndeMentor: "Asignación de Mentor",
@@ -115,17 +113,16 @@ const CrudStudents = () => {
 
 
 
-
   //function that inserts data into the database
 
-  const petitionPost = async () => {
-    await Axios.post('http://localhost:3001/api/students/control', { SavedData })
+  /*const petitionPost = async () => {
+    await Axios.post(Database, SavedData)
       .then(response => {
-        setStudents(students.concat(response.students),
+        setData(data.concat(response.data),
           openedClosedModalInsertar()
         )
       })
-  }
+  }*/
 
 
 
@@ -161,7 +158,7 @@ const CrudStudents = () => {
 
       <br /><br />
       <div align="right">
-        <Button className={Styles.Button} onClick={() => petitionPost()}>Insertar</Button>
+        <Button className={Styles.Button} >Insertar</Button>
         <Button className={Styles.Button} onClick={() => openedClosedModalInsertar()}>Cancelar</Button>
       </div>
     </div>
@@ -182,6 +179,7 @@ const CrudStudents = () => {
             <th>{e.Género}</th>
             <th>{e.Intereses}</th> */}
             <th>{e.Email}</th>
+            <th>{e.Role}</th>
 
             <th>Editar</th> <th>Eliminar</th> </tr>
         )
@@ -193,6 +191,7 @@ const CrudStudents = () => {
               <td className={styles.rowone}>{e.user_id.name}</td>
               <td className={styles.rowone}>{e.user_id.lastName}</td>
               <td className={styles.rowone}>{e.user_id.email}</td>
+              <td className={styles.rowone}>{e.user_id.role}</td>
 
               <>
                 <td><button className={styles.update}><FontAwesomeIcon icon={faEdit} /></button></td>
