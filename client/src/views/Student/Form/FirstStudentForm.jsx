@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
+=======
+import React, { useState, useEffect, useRef} from "react";
+>>>>>>> 5248da75f93a3286c920dfe875f55fc2d6b3799d
 import { useParams } from "react-router";
 import { useNavigate } from 'react-router-dom'
 import '../Form/FirstStudentForm.css';
@@ -11,6 +15,8 @@ const FirstStudentForm = () => {
 
 	const [list, setList] = useState([]);
 
+	const [filledOut, setFillOut] = useState(true);
+
 	let { id } = useParams();
 
 	// const initialState = []
@@ -18,6 +24,14 @@ const FirstStudentForm = () => {
 	useEffect(() => {
 		axios({
 			url: `http://localhost:3001/api/formStudent/${id}`,
+<<<<<<< HEAD
+=======
+	  })
+		.then((response) => {
+		  setList(response.data);
+
+			console.log(response.data);
+>>>>>>> 5248da75f93a3286c920dfe875f55fc2d6b3799d
 		})
 			.catch((error) => {
 				console.log(error);
@@ -107,6 +121,7 @@ const FirstStudentForm = () => {
 
 	// }
 
+<<<<<<< HEAD
 
 	return (
 		<div>
@@ -132,6 +147,71 @@ const FirstStudentForm = () => {
 						<p>{item.question13}</p>
 						<textarea onChange={getValues} name={item.id} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 					</div>
+=======
+	// const interestsSelected = useRef(null);
+	// console.log(interestsSelected.current)
+
+	// function prueba(){
+	// 	if(interestsSelected.current){
+	// 		interestsSelected.current.disabled = true
+	// 	}
+	// }
+
+	// prueba()
+	const prueba= "hola"
+
+	const pruebaArray = [
+		{
+			question:1
+		
+		},
+		{
+			question:2
+		
+		},
+		{
+			question:3
+		
+		},
+		{
+			question:4
+		
+		}
+	]
+	
+    return (
+        <div>
+           
+			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
+			<form onSubmit={handleSubmit} className="advice">
+				{filledOut ? list.map((item) => (
+				<div class="mb-3" key={item.id}>
+					<label for="exampleFormControlTextarea1" class="form-label">{item.question}</label>
+					<br></br>
+					<p>{item.question1}</p>
+					<p>{item.question2}</p>
+					<p>{item.question3}</p>
+					<p>{item.question4}</p>
+					<p>{item.question5}</p>
+					<p>{item.question6}</p>
+					<p>{item.question7}</p>
+					<p>{item.question8}</p>
+					<p>{item.question9}</p>
+					<p>{item.question10}</p>
+					<p>{item.question11}</p>
+					<p>{item.question12}</p>
+					<p>{item.question13}</p>
+					<textarea 
+					onChange={getValues} 
+					name={item.id} 
+					class="form-control"
+					id="exampleFormControlTextarea1"
+					rows="3"
+					></textarea>
+				</div>
+				)) : pruebaArray.map((itemPrueba)=>(
+					<p>{itemPrueba.question}</p>
+>>>>>>> 5248da75f93a3286c920dfe875f55fc2d6b3799d
 				))}
 				<button type="submit">ENVIAR</button>
 			</form>

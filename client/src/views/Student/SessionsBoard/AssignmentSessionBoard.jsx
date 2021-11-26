@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SchedulledSession from '../../../components/schedulledSessionCard/schedulledSessionCard'
+import AssignmentCard from '../../../components/schedulledSessionCard/AssignmentCard'
 import Styles from './sessionsBoard.module.css'
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,31 +16,28 @@ function SessionsBoard () {
     })
       .then(response => {
         setSessions(response.data)
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(error => {
         console.log(error)
       })
   }, [setSessions])
 
-  //   console.log(sessions)
-  // axios.get('http://localhost:3001/api/session')
-  // .then(res => {
-  //     const sessions = res.data;
-  //     console.log(sessions)
-  //   })
-  function transformStringArray(){}
+    console.log(sessions)
+  
+  
   return (
     <div>
       
       <div className={Styles.board}>
         {sessions.map(session => (
-          <SchedulledSession
-            numSession={session.numSession}
-            sessionObjective={session.sessionObjective}
+          <AssignmentCard
+            numSession={session.idSession.numSession}
+            dateAsig={session.dateAsig}
+            link={session.link}
             key={session.id}
-            id={session.id}
-          ></SchedulledSession>
+            id={session.idSession.id}
+          ></AssignmentCard>
         ))}
       </div>
       
