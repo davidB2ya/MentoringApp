@@ -48,12 +48,7 @@ const userSchema = new Schema(
     },
 
     cohorte: {
-      num: {
-        type: Number
-      },
-      name: {
-        type: String
-      }
+      type: Number
     },
     state: {
       // habilitarlo

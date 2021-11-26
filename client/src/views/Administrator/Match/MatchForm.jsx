@@ -5,8 +5,6 @@ import Select from 'react-select'
 import axios from 'axios'
 
 const MatchForm = () => {
-  // const [cohort, setCohort] = useState()
-  // const [program, setProgram] = useState()
   let cohort = 0
   let program = ""
   const [students, setStudents] = useState([])
@@ -14,15 +12,11 @@ const MatchForm = () => {
   const [chosenProgram, setChosenProgram] = useState(false)
 
   const handleTypeSelect = e => {
-    // const cohortChoice = e.value
-    // console.log (cohortChoice)
-    // setCohort(e.label);
     cohort= e.label
     console.log(cohort)
   };
 
   const handleSelectPrograms = i => {
-    // setProgram(i.label);
     program= i.label
     console.log(program)
   };
@@ -57,14 +51,7 @@ const MatchForm = () => {
     }
   ]
 
-  // console.log(program)
-  // console.log(cohort)
-
-  
-  
   const getValuesFinal = async () => {
-    // console.log("la corte es"+cohort)
-    // console.log("el programa es"+program)
     try {
       const res = await axios.get('http://localhost:3001/api/match/students', {
         cohorte: cohort,
@@ -72,9 +59,7 @@ const MatchForm = () => {
       })
       console.log(res)
       if (res.status === 200) {
-        // setChosenProgram(true)
         setStudents(res.data)
-        // console.log('se cambio a true')
       }
     } catch (err) {
       console.log(err)
@@ -84,49 +69,83 @@ const MatchForm = () => {
         cohorte: cohort,
         program: program
       })
-
-      // console.log(cohort)
-      // console.log(program)
-      // console.log(resp)
       if (resp.status === 200) {
         setChosenProgram(true)
         setMentors(resp.data)
-        // console.log('se cambio a true')
       }
     } catch (err) {
       console.log(err)
     }
   }
 
-  const match = []
-  const listMatches = []
-  let resultInterest = 0
-  
-  function Match () {
-    for (let est = 0; est < students.length; est++) {
-      for (let m = 0; m < mentors.length; m++) {
-        while (mentors[m].studentAssignment.length < mentors[m].numeStudents) {
-          for (let i = 0; i < 2; i++) {
-            if (
-              students[est].interestsStudent[i].includes(
-                mentors[m]
-              )
-            ) {
-              if (resultInterest === 0) {
-                resultInterest = 5
-              } else {
-                resultInterest = resultInterest + 10
-              }
-            }
-          }
-        }
-        match.push(resultInterest)
-      }
-      listMatches.push(match)
-    }
-    return listMatches
-  }
-  console.log(listMatches)
+  // const match = []
+  // const listMatches = []
+  // let resultInterest = 0
+  // let resultAge = 0
+  // let commitment = 0
+  // let achievement = 0
+  // let flexibility = 0
+  // let communication = 0
+  // let gender = 0
+  // let total = 0
+
+  // function Match () {
+  //   for (let est = 0; est < students.length; est++) {
+  //     for (let m = 0; m < mentors.length; m++) {
+  //       while (mentors[m].studentAssignment.length < mentors[m].numeStudents) {
+  //         // Interests the student and mentor
+  //         for (let i = 0; i < 2; i++) {
+  //           if (students[est].interestsStudent[i].includes(mentors[m].interestsMentor)) {
+  //             if (resultInterest === 0) {
+  //               resultInterest = 5
+  //             } else {
+  //               resultInterest = resultInterest + 10
+  //             }
+  //           }
+  //         }
+  //         // Actual age the student and mentor
+  //         if (students[est].actualAge === mentors[m].actualAge) {
+  //           resultAge = 25
+  //         }else if (students[est].actualAge + 5 >= mentors[m].actualAge & students[est].actualAge - 5 <= mentors[m].actualAge){
+  //           resultAge = 15
+  //         }
+  //         // Commitment the student and mentor
+  //         if(students[est].commitment === 3 & mentors[m].commitment === 1){
+  //           commitment = 10
+  //         }else if (students[est].commitment === 2 || students[est].commitment === 1 & mentors[m].commitment === 2){
+  //           commitment = 10
+  //         }
+  //         // Achievement Orientation the student and mentor
+  //         if(students[est].achievementOrientation === 3 & mentors[m].achievementOrientation === 1){
+  //           achievement = 10
+  //         }else if (students[est].achievementOrientation === 2 || students[est].achievementOrientation === 1 & mentors[m].achievementOrientation === 2){
+  //           achievement = 10
+  //         } 
+  //         // Flexibility the student and mentor
+  //         if(students[est].flexibility === 3 & mentors[m].flexibility === 1){
+  //           flexibility = 10
+  //         }else if (students[est].flexibility === 2 || students[est].flexibility === 1 & mentors[m].flexibility === 2){
+  //           flexibility = 10
+  //         } 
+  //         // Communication the student and mentor
+  //         if(students[est].assertiveCommunication === 3 & mentors[m].assertiveCommunication === 1){
+  //           communication = 10
+  //         }else if (students[est].assertiveCommunication === 2 || students[est].assertiveCommunication === 1 & mentors[m].assertiveCommunication === 2){
+  //           communication = 10
+  //         } 
+  //         // Gender preference 
+  //         if(students[est].studentsGenderPrefer === mentors[m].gender){
+  //           gender = 10
+  //         }
+  //         total = resultInterest + resultAge + commitment + achievement + flexibility + communication + gender
+  //         console.log(total)
+  //       }
+        
+  //     }
+  //     listMatches.push(match)
+  //   }
+  //   return listMatches
+  // }
 
 
   const ListStudentMentor = () => {
