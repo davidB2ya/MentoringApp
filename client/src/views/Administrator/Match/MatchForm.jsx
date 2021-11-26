@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useRef, useState } from 'react'
 import Styles from './matchform.css'
 import Card from '../../../components/Card/Card'
@@ -34,77 +35,218 @@ const MatchForm = () => {
         console.log(error)
       })
   }, [setData])
+=======
+import { useState } from 'react';
+import Styles from './matchform.css';
+import Card from '../../../components/Card/Card';
+import Select from 'react-select';
+import axios from 'axios';
+import ListMentorstudent from './ListMentorstudent';
 
-  //function to transform API data from string to array
-  function debugDat (data) {
-    data.map(interest => {
-      interest.interestsMentor.map((oneInterest, index) => {
-        return save.push({ name: oneInterest, id: index })
-      })
-    })
-  }
 
-  debugDat(data)
+const MatchForm = () => {
+  // const [cohort, setCohort] = useState()
+  // const [program, setProgram] = useState()
+  let cohort = 0
+  let program = ""
+  const [students, setStudents] = useState([])
+  const [mentors, setMentors] = useState([])
+  const [chosenProgram, setChosenProgram] = useState(false)
+>>>>>>> 813c47b6f06a9b253554aa42bb34b40ce035f1ba
 
-  // console.log(save)
+  const handleTypeSelect = e => {
+    // const cohortChoice = e.value
+    // console.log (cohortChoice)
+    // setCohort(e.label);
+    cohort= e.label
+    console.log(cohort)
+  };
 
-  let interestsSelected = useRef();
-  
-  
+  const handleSelectPrograms = i => {
+    // setProgram(i.label);
+    program= i.label
+    console.log(program)
+  };
 
-  const getValues = function(interestsSelected){
-    
-    const values = interestsSelected.current?.state.selectedValues
-    // const values = [{name: "sebastian"},{name: "sebastian1"},{name: "sebastian2"}]
-    
-    
-    return values
-  }
-
-  const getValuesFinal = () => {
-    const finalValues = getValues(interestsSelected)
-    let interestsArray = []
-    if (finalValues > 0){
-      finalValues.forEach(interest => interestsArray.push(interest.name));
+  const cohorte = [
+    {
+      value: 1,
+      label: 1
+    },
+    {
+      value: 2,
+      label: 2
+    },
+    {
+      value: 3,
+      label: 3
+    },
+    {
+      value: 4,
+      label: 4
     }
-    console.log(interestsArray)
+  ]
+
+  const programs = [
+    {
+      value: 'Programate',
+      label: 'Programate'
+    },
+    {
+      value: 'administración de empresas',
+      label: 'administración de empresas'
+    }
+  ]
+
+  
+
+  // console.log(program)
+  // console.log(cohort)
+
+  
+  
+  const getValuesFinal = async () => {
+    // console.log("la corte es"+cohort)
+    // console.log("el programa es"+program)
+    try {
+      const res = await axios.get('http://localhost:3001/api/match/students', {
+        cohorte: cohort,
+        program: program
+      })
+      console.log(res)
+      if (res.status === 200) {
+        // setChosenProgram(true)
+        setStudents(res.data)
+        // console.log('se cambio a true')
+      }
+    } catch (err) {
+      console.log(err)
+    }
+    try {
+      const resp = await axios.get('http://localhost:3001/api/match/mentor', {
+        cohorte: cohort,
+        program: program
+      })
+
+      // console.log(cohort)
+      // console.log(program)
+      // console.log(resp)
+      if (resp.status === 200) {
+        setChosenProgram(true)
+        setMentors(resp.data)
+        // console.log('se cambio a true')
+      }
+    } catch (err) {
+      console.log(err)
+    }
   }
 
-  //const finalInterest = getValues.getSelectedItems()
-
-  // console.log(getValues(interestsSelected))
-
-  return (
-    <div className={Styles.contenedor}>
-      <div className={Styles.heder}>
-        
-      </div>
-
-      <Card
-        container={
-          <>
-            <h3>Elige la cohorte para realizar el Match
-            </h3>
-            <p>Elige la cohorte</p>
-
-            <Multiselect
-              options={save} // Options to display in the dropdown
-              selectionLimit={3}
-              selectedValues={save.selectedValue} // Preselected value to persist in dropdown
-              ref={interestsSelected}
-              onSelect={() => {}} // Function will trigger on select event
-              // onRemove={this.onRemove} // Function will trigger on remove event
-              displayValue='name' // Property name to display in the dropdown options
-            />
-
-          {console.log()}
-            <br />
-          </>
+  const match = []
+  const listMatches = []
+  let resultInterest = 0
+  
+  function Match () {
+    for (let est = 0; est < students.length; est++) {
+      for (let m = 0; m < mentors.length; m++) {
+        while (mentors[m].studentAssignment.length < mentors[m].numeStudents) {
+          for (let i = 0; i < 2; i++) {
+            if (
+              students[est].interestsStudent[i].includes(
+                mentors[m]
+              )
+            ) {
+              if (resultInterest === 0) {
+                resultInterest = 5
+              } else {
+                resultInterest = resultInterest + 10
+              }
+            }
+          }
         }
-        bottom={<button onClick={getValuesFinal()}>Ejecutar match</button>}
-      />
-    </div>
-  )
+        match.push(resultInterest)
+      }
+      listMatches.push(match)
+    }
+    return listMatches
+  }
+  console.log(students)
+
+
+  const ListStudentMentor = () => {
+    return(
+      <Card students={students}>
+         
+          <p>Aquí van los estudiantes</p>
+         
+            {students.map(e => {
+              return (
+                <tr >
+                    <td>{e.user_id.name}</td>
+                    <td>{e.user_id.lastName}</td>
+                </tr>
+                
+              )
+            })}
+          
+          
+          <div>
+            
+          <h3>Lista de mentores</h3>
+          {mentors.map(e => {
+              return (
+                <tr >
+                    <td>{e.user_id.name}</td>
+                    <td>{e.user_id.lastName}</td>
+                </tr>
+              )
+            })}
+            
+            
+           
+            
+                    
+              </div>
+          <button onClick={Match()}>Hacer Match</button>
+          
+      </Card>
+    )
+  }
+  const ProgramAndCohort = () => {
+   
+    return (
+      <div className={Styles.contenedor}>
+        <div className={Styles.heder}></div>
+
+        <Card
+          container={
+            <>
+              <h3>Elige la cohorte para realizar el Match</h3>
+              <p>Elige la cohorte</p>
+
+              <Select
+                name='cohorte'
+                options={cohorte} // Options to display in the dropdown
+                onChange={handleTypeSelect}
+              />
+
+              <p>Elige el programa</p>
+
+              <Select
+                name='programs'
+                options={programs} // Options to display in the dropdown
+                onChange={handleSelectPrograms}
+              />
+
+              <br />
+            </>
+          }
+          bottom={<button onClick={getValuesFinal}>Aceptar</button>}
+        />
+      </div>
+    )
+  }
+
+  return <>{chosenProgram ? <ListStudentMentor /> : <ProgramAndCohort />}</>
 }
 
-export default MatchForm;
+export default MatchForm

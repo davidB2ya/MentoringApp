@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+  }
+  
+  .container-Q{
+    max-width:80%;
+    min-width: fit-content;
+    min-height: 400px;
+    max-height: fit-content;
+    margin-left:7%;
+    margin-right: 10%;
+    margin-top: 2%;
+    border-radius: 20px;
+    background-color:#FEFEFE;
+    display: flex;
+    padding: 2%;
+    box-shadow: 3px 10px #92C149;
+    flex-wrap: wrap;
+    
+  
+  }
+  
+  .containerList{
+    background-color:#FEFEFE;
+    width: 40%;
+    min-width: 360px;
+    padding-left: 4%;
+    margin-bottom: 5%;
+    border-radius: 15px ;
+    margin-right: 2%;
+    
+  }
