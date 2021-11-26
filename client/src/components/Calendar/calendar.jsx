@@ -1,36 +1,31 @@
-import '../Calendar/calendar.module.css'
-import React from 'react'
+import '../Calendar/card-calendar.css'
+import React, { useState, useEffect} from "react";
+import { useParams } from "react-router";
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 
-
-
-
-
 const Calendar = () => {
-  const [equipo, setEquipo] = React.useState([])
+  
+  const [time, setTime] = useState([])
 
   const idStudent = useSelector(state => state.auth.user.id)
 
-  React.useEffect(() => {
+  useEffect(() => {
     //console.log('useEffect')
-    obtenerDatos()
+    Asigndate()
   }, [])
 
-  const obtenerDatos = async () => {
+  const Asigndate = async () => {
 
-    // const data = await axios.get('http://localhost:3001/api/mentor-availability/',{
-    //   idUser:
-    // })
-
-
-    // const Users = await data.json()
-    // console.log(data)
-    // setEquipo(Users)
+    const dateMent = await axios.get('http://localhost:3001/api/mentor-availability/',{
+      idUser: idStudent
+    })
+    console.log(dateMent.data)
   }
 
   return (
-    <div className='calendar'>
+    <div className='container-card'>
       <h3>Querido estudiante</h3>
       <p>
         Debes escoger el dìa de tu sesión de mentoría dentro del siguiente rango
@@ -48,18 +43,11 @@ const Calendar = () => {
           <p>21-Noviembre /2021</p>
         </div>
 
-        <div className='hour-of-begin'>
-          <h4>Hora de inicio</h4>
-          <p>17:30</p>
-        </div>
-        <div className='hour of-end'>
-          <h4>Hora de finalizacion</h4>
-          <p>18:30</p>
-        </div>
+        
       </div>
-      <div>
+      <div className="container-select-D">
         <select className='select-date' placeholder='seleccione una fecha'>
-          {equipo.map(item => (
+          {time.map(item => (
             <option key='item.id'>
               {item.name} - {item.email}
             </option>
