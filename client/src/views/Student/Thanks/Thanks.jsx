@@ -1,12 +1,32 @@
-import React from 'react';
-import Footer from '../../../components/Footer/Footer';
-import Navbar from '../../../components/Navbar/Navbar';
+import React, { useEffect } from 'react';
 import '../Thanks/thanks.css'
+import { useSelector } from 'react-redux'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Thanks = () => {
+
+  const idStudent = useSelector(state => state.auth.user.id)
+  const navigate = useNavigate() 
+  
+  useEffect(() => {
+    if(idStudent){
+      axios.get(`http://localhost:3001/api/one/student/${idStudent}`)
+      .then(res => {
+        const assignedMentor = res.data[0].assignedMentor;
+        console.log(assignedMentor)
+        if(assignedMentor.toString() !== "Not assigned"){
+          // console.log("entra al if")
+          navigate('/student-sessions')
+        }
+        
+      })
+    }
+  }, [idStudent])
+
+
     return (
         <div> 
-            <Navbar/>
             <div className="container">
               <div className="back">
                 <div className="card">
@@ -21,7 +41,6 @@ const Thanks = () => {
                 </div>
               </div>  
             </div>
-            <Footer/>
         </div>
     )
 }

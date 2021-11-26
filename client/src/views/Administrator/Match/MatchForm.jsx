@@ -1,19 +1,39 @@
-import { useState } from 'react';
-import Styles from './matchform.css';
-import Card from '../../../components/Card/Card';
-import Select from 'react-select';
-import axios from 'axios';
-import ListMentorstudent from './ListMentorstudent';
-
+import { useEffect, useRef, useState } from 'react'
+import Styles from './matchform.css'
+import Card from '../../../components/Card/Card'
+// import Select from 'react-select'
+import axios from 'axios'
+import Multiselect from 'multiselect-react-dropdown'
 
 const MatchForm = () => {
-  // const [cohort, setCohort] = useState()
-  // const [program, setProgram] = useState()
-  let cohort = 0
-  let program = ""
-  const [students, setStudents] = useState([])
-  const [mentors, setMentors] = useState([])
-  const [chosenProgram, setChosenProgram] = useState(false)
+  // const [value, setValue] = useState(null)
+  // const onDropdownCange = value => {
+  //   setValue(value)
+  // }
+  const [data, setData] = useState([])
+  const save = []
+  // const [dataselec, setDataselect]=useState([]);
+  /*const petitionGet=async()=>{
+        await axios.get("http://localhost:3001/api/profile-edit")
+         .then(response=>{
+             console.log(response.data)
+           
+         })   
+         
+       }*/
+
+  useEffect(() => {
+    axios({
+      url: 'http://localhost:3001/api/profile-edit'
+    })
+      .then(response => {
+        setData(response.data)
+        //  console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [setData])
 
   const handleTypeSelect = e => {
     // const cohortChoice = e.value

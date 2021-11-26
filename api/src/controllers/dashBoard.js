@@ -57,13 +57,17 @@ answerRouter.get('/', async (req, res, next) => {
 })
 
 // Get all assignedsession
-assigSessionRouter.get('/', async (req, res, next) => {
+assigSessionRouter.get('/:id', async (req, res, next) => {
   try {
-    const assig = await assigSession.find({})
+    const assig = await assigSession.find({idStudent:req.params.id
+    }).populate('idSession',{
+      numSession:1
+    })
     res.json(assig)
-  } catch (error) {
-    next(error)
+  } catch (err){
+    res.json(err)
   }
+
 })
 
 // Get all info the student

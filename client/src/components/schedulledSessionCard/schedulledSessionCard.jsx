@@ -1,30 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Card from '../Card/Card'
 import styles from '../schedulledSessionCard/schedulledSessionCard.module.css'
 
 
 
-const schedulledSessionCard = ({numSession, sessionObjective, id }) => {
+const schedulledSessionCard = ({numSession, startDate, endDate, id }) => {
     return (
             <>
                 <div className={styles.whitebox}>
-                <h3 className={styles.title}>
-                {`Sesión ${numSession}`} 
-                </h3>
-                <h4 className={styles.subtitles} >
-                    El encuentro con tu mentor será el día
-                </h4>
-                <p className={styles.info}>12-Noviembre / 2021</p>
-                <h4 className={styles.subtitles}>Hora de inicio</h4>
-                <p>17:30</p>
-                <h4 className={styles.subtitles}>Link de la sesión</h4>
-                <a className={styles.linkSession} href="https://us02web.zoom.us/j/89970425043?pwd=UUxGdERFa3BSbHU5OG5qYVdWeEtOQT09">
-                    https://us02web.zoom.us/j/89970425043?pwd=UUxGdERFa3BSbHU5OG5qYVdWeEtOQT09
-                </a>
-                <p className={styles.message}>{sessionObjective}</p>
-                <Link to={`/form-student/${id}`} className={styles.btn}>Ir al formulario de la sesión</Link> 
-                <Link to={`/inform-student/${id}`} className={styles.btn}>Ir al informe de la sesión</Link> 
+                        <h3 className={styles.title}>
+                        {`Sesión ${numSession} ha sido habilitada`} 
+                        </h3>
+                        <h4 className={styles.subtitles} >
+                            Rango de fechas para agendar tu sesión de mentoria
+                        </h4>
+                        <h4 className={styles.subtitles}>Fecha inicial</h4>
+                        <p className={styles.info}>{startDate}</p>
+                        <h4 className={styles.subtitles}>Fecha final</h4>
+                        <p className={styles.info}>{endDate}</p>
+                    <Link to={`/calendar/${id}`} className={styles.btn}>Agendar sesión</Link> 
+                    <p className={styles.note}>*Al dar click en el botón podrás escoger la fecha de tu sesión de mentoria</p>
+                    
                 </div>
+                
             </>
     )
 }

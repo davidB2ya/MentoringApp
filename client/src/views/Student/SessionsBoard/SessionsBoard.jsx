@@ -1,55 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import SchedulledSession from '../../../components/schedulledSessionCard/schedulledSessionCard'
 import Styles from './sessionsBoard.module.css'
-import Axios from "axios";
-import Navbar from '../../../components/Navbar/Navbar';
-import Footer from '../../../components/Footer/Footer';
+import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from 'react-redux'  
 
 function SessionsBoard () {
   const [sessions, setSessions] = useState([])
+  const auth = useSelector(state => state.auth)
+  const { user }= auth
 
-//   useEffect(() => {
-//     axios.get('http://localhost:3001/api/session').then(res => {
-//       const sessionsGet = res.data
-//       setSessions(sessionsGet)
-//     })
-//   })
-
-  useEffect(() => {
-    Axios({
-      url: 'http://localhost:3001/api/session'
-    })
-      .then(response => {
-        setSessions(response.data)
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [setSessions])
-
-  //   console.log(sessions)
-  // axios.get('http://localhost:3001/api/session')
-  // .then(res => {
-  //     const sessions = res.data;
-  //     console.log(sessions)
-  //   })
-
+   useEffect(() => {
+     const studentProgram = user.program
+     axios.get(`http://localhost:3001/api/session/${studentProgram}`)
+   .then(res => {
+       const sessionsResult = res.data;
+      setSessions (sessionsResult)
+     })
+  }, [auth])
+    // console.log(sessions)
+  
   return (
     <div>
-      <Navbar/>
+      
       <div className={Styles.board}>
         {sessions.map(session => (
           <SchedulledSession
             numSession={session.numSession}
-            sessionObjective={session.sessionObjective}
+            startDate={session.startDate}
             key={session.id}
             id={session.id}
+            endDate={session.endDate}
           ></SchedulledSession>
         ))}
       </div>
-      <Footer/>
+      
     </div>
   )
 }
