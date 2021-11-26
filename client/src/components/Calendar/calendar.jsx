@@ -101,7 +101,7 @@ const Calendar = () => {
 
   const NotMentAvail = () => {
     return (
-      <p>espere a que su mentor asigne unas posibles fechas</p>
+      <p >espere a que su mentor asigne unas posibles fechas</p>
     )
   }
 

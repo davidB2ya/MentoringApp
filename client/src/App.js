@@ -112,6 +112,7 @@ function App() {
          {/* others */}
          <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
+         <Route path="/thanks-student" element={<Thanks/>}/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
          <Route path="/calendar/:id" element={<Calendar/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>

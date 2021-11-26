@@ -174,7 +174,8 @@ const profileSchema = new Schema({
 
   // the interests key stores the student's selected interests
   interestsStudent: {
-    type: Array
+    type: Array,
+    default: []
   },
 
   // The commitment key stores a participation score that is used to determine the student and mentor assignment.
