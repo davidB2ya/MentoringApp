@@ -33,7 +33,9 @@ import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents'
 import PrincipalView from './views/Principal/PrincipalView';
 import MatchForm from './views/Administrator/Match/MatchForm';
 import ListMentorstudent from './views/Administrator/Match/ListMentorstudent';
-import SessionsEnabled from './views/Mentor/SessionsEnabled';
+import AsignedSessions from './views/Mentor/AsignedSessions/AsignedSessions';
+import FormMentor from './views/Mentor/FormMentor';
+import FinalMessage from './views/Mentor/AsignedSessions/FinalMessage.jsx';
 
 
 
@@ -133,7 +135,9 @@ function App() {
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
          <Route path="/MatchForm" element={<MatchForm/>}/>
          <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
-         <Route path="/SessionsEnabled" element={<SessionsEnabled/>}/>
+         <Route path="/AsignedSessions" element={<AsignedSessions/>}/>
+         <Route path="/FormMentor" element={<FormMentor/>}/>
+         <Route path="/FinalMessage" element={<FinalMessage/>}/>
 
         
          <Route path="*" element={

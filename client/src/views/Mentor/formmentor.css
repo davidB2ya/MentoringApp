@@ -30,3 +30,13 @@ body{
     margin-right: 2%;
     
   }
+  .button{
+    font-size: 17px;
+    background-color:#FFCC02;
+    border: transparent;
+    border-radius: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 40px;
+    padding-left: 40px;
+  }
