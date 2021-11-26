@@ -10,16 +10,21 @@ const Calendar = () => {
   const [time, setTime] = useState([])
 
   const idStudent = useSelector(state => state.auth.user.id)
+  // console.log(idStudent)
 
   useEffect(() => {
     //console.log('useEffect')
     Asigndate()
   }, [])
 
+  let { id } = useParams();
+  // console.log(id)
+
   const Asigndate = async () => {
 
     const dateMent = await axios.get('http://localhost:3001/api/mentor-availability/',{
-      idUser: idStudent
+      idUser: idStudent,
+      idSession: id
     })
     console.log(dateMent.data)
   }
@@ -51,7 +56,7 @@ const Calendar = () => {
             <option key='item.id'>
               {item.name} - {item.email}
             </option>
-          ))}
+          ))} 
         </select>
 
         <input

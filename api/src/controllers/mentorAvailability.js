@@ -4,14 +4,12 @@ const MentorAvailability = require('../db/models/MentorAvailability')
 const menAvailRouter = require('express').Router()
 
 menAvailRouter.get('/', async (request, response) => {
-  const idSession = request.body.idSession
+  const sessionId = request.body.idSession
+  console.log(sessionId)
   const idUser = request.body.idUser
-  const availability = await MentorAvailability.find({
-    idStudent: idUser, idSession: idSession
-  }).populate('idSession', {
-    numSession: 1,
-    program: 1,
-    cohort: 1,
+  const availability = await MentorAvailability.find({ idStudent: idUser, idSession: sessionId })
+  .populate('idSession', {
+    
     state: 1,
     startDate: 1,
     endDate: 1

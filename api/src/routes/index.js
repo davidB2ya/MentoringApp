@@ -57,6 +57,14 @@ router.use('/api/confirmDate', ConfirmDateRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
+
+
+
+
+
+
+
+// brings all enabled sessions and those that coincide with the student's program
 router.use('/api/session', sessionRouter)
 
 // login
@@ -73,6 +81,7 @@ router.use('/api/register', userRouter.registerRouter)
 
 router.use('/api/activation', userRouter.activateEmailRouter)
 
+//
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
 // InterestStudent
@@ -112,6 +121,7 @@ router.use('/api/answerBank', answerBankRouter)
 
 router.use('/api/questionBank', questionBankRouter)
 
+//
 router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
 
 // router.use('/api/notif-mentor', notifMentorRouter)

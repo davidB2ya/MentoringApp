@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Styles from './MultipleChoice.module.css'
 import Card from '../../../components/Card/Card'
 import Select from 'react-select'
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const MultipleChoice = () => {
-  const [value, setValue] = useState(null)
+  // const [value, setValue] = useState(null)
   
   // const onDropdownCange = value => {
   //   setValue(value)
@@ -41,9 +41,9 @@ const MultipleChoice = () => {
 
   //function to transform API data from string to array
   function debugDat (data) {
-    data.map(interest => {
+    const interes = data.map(interest => {
       interest.interestsMentor.map((oneInterest, index) => {
-        return save.push({ value: oneInterest, label: oneInterest })
+        save.push({ value: oneInterest, label: oneInterest })
       })
     })
   }

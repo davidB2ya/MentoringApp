@@ -23,9 +23,9 @@ const Navbar = () => {
         }
     }
 
-    const transForm = {
-        transform: isLogged ? "translateY(-5px)" : 0
-    }
+    // const transForm = {
+    //     transform: isLogged ? "translateY(-5px)" : 0
+    // }
 
     return (
         <>
@@ -55,9 +55,11 @@ const Navbar = () => {
 
         <header>
             <div className="logo">
-                <Link to="/"><img src={Image} /> </Link>
+                <Link to="/"><img src={Image} alt="programate" /> </Link>
+               {/*  <Link to="/"><p/>SESIONES</Link>
+                <Link to="/"><p/>ASIGNADAS</Link> */}
             </div>
-            <ul style={transForm}>
+            <ul className="unordedList">
                 {
                     isLogged
                     ? <UserLink user = {user} handleLogout = {handleLogout}/>
