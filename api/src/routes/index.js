@@ -19,6 +19,8 @@ const ConfirmDateRouter = require('../controllers/confirmDate')
 
 const userRouter = require('../controllers/user')
 
+const MentorControlRouter = require('../controllers/mentorControl')
+
 const dashBoardRouter = require('../controllers/dashBoard')
 
 const answerBankRouter = require('../controllers/answerBank')
@@ -47,6 +49,8 @@ router.use('/api/mentorViewStudent', ViewStudentRouter.ViewStudentRouter)
 
 router.use('/api/questionFormRouter', ViewStudentRouter.QuestionFormRouter)
 
+router.use('/api/mentorControl', MentorControlRouter)
+
 router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
 router.use('/api/assignedDate', assignedDateRouter)
@@ -54,13 +58,6 @@ router.use('/api/assignedDate', assignedDateRouter)
 router.use('/api/confirmDate', ConfirmDateRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
-
-
-
-
-
-
-
 
 // brings all enabled sessions and those that coincide with the student's program
 router.use('/api/session', sessionRouter)
@@ -100,13 +97,7 @@ router.use(
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
 // others
-
-
 // students controller
-
-
-
-
 // end
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)

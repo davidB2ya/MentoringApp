@@ -1,6 +1,6 @@
 const getAllStudentsRouter = require('express').Router()
 
-const getOneStudentRouter =  require('express').Router()
+const getOneStudentRouter = require('express').Router()
 
 const postUserRouter = require('express').Router()
 
@@ -31,9 +31,8 @@ getAllStudentsRouter.get('/', async (req, res) => {
   res.json(getAllStudents)
 })
 
-
 getOneStudentRouter.get('/:id', async (req, res) => {
-  const getOneStudent = await Profile.find({user_id: req.params.id})
+  const getOneStudent = await Profile.find({ user_id: req.params.id })
     .populate('user_id', {
       name: 1,
       middleName: 1,
@@ -41,7 +40,7 @@ getOneStudentRouter.get('/:id', async (req, res) => {
       secondSurname: 1
     })
 
-    res.json(getOneStudent)
+  res.json(getOneStudent)
 })
 
 postUserRouter.post('/', async (req, res) => {

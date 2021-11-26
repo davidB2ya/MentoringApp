@@ -19,10 +19,9 @@ const schedulledSessionCard = ({numSession, startDate, endDate, id }) => {
                         <p className={styles.info}>{startDate}</p>
                         <h4 className={styles.subtitles}>Fecha final</h4>
                         <p className={styles.info}>{endDate}</p>
-                    <Link to={`/student-assignment-sessions`} className={styles.btn}>Agendar sesión</Link> 
+                    <Link to={`/calendar/${id}`} className={styles.btn}>Agendar sesión</Link> 
                     <p className={styles.note}>*Al dar click en el botón podrás escoger la fecha de tu sesión de mentoria</p>
-                    {/* <div className={styles.green}>
-                  </div>  */}
+                    
                 </div>
                 
             </>

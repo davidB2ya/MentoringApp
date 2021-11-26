@@ -1,40 +1,72 @@
-import '../Calendar/calendar.module.css'
-import React from 'react'
+import '../Calendar/card-calendar.css'
+import React, { useState, useEffect} from "react";
+import { useParams } from "react-router";
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
-
-
-
-
+import Select from 'react-select'
 
 const Calendar = () => {
-  const [mentorAvai, setMentorAvai] = React.useState([])
+  
+  const [date, setDate] = useState([])
+  const [avaiDates, setAvaiDates] = useState([])
+  const [dateSelect, setDateSelect] = useState()
 
   const idStudent = useSelector(state => state.auth.user.id)
   // console.log(idStudent)
 
-  React.useEffect(() => {
-    //console.log('useEffect')
-    obtenerDatos()
+  let { id } = useParams();
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/api/mentor-availability/${id}/${idStudent}`).then((response) => {
+      setDate(response.data)
+      // console.log(response.data)
+      if(response.data.length > 0){
+        setAvaiDates(response.data[0].mentAvailability)
+      }
+      
+    })
   }, [])
 
-  const obtenerDatos = async () => {
+  console.log(date)
 
-    const mentoAvailability = await axios.get('http://localhost:3001/api/mentor-availability/',{
-      idUser: idStudent
-    })
+  const saveAvaiDates = []
 
-    // console.log(mentoAvailability.data)
+  function saveDates (data) {
 
-    // const Users = await data.json()
-    
-    setMentorAvai(mentoAvailability.data)
+    data.forEach(date => saveAvaiDates.push({value: date, label: date}))
 
-    console.log(mentorAvai)
   }
 
-  return (
-    <div className='calendar'>
+  saveDates(avaiDates)
+
+  // console.log(saveAvaiDates)
+
+
+
+  const handleDateSelect = (dateSelect) => {
+    setDateSelect(dateSelect.value)
+  }
+
+  console.log(dateSelect)
+  
+
+  const handleUpdateDate = () => {
+    // axios
+    // .post('http://localhost:3001/api/assignedDate',{
+    //   "idSession": "6197ce26f88d38494783ab98",
+    // "idStudent": "619b119ab7d52e9ae48a916e",
+    // "idMentor": "6195814646ac4b76e0e660c5",
+    // "dateAsig": "2020-08-27T04:00:00.000Z",
+    // "link": "este es un usuario de prueba"
+    // })
+  }
+   
+
+
+  const MenAvailExist = (req, res) => {
+    return(
+    <div className='container-card'>
       <h3>Querido estudiante</h3>
       <p>
         Debes escoger el dìa de tu sesión de mentoría dentro del siguiente rango
@@ -44,39 +76,39 @@ const Calendar = () => {
       <div className='dates-calendar'>
         <div className='date-begin'>
           <h4>Fecha inicial</h4>
-          <p>10-Noviembre /2021</p>
+          { date.map((Startdate, index) =>(<p key={index}>{Startdate.idSession.startDate}</p> ))}
         </div>
 
         <div className='date-end'>
           <h4>Fecha final</h4>
-          <p>21-Noviembre /2021</p>
+          { date.map((EndDate, index) =>(<p key={index}>{EndDate.idSession.endDate}</p> ))}
         </div>
 
-        <div className='hour-of-begin'>
-          <h4>Hora de inicio</h4>
-          <p>17:30</p>
-        </div>
-        <div className='hour of-end'>
-          <h4>Hora de finalizacion</h4>
-          <p>18:30</p>
-        </div>
+        
       </div>
-      <div>
-        <select className='select-date' placeholder='seleccione una fecha'>
-          {/* {equipo.map(item => (
-            <option key='item.id'>
-              {item.name} - {item.email}
-            </option>
-          ))} */}
-        </select>
-
-        <input
-          className='btn-selct-date'
-          type='button'
-          value='seleccione fecha'
+      <div className="container-select-D">
+        <Select
+          className="selectDates"
+          name="Dates"
+          options={saveAvaiDates}
+          onChange={handleDateSelect}
         />
+        <button  onClick={handleUpdateDate}>Finalizar</button>
       </div>
     </div>
+    )
+  }
+
+  const NotMentAvail = () => {
+    return (
+      <p >espere a que su mentor asigne unas posibles fechas</p>
+    )
+  }
+
+  return (
+    <>
+    {date.length > 0 ? <MenAvailExist/> : <NotMentAvail/>}
+    </>
   )
 }
 
