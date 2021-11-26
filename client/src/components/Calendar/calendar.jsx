@@ -20,9 +20,15 @@ const Calendar = () => {
   useEffect(() => {
     axios.get(`http://localhost:3001/api/mentor-availability/${id}/${idStudent}`).then((response) => {
       setDate(response.data)
-      setAvaiDates(response.data[0].mentAvailability)
+      // console.log(response.data)
+      if(response.data.length > 0){
+        setAvaiDates(response.data[0].mentAvailability)
+      }
+      
     })
   }, [])
+
+  console.log(date)
 
   const saveAvaiDates = []
 
@@ -43,32 +49,23 @@ const Calendar = () => {
   }
 
   console.log(dateSelect)
-  // const Asigndate = async () => {
-  //   // console.log("esta ejecutando la funcion")
-
-    
-  //   const dataMent = await 
-  //   // console.log(dataMent.data)
-  //   setTime(dataMent.data)
-  // }
-
-  // console.log(avaiDates)
-  // useEffect(() => {
-  //   //console.log('useEffect')
-  //   // console.log("esta entrando al useEffect")
-  //   Asigndate()
-  // })
-
-  // if(date.length > 0){
-  //   console.log(date[0].id)
-  // }
+  
 
   const handleUpdateDate = () => {
-    
+    // axios
+    // .post('http://localhost:3001/api/assignedDate',{
+    //   "idSession": "6197ce26f88d38494783ab98",
+    // "idStudent": "619b119ab7d52e9ae48a916e",
+    // "idMentor": "6195814646ac4b76e0e660c5",
+    // "dateAsig": "2020-08-27T04:00:00.000Z",
+    // "link": "este es un usuario de prueba"
+    // })
   }
    
 
-  return (
+
+  const MenAvailExist = (req, res) => {
+    return(
     <div className='container-card'>
       <h3>Querido estudiante</h3>
       <p>
@@ -99,6 +96,19 @@ const Calendar = () => {
         <button  onClick={handleUpdateDate}>Finalizar</button>
       </div>
     </div>
+    )
+  }
+
+  const NotMentAvail = () => {
+    return (
+      <p>espere a que su mentor asigne unas posibles fechas</p>
+    )
+  }
+
+  return (
+    <>
+    {date.length > 0 ? <MenAvailExist/> : <NotMentAvail/>}
+    </>
   )
 }
 
