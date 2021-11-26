@@ -13,12 +13,12 @@ const MatchForm = () => {
 
   const handleTypeSelect = e => {
     cohort= e.label
-    console.log(cohort)
+    // console.log(cohort)
   };
 
   const handleSelectPrograms = i => {
     program= i.label
-    console.log(program)
+    // console.log(program)
   };
 
   const cohorte = [
@@ -46,29 +46,28 @@ const MatchForm = () => {
       label: 'Programate'
     },
     {
-      value: 'administración de empresas',
-      label: 'administración de empresas'
+      value: 'Administración de Empresas',
+      label: 'Administración de Empresas'
     }
   ]
 
   const getValuesFinal = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/api/match/students', {
-        cohorte: cohort,
-        program: program
-      })
-      console.log(res)
+      const res = await axios.get(`http://localhost:3001/api/match/students/${program}/${cohort}`)
+      // console.log(res)
       if (res.status === 200) {
         setStudents(res.data)
       }
     } catch (err) {
       console.log(err)
     }
+    getValuesMentor()
+  }
+
+  const getValuesMentor = async () => {
     try {
-      const resp = await axios.get('http://localhost:3001/api/match/mentor', {
-        cohorte: cohort,
-        program: program
-      })
+      const resp = await axios.get(`http://localhost:3001/api/match/mentor/${program}/${cohort}`)
+      // console.log(resp)
       if (resp.status === 200) {
         setChosenProgram(true)
         setMentors(resp.data)
@@ -78,74 +77,116 @@ const MatchForm = () => {
     }
   }
 
-  // const match = []
-  // const listMatches = []
-  // let resultInterest = 0
-  // let resultAge = 0
-  // let commitment = 0
-  // let achievement = 0
-  // let flexibility = 0
-  // let communication = 0
-  // let gender = 0
-  // let total = 0
+  const match = []
+  let resultInterest = 0
+  let resultAge = 0
+  let competencies = 0
+  let gender = 0
+  let total = 0
 
-  // function Match () {
-  //   for (let est = 0; est < students.length; est++) {
-  //     for (let m = 0; m < mentors.length; m++) {
-  //       while (mentors[m].studentAssignment.length < mentors[m].numeStudents) {
-  //         // Interests the student and mentor
-  //         for (let i = 0; i < 2; i++) {
-  //           if (students[est].interestsStudent[i].includes(mentors[m].interestsMentor)) {
-  //             if (resultInterest === 0) {
-  //               resultInterest = 5
-  //             } else {
-  //               resultInterest = resultInterest + 10
-  //             }
-  //           }
-  //         }
-  //         // Actual age the student and mentor
-  //         if (students[est].actualAge === mentors[m].actualAge) {
-  //           resultAge = 25
-  //         }else if (students[est].actualAge + 5 >= mentors[m].actualAge & students[est].actualAge - 5 <= mentors[m].actualAge){
-  //           resultAge = 15
-  //         }
-  //         // Commitment the student and mentor
-  //         if(students[est].commitment === 3 & mentors[m].commitment === 1){
-  //           commitment = 10
-  //         }else if (students[est].commitment === 2 || students[est].commitment === 1 & mentors[m].commitment === 2){
-  //           commitment = 10
-  //         }
-  //         // Achievement Orientation the student and mentor
-  //         if(students[est].achievementOrientation === 3 & mentors[m].achievementOrientation === 1){
-  //           achievement = 10
-  //         }else if (students[est].achievementOrientation === 2 || students[est].achievementOrientation === 1 & mentors[m].achievementOrientation === 2){
-  //           achievement = 10
-  //         } 
-  //         // Flexibility the student and mentor
-  //         if(students[est].flexibility === 3 & mentors[m].flexibility === 1){
-  //           flexibility = 10
-  //         }else if (students[est].flexibility === 2 || students[est].flexibility === 1 & mentors[m].flexibility === 2){
-  //           flexibility = 10
-  //         } 
-  //         // Communication the student and mentor
-  //         if(students[est].assertiveCommunication === 3 & mentors[m].assertiveCommunication === 1){
-  //           communication = 10
-  //         }else if (students[est].assertiveCommunication === 2 || students[est].assertiveCommunication === 1 & mentors[m].assertiveCommunication === 2){
-  //           communication = 10
-  //         } 
-  //         // Gender preference 
-  //         if(students[est].studentsGenderPrefer === mentors[m].gender){
-  //           gender = 10
-  //         }
-  //         total = resultInterest + resultAge + commitment + achievement + flexibility + communication + gender
-  //         console.log(total)
-  //       }
-        
-  //     }
-  //     listMatches.push(match)
-  //   }
-  //   return listMatches
-  // }
+function Interests (est, m) {
+  let count = 0
+  // Interests the student and mentor
+  for (let i = 0; i < 3; i++) {
+    // const result = students[est].interestsStudent[i].includes(mentors[m].interestsMentor)
+    const result = mentors[m].interestsMentor.includes(students[est].interestsStudent[i])
+    console.log("Result: " + result)
+    if (result === true) {
+      if (count === 0) {
+        count = 5
+      } else {
+        count += 10
+      }
+    }
+    // debugger
+  }console.log(count)
+  
+  return count
+}
+    
+function Age (est, m){
+  let count = 0
+  // Actual age the student and mentor
+  if (students[est].actualAge === mentors[m].actualAge) {
+    count = 25
+  }else if (students[est].actualAge + 5 >= mentors[m].actualAge & students[est].actualAge - 5 <= mentors[m].actualAge){
+    count = 15
+  }else{
+    count = 5
+  }
+  return count
+}
+
+function Competencies (est, m) {
+  let count = 0
+  // Commitment the student and mentor
+  if(students[est].commitment === 3 && mentors[m].commitment === 1){
+    count += 10
+  }else if (students[est].commitment < 3 && mentors[m].commitment < 3){
+    count += 10
+  }
+  // Achievement Orientation the student and mentor
+  if(students[est].achievementOrientation === 3 && mentors[m].achievementOrientation === 1){
+    count += 10
+  }else if (students[est].achievementOrientation < 3 && mentors[m].achievementOrientation < 3){
+    count += 10
+  } 
+  // Flexibility the student and mentor
+  if(students[est].flexibility === 3 && mentors[m].flexibility === 1){
+    count += 10
+  }else if (students[est].flexibility < 3 && mentors[m].flexibility < 3){
+    count += 10
+  } 
+  // Communication the student and mentor
+  if(students[est].assertiveCommunication === 3 && mentors[m].assertiveCommunication === 1){
+    count += 10
+  }else if (students[est].assertiveCommunication < 3 && mentors[m].assertiveCommunication < 3){
+    count += 10
+  } 
+  return count
+}
+
+function Gender (est, m) {
+  let count = 0
+  if(students[est].studentsGenderPrefer === mentors[m].gender){
+    count = 10
+  }
+  return count
+}
+
+  const Match = () => {
+    console.log("Hola David")
+    for (let est = 0; est < students.length; est++) {
+      for (let m = 0; m < mentors.length; m++) {
+          // Interests the student and mentor
+          resultInterest = Interests(est,m)
+          console.log(resultInterest)
+          // Actual age the student and mentor
+          resultAge = Age(est, m)
+          console.log(resultAge)
+          // Competencies the student and mentor
+          competencies = Competencies(est, m)
+          console.log(competencies)
+          // Gender preference 
+          gender = Gender(est, m)
+          console.log(gender)
+          // Total
+          total = resultInterest + resultAge + competencies + gender
+          if (total > 60){
+            match.push({
+              nameEstudent: students[est].user_id.name, 
+              nameMentor : mentors[m].user_id.name
+            })
+            break
+          }
+          // debugger
+      }
+    }
+    console.log("El listado es ")
+    console.log(match)
+  }
+    
+    
 
 
   const ListStudentMentor = () => {
@@ -173,7 +214,8 @@ const MatchForm = () => {
               )
             })}
           </div>
-          {/* <button onClick={Match()}>Hacer Match</button> */}
+          <button onClick={Match}>Hacer Match</button>
+          
           
       </div>
     )

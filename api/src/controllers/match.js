@@ -5,10 +5,10 @@ const users = require('../db/models/User')
 const assignedRouter = require('express').Router()
 
 // Get all info the student
-assignedRouter.get('/students', async (req, res, next) => {
+assignedRouter.get('/students/:program/:cohort', async (req, res, next) => {
   const user = {
-    cohorte: req.body.cohorte,
-    program: req.body.program
+    cohorte: parseInt(req.params.cohort),
+    program: req.params.program
   }
   const studentsActive = await users.find({
     state: true,
@@ -49,12 +49,11 @@ assignedRouter.get('/students', async (req, res, next) => {
 })
 
 // Get all info the mentor
-assignedRouter.get('/mentor', async (req, res, next) => {
+assignedRouter.get('/mentor/:program/:cohort', async (req, res, next) => {
   const user = {
-    cohorte: req.body.cohorte,
-    program: req.body.program
+    cohorte: parseInt(req.params.cohort),
+    program: req.params.program
   }
-
   const mentorAvailable = await profile
     .find(
       {},
