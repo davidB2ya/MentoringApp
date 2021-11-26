@@ -4,30 +4,69 @@ import { useParams } from "react-router";
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import Select from 'react-select'
 
 const Calendar = () => {
   
-  const [time, setTime] = useState([])
+  const [date, setDate] = useState([])
+  const [avaiDates, setAvaiDates] = useState([])
+  const [dateSelect, setDateSelect] = useState()
 
   const idStudent = useSelector(state => state.auth.user.id)
   // console.log(idStudent)
 
+  let { id } = useParams();
+
   useEffect(() => {
-    //console.log('useEffect')
-    Asigndate()
+    axios.get(`http://localhost:3001/api/mentor-availability/${id}/${idStudent}`).then((response) => {
+      setDate(response.data)
+      setAvaiDates(response.data[0].mentAvailability)
+    })
   }, [])
 
-  let { id } = useParams();
-  // console.log(id)
+  const saveAvaiDates = []
 
-  const Asigndate = async () => {
+  function saveDates (data) {
 
-    const dateMent = await axios.get('http://localhost:3001/api/mentor-availability/',{
-      idUser: idStudent,
-      idSession: id
-    })
-    console.log(dateMent.data)
+    data.forEach(date => saveAvaiDates.push({value: date, label: date}))
+
   }
+
+  saveDates(avaiDates)
+
+  // console.log(saveAvaiDates)
+
+
+
+  const handleDateSelect = (dateSelect) => {
+    setDateSelect(dateSelect.value)
+  }
+
+  console.log(dateSelect)
+  // const Asigndate = async () => {
+  //   // console.log("esta ejecutando la funcion")
+
+    
+  //   const dataMent = await 
+  //   // console.log(dataMent.data)
+  //   setTime(dataMent.data)
+  // }
+
+  // console.log(avaiDates)
+  // useEffect(() => {
+  //   //console.log('useEffect')
+  //   // console.log("esta entrando al useEffect")
+  //   Asigndate()
+  // })
+
+  // if(date.length > 0){
+  //   console.log(date[0].id)
+  // }
+
+  const handleUpdateDate = () => {
+    
+  }
+   
 
   return (
     <div className='container-card'>
@@ -40,30 +79,24 @@ const Calendar = () => {
       <div className='dates-calendar'>
         <div className='date-begin'>
           <h4>Fecha inicial</h4>
-          <p>10-Noviembre /2021</p>
+          { date.map((Startdate, index) =>(<p key={index}>{Startdate.idSession.startDate}</p> ))}
         </div>
 
         <div className='date-end'>
           <h4>Fecha final</h4>
-          <p>21-Noviembre /2021</p>
+          { date.map((EndDate, index) =>(<p key={index}>{EndDate.idSession.endDate}</p> ))}
         </div>
 
         
       </div>
       <div className="container-select-D">
-        <select className='select-date' placeholder='seleccione una fecha'>
-          {time.map(item => (
-            <option key='item.id'>
-              {item.name} - {item.email}
-            </option>
-          ))} 
-        </select>
-
-        <input
-          className='btn-selct-date'
-          type='button'
-          value='seleccione fecha'
+        <Select
+          className="selectDates"
+          name="Dates"
+          options={saveAvaiDates}
+          onChange={handleDateSelect}
         />
+        <button  onClick={handleUpdateDate}>Finalizar</button>
       </div>
     </div>
   )

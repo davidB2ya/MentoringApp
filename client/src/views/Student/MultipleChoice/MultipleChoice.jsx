@@ -50,6 +50,7 @@ const MultipleChoice = () => {
 
   debugDat(data)
 
+  // console.log(save)
   // const handleChange = (selectedOption) => {
 
   // }

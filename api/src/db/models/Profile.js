@@ -168,7 +168,8 @@ const profileSchema = new Schema({
 
   // the assignedMentor key stores the mentor assigned to the student
   assignedMentor: {
-    type: String
+    type: String,
+    default: 'Not assigned'
   },
 
   // the interests key stores the student's selected interests

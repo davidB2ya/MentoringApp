@@ -11,14 +11,14 @@ function SessionsBoard () {
   const { user }= auth
 
    useEffect(() => {
-   const studentProgram = user.program
-  axios.get(`http://localhost:3001/api/session/${studentProgram}`)
+     const studentProgram = user.program
+     axios.get(`http://localhost:3001/api/session/${studentProgram}`)
    .then(res => {
        const sessionsResult = res.data;
       setSessions (sessionsResult)
      })
   }, [auth])
-    console.log(sessions)
+    // console.log(sessions)
   
   return (
     <div>
