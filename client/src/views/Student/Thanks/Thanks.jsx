@@ -17,7 +17,7 @@ const Thanks = () => {
         // console.log(assignedMentor)
         if(assignedMentor.length > 0){
           // console.log("entra al if")
-          navigate('/student-sessions')
+           navigate('/student-sessions')
         }
         
       })

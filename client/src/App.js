@@ -22,6 +22,11 @@ import PrincipalView from './views/Principal/PrincipalView';
 // import MatchForm from './views/Administrator/Match/MatchForm';
 import Calendar from './components/Calendar/calendar';
 import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard.jsx';
+import MatchForm from './views/Administrator/Match/MatchForm';
+import ListMentorstudent from './views/Administrator/Match/ListMentorstudent';
+import SessionsEnabled from './views/Mentor/SessionsEnabled';
+import WelcomeMentor from './views/Mentor/WelcomeMentor';
+
 
 
 
@@ -113,6 +118,8 @@ function App() {
          <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
+         <Route path="/welcome-mentor" element={<WelcomeMentor/>}/>
+        
          <Route path="/calendar/:id" element={<Calendar/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
@@ -121,6 +128,10 @@ function App() {
          <Route path="/student-assignment-sessions" element={<AssigmentSessionBoard/>}/>
          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
+         <Route path="/MatchForm" element={<MatchForm/>}/>
+         <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
+         <Route path="/SessionsEnabled" element={<SessionsEnabled/>}/>
+
         
          <Route path="*" element={
          <main style={{ padding: "1rem" }}>

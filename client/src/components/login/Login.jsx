@@ -12,6 +12,7 @@ import Input from '../Input/Input'
 import logo from '../assets/images/programate-fblanco.png'
 
 
+
 const Login = () => {
 
   
@@ -54,7 +55,7 @@ const Login = () => {
       )
       dispatch(dispatchLogin())
 
-      
+      const Validator = require("validator")
 
       
       navigate('/welcome-user')
