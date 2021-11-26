@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SchedulledSession from '../../../components/schedulledSessionCard/schedulledSessionCard'
-import Styles from './sessionsBoard.module.css'
+import Styles from './SessionsBoard.module.css'
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux'  

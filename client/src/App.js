@@ -10,7 +10,7 @@ import Login from './components/login/Login.jsx'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
-import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
+import StudentSession from './views/Student/SessionsBoard/sessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
