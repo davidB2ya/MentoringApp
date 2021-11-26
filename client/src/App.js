@@ -10,7 +10,7 @@ import Login from './components/login/Login.jsx'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
-import StudentSession from './views/Student/SessionsBoard/SessionsBoard.jsx';
+import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
 import NavBar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -20,8 +20,13 @@ import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
 import MatchForm from './views/Administrator/Match/MatchForm';
+import ListMentorstudent from './views/Administrator/Match/ListMentorstudent';
+import AsignedSessions from './views/Mentor/AsignedSessions/AsignedSessions';
+import FormMentor from './views/Mentor/FormMentor';
+import FinalMessage from './views/Mentor/AsignedSessions/FinalMessage.jsx';
 import Calendar from './components/Calendar/calendar';
-import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard.jsx';
+import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard';
+import WaitMessage from './components/Calendar/WaitMessage';
 
 
 
@@ -112,9 +117,8 @@ function App() {
          {/* others */}
          <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
-         <Route path="/thanks-student" element={<Thanks/>}/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/calendar/:id" element={<Calendar/>}/>
+         <Route path="/calendar" element={<Calendar/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
@@ -123,10 +127,11 @@ function App() {
          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
          <Route path="/MatchForm" element={<MatchForm/>}/>
-         {/* <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
+         <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
          <Route path="/AsignedSessions" element={<AsignedSessions/>}/>
          <Route path="/FormMentor" element={<FormMentor/>}/>
-         <Route path="/FinalMessage" element={<FinalMessage/>}/> */}
+         <Route path="/FinalMessage" element={<FinalMessage/>}/>
+         <Route path="/WaitMessage" element={<WaitMessage/>}/>
 
         
          <Route path="*" element={

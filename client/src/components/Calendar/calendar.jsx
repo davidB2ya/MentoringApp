@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import Select from 'react-select'
+import WaitMessage from './WaitMessage';
 
 const Calendar = () => {
   
@@ -101,7 +102,9 @@ const Calendar = () => {
 
   const NotMentAvail = () => {
     return (
-      <p >espere a que su mentor asigne unas posibles fechas</p>
+      <>
+      <WaitMessage ></WaitMessage>
+      </>
     )
   }
 

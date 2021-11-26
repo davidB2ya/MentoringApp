@@ -27,7 +27,7 @@ const FirstStudentInform = () => {
 
 	return (
 		<div>
-			<Navbar/>
+			
 			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 			<div className="advice">
 				{list.map((item) => (
@@ -50,7 +50,7 @@ const FirstStudentInform = () => {
 				</div>
 				))}
 			</div>
-		 <Footer/>
+		
         </div>
     )
 }
