@@ -58,7 +58,8 @@ const Login = () => {
 
 
       navigate('/welcome-user')
-    } catch (err) {
+    }
+    catch (err) {
       err.response.data.error &&
         setUser({ ...user, err: err.response.data.error, success: '' })
     }

@@ -8,15 +8,19 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Modal, Button, TextField } from '@material-ui/core';
 import Axios from 'axios';
 
+
+
+
+
+
 const Articles = [{
   Nombres: "Nombres",
   Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
+  Email: "Email",
+
+  /* Programa: "Programa ",
   AsignacióndeMentor: "Asignación de Mentor",
-  Estado: "Estado"
+  Estado: "Estado" */
 }]
 
 
@@ -98,7 +102,7 @@ const CrudStudents = () => {
 
   useEffect(() => {
     Axios({
-      url: 'http://localhost:5001/api/students/control'
+      url: 'http://localhost:3001/api/students/control'
     })
       .then(response => {
         setStudents(response.data)
@@ -111,16 +115,17 @@ const CrudStudents = () => {
 
 
 
+
   //function that inserts data into the database
 
-  /*const petitionPost = async () => {
-    await Axios.post(Database, SavedData)
+  const petitionPost = async () => {
+    await Axios.post('http://localhost:3001/api/students/control', { SavedData })
       .then(response => {
-        setData(data.concat(response.data),
+        setStudents(students.concat(response.students),
           openedClosedModalInsertar()
         )
       })
-  }*/
+  }
 
 
 
@@ -156,7 +161,7 @@ const CrudStudents = () => {
 
       <br /><br />
       <div align="right">
-        <Button className={Styles.Button} >Insertar</Button>
+        <Button className={Styles.Button} onClick={() => petitionPost()}>Insertar</Button>
         <Button className={Styles.Button} onClick={() => openedClosedModalInsertar()}>Cancelar</Button>
       </div>
     </div>
@@ -173,12 +178,11 @@ const CrudStudents = () => {
           <tr className={styles.column}>
             <th>{e.Nombres}</th>
             <th>{e.Apellidos}</th>
-            <th>{e.Edad}</th>
+            {/* <th>{e.Edad}</th>
             <th>{e.Género}</th>
-            <th>{e.Intereses}</th>
-            <th>{e.Programa}</th>
-            <th>{e.AsignacióndeMentor}</th>
-            <th>{e.Estado}</th>
+            <th>{e.Intereses}</th> */}
+            <th>{e.Email}</th>
+
             <th>Editar</th> <th>Eliminar</th> </tr>
         )
       })
@@ -188,10 +192,8 @@ const CrudStudents = () => {
             <tr className={styles.row}>
               <td className={styles.rowone}>{e.user_id.name}</td>
               <td className={styles.rowone}>{e.user_id.lastName}</td>
-
-              <td className={styles.rowone}>{e.user_id.role}</td>
               <td className={styles.rowone}>{e.user_id.email}</td>
-              <td className={styles.rowone}>{e.user_id.state}</td>
+
               <>
                 <td><button className={styles.update}><FontAwesomeIcon icon={faEdit} /></button></td>
                 <td><button className={styles.delete}><FontAwesomeIcon icon={faTrashAlt} /></button></td>
