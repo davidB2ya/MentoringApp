@@ -1,8 +1,10 @@
-import { useState } from 'react'
-import Styles from './matchform.css'
-import Card from '../../../components/Card/Card'
-import Select from 'react-select'
-import axios from 'axios'
+import { useState } from 'react';
+import Styles from './matchform.css';
+import Card from '../../../components/Card/Card';
+import Select from 'react-select';
+import axios from 'axios';
+import ListMentorstudent from './ListMentorstudent';
+
 
 const MatchForm = () => {
   // const [cohort, setCohort] = useState()
@@ -56,6 +58,8 @@ const MatchForm = () => {
       label: 'administración de empresas'
     }
   ]
+
+  
 
   // console.log(program)
   // console.log(cohort)
@@ -126,26 +130,30 @@ const MatchForm = () => {
     }
     return listMatches
   }
-  console.log(listMatches)
+  console.log(students)
 
 
   const ListStudentMentor = () => {
     return(
-      <div>
-          <div>
-            <h2>Lista de Estudiantes</h2>
+      <Card students={students}>
+         
+          <p>Aquí van los estudiantes</p>
+         
             {students.map(e => {
               return (
                 <tr >
                     <td>{e.user_id.name}</td>
                     <td>{e.user_id.lastName}</td>
                 </tr>
+                
               )
             })}
-          </div>
+          
+          
           <div>
-            <h2>Lista de Mentores</h2>
-            {mentors.map(e => {
+            
+          <h3>Lista de mentores</h3>
+          {mentors.map(e => {
               return (
                 <tr >
                     <td>{e.user_id.name}</td>
@@ -153,10 +161,15 @@ const MatchForm = () => {
                 </tr>
               )
             })}
-          </div>
-          {/* <button onClick={Match()}>Hacer Match</button> */}
+            
+            
+           
+            
+                    
+              </div>
+          <button onClick={Match()}>Hacer Match</button>
           
-      </div>
+      </Card>
     )
   }
   const ProgramAndCohort = () => {

@@ -32,6 +32,8 @@ import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
 import MatchForm from './views/Administrator/Match/MatchForm';
+import ListMentorstudent from './views/Administrator/Match/ListMentorstudent';
+import SessionsEnabled from './views/Mentor/SessionsEnabled';
 
 
 
@@ -130,6 +132,9 @@ function App() {
           <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
          <Route path="/MatchForm" element={<MatchForm/>}/>
+         <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
+         <Route path="/SessionsEnabled" element={<SessionsEnabled/>}/>
+
         
          <Route path="*" element={
          <main style={{ padding: "1rem" }}>
