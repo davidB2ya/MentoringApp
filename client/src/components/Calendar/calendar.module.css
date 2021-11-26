@@ -1,11 +1,11 @@
-body {
+/* body {
     background-color: gray;
     height: 2000vw;
     margin-left: 2vh;
-  }
+  } */
   
   .calendar {
-    background-color: #fefefe;
+    background-color: gray;
     border-radius: 18px;
     border: solid 2px #ffff;
     height: auto;

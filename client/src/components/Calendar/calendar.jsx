@@ -8,9 +8,10 @@ import { useSelector } from 'react-redux'
 
 
 const Calendar = () => {
-  const [equipo, setEquipo] = React.useState([])
+  const [mentorAvai, setMentorAvai] = React.useState([])
 
   const idStudent = useSelector(state => state.auth.user.id)
+  // console.log(idStudent)
 
   React.useEffect(() => {
     //console.log('useEffect')
@@ -19,14 +20,17 @@ const Calendar = () => {
 
   const obtenerDatos = async () => {
 
-    // const data = await axios.get('http://localhost:3001/api/mentor-availability/',{
-    //   idUser:
-    // })
+    const mentoAvailability = await axios.get('http://localhost:3001/api/mentor-availability/',{
+      idUser: idStudent
+    })
 
+    // console.log(mentoAvailability.data)
 
     // const Users = await data.json()
-    // console.log(data)
-    // setEquipo(Users)
+    
+    setMentorAvai(mentoAvailability.data)
+
+    console.log(mentorAvai)
   }
 
   return (
@@ -59,11 +63,11 @@ const Calendar = () => {
       </div>
       <div>
         <select className='select-date' placeholder='seleccione una fecha'>
-          {equipo.map(item => (
+          {/* {equipo.map(item => (
             <option key='item.id'>
               {item.name} - {item.email}
             </option>
-          ))}
+          ))} */}
         </select>
 
         <input
