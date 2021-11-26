@@ -20,6 +20,7 @@ import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
 import NavRes from './components/NavRes/NavRes';
+import Navbar from './components/Navbar/Navbar';
 // import MatchForm from './views/Administrator/Match/MatchForm';
 
 function App() {
@@ -104,7 +105,7 @@ function App() {
   
   return(
     <>
-      <NavRes></NavRes>
+      <Navbar></Navbar>
        <Routes>
          {/* login */}
          
