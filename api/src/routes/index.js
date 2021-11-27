@@ -85,6 +85,8 @@ router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
 
 router.use('/api/one/student', StudentsRouter.getOneStudentRouter)
 
+router.use('/api/assigned-mentor', StudentsRouter.getAssiMentorRouter)
+
 router.use('/api/students-control-post', StudentsRouter.postUserRouter)
 
 router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)

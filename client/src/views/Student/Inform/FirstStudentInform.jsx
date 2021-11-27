@@ -23,7 +23,7 @@ const FirstStudentInform = () => {
 		.catch((error) => {
 		console.log(error);
 		});
-	}, [setList]);
+	}, [setList, id]);
 
 	return (
 		<div>

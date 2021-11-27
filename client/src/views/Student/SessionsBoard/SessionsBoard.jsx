@@ -1,11 +1,10 @@
-
 import React, { useEffect, useState } from 'react'
 import SchedulledSession from '../../../components/schedulledSessionCard/schedulledSessionCard'
 import Styles from './SessionsBoard.module.css'
-import Axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector } from 'react-redux'  
-import NavRes from '../../../components/NavRes/NavRes';
+import Axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useSelector } from 'react-redux'
+import NavRes from '../../../components/NavRes/NavRes'
 function SessionsBoard () {
   const idStudent = useSelector(state => state.auth.user.id)
   const [sessions, setSessions] = useState([])
@@ -13,27 +12,26 @@ function SessionsBoard () {
   const studentProgram = useSelector(state => state.auth.user.program)
   // const { user }= auth
 
-   useEffect(() => {
-    //  const studentProgram = user.program
-     Axios.get(`http://localhost:3001/api/session/${studentProgram}`)
-   .then(res => {
-       const sessionsResult = res.data;
-       console.log(sessionsResult)
-       setSessions (sessionsResult)
-
-       if(sessionsResult.length > 0){
+  useEffect(
+    sessionsExist => {
+      //  const studentProgram = user.program
+      Axios.get(`http://localhost:3001/api/session/${studentProgram}`).then(
+        res => {
+          const sessionsResult = res.data
+          //  console.log(sessionsResult)
+          setSessions(sessionsResult)
+          if (sessionsResult.length > 0) {
             //  console.log("esta entrando al if")
             // setSessions (sessionsResult)
             setSessionsExist(!sessionsExist)
-           }else{
+          } else {
             setSessionsExist(sessionsExist)
-           }
-       
-      
-      })
-
-  }, [studentProgram])
-  
+          }
+        }
+      )
+    },
+    [studentProgram]
+  )
 
   // function checkSessions (){
   //   if(sessions.length > 0){
@@ -50,7 +48,6 @@ function SessionsBoard () {
   const SessionExist = () => {
     return (
       <div>
-        
         <div className={Styles.board}>
           {sessions.map(session => (
             <SchedulledSession
@@ -62,7 +59,6 @@ function SessionsBoard () {
             ></SchedulledSession>
           ))}
         </div>
-        
       </div>
     )
   }
@@ -70,19 +66,12 @@ function SessionsBoard () {
   const SessionNotExists = () => {
     return (
       <>
-      <p></p>
+        <p></p>
       </>
     )
   }
-  
-  
-  return (
-    <>
-      
-      {sessionsExist ? <SessionExist/> : <SessionNotExists/>}
-      
-    </>
-  )
+
+  return <>{sessionsExist ? <SessionExist /> : <SessionNotExists />}</>
 }
 
 export default SessionsBoard
