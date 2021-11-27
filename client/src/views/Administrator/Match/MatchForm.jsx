@@ -1,41 +1,3 @@
-<<<<<<< HEAD
-import { useEffect, useRef, useState } from 'react'
-import Styles from './matchform.css'
-import Card from '../../../components/Card/Card'
-// import Select from 'react-select'
-import axios from 'axios'
-import Multiselect from 'multiselect-react-dropdown'
-
-const MatchForm = () => {
-  // const [value, setValue] = useState(null)
-  // const onDropdownCange = value => {
-  //   setValue(value)
-  // }
-  const [data, setData] = useState([])
-  const save = []
-  // const [dataselec, setDataselect]=useState([]);
-  /*const petitionGet=async()=>{
-        await axios.get("http://localhost:3001/api/profile-edit")
-         .then(response=>{
-             console.log(response.data)
-           
-         })   
-         
-       }*/
-
-  useEffect(() => {
-    axios({
-      url: 'http://localhost:3001/api/profile-edit'
-    })
-      .then(response => {
-        setData(response.data)
-        //  console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [setData])
-=======
 import { useState } from 'react';
 import Styles from './matchform.css';
 import Card from '../../../components/Card/Card';
@@ -52,19 +14,18 @@ const MatchForm = () => {
   const [students, setStudents] = useState([])
   const [mentors, setMentors] = useState([])
   const [chosenProgram, setChosenProgram] = useState(false)
->>>>>>> 813c47b6f06a9b253554aa42bb34b40ce035f1ba
 
   const handleTypeSelect = e => {
     // const cohortChoice = e.value
     // console.log (cohortChoice)
     // setCohort(e.label);
-    cohort= e.label
+    cohort = e.label
     console.log(cohort)
   };
 
   const handleSelectPrograms = i => {
     // setProgram(i.label);
-    program= i.label
+    program = i.label
     console.log(program)
   };
 
@@ -98,13 +59,13 @@ const MatchForm = () => {
     }
   ]
 
-  
+
 
   // console.log(program)
   // console.log(cohort)
 
-  
-  
+
+
   const getValuesFinal = async () => {
     // console.log("la corte es"+cohort)
     // console.log("el programa es"+program)
@@ -144,8 +105,8 @@ const MatchForm = () => {
   const match = []
   const listMatches = []
   let resultInterest = 0
-  
-  function Match () {
+
+  function Match() {
     for (let est = 0; est < students.length; est++) {
       for (let m = 0; m < mentors.length; m++) {
         while (mentors[m].studentAssignment.length < mentors[m].numeStudents) {
@@ -173,46 +134,46 @@ const MatchForm = () => {
 
 
   const ListStudentMentor = () => {
-    return(
+    return (
       <Card students={students}>
-         
-          <p>Aquí van los estudiantes</p>
-         
-            {students.map(e => {
-              return (
-                <tr >
-                    <td>{e.user_id.name}</td>
-                    <td>{e.user_id.lastName}</td>
-                </tr>
-                
-              )
-            })}
-          
-          
-          <div>
-            
+
+        <p>Aquí van los estudiantes</p>
+
+        {students.map(e => {
+          return (
+            <tr >
+              <td>{e.user_id.name}</td>
+              <td>{e.user_id.lastName}</td>
+            </tr>
+
+          )
+        })}
+
+
+        <div>
+
           <h3>Lista de mentores</h3>
           {mentors.map(e => {
-              return (
-                <tr >
-                    <td>{e.user_id.name}</td>
-                    <td>{e.user_id.lastName}</td>
-                </tr>
-              )
-            })}
-            
-            
-           
-            
-                    
-              </div>
-          <button onClick={Match()}>Hacer Match</button>
-          
+            return (
+              <tr >
+                <td>{e.user_id.name}</td>
+                <td>{e.user_id.lastName}</td>
+              </tr>
+            )
+          })}
+
+
+
+
+
+        </div>
+        <button onClick={Match()}>Hacer Match</button>
+
       </Card>
     )
   }
   const ProgramAndCohort = () => {
-   
+
     return (
       <div className={Styles.contenedor}>
         <div className={Styles.heder}></div>

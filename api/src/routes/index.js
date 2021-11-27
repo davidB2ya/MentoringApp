@@ -48,7 +48,8 @@ router.use('/api/mentorViewStudent', ViewStudentRouter.ViewStudentRouter)
 
 router.use('/api/questionFormRouter', ViewStudentRouter.QuestionFormRouter)
 
-router.use('/api/mentorControl', MentorControlRouter)
+router.use('/api/mentorControl', MentorControlRouter.MentorControlRouter)
+router.use('/api/formControl', MentorControlRouter.MentorFormRouter)
 
 router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
@@ -57,13 +58,6 @@ router.use('/api/assignedDate', assignedDateRouter)
 router.use('/api/confirmDate', ConfirmDateRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
-
-
-
-
-
-
-
 
 // brings all enabled sessions and those that coincide with the student's program
 router.use('/api/session', sessionRouter)
@@ -102,19 +96,9 @@ router.use(
 
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
-<<<<<<< HEAD
-
-
-//others
-=======
 // others
->>>>>>> 813c47b6f06a9b253554aa42bb34b40ce035f1ba
-
 
 // students controller
-
-
-
 
 // end
 
@@ -132,13 +116,9 @@ router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)
 
-<<<<<<< HEAD
 router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
 module.exports = router
 router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
-=======
-// router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
->>>>>>> 813c47b6f06a9b253554aa42bb34b40ce035f1ba
 
 router.use('/api/profile-edit', profilEditRouter.profilEditRouter)
 
@@ -150,10 +130,7 @@ router.use(
 router.use('/api/notif-mentor', notifMentorRouter)
 
 router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
-<<<<<<< HEAD
-=======
 
 router.use('/api/match', matchRouter.assignedRouter)
 
->>>>>>> 813c47b6f06a9b253554aa42bb34b40ce035f1ba
 module.exports = router

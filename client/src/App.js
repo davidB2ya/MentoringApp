@@ -19,15 +19,11 @@ import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
 import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
 import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
 import PrincipalView from './views/Principal/PrincipalView';
-<<<<<<< HEAD
-// import MatchForm from './views/Administrator/Match/MatchForm';
-import Calendar from './components/Calendar/calendar';
-import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard.jsx';
-=======
 import MatchForm from './views/Administrator/Match/MatchForm';
 import ListMentorstudent from './views/Administrator/Match/ListMentorstudent';
 import SessionsEnabled from './views/Mentor/SessionsEnabled';
->>>>>>> 813c47b6f06a9b253554aa42bb34b40ce035f1ba
+import SessionesMentor from './views/Mentor/FormMentor';
+
 
 
 
@@ -111,23 +107,28 @@ function App() {
   return (
     <>
       <NavBar></NavBar>
-<<<<<<< HEAD
       <Routes>
-        <Route path='/' element={isLogged ? <PrincipalView /> : <Login />} exact />
+        {/* login */}
+
+        <Route path='/login' element={isLogged ? <WelcomeUser /> : <Login />} exact />
         <Route path='/forgot_password' element={isLogged ? <WelcomeUser /> : <ForgotPassword />} exact />
 
         {/* others */}
-        <Route path="/principal-view" element={<PrincipalView />} />
-        <Route path="/welcome-user" element={interest ? <Thanks /> : <MultipleChoice />} />
+        <Route path="/" element={<PrincipalView />} />
+        <Route path="/welcome-user" element={interest ? <WelcomeUser /> : <MultipleChoice />} />
         <Route path="/welcome-student" element={<WelcomeStudent />} />
-        <Route path="/calendar" element={<Calendar />} />
         <Route path="/form-student/:id" element={<FirstStudentForm />} />
-        {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
+        <Route path="/thanks-student" element={<Thanks />} />
         <Route path="/inform-student/:id" element={<FirstStudentInform />} />
         <Route path="/student-sessions" element={<StudentSession />} />
-        <Route path="/student-assignment-sessions" element={<AssigmentSessionBoard />} />
         <Route path="/MultipleChoice" element={<MultipleChoice />} />
         <Route path="/CrudStudents" element={<CrudStudents />} />
+        <Route path="/MatchForm" element={<MatchForm />} />
+        <Route path="/ListMentorstudent" element={<ListMentorstudent />} />
+        <Route path="/SessionsEnabled" element={<SessionsEnabled />} />
+        <Route path="/SessionesMentor" element={<SessionesMentor />} />
+
+
 
         <Route path="*" element={
           <main style={{ padding: "1rem" }}>
@@ -140,40 +141,6 @@ function App() {
       </Routes>
 
       <Footer></Footer>
-=======
-       <Routes>
-         {/* login */}
-         
-         <Route path= '/login' element={ isLogged ? <WelcomeUser/> :<Login/>} exact/>
-        <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
- 
-         {/* others */}
-         <Route path="/" element={<PrincipalView/>}/>
-         <Route path="/welcome-user" element={interest ? <WelcomeUser/> : <MultipleChoice/> }/>
-         <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
-         <Route path="/thanks-student" element={<Thanks/>}/>
-         <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
-         <Route path="/student-sessions" element={<StudentSession/>}/>   
-          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
-         <Route path="/CrudStudents" element={<CrudStudents/>}/>
-         <Route path="/MatchForm" element={<MatchForm/>}/>
-         <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
-         <Route path="/SessionsEnabled" element={<SessionsEnabled/>}/>
-
-        
-         <Route path="*" element={
-         <main style={{ padding: "1rem" }}>
-           <p>There's nothing here!</p>
-         </main>
-         }/>
- 
- 
-  
-       </Routes>
-       
-       <Footer></Footer>
->>>>>>> 813c47b6f06a9b253554aa42bb34b40ce035f1ba
     </>
 
 
