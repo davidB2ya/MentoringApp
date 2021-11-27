@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { showErrMsg, showSuccessMsg } from '../notification/Notification'
 import { dispatchLogin } from '../../redux/actions/authActions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './login.css'
 import Input from '../Input/Input'
 import logo from '../assets/images/programate-fblanco.png'
@@ -17,7 +17,7 @@ const Login = () => {
     success: ''
   })
 
-  // const [state, setstate] = useState(initialState)
+    // const [state, setstate] = useState(initialState)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -25,6 +25,9 @@ const Login = () => {
   const { email, password, err, success } = user
   /*   console.log(user)
    */
+  const auth = useSelector(state => state.auth)
+  // save isL0gged from auth
+  const { isLogged } = auth
 
   const handleChangeInput = e => {
     const { name, value } = e.target
@@ -45,7 +48,8 @@ const Login = () => {
       window.localStorage.setItem('loggedOkhlosUser', JSON.stringify(res.data))
       dispatch(dispatchLogin())
 
-  
+      
+    
    navigate('/welcome-user')
     } catch (err) {
       err.response.data.error &&

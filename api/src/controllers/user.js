@@ -38,9 +38,9 @@ loginRouter.post('/', async (req, res) => {
     const isMatch =
       user === null ? false : await bcrypt.compare(password, user.password)
     if (!isMatch) {
-       return res.status(401).json({
+      return res.status(401).json({
         error: 'Invalid password or user'
-        })
+      })
     }
 
     const refresh_token = createRefreshToken({ id: user._id })
@@ -64,7 +64,6 @@ forgotPassRouter.post('/', async (req, res) => {
 
     const access_token = createAccessToken({ id: user._id })
     const url = `${CLIENT_URL}/user/reset/${access_token}`
-
 
     sendMail(email, url, 'Reset your password')
     res.json({ msg: 'Re-send the password, please check your email.' })
@@ -149,8 +148,7 @@ registerRouter.post('/', async (req, res) => {
 
     const user = await User.findOne({ email })
 
-    if
-(user) return res.status(400).json({ msg: 'This email already exists.' })
+    if (user) return res.status(400).json({ msg: 'This email already exists.' })
 
     if (password.length < 6)
       return res
@@ -220,9 +218,8 @@ getAccessToken.post('/', async (req, res) => {
       res.json({ access_token })
     })
     // res.json({msg: 'ok'})
-  }
-  // pick up any error
-  catch (err) {
+  } catch (err) {
+    // pick up any error
     return res.status(500).json({ msg: err.message })
   }
 })

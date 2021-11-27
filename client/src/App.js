@@ -122,7 +122,7 @@ function App () {
 
         <Route
           path='/welcome-mentor'
-          element={isLogged ? <WelcomeMentor /> : <ForgotPassword />}
+          element={<WelcomeMentor />}
           exact
         />
 
