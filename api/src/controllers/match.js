@@ -54,6 +54,7 @@ assignedRouter.get('/mentor/:program/:cohort', async (req, res, next) => {
     cohorte: parseInt(req.params.cohort),
     program: req.params.program
   }
+  // console.log(user.cohorte)
   const mentorAvailable = await profile
     .find(
       {},
@@ -73,7 +74,6 @@ assignedRouter.get('/mentor/:program/:cohort', async (req, res, next) => {
     .populate('user_id')
   // console.log(mentorAvailable)
   const arrayMentorAvailable = []
-
   for (let m = 0; m < mentorAvailable.length; m++) {
     if (mentorAvailable[m].user_id.cohorte === user.cohorte &&
         mentorAvailable[m].user_id.role === 4 &&

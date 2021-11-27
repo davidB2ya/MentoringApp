@@ -13,12 +13,12 @@ const MatchForm = () => {
 
   const handleTypeSelect = e => {
     cohort= e.label
-    // console.log(cohort)
+    console.log(cohort)
   };
 
   const handleSelectPrograms = i => {
     program= i.label
-    // console.log(program)
+    console.log(program)
   };
 
   const cohorte = [
@@ -55,6 +55,7 @@ const MatchForm = () => {
     try {
       const res = await axios.get(`http://localhost:3001/api/match/students/${program}/${cohort}`)
       // console.log(res)
+      console.log(cohort)
       if (res.status === 200) {
         setStudents(res.data)
       }
@@ -83,6 +84,7 @@ const MatchForm = () => {
   let competencies = 0
   let gender = 0
   let total = 0
+  let count = 0
 
 function Interests (est, m) {
   let count = 0
@@ -155,9 +157,8 @@ function Gender (est, m) {
 }
 
   const Match = () => {
-    console.log("Hola David")
     for (let est = 0; est < students.length; est++) {
-      for (let m = 0; m < mentors.length; m++) {
+      for (let m = count ; m < mentors.length; m++) {
           // Interests the student and mentor
           resultInterest = Interests(est,m)
           console.log(resultInterest)
@@ -172,17 +173,20 @@ function Gender (est, m) {
           console.log(gender)
           // Total
           total = resultInterest + resultAge + competencies + gender
-          if (total > 60){
+          console.log("Total"+total)
+          console.log(students[est].user_id.name +"-"+ mentors[m].user_id.name)
+          if (total > 50){
             match.push({
               nameEstudent: students[est].user_id.name, 
               nameMentor : mentors[m].user_id.name
             })
+            count += 1
             break
           }
           // debugger
       }
     }
-    console.log("El listado es ")
+    console.log("El listado del Match")
     console.log(match)
   }
     
