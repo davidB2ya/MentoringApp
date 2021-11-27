@@ -98,7 +98,7 @@ function App() {
   useEffect(() => {
     if (idStudent) {
       axios
-        .get(`${baseUrl}/student-interest/${idStudent}`)
+        .get(`${baseUrl}/api/student-interest/${idStudent}`)
         .then(res => {
           const interest = res.data
           // console.log(interest)
