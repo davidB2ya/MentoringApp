@@ -12,7 +12,7 @@ import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
 import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
-import NavBar from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import FirstStudentForm from './views/Student/Form/FirstStudentForm';
 import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
@@ -106,7 +106,7 @@ function App() {
 
   return (
     <>
-      <NavBar></NavBar>
+      <Navbar></Navbar>
        <Routes>
          <Route path= '/' element={ isLogged ? <PrincipalView/> :<Login/>} exact/>
          <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>

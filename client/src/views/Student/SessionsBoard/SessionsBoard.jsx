@@ -4,7 +4,7 @@ import Styles from './SessionsBoard.module.css'
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux'  
-
+import NavRes from '../../../components/NavRes/NavRes';
 function SessionsBoard () {
   const idStudent = useSelector(state => state.auth.user.id)
   const [sessions, setSessions] = useState([])
@@ -38,7 +38,7 @@ function SessionsBoard () {
   function transformStringArray(){}
   return (
     <div>
-      
+      <NavRes/>
       <div className={Styles.board}>
         {sessions.map(session => (
           <SchedulledSession
