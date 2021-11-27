@@ -15,14 +15,14 @@ const Thanks = () => {
       .then(res => {
         const assignedMentor = res.data[0].assignedMentor;
         // console.log(assignedMentor)
-        if(assignedMentor.length > 0){
+        if(assignedMentor.toString() !== "Not assigned"){
           // console.log("entra al if")
           navigate('/student-sessions')
         }
         
       })
     }
-  }, [idStudent])
+  }, [idStudent, navigate])
 
 
     return (

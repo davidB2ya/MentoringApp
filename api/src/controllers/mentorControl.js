@@ -4,6 +4,7 @@ const User = require('../db/models/User')
 const MentorControlRouter = require('express').Router()
 const MentorFormRouter = require('express').Router()
 
+<<<<<<< HEAD
 MentorControlRouter.get('/', async (req, res, next) => {
   try {
     const mentor = await Profile
@@ -24,6 +25,24 @@ MentorControlRouter.get('/', async (req, res, next) => {
   console.log('POST /api/mentorform')
   console.log(req.body)
   res.status(200).send({ message: 'se ha recibido' })
+=======
+MentorControlRouter.get('/', async (req, res) => {
+    const mentor = await profile.find(
+        {gender: 1}, 
+        {actualAge: 1}
+        // {degreeTitle: 1},
+        // {company: 1},
+        // {sons: 1},
+        // {interestsMentor: 1}
+        ).populate('user_id', { 
+            name: 1, 
+            lastName: 1, 
+            program: 1  
+        })
+      res.json(mentor)
+    
+  })
+>>>>>>> cd84e5778cd96f5448d9712770921c0f636cf0f7
 
   const mentorform = new Profile()
   mentorform.gender = req.body.gender
@@ -44,6 +63,7 @@ MentorControlRouter.get('/', async (req, res, next) => {
 MentorFormRouter.post('/:id', (req, res) => {
   const body = req.body
 
+<<<<<<< HEAD
   User.updateOne(
     { _id: req.params.id },
     {
@@ -86,3 +106,5 @@ module.exports = { MentorControlRouter, MentorFormRouter }
 ○ Intereses
 ○ Programa
 ○ Asignación de Estudiante(s) */
+=======
+>>>>>>> cd84e5778cd96f5448d9712770921c0f636cf0f7
