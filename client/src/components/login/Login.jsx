@@ -54,8 +54,8 @@ const Login = () => {
   return (
     <div className='container-login-main'>
       <div className='container-login-page'>
-      <img className='logo' src={logo} alt='logo-programate' />
-      <h2>Ingresa a Okhlos</h2>
+      <img className='logoLogin' src={logo} alt='logo-programate' />
+      <h2 className="loginTitle">Ingresa a Okhlos</h2>
       {err && showErrMsg(err)}
       {success && showSuccessMsg(success)}
 
