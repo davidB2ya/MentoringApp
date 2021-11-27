@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import Select from 'react-select'
+import WaitMessage from './WaitMessage';
 
 const Calendar = () => {
   
@@ -35,10 +36,10 @@ const Calendar = () => {
       console.log(error)
       })
     }
-  }, [idStudent])
+  }, [idStudent, id])
 
 
-  console.log(dateFilledOut)
+  // console.log(dateFilledOut)
 
   useEffect(() => {
     axios.get(`http://localhost:3001/api/mentor-availability/${id}/${idStudent}`).then((response) => {
@@ -82,7 +83,7 @@ const Calendar = () => {
     setDateSelect(dateSelect.value)
   }
 
-  console.log(dateSelect)
+  // console.log(dateSelect)
   
 
   const handleUpdateDate = () => {
@@ -145,7 +146,9 @@ const Calendar = () => {
 
   const NotMentAvail = () => {
     return (
-      <p >espere a que su mentor asigne unas posibles fechas</p>
+      <>
+      <WaitMessage header={"¡Muy pronto podras agendar la sesión!"} message={"Espera a que tu mentor asigne las posibles fechas para la sesión"}></WaitMessage>
+      </>
     )
   }
 

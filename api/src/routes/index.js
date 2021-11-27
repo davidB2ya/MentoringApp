@@ -35,11 +35,21 @@ const profilEditRouter = require('../controllers/profilEdit')
 
 const notifMentorRouter = require('../controllers/notif-mentor')
 
+const matchRouter = require('../controllers/match')
+
 const router = Router()
 
 router.use('/api/formStudent', FormStudentRouter.FormStudentRouter)
 
 router.use('/api/answerform', FormStudentRouter.AnswerFormRouter)
+
+router.use('/api/formSession', FormStudentRouter.FormSessionRouter)
+
+router.use('/api/new/formSession', FormStudentRouter.FormSessionRouterPost)
+
+// 6197ce26f88d38494783ab98
+
+// 619b119ab7d52e9ae48a916e
 
 router.use('/api/votingCapsules', VotingCapsulesRouter.VotingCapsulesRouter)
 
@@ -56,13 +66,6 @@ router.use('/api/assignedDate', assignedDateRouter)
 router.use('/api/confirmDate', ConfirmDateRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
-
-
-
-
-
-
-
 
 // brings all enabled sessions and those that coincide with the student's program
 router.use('/api/session', sessionRouter)
@@ -84,6 +87,9 @@ router.use('/api/activation', userRouter.activateEmailRouter)
 //
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
+// formRouter
+
+
 // InterestStudent
 
 router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
@@ -103,16 +109,8 @@ router.use(
 
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
-
-
-//others
-
-
+// others //
 // students controller
-
-
-
-
 // end
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)
@@ -131,7 +129,7 @@ router.use('/api/dashboard/all/assigned-session', dashBoardRouter.allAssigSessio
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)
 
-router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
+// router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
 
 router.use('/api/profile-edit', profilEditRouter.profilEditRouter)
 
@@ -143,4 +141,7 @@ router.use(
 router.use('/api/notif-mentor', notifMentorRouter)
 
 router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
+
+router.use('/api/match', matchRouter.assignedRouter)
+
 module.exports = router

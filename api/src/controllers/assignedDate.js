@@ -2,7 +2,7 @@ const assignedDateRouter = require('express').Router()
 const Assignedsession = require('../db/models/AssignedSession')
 
 // update the dateAsinada document of the session Assigned collection
-assignedDateRouter.post('/', async(req, res) => {
+assignedDateRouter.post('/', async (req, res) => {
   const AssignedDate = {
     idSession: req.body.idSession,
     idStudent: req.body.idStudent,
@@ -18,7 +18,7 @@ assignedDateRouter.post('/', async(req, res) => {
     dateAsig: AssignedDate.dateAsig,
     link: AssignedDate.link
   })
-  res.json("se agendo la sesion")
+  res.json('se agendo la sesion')
 })
 
 // method put link session of the session Assigned collection
