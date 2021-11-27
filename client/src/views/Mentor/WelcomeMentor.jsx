@@ -1,7 +1,31 @@
 import '../Mentor/welcomeMentor.css'
-import React from 'react'
+import React, { useState, useEffect, useSelector} from "react";
+import axios from 'axios'
+
+
+
 
 const WelcomeMentor= () => {
+  const auth = useSelector(state => state.auth.user.role)
+  
+  const [mentor, setMentor] = useState(false)
+
+  useEffect (() => {
+  axios({
+    url: `/welcome-mentor/`,
+  })
+  .then((response) => {
+    setMentor(response.data);
+
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}, [mentor]);
+
+
+
   return (
     <div className='Welcome'>
       <h2>Estimado Mentor(a)</h2>

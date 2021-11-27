@@ -8,6 +8,7 @@ import './login.css'
 import Input from '../Input/Input'
 import logo from '../assets/images/programate-fblanco.png'
 
+
 const Login = () => {
   //Inicializo hooks
   const [user, setUser] = useState({
@@ -17,7 +18,7 @@ const Login = () => {
     success: ''
   })
 
-    // const [state, setstate] = useState(initialState)
+  // const [state, setstate] = useState(initialState)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -25,9 +26,28 @@ const Login = () => {
   const { email, password, err, success } = user
   /*   console.log(user)
    */
-  const auth = useSelector(state => state.auth)
+  // const auth = useSelector(state => state.auth)
+  
   // save isL0gged from auth
-  const { isLogged } = auth
+
+  // const { isAdmin } = auth
+
+  // console.log(isAdmin)
+
+  // const [mentor, setMentor] = useState(false)
+
+  // const Mentor = () => {
+  // if(role= 4){
+  //   setMentor(true)
+
+  // }
+  // let mentor = false
+  // const Mentor = () => {
+  //   if (!isStudent & !isAdmin) {
+  //     setMentor = true
+  //     // setMentor(!mentor)
+  //     // console.log(mentor)
+  //   }
 
   const handleChangeInput = e => {
     const { name, value } = e.target
@@ -46,11 +66,17 @@ const Login = () => {
       setUser({ ...user, err: '', success: res.data.msg })
       window.localStorage.setItem('firstLogin', true)
       window.localStorage.setItem('loggedOkhlosUser', JSON.stringify(res.data))
+
       dispatch(dispatchLogin())
 
-      
-    
-   navigate('/welcome-user')
+      // Mentor()
+
+      // if ({ role: 4 }) {
+      //   ;<WelcomeMentor />
+      // } else {
+      //   ;<WelcomeStudent />
+      // }
+      navigate('/welcome-student')
     } catch (err) {
       err.response.data.error &&
         setUser({ ...user, err: err.response.data.error, success: '' })
@@ -62,6 +88,7 @@ const Login = () => {
       <div className='container-login-page'>
         <img className='logo' src={logo} alt='logo-programate' />
         <h2>Ingresa a Okhlos</h2>
+
         {err && showErrMsg(err)}
         {success && showSuccessMsg(success)}
 

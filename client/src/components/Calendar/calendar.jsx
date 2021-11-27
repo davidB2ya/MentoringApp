@@ -11,11 +11,34 @@ const Calendar = () => {
   const [date, setDate] = useState([])
   const [avaiDates, setAvaiDates] = useState([])
   const [dateSelect, setDateSelect] = useState()
+  const [assiMentor, setAssiMentor] = useState()
+  const [dateFilledOut, setDateFilledOut] = useState(false)
 
   const idStudent = useSelector(state => state.auth.user.id)
   // console.log(idStudent)
 
+  const navigate = useNavigate() 
+
   let { id } = useParams();
+
+  useEffect(() => {
+    if(idStudent){
+      axios.get(`http://localhost:3001/api/dashboard/assigned-session/${idStudent}/${id}`)
+      .then(response => {
+        // setSessions(response.data)
+        if(response.data.length > 0){
+          setDateFilledOut(true)
+        }
+      
+      })
+      .catch(error => {
+      console.log(error)
+      })
+    }
+  }, [idStudent])
+
+
+  console.log(dateFilledOut)
 
   useEffect(() => {
     axios.get(`http://localhost:3001/api/mentor-availability/${id}/${idStudent}`).then((response) => {
@@ -26,9 +49,20 @@ const Calendar = () => {
       }
       
     })
-  }, [])
+  }, [id, idStudent])
 
-  console.log(date)
+  useEffect(() => {
+    // console.log(idStudent)
+    if(idStudent){
+      axios.get(`http://localhost:3001/api/assigned-mentor/${idStudent}`).then((response) => {
+      // setDate(response.data)
+        setAssiMentor(response.data[0].assignedMentor)
+      })
+    }
+  }, [idStudent])
+  // console.log(date)
+
+  // console.log(assiMentor)
 
   const saveAvaiDates = []
 
@@ -52,14 +86,24 @@ const Calendar = () => {
   
 
   const handleUpdateDate = () => {
-    // axios
-    // .post('http://localhost:3001/api/assignedDate',{
-    //   "idSession": "6197ce26f88d38494783ab98",
-    // "idStudent": "619b119ab7d52e9ae48a916e",
-    // "idMentor": "6195814646ac4b76e0e660c5",
-    // "dateAsig": "2020-08-27T04:00:00.000Z",
-    // "link": "este es un usuario de prueba"
-    // })
+    if(dateFilledOut){
+      alert("la fecha ya fue asignada")
+    }else if(!dateSelect){
+      alert("debe seleccionar una fecha")
+    }
+    else{
+      axios
+        .post('http://localhost:3001/api/assignedDate',{
+        idSession: id,
+        idStudent: idStudent,
+        idMentor: assiMentor,
+        dateAsig: dateSelect,
+        link: "http://meet.google.com/new"
+      }).then(
+        navigate('/student-assignment-sessions')
+      )
+    }
+    
   }
    
 

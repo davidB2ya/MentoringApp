@@ -92,6 +92,8 @@ router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
 
 router.use('/api/one/student', StudentsRouter.getOneStudentRouter)
 
+router.use('/api/assigned-mentor', StudentsRouter.getAssiMentorRouter)
+
 router.use('/api/students-control-post', StudentsRouter.postUserRouter)
 
 router.use('/api/students-control-update', StudentsRouter.updatedUserRouter)
@@ -122,7 +124,9 @@ router.use('/api/answerBank', answerBankRouter)
 router.use('/api/questionBank', questionBankRouter)
 
 //
-router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
+router.use('/api/dashboard/assigned-session', dashBoardRouter.assigSessionRouter)
+
+router.use('/api/dashboard/all/assigned-session', dashBoardRouter.allAssigSessionRouter)
 
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)

@@ -96,7 +96,7 @@ function App () {
         .get(`http://localhost:3001/api/student-interest/${idStudent}`)
         .then(res => {
           const interest = res.data
-          // console.log(interest)
+          console.log(interest)
           if (interest[0].interestsStudent.length > 0) {
             setInterest(true)
           }
