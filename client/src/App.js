@@ -48,6 +48,8 @@ function App() {
   const {isLogged} = auth
   // this useState is used to see if the student has already filled the interests
   const [interest, setInterest] = useState(false)
+  // url constant //
+  const baseUrl = 'http://localhost:3001/api'
  
   useEffect(()=> {
     // collects the value of loggedOkhlosUser from localStorage
@@ -64,7 +66,7 @@ function App() {
       
       const getToken = async () =>{
         // send the refreshToken to the backend path
-        const res = await axios.post('http://localhost:3001/api/refresh_token', {refreshtoken})
+        const res = await axios.post(`${baseUrl}/refresh_token`, {refreshtoken})
         // calls an action to trigger a state change
         dispatch({type:'GET_TOKEN', payload: res.data.access_token})
       }
@@ -96,7 +98,7 @@ function App() {
   useEffect(() => {
     if (idStudent) {
       axios
-        .get(`http://localhost:3001/api/student-interest/${idStudent}`)
+        .get(`${baseUrl}/student-interest/${idStudent}`)
         .then(res => {
           const interest = res.data
           // console.log(interest)
