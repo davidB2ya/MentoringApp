@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {/* useState*/ } from 'react';
 import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import Image from '../assets/images/programate-solo-color.png';
@@ -27,7 +27,7 @@ const Navbar = () => {
     //     transform: isLogged ? "translateY(-5px)" : 0
     // }
 
-    const [isOpen, setIsOpen] = useState(false);
+    //const [isOpen, setIsOpen] = useState(false);
     return (
         <>
         
@@ -46,7 +46,7 @@ const Navbar = () => {
                 logout
             </Link> 
         </div> */}
-     <nav className= "main-nav" navbar-collapse>
+     <nav className= "main-nav navbar-collapse" >
          
         </nav>
         

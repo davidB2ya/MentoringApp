@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import AssignmentCard from '../../../components/schedulledSessionCard/AssignmentCard'
+// import AssignmentCard from '../../../components/schedulledSessionCard/AssignmentCard'
 import Styles from './SessionsBoard.module.css'
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';

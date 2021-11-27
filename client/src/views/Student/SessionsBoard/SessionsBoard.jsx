@@ -4,9 +4,10 @@ import Styles from './SessionsBoard.module.css'
 import Axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector } from 'react-redux'
-import NavRes from '../../../components/NavRes/NavRes'
+// import NavRes from '../../../components/NavRes/NavRes'
+
 function SessionsBoard () {
-  const idStudent = useSelector(state => state.auth.user.id)
+  // const idStudent = useSelector(state => state.auth.user.id)
   const [sessions, setSessions] = useState([])
   const [sessionsExist, setSessionsExist] = useState(false)
   const studentProgram = useSelector(state => state.auth.user.program)
