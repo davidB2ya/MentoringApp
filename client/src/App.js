@@ -66,7 +66,7 @@ function App() {
       
       const getToken = async () =>{
         // send the refreshToken to the backend path
-        const res = await axios.post(`${baseUrl}/refresh_token`, {refreshtoken})
+        const res = await axios.post(`${baseUrl}/api/refresh_token`, {refreshtoken})
         // calls an action to trigger a state change
         dispatch({type:'GET_TOKEN', payload: res.data.access_token})
       }
