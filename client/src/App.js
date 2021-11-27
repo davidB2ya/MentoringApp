@@ -26,6 +26,9 @@ import FormMentor from './views/Mentor/FormMentor';
 import FinalMessage from './views/Mentor/AsignedSessions/FinalMessage.jsx';
 import Calendar from './components/Calendar/calendar';
 import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard';
+import WaitMessage from './components/Calendar/WaitMessage';
+
+
 
 
 
@@ -114,9 +117,8 @@ function App() {
          {/* others */}
          <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
-         <Route path="/thanks-student" element={<Thanks/>}/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/calendar/:id" element={<Calendar/>}/>
+         <Route path="/calendar" element={<Calendar/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
@@ -129,6 +131,7 @@ function App() {
          <Route path="/AsignedSessions" element={<AsignedSessions/>}/>
          <Route path="/FormMentor" element={<FormMentor/>}/>
          <Route path="/FinalMessage" element={<FinalMessage/>}/>
+         <Route path="/WaitMessage" element={<WaitMessage/>}/>
 
         
          <Route path="*" element={

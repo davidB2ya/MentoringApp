@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import SchedulledSession from '../../../components/schedulledSessionCard/schedulledSessionCard'
 import Styles from './SessionsBoard.module.css'
@@ -8,49 +9,79 @@ import NavRes from '../../../components/NavRes/NavRes';
 function SessionsBoard () {
   const idStudent = useSelector(state => state.auth.user.id)
   const [sessions, setSessions] = useState([])
+  const [sessionsExist, setSessionsExist] = useState(false)
+  const studentProgram = useSelector(state => state.auth.user.program)
+  // const { user }= auth
 
-//   useEffect(() => {
-//     axios.get('http://localhost:3001/api/session').then(res => {
-//       const sessionsGet = res.data
-//       setSessions(sessionsGet)
-//     })
-//   })
+   useEffect(() => {
+    //  const studentProgram = user.program
+     Axios.get(`http://localhost:3001/api/session/${studentProgram}`)
+   .then(res => {
+       const sessionsResult = res.data;
+       console.log(sessionsResult)
+       setSessions (sessionsResult)
 
-  useEffect(() => {
-    Axios({
-      url: `http://localhost:3001/api/dashboard/assignedsession/${idStudent}`
-    })
-      .then(response => {
-        setSessions(response.data)
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [setSessions])
-
-  //   console.log(sessions)
-  // axios.get('http://localhost:3001/api/session')
-  // .then(res => {
-  //     const sessions = res.data;
-  //     console.log(sessions)
-  //   })
-  function transformStringArray(){}
-  return (
-    <div>
-      <NavRes/>
-      <div className={Styles.board}>
-        {sessions.map(session => (
-          <SchedulledSession
-            numSession={session.numSession}
-            sessionObjective={session.sessionObjective}
-            key={session.id}
-            id={session.id}
-          ></SchedulledSession>
-        ))}
-      </div>
+       if(sessionsResult.length > 0){
+            //  console.log("esta entrando al if")
+            // setSessions (sessionsResult)
+            setSessionsExist(!sessionsExist)
+           }else{
+            setSessionsExist(sessionsExist)
+           }
+       
       
-    </div>
+      })
+
+  }, [studentProgram])
+  
+
+  // function checkSessions (){
+  //   if(sessions.length > 0){
+  //     //  console.log("esta entrando al if")
+  //     // setSessions (sessionsResult)
+  //     setSessionsExist(!sessionsExist)
+  //    }else{
+  //     setSessionsExist(sessionsExist)
+  //    }
+  // }
+
+  // checkSessions
+
+  const SessionExist = () => {
+    return (
+      <div>
+        
+        <div className={Styles.board}>
+          {sessions.map(session => (
+            <SchedulledSession
+              numSession={session.numSession}
+              startDate={session.startDate}
+              key={session.id}
+              id={session.id}
+              endDate={session.endDate}
+            ></SchedulledSession>
+          ))}
+        </div>
+        
+      </div>
+    )
+  }
+
+  const SessionNotExists = () => {
+    return (
+      <>
+      <p></p>
+      </>
+    )
+  }
+  
+  
+  return (
+    <>
+      
+      {sessionsExist ? <SessionExist/> : <SessionNotExists/>}
+      
+    </>
   )
 }
 
