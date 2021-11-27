@@ -1,4 +1,4 @@
-import './welcome.css'
+import '../Mentor/welcomeMentor.css'
 import React from 'react'
 
 const WelcomeMentor= () => {

@@ -54,6 +54,7 @@ const PrincipalView = () => {
       <Link to="/welcome-user">| Página Bienvenida Usuario |</Link>
       <Link to="/welcome-student">| Página Bienvenida estudiante |</Link>
       <Link to="/welcome-mentor">| Página Bienvenida mentor |</Link>
+      <Link to="/form-mentor">| Página formulario mentor |</Link>
       <Link to="/student-profile-interests">| Perfil de estudiante |</Link>
       <Link to="/student-sessions">| Sesiones |</Link>
       <Link to="/AdminPanel">| admin |</Link>
