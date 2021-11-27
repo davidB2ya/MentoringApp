@@ -146,7 +146,7 @@ function App() {
   
        </Routes>
        
-       <Footer></Footer>
+       <Footer/>
     </>
     
 
