@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Styles from './MultipleChoice.module.css'
 import Card from '../../../components/Card/Card'
 import Select from 'react-select'
@@ -7,12 +7,15 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 const MultipleChoice = () => {
-  const [value, setValue] = useState(null)
-  const onDropdownCange = value => {
-    setValue(value)
-  }
+  // const [value, setValue] = useState(null)
+  
+  // const onDropdownCange = value => {
+  //   setValue(value)
+  // }
+  
   const [data, setData] = useState([])
   const save = []
+  // console.log(save)
   // const [dataselec, setDataselect]=useState([]);
   /*const petitionGet=async()=>{
         await axios.get("http://localhost:3001/api/profile-edit")
@@ -36,17 +39,65 @@ const MultipleChoice = () => {
       })
   }, [setData])
 
+  
+
+  // console.log(uniqueInterest);
+
   //function to transform API data from string to array
   function debugDat (data) {
-    data.map(interest => {
-      interest.interestsMentor.map((oneInterest, index) => {
-        return save.push({ value: oneInterest, label: oneInterest })
-      })
-    })
+    
+    data.forEach(interest => {
+      interest.interestsMentor.forEach((oneInterest, index) => {
+        save.push({ value: oneInterest, label: oneInterest })
+      })})
   }
 
   debugDat(data)
 
+  
+
+  
+
+
+  function removeDuplicates(originalArray, prop) {
+    var newArray = [];
+    var lookupObject  = {};
+
+    for(var i in originalArray) {
+       lookupObject[originalArray[i][prop]] = originalArray[i];
+    }
+
+    for(i in lookupObject) {
+        newArray.push(lookupObject[i]);
+    }
+     return newArray;
+  }
+
+
+  const uniqueInterest = removeDuplicates(save, "value");
+
+  // console.log("intereses")
+  // console.log(save)
+  // console.log("intereses unicos")
+  // console.log(uniqueInterest)
+
+
+  // const saveUnique = () => {
+  //   for(let i = 0; i < save.length; i++){
+
+
+  //     const interest = save[i];
+
+  //     if (!uniqueInterest.includes(save[i])) {
+  //       uniqueInterest.push(interest);
+  //     }
+  //   }
+  // }
+
+  // saveUnique()
+
+  // console.log(uniqueInterest)
+  
   // const handleChange = (selectedOption) => {
 
   // }
@@ -59,10 +110,17 @@ const MultipleChoice = () => {
       setSelectedOption(e);
   };
 
-  const sendSelect = []
+  const sendSelect = selectedOption.map(option => (option.value));
+  
+  // const [notallInterest, setNotallInterest] = useState(true);
 
-  selectedOption.map(option => {sendSelect.push(option.value)});
-  // console.log(sendSelect)
+  // function allInterest (){
+  //   if(sendSelect.length == 3){
+  //     setNotallInterest(!notallInterest)
+  //   }
+  // }
+
+  // allInterest()
 
   const auth = useSelector(state => state.auth)
   // console.log(auth)
@@ -72,13 +130,18 @@ const MultipleChoice = () => {
   const navigate = useNavigate() 
 
   const handleUpdateInterest = () => {
-    const userinterestsStudent = sendSelect
-    // console.log(userinterestsStudent)
-    const idStudent = user.id
-    // console.log(idStudent)
-    axios
-    .post(`http://localhost:3001/api/studentsPerfil-control-update/${idStudent}`, { interestsStudent:userinterestsStudent})
-    navigate('/thanks-student')
+    if(sendSelect.length === 3){
+      const userinterestsStudent = sendSelect
+      // console.log(userinterestsStudent)
+      const idStudent = user.id
+      // console.log(idStudent)
+      axios
+      .post(`http://localhost:3001/api/studentsPerfil-control-update/${idStudent}`, { interestsStudent:userinterestsStudent})
+      navigate('/thanks-student')
+    }else{
+      alert('Please select 3 interest')
+    }
+    
   }
 
   return (
@@ -95,7 +158,7 @@ const MultipleChoice = () => {
 
             <Select
               name="interest"
-              options={selectedOption.length === maxOptions ? [] : save}
+              options={selectedOption.length === maxOptions ? [] : uniqueInterest}
               isMulti
               onChange={handleTypeSelect}
               
