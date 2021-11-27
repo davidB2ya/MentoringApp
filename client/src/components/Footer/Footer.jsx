@@ -11,15 +11,15 @@ import '../Footer/Footer.css'
 const Footer = () => {
   return (
     <section className="footer">
-    <hr className="footer-seperator" />
+    
     <section className="footer-social-media">
       
     <a href="https://www.facebook.com/somoseducamas" target="_blank" rel="noopener noreferrer">
-      <img className="facebook" src={Facebook} width="20px" height="20px" alt="Facebook"/></a>
+      <img className="logoSocialMedia" src={Facebook} width="20px" height="20px" alt="Facebook"/></a>
       <a href="https://www.instagram.com/programate_escueladecodigo/" target="_blank" rel="noopener noreferrer">
-      <img className="instagram"src={Instagram} width="20px" height="20px" alt="Instagram"/></a>
+      <img className="logoSocialMedia"src={Instagram} width="20px" height="20px" alt="Instagram"/></a>
       <a href="https://www.youtube.com/channel/UCmnr_sLPZ1E8H1VgUtaHGPQ" target="_blank" rel="noopener noreferrer">
-      <img className="youtube"src={Youtube} width="20px" height="20px" alt="Youtube"/></a>
+      <img className="logoSocialMedia"src={Youtube} width="20px" height="20px" alt="Youtube"/></a>
       
     </section>
     <section className="footer-info">

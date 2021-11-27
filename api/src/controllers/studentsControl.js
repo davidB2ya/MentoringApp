@@ -1,6 +1,8 @@
 const getAllStudentsRouter = require('express').Router()
 
-const getOneStudentRouter =  require('express').Router()
+const getOneStudentRouter = require('express').Router()
+
+const getAssiMentorRouter = require('express').Router()
 
 const postUserRouter = require('express').Router()
 
@@ -31,9 +33,8 @@ getAllStudentsRouter.get('/', async (req, res) => {
   res.json(getAllStudents)
 })
 
-
 getOneStudentRouter.get('/:id', async (req, res) => {
-  const getOneStudent = await Profile.find({user_id: req.params.id})
+  const getOneStudent = await Profile.find({ user_id: req.params.id })
     .populate('user_id', {
       name: 1,
       middleName: 1,
@@ -41,7 +42,13 @@ getOneStudentRouter.get('/:id', async (req, res) => {
       secondSurname: 1
     })
 
-    res.json(getOneStudent)
+  res.json(getOneStudent)
+})
+
+getAssiMentorRouter.get('/:id', async (req, res)=>{
+  const getAssiMentor = await Profile.find({ user_id: req.params.id }, {assignedMentor: 1})
+
+  res.json(getAssiMentor)
 })
 
 postUserRouter.post('/', async (req, res) => {
@@ -77,7 +84,7 @@ updatedUserRouter.post('/', (req, res) => {
   const body = req.body
 
   User.updateOne(
-    { _id: body._id },
+    { _id: body.id },
     {
       $set: {
         name: body.name,
@@ -163,6 +170,7 @@ getInterestStudent.get('/:id', async (req, res) => {
 module.exports = {
   getAllStudentsRouter,
   getOneStudentRouter,
+  getAssiMentorRouter,
   updatedUserRouter,
   postUserRouter,
   updatedProfileRouter,

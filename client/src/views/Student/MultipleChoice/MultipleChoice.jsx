@@ -56,8 +56,6 @@ const MultipleChoice = () => {
 
   
 
-  
-
 
   function removeDuplicates(originalArray, prop) {
     var newArray = [];
@@ -109,6 +107,8 @@ const MultipleChoice = () => {
   const handleTypeSelect = e => {
       setSelectedOption(e);
   };
+
+  // console.log(selectedOption)
 
   const sendSelect = selectedOption.map(option => (option.value));
   

@@ -12,7 +12,7 @@ import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
 import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
-import NavBar from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import FirstStudentForm from './views/Student/Form/FirstStudentForm';
 import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
@@ -48,6 +48,8 @@ function App() {
   const {isLogged} = auth
   // this useState is used to see if the student has already filled the interests
   const [interest, setInterest] = useState(false)
+  // url constant //
+  const baseUrl = 'http://localhost:3001/api'
  
   useEffect(()=> {
     // collects the value of loggedOkhlosUser from localStorage
@@ -64,7 +66,7 @@ function App() {
       
       const getToken = async () =>{
         // send the refreshToken to the backend path
-        const res = await axios.post('http://localhost:3001/api/refresh_token', {refreshtoken})
+        const res = await axios.post(`${baseUrl}/refresh_token`, {refreshtoken})
         // calls an action to trigger a state change
         dispatch({type:'GET_TOKEN', payload: res.data.access_token})
       }
@@ -96,7 +98,7 @@ function App() {
   useEffect(() => {
     if (idStudent) {
       axios
-        .get(`http://localhost:3001/api/student-interest/${idStudent}`)
+        .get(`${baseUrl}/student-interest/${idStudent}`)
         .then(res => {
           const interest = res.data
           // console.log(interest)
@@ -109,7 +111,7 @@ function App() {
 
   return (
     <>
-      <NavBar></NavBar>
+      <Navbar></Navbar>
        <Routes>
          <Route path= '/' element={ isLogged ? <PrincipalView/> :<Login/>} exact/>
          <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
@@ -144,7 +146,7 @@ function App() {
   
        </Routes>
        
-       <Footer></Footer>
+       <Footer/>
     </>
     
 

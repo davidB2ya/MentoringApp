@@ -1,18 +1,9 @@
 import React from 'react';
 import './waitmessage.css'
-import { useSelector } from 'react-redux'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+
+
 
 const WaitMessage = () => {
-
-  const idStudent = useSelector(state => state.auth.user.id)
-  const navigate = useNavigate() 
-  
-  
-        
-     
-
 
     return (
         <div> 

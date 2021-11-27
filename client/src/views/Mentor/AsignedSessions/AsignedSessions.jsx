@@ -13,6 +13,7 @@ function AsignedSessions () {
       <img
         className='photo'
         src='https://wp-growpro.s3-eu-west-1.amazonaws.com/media/2018/01/Visa-de-estudiante-Australia-5-buenas-razones-para-que-la-pidas.jpg'
+        alt="Foto"       
       ></img>
       <label>Email: </label>
       <p>{email}</p>

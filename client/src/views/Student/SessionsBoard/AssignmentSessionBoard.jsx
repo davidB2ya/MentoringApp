@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import AssignmentCard from '../../../components/schedulledSessionCard/AssignmentCard'
+// import AssignmentCard from '../../../components/schedulledSessionCard/AssignmentCard'
 import Styles from './SessionsBoard.module.css'
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,12 +16,12 @@ function SessionsBoard () {
     })
       .then(response => {
         setSessions(response.data)
-        // console.log(response.data);
+        console.log(response.data);
       })
       .catch(error => {
         console.log(error)
       })
-  }, [setSessions])
+  }, [setSessions, idStudent])
 
     console.log(sessions)
   
@@ -30,7 +30,7 @@ function SessionsBoard () {
     <div>
       
       <div className={Styles.board}>
-        {sessions.map(session => (
+        {/* {sessions.map(session => (
           <AssignmentCard
             numSession={session.idSession.numSession}
             dateAsig={session.dateAsig}
@@ -38,7 +38,7 @@ function SessionsBoard () {
             key={session.id}
             id={session.idSession.id}
           ></AssignmentCard>
-        ))}
+        ))} */}
       </div>
       
     </div>
