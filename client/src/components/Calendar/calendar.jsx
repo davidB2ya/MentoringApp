@@ -8,7 +8,7 @@ import Select from 'react-select'
 import WaitMessage from './WaitMessage';
 
 const Calendar = () => {
-  
+  const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
   const [date, setDate] = useState([])
   const [avaiDates, setAvaiDates] = useState([])
   const [dateSelect, setDateSelect] = useState()
@@ -29,7 +29,7 @@ const Calendar = () => {
   // }, [input])
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/mentor-availability/${id}/${idStudent}`).then((response) => {
+    axios.get(`${baseUrl}/api/mentor-availability/${id}/${idStudent}`).then((response) => {
       setDate(response.data)
       // console.log(response.data)
       if(response.data.length > 0){
@@ -42,7 +42,7 @@ const Calendar = () => {
   useEffect(() => {
     // console.log(idStudent)
     if(idStudent){
-      axios.get(`http://localhost:3001/api/assigned-mentor/${idStudent}`).then((response) => {
+      axios.get(`${baseUrl}/api/assigned-mentor/${idStudent}`).then((response) => {
       // setDate(response.data)
         setAssiMentor(response.data[0].assignedMentor)
       })
@@ -75,7 +75,7 @@ const Calendar = () => {
 
   const handleUpdateDate = () => {
     axios
-    .post('http://localhost:3001/api/assignedDate',{
+    .post(`${baseUrl}/api/assignedDate`,{
       idSession: id,
       idStudent: idStudent,
       idMentor: assiMentor,

@@ -11,6 +11,8 @@ const MatchForm = () => {
   const [mentors, setMentors] = useState([])
   const [chosenProgram, setChosenProgram] = useState(false)
 
+  const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
+
   const handleTypeSelect = e => {
     cohort= e.label
     console.log(cohort)
@@ -53,7 +55,7 @@ const MatchForm = () => {
 
   const getValuesFinal = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/api/match/students/${program}/${cohort}`)
+      const res = await axios.get(`${baseUrl}/api/match/students/${program}/${cohort}`)
       // console.log(res)
       console.log(cohort)
       if (res.status === 200) {
@@ -67,7 +69,7 @@ const MatchForm = () => {
 
   const getValuesMentor = async () => {
     try {
-      const resp = await axios.get(`http://localhost:3001/api/match/mentor/${program}/${cohort}`)
+      const resp = await axios.get(`${baseUrl}/api/match/mentor/${program}/${cohort}`)
       // console.log(resp)
       if (resp.status === 200) {
         setChosenProgram(true)

@@ -4,6 +4,7 @@ import { useParams } from "react-router"
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
 const FirstStudentInform = () => {
  
 	const [list, setList] = useState([]);
@@ -12,7 +13,7 @@ const FirstStudentInform = () => {
 
 	useEffect(() => {
 	Axios({
-		url: `http://localhost:3001/api/sessionReport/${id}`,
+		url: `${baseUrl}/api/sessionReport/${id}`,
 	})
 		.then((response) => {
 		setList(response.data);

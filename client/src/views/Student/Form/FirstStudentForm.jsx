@@ -6,7 +6,7 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux'
 
-
+const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
 const FirstStudentForm = () => {
 	
 	const [list, setList] = useState([]);
@@ -19,7 +19,7 @@ const FirstStudentForm = () => {
 
 	useEffect(() => {
 	  axios({
-			url: `http://localhost:3001/api/formStudent/${id}`,
+			url: `${baseUrl}/api/formStudent/${id}`,
 	  })
 		.then((response) => {
 		  setList(response.data);
@@ -78,7 +78,7 @@ const FirstStudentForm = () => {
 					answer : answerState[answer]
 				}
 	
-					await axios.post(`http://localhost:3001/api/answerBank`,{
+					await axios.post(`${baseUrl}/api/answerBank`,{
 					idSession: finalAnswer.idSession,
 					idUser: finalAnswer.idUser,
 					idQuestion: finalAnswer.idQuestion,
