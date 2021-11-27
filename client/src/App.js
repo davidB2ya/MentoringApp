@@ -49,7 +49,7 @@ function App() {
   // this useState is used to see if the student has already filled the interests
   const [interest, setInterest] = useState(false)
   // url constant //
-  const baseUrl = 'http://localhost:3001/api'
+  const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
  
   useEffect(()=> {
     // collects the value of loggedOkhlosUser from localStorage
