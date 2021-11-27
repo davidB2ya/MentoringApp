@@ -110,7 +110,7 @@ function App() {
       <Routes>
         {/* login */}
 
-        <Route path='/login' element={isLogged ? <WelcomeUser /> : <Login />} exact />
+        <Route path='/' element={isLogged ? <PrincipalView /> : <Login />} exact />
         <Route path='/forgot_password' element={isLogged ? <WelcomeUser /> : <ForgotPassword />} exact />
 
         {/* others */}
