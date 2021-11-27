@@ -57,7 +57,7 @@ const Navbar = () => {
 
         <header>
             <div className="logo">
-                <Link to="/"><img src={Image} alt="programate" /> </Link> 
+                <Link to="/"><img className="logoProgramate" src={Image} alt="programate" /> </Link> 
 
             </div>
             <ul className="unordedList">
