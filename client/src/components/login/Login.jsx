@@ -46,6 +46,7 @@ const Login = () => {
 
       navigate('/welcome-user')
     } catch (err) {
+      // console
       err.response.data.error &&
         setUser({ ...user, err: err.response.data.error, success: '' })
     }
@@ -61,7 +62,7 @@ const Login = () => {
 
         <form className='form' onSubmit={handleSubmit}>
           <div className='container-login-form-content'>
-            <label htmlFor='email'>Email Address</label>
+            {/* <label htmlFor='email'>Email Address</label> */}
             <Input
               label='Correo'
               placeholder='Luis@hotmail.com'

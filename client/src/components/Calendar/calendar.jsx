@@ -13,6 +13,7 @@ const Calendar = () => {
   const [avaiDates, setAvaiDates] = useState([])
   const [dateSelect, setDateSelect] = useState()
   const [assiMentor, setAssiMentor] = useState()
+  const [dateFilledOut, setDateFilledOut] = useState(false)
 
   const idStudent = useSelector(state => state.auth.user.id)
   // console.log(idStudent)
@@ -21,12 +22,24 @@ const Calendar = () => {
 
   let { id } = useParams();
 
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
+  useEffect(() => {
+    if(idStudent){
+      axios.get(`http://localhost:3001/api/dashboard/assigned-session/${idStudent}/${id}`)
+      .then(response => {
+        // setSessions(response.data)
+        if(response.data.length > 0){
+          setDateFilledOut(true)
+        }
+      
+      })
+      .catch(error => {
+      console.log(error)
+      })
+    }
+  }, [idStudent, id])
+
+
+  // console.log(dateFilledOut)
 
   useEffect(() => {
     axios.get(`http://localhost:3001/api/mentor-availability/${id}/${idStudent}`).then((response) => {
@@ -70,20 +83,28 @@ const Calendar = () => {
     setDateSelect(dateSelect.value)
   }
 
-  console.log(dateSelect)
+  // console.log(dateSelect)
   
 
   const handleUpdateDate = () => {
-    axios
-    .post('http://localhost:3001/api/assignedDate',{
-      idSession: id,
-      idStudent: idStudent,
-      idMentor: assiMentor,
-      dateAsig: dateSelect,
-      link: "url: http://meet.google.com/new"
-    }).then(
-      navigate('/student-assignment-sessions')
-    )
+    if(dateFilledOut){
+      alert("la fecha ya fue asignada")
+    }else if(!dateSelect){
+      alert("debe seleccionar una fecha")
+    }
+    else{
+      axios
+        .post('http://localhost:3001/api/assignedDate',{
+        idSession: id,
+        idStudent: idStudent,
+        idMentor: assiMentor,
+        dateAsig: dateSelect,
+        link: "http://meet.google.com/new"
+      }).then(
+        navigate('/student-assignment-sessions')
+      )
+    }
+    
   }
    
 
@@ -126,7 +147,7 @@ const Calendar = () => {
   const NotMentAvail = () => {
     return (
       <>
-      <WaitMessage ></WaitMessage>
+      <WaitMessage header={"¡Muy pronto podras agendar la sesión!"} message={"Espera a que tu mentor asigne las posibles fechas para la sesión"}></WaitMessage>
       </>
     )
   }

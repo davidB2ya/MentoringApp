@@ -119,8 +119,9 @@ function App() {
          {/* others */}
          <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
+         <Route path="/thanks-student" element={<Thanks/>}/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/calendar" element={<Calendar/>}/>
+         <Route path="/calendar/:id" element={<Calendar/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
