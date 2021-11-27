@@ -107,7 +107,6 @@ function App() {
   return (
     <>
       <NavBar></NavBar>
-<<<<<<< HEAD
       <Routes>
         {/* login */}
 
@@ -115,7 +114,7 @@ function App() {
         <Route path='/forgot_password' element={isLogged ? <WelcomeUser /> : <ForgotPassword />} exact />
 
         {/* others */}
-        <Route path="/" element={<PrincipalView />} />
+        <Route path="/" element={<Login />} />
         <Route path="/welcome-user" element={interest ? <WelcomeUser /> : <MultipleChoice />} />
         <Route path="/welcome-student" element={<WelcomeStudent />} />
         <Route path="/form-student/:id" element={<FirstStudentForm />} />
@@ -142,37 +141,6 @@ function App() {
       </Routes>
 
       <Footer></Footer>
-=======
-       <Routes>
-         <Route path= '/' element={ isLogged ? <PrincipalView/> :<Login/>} exact/>
-         <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
- 
-         {/* others */}
-         <Route path="/principal-view" element={<PrincipalView/>}/>
-         <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
-         <Route path="/thanks-student" element={<Thanks/>}/>
-         <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/calendar/:id" element={<Calendar/>}/>
-         <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
-         {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
-         <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
-         <Route path="/student-sessions" element={<StudentSession/>}/> 
-         <Route path="/student-assignment-sessions" element={<AssigmentSessionBoard/>}/>
-         <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
-         <Route path="/CrudStudents" element={<CrudStudents/>}/>
-        
-         <Route path="*" element={
-         <main style={{ padding: "1rem" }}>
-           <p>There's nothing here!</p>
-         </main>
-         }/>
- 
- 
-  
-       </Routes>
-       
-       <Footer></Footer>
->>>>>>> cd84e5778cd96f5448d9712770921c0f636cf0f7
     </>
 
 

@@ -22,16 +22,6 @@ userRouter.get('/students-active', async (req, res, next) => {
 })
 
 // Get all mentor active
-<<<<<<< HEAD
-userRouter.get('/mentor-active', async (req, res, next) => {
-  try {
-    const mentor = await users.find({ state: true, role: 4 }, { _id: 1, program: 1 })
-    res.json(mentor)
-  } catch (error) {
-    next(error)
-  }
-})
-=======
 // userRouter.get('/mentor-active', async (req, res, next) => {
 //   try {
 //     const mentor = await users.find(
@@ -43,7 +33,6 @@ userRouter.get('/mentor-active', async (req, res, next) => {
 //     next(error)
 //   }
 // })
->>>>>>> cd84e5778cd96f5448d9712770921c0f636cf0f7
 
 // Get all students with mentor
 // userRouter.get('/students-mentor', async (req, res, next) => {
@@ -74,12 +63,13 @@ answerRouter.get('/', async (req, res, next) => {
 // Get all assignedsession
 assigSessionRouter.get('/:idUser/:idSession', async (req, res) => {
   try {
-    const assig = await assigSession.find({idStudent: req.params.idUser, idSession: req.params.idSession
-    }).populate('idSession',{
+    const assig = await assigSession.find({
+      idStudent: req.params.idUser, idSession: req.params.idSession
+    }).populate('idSession', {
       numSession: 1
     })
     res.json(assig)
-  } catch (err){
+  } catch (err) {
     res.json(err)
   }
 
@@ -88,12 +78,13 @@ assigSessionRouter.get('/:idUser/:idSession', async (req, res) => {
 //
 allAssigSessionRouter.get('/:idUser', async (req, res) => {
   try {
-    const assig = await assigSession.find({idStudent: req.params.idUser
-    }).populate('idSession',{
+    const assig = await assigSession.find({
+      idStudent: req.params.idUser
+    }).populate('idSession', {
       numSession: 1
     })
     res.json(assig)
-  } catch (err){
+  } catch (err) {
     res.json(err)
   }
 
@@ -111,9 +102,6 @@ infoStudentRouter.get('/show', async (req, res, next) => {
   }
 })
 
-<<<<<<< HEAD
-module.exports = { userRouter, answerRouter, assigSessionRouter, infoStudentRouter }
-=======
 module.exports = {
   userRouter,
   answerRouter,
@@ -121,4 +109,3 @@ module.exports = {
   allAssigSessionRouter,
   infoStudentRouter
 }
->>>>>>> cd84e5778cd96f5448d9712770921c0f636cf0f7

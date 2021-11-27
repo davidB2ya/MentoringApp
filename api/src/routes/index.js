@@ -59,16 +59,6 @@ router.use('/api/confirmDate', ConfirmDateRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
->>>>>>> cd84e5778cd96f5448d9712770921c0f636cf0f7
 // brings all enabled sessions and those that coincide with the student's program
 router.use('/api/session', sessionRouter)
 
