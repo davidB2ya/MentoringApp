@@ -1,5 +1,6 @@
 import './welcome.css'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Welcome= () => {
   return (
@@ -14,7 +15,7 @@ const Welcome= () => {
           duda.
         </li>
       </ul>
-      <button>Siguiente</button>
+      <Link className="btn-welcom-mentor" to="/FormMentor"> Siguiente</Link>
     </div>
   )
 }

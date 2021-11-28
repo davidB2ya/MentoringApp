@@ -15,16 +15,22 @@ const MultipleChoice = () => {
   
   const [data, setData] = useState([])
   const save = []
-  // console.log(save)
-  // const [dataselec, setDataselect]=useState([]);
-  /*const petitionGet=async()=>{
-        await axios.get("http://localhost:3001/api/profile-edit")
-         .then(response=>{
-             console.log(response.data)
-           
-         })   
-         
-       }*/
+
+  const navigate = useNavigate()
+  
+  const auth = useSelector(state => state.auth)
+
+  const {isStudent, isAdmin} = auth
+
+  const isMentor = () => {
+    if(!isStudent && !isAdmin){
+      navigate('/welcome-mentor')
+    }else if(isAdmin){
+      navigate('/calendar/:id')
+    }
+  }
+
+  isMentor()
 
   useEffect(() => {
     axios({
@@ -122,12 +128,12 @@ const MultipleChoice = () => {
 
   // allInterest()
 
-  const auth = useSelector(state => state.auth)
+  // const auth = useSelector(state => state.auth)
   // console.log(auth)
 
   const { user }= auth
 
-  const navigate = useNavigate() 
+  // const navigate = useNavigate() 
 
   const handleUpdateInterest = () => {
     if(sendSelect.length === 3){

@@ -40,10 +40,10 @@ const NavRes = () => {
                 <span />
             </Hamburger>
             <Menu isOpen={isOpen} isLogged={isLogged}>
-                <MenuLink href="">Sesiones Asignadas</MenuLink>
-                <MenuLink href="">Sesiones Habilitadas</MenuLink>
-                <MenuLink href="">Formularios</MenuLink>
-                <MenuLink href="">Informes</MenuLink>
+                {/* <MenuLink to="">Sesiones Asignadas</MenuLink> */}
+                <MenuLink to="/student-sessions">Sesiones Habilitadas</MenuLink>
+                {/* <MenuLink to="">Formularios</MenuLink>
+                <MenuLink to="">Informes</MenuLink> */}
                 <div style={transForm}>
                         {
                             isLogged
@@ -56,7 +56,7 @@ const NavRes = () => {
   );
 };
 
-const MenuLink = styled.a`
+const MenuLink = styled(Link)`
   padding: 1rem 2rem;
   cursor: pointer;
   text-align: center;
