@@ -31,12 +31,13 @@ FormStudentRouter.get('/:id', async (request, response) => {
 AnswerFormRouter.get('/:idSession/:id', async(req, res) => {
   try {
     const answerFormStudent = await AnswerForm.find({idSession: req.params.idSession, idUser: req.params.id}).populate('idQuestion',{
-      question: 1
+      question: 1,
+      receiver: 1
     })
 
     res.json(answerFormStudent)
   } catch (err) {
-    return response.status(500).json({ msg: err.message })
+    return res.status(500).json({ msg: err.message })
   }
 })
 

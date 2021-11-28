@@ -1,11 +1,18 @@
 const QuestionBank = require('../db/models/QuestionBank')
-const AnswerForm = require('../db/models/AnswerBank')
+const AnswerReport = require('../db/models/AnswerBank')
+const SessionReport = require('../db/models/SessionReport')
 
 // constant for the get method that fetches questions from the question bank
 const SessionReportRouter = require('express').Router()
 
 // constant for the post method that brings up responses from the response bank
-const AnswerFormRouter = require('express').Router()
+// const AnswerFormRouter = require('express').Router()
+
+const FilledOutSessRep = require('express').Router()
+
+const SessRepRouterPost = require('express').Router()
+
+// const AnswerInformRouter = require('express').Router()
 
 // get method to fetch questions from the question bank
 SessionReportRouter.get('/:id', async (request, response) => {
@@ -22,24 +29,47 @@ SessionReportRouter.get('/:id', async (request, response) => {
 })
 
 // post method to fetch load responses from response bank
-AnswerFormRouter.post('/', (req, res) => {
-  console.log('POST /api/answerform')
-  console.log(req.body)
-  res.status(200).send({ message: 'se ha recibido' })
+// AnswerInformRouter.get('/:idSession/:id', async (req, res) => {
+//   try {
+//     const answerInformStudent = await AnswerReport.find({idSession: req.params.idSession, idUser: req.params.id}).populate('idQuestion',{
+//       question: 1
+//     })
 
-  const answerform = new AnswerForm()
-  answerform.idSession = req.body.idSession
-  answerform.idUser = req.body.idUser
-  answerform.idQuestion = req.body.idQuestion
-  answerform.answer = req.body.answer
+//     res.json(answerInformStudent)
+//   } catch (err) {
+//     return res.status(500).json({ msg: err.message })
+//   }
+// })
 
-  answerform.save((err, answerformStored) => {
-    if (err) res.status(500).send({ message: 'error a salvar' })
-    res.status(200).send({ answerform: answerformStored })
-  })
+FilledOutSessRep.get('/:id/:idSession', async (req, res) => {
+  try{
+    const fillesOutSession = await SessionReport.find({ idUser: req.params.id, idSession: req.params.idSession})
+
+    res.json(fillesOutSession)
+  }catch (err) {
+    return res.status(500).json({ msg: err.message })
+  }
 })
 
+SessRepRouterPost.post('/', async (req, res)=>{
+  const sessionReport = new SessionReport({
+    idSession: req.body.idSession,
+    idUser: req.body.idUser,
+    filledOut: req.body.filledOut
+  });
+
+  await sessionReport.save(function (err, sessionReport) {
+    if (err) return res.status(500).send(err.message);
+    res.status(200).json(sessionReport);
+  });
+})
+
+//6197ce26f88d38494783ab98
+
+//619b119ab7d52e9ae48a916e
+
 module.exports = {
-  AnswerFormRouter,
-  SessionReportRouter
+  SessionReportRouter,
+  FilledOutSessRep,
+  SessRepRouterPost
 }

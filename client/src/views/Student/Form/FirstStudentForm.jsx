@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Form/FirstStudentForm.css';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -54,24 +54,25 @@ const FirstStudentForm = () => {
 		.catch((error) => {
 		  console.log(error);
 		});
-	}, [list, id]);
+	}, [id]);
 
+	const [answerAndQues, setAnswerAndQues] = useState([])
 
-	// useEffect(() => {
-	// 	if(idUser){
-	//   	axios({
-	// 			url: `http://localhost:3001/api/formSession/${idUser}/${id}`,
-	//   	})
-	// 		.then((res) => {
-	// 	  	// setList(response.data);
-	// 			if(res.data[0].FilledOut === true)
-	// 			setFillOut(true)
-	// 		})
-	// 		.catch((error) => {
-	// 	  	console.log(error);
-	// 		});
-	// 	}
-	// }, [idUser, id]);
+	useEffect(() => {
+		if(idUser){
+	  	axios({
+				url: `http://localhost:3001/api/answerform/${id}/${idUser}`,
+	  	})
+			.then((res) => {
+		  	// setList(response.data);
+				
+				setAnswerAndQues(res.data)
+			})
+			.catch((error) => {
+		  	console.log(error);
+			});
+		}
+	}, [idUser, id]);
 
 	// console.log(list)
 
@@ -137,20 +138,19 @@ const FirstStudentForm = () => {
 					idQuestion: finalAnswer.idQuestion,
 					answer: finalAnswer.answer
 				})
-				try{
-					await axios.post('http://localhost:3001/api/new/formSession',{
-						idSession: id,
-						idStudent: idUser,
-						FilledOut: true,
-					})
-					navigate('/student-sessions')
-				}
-				catch (err) {
-      		err.response.data.error &&
-					console.log(err.response.data.error)
-    		}
 			}
-			
+			try{
+				await axios.post('http://localhost:3001/api/new/formSession',{
+					idSession: id,
+					idStudent: idUser,
+					FilledOut: true,
+				})
+				navigate('/student-sessions')
+			}
+			catch (err) {
+				err.response.data.error &&
+				console.log(err.response.data.error)
+			}
 			
 		}
 		catch (err) {
@@ -169,34 +169,28 @@ const FirstStudentForm = () => {
 
 	
 
- 	
 
-	const pruebaArray = [
-		{
-			question:1
-		
-		},
-		{
-			question:2
-		
-		},
-		{
-			question:3
-		
-		},
-		{
-			question:4
-		
-		}
-	]
 	
     return (
         <div>
            
 			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 			<form onSubmit={handleSubmit} className="advice">
-				{filledOut ? pruebaArray.map((itemPrueba)=>(
-					<p>{itemPrueba.question}</p>
+				{filledOut ? answerAndQues.map((element)=>(
+					<div className="mb-3" key={element.id}>
+						<label className="form-label">{element.idQuestion.question}</label>
+						<br></br>
+						<textarea 
+						// onChange={getValues} 
+						name={element.id} 
+						className="form-control"
+						id="exampleFormControlTextarea1"
+						rows="3"
+						placeholder={element.answer}
+						required
+						disabled
+						></textarea>
+					</div>
 					)) : list.map((item) => (
 					<div className="mb-3" key={item.id}>
 						<label className="form-label">{item.question}</label>
@@ -218,13 +212,16 @@ const FirstStudentForm = () => {
 						onChange={getValues} 
 						name={item.id} 
 						className="form-control"
-						id="exampleFormControlTextarea1"
+						id="FormControlTextarea1"
 						rows="3"
 						required
 						></textarea>
 					</div>
 					))}
-			<button type="submit">ENVIAR</button>
+			{filledOut ? 
+			<Link className="btn-form" to="/student-assignment-sessions"> volver </Link> 
+			: 
+			<button type="submit">ENVIAR</button>}
 			</form>
         </div>
     )

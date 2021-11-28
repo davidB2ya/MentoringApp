@@ -44,7 +44,7 @@ function App() {
   const token = useSelector(state => state.token)
   // save auth state stored in redux store
   const auth = useSelector(state => state.auth)
-  // save isL0gged from auth
+  // save isLogged from auth
   const {isLogged} = auth
   // this useState is used to see if the student has already filled the interests
   const [interest, setInterest] = useState(false)
