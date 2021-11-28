@@ -200,10 +200,7 @@ function Gender (est, m) {
             <h2>Lista de Estudiantes</h2>
             {students.map(e => {
               return (
-                <tr key={e.id} >
-                    <td>{e.user_id.name}</td>
-                    <td>{e.user_id.lastName}</td>
-                </tr>
+              <p key={e.id}>{e.user_id.name} {e.user_id.lastName}</p>   
               )
             })}
           </div>
@@ -211,10 +208,7 @@ function Gender (est, m) {
             <h2>Lista de Mentores</h2>
             {mentors.map(e => {
               return (
-                <tr key={e.id} >
-                    <td>{e.user_id.name}</td>
-                    <td>{e.user_id.lastName}</td>
-                </tr>
+              <p key={e.id}>{e.user_id.name} {e.user_id.lastName}</p>
               )
             })}
           </div>
