@@ -16,6 +16,22 @@
   .advice{
     margin: 5% 10%;
   }
+
+  .btn-form{
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    background: #ffcc02;
+    color: #000;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
+    transition: 0.5s;
+    border: none;   
+    cursor: pointer; 
+    font-size: 22px;
+  }
   /* a {
     position: relative;
     display: inline-block;

@@ -146,7 +146,8 @@ const profileSchema = new Schema({
   ActualJobPosition: String,
 
   // The Company key stores the mentor's current job
-  Company: String,
+  company:String,
+
 
   // The sons key stores the mentor's children
   sons: Number,
@@ -167,12 +168,14 @@ const profileSchema = new Schema({
 
   // the assignedMentor key stores the mentor assigned to the student
   assignedMentor: {
-    type: String
+    type: String,
+    default: 'Not assigned'
   },
 
   // the interests key stores the student's selected interests
   interestsStudent: {
-    type: Array
+    type: Array,
+    default: []
   },
 
   // The commitment key stores a participation score that is used to determine the student and mentor assignment.
