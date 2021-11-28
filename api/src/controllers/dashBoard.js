@@ -8,15 +8,13 @@ const profile = require('../db/models/Profile')
 const userRouter = require('express').Router()
 const answerRouter = require('express').Router()
 const assigSessionRouter = require('express').Router()
+const allAssigSessionRouter = require('express').Router()
 const infoStudentRouter = require('express').Router()
 
 // Get all students active
 userRouter.get('/students-active', async (req, res, next) => {
   try {
-    const user = await users.find(
-      { state: true, role: 1 },
-      { _id: 1, program: 1 }
-    )
+    const user = await users.find({ state: true, role: 1 }, { _id: 1, program: 1 })
     res.json(user)
   } catch (error) {
     next(error)
@@ -24,31 +22,31 @@ userRouter.get('/students-active', async (req, res, next) => {
 })
 
 // Get all mentor active
-userRouter.get('/mentor-active', async (req, res, next) => {
-  try {
-    const mentor = await users.find(
-      { state: true, role: 4 },
-      { _id: 1, program: 1 }
-    )
-    res.json(mentor)
-  } catch (error) {
-    next(error)
-  }
-})
+// userRouter.get('/mentor-active', async (req, res, next) => {
+//   try {
+//     const mentor = await users.find(
+//       { state: true, role: 4 },
+//       { _id: 1, program: 1 }
+//     )
+//     res.json(mentor)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 // Get all students with mentor
-userRouter.get('/students-mentor', async (req, res, next) => {
-  try {
-    // const mentor = await profile.find({ assignedMentor: 1 }, { _id: 1, assignedMentor: 1 })
-    const mentor = await profile.find(
-      { assignedMentor: { $regex: '.*$' } },
-      { assignedMentor: 1 }
-    )
-    res.json(mentor)
-  } catch (error) {
-    next(error)
-  }
-})
+// userRouter.get('/students-mentor', async (req, res, next) => {
+//   try {
+//     // const mentor = await profile.find({ assignedMentor: 1 }, { _id: 1, assignedMentor: 1 })
+//     const mentor = await profile.find(
+//       { assignedMentor: { $regex: '.*$' } },
+//       { assignedMentor: 1 }
+//     )
+//     res.json(mentor)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 // Get all answer
 answerRouter.get('/', async (req, res, next) => {
@@ -63,11 +61,25 @@ answerRouter.get('/', async (req, res, next) => {
 })
 
 // Get all assignedsession
-assigSessionRouter.get('/:id', async (req, res, next) => {
+assigSessionRouter.get('/:idUser/:idSession', async (req, res) => {
   try {
-    const assig = await assigSession.find({idStudent:req.params.id
+    const assig = await assigSession.find({idStudent: req.params.idUser, idSession: req.params.idSession
     }).populate('idSession',{
-      numSession:1
+      numSession: 1
+    })
+    res.json(assig)
+  } catch (err){
+    res.json(err)
+  }
+
+})
+
+//
+allAssigSessionRouter.get('/:idUser', async (req, res) => {
+  try {
+    const assig = await assigSession.find({idStudent: req.params.idUser
+    }).populate('idSession',{
+      numSession: 1
     })
     res.json(assig)
   } catch (err){
@@ -81,15 +93,7 @@ infoStudentRouter.get('/show', async (req, res, next) => {
   try {
     const info = await profile
       .find({})
-      .populate('user_id', {
-        name: 1,
-        email: 1,
-        middleName: 1,
-        lastName: 1,
-        secondSurname: 1,
-        contactNumber: 1,
-        state: 1
-      })
+      .populate('user_id', { name: 1, email: 1, middleName: 1, lastName: 1, secondSurname: 1, contactNumber: 1, state: 1 })
     res.json(info)
   } catch (error) {
     next(error)
@@ -100,5 +104,6 @@ module.exports = {
   userRouter,
   answerRouter,
   assigSessionRouter,
+  allAssigSessionRouter,
   infoStudentRouter
 }

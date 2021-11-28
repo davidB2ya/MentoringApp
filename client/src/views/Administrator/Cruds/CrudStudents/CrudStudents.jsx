@@ -6,7 +6,8 @@ import {FontAwesomeIcon}from'@fortawesome/react-fontawesome';
 import {faEdit,faTrashAlt} from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';
 import { Modal, Button,TextField} from '@material-ui/core';
-import Axios from 'axios';
+import axios from 'axios';
+import Sidebar from '../../../../components/Sidebar/Sidebar';
 
 const Articles=[{
    
@@ -222,56 +223,62 @@ useEffect(()=>{
 
 
   return (
-    <div className={styles.container}>
-      <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
-        onClick={() => openedClosedModalInsertar()} />
-      <Table th={Articles.map((e) => {
-        return (
-          <tr className={styles.column}>
-            <th>{e.Estudiante}</th>
-            <th>{e.Nombres}</th>
-            <th>{e.Apellidos}</th>
-            <th>{e.Edad}</th>
-            <th>{e.Género}</th>
-            <th>{e.Intereses}</th>
-            <th>{e.Programa}</th>
+    <>
+    <Sidebar/>
+  <div className={styles.container}>
+     <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
+     onClick={()=>openedClosedModalInsertar()}/>
+      <Table th={Articles.map((e) =>{
+        return( 
+                <tr className={styles.column}>
+                  <th>{e.Id}</th>
+                  <th>{e.Estudiante}</th>
+                  <th>{e.Nombres}</th>
+                  <th>{e.Apellidos}</th>
+                  <th>{e.Edad}</th>
+                  <th>{e.Género}</th>
+                  <th>{e.Intereses}</th>
+                  <th>{e.Programa}</th>
+                  <th>{e.AsignacióndeMentor}</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
+                 
+                </tr>
+              )})
+                } 
+          th2={Database.map((e) =>{
+            return(
+                    <tr className={styles.row}>
+                      <td className={styles.rowone}>{e.Id}</td>
+                      <td className={styles.rowone}>{e.Estudiante}</td>
+                      <td className={styles.rowone}>{e.Nombres}</td>
+                      <td className={styles.rowone}> {e.Apellidos}</td>
+                      <td className={styles.rowone}>{e.Edad}</td>
+                      <td className={styles.rowone}>{e.Género}</td>
+                      <td className={styles.rowone}>{e.Intereses}</td>
+                      <td className={styles.rowone}>{e.Programa}</td>
+                      <td className={styles.rowone}>{e.AsignacióndeMentor}</td>
+                      <>
+                      <td><button  className={styles.update}><FontAwesomeIcon icon={faEdit}/></button></td>
+                      <td><button  className={styles.delete}><FontAwesomeIcon icon={ faTrashAlt}/></button></td>
+                      </>
+                      </tr>
+                      
+                        
+                  
+                  )})}/>
 
+                  <Modal
+                  open={modalinsertar}
+                  onClose={openedClosedModalInsertar}>
 
-          </tr>
-        )
-      })
-      }
-        th2={students.map((e) => {
-          return (
-            <tr className={styles.row}>
-              <td className={styles.rowone}>{e.user_id.name}</td>
-              <td className={styles.rowone}>{e.user_id.middleName}</td>
-              <td className={styles.rowone}>{e.user_id.lastName}</td>
-              <td className={styles.rowone}> {e.user_id.secondSurname}</td>
-              <td className={styles.rowone}>{e.user_id.role}</td>
-              <td className={styles.rowone}>{e.user_id.email}</td>
-              <td className={styles.rowone}>{e.user_id.state}</td>
-              <>
-                <td><button className={styles.update}><FontAwesomeIcon icon={faEdit} /></button></td>
-                <td><button className={styles.delete}><FontAwesomeIcon icon={faTrashAlt} /></button></td>
-              </>
-            </tr>
+                   {bodyInsertar}
+                
+                  </Modal>
 
-
-
-          )
-        })} />
-
-      <Modal
-        open={modalinsertar}
-        onClose={openedClosedModalInsertar}>
-        
-        {bodyInsertar} 
-
-      </Modal>
-
-    </div>
-
+  </div>
+  </>
+    
   )
 }
 

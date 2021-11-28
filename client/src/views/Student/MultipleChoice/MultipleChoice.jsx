@@ -39,17 +39,63 @@ const MultipleChoice = () => {
       })
   }, [setData])
 
+  
+
+  // console.log(uniqueInterest);
+
   //function to transform API data from string to array
   function debugDat (data) {
-    const interes = data.map(interest => {
-      interest.interestsMentor.map((oneInterest, index) => {
+    
+    data.forEach(interest => {
+      interest.interestsMentor.forEach((oneInterest, index) => {
         save.push({ value: oneInterest, label: oneInterest })
-      })
-    })
+      })})
   }
 
   debugDat(data)
 
+  
+
+
+  function removeDuplicates(originalArray, prop) {
+    var newArray = [];
+    var lookupObject  = {};
+
+    for(var i in originalArray) {
+       lookupObject[originalArray[i][prop]] = originalArray[i];
+    }
+
+    for(i in lookupObject) {
+        newArray.push(lookupObject[i]);
+    }
+     return newArray;
+  }
+
+
+  const uniqueInterest = removeDuplicates(save, "value");
+
+  // console.log("intereses")
+  // console.log(save)
+  // console.log("intereses unicos")
+  // console.log(uniqueInterest)
+
+
+  // const saveUnique = () => {
+  //   for(let i = 0; i < save.length; i++){
+
+
+  //     const interest = save[i];
+
+  //     if (!uniqueInterest.includes(save[i])) {
+  //       uniqueInterest.push(interest);
+  //     }
+  //   }
+  // }
+
+  // saveUnique()
+
+  // console.log(uniqueInterest)
+  
   // const handleChange = (selectedOption) => {
 
   // }
@@ -62,10 +108,19 @@ const MultipleChoice = () => {
       setSelectedOption(e);
   };
 
-  const sendSelect = []
+  // console.log(selectedOption)
 
-  selectedOption.map(option => {sendSelect.push(option.value)});
-  // console.log(sendSelect)
+  const sendSelect = selectedOption.map(option => (option.value));
+  
+  // const [notallInterest, setNotallInterest] = useState(true);
+
+  // function allInterest (){
+  //   if(sendSelect.length == 3){
+  //     setNotallInterest(!notallInterest)
+  //   }
+  // }
+
+  // allInterest()
 
   const auth = useSelector(state => state.auth)
   // console.log(auth)
@@ -75,13 +130,18 @@ const MultipleChoice = () => {
   const navigate = useNavigate() 
 
   const handleUpdateInterest = () => {
-    const userinterestsStudent = sendSelect
-    // console.log(userinterestsStudent)
-    const idStudent = user.id
-    // console.log(idStudent)
-    axios
-    .post(`http://localhost:3001/api/studentsPerfil-control-update/${idStudent}`, { interestsStudent:userinterestsStudent})
-    navigate('/thanks-student')
+    if(sendSelect.length === 3){
+      const userinterestsStudent = sendSelect
+      // console.log(userinterestsStudent)
+      const idStudent = user.id
+      // console.log(idStudent)
+      axios
+      .post(`http://localhost:3001/api/studentsPerfil-control-update/${idStudent}`, { interestsStudent:userinterestsStudent})
+      navigate('/thanks-student')
+    }else{
+      alert('Por favor selecciona 3 intereses')
+    }
+    
   }
 
   return (
@@ -98,7 +158,7 @@ const MultipleChoice = () => {
 
             <Select
               name="interest"
-              options={selectedOption.length === maxOptions ? [] : save}
+              options={selectedOption.length === maxOptions ? [] : uniqueInterest}
               isMulti
               onChange={handleTypeSelect}
               

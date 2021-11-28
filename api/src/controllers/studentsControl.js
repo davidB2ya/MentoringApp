@@ -1,6 +1,8 @@
 const getAllStudentsRouter = require('express').Router()
 
-const getOneStudentRouter =  require('express').Router()
+const getOneStudentRouter = require('express').Router()
+
+const getAssiMentorRouter = require('express').Router()
 
 const postUserRouter = require('express').Router()
 
@@ -13,6 +15,8 @@ const getInterestStudent = require('express').Router()
 const Profile = require('../db/models/Profile')
 
 const User = require('../db/models/User')
+
+const bcrypt = require('bcrypt')
 
 getAllStudentsRouter.get('/', async (req, res) => {
   const getAllStudents = await Profile.find({}).populate('user_id', {
@@ -33,9 +37,8 @@ getAllStudentsRouter.get('/', async (req, res) => {
   res.json(getAllStudents)
 })
 
-
 getOneStudentRouter.get('/:id', async (req, res) => {
-  const getOneStudent = await Profile.find({user_id: req.params.id})
+  const getOneStudent = await Profile.find({ user_id: req.params.id })
     .populate('user_id', {
       name: 1,
       middleName: 1,
@@ -43,8 +46,19 @@ getOneStudentRouter.get('/:id', async (req, res) => {
       secondSurname: 1
     })
 
-    res.json(getOneStudent)
+  res.json(getOneStudent)
 })
+
+getAssiMentorRouter.get('/:id', async (req, res)=>{
+  const getAssiMentor = await Profile.find({ user_id: req.params.id }, {assignedMentor: 1})
+
+  res.json(getAssiMentor)
+})
+
+const validateEmail = email => {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test(email)
+}
 
 postUserRouter.post('/', async (req, res) => {
   const profile = {
@@ -56,8 +70,43 @@ postUserRouter.post('/', async (req, res) => {
   }
   // const gender = (req.body.gender);
   // const actualAge = (req.body.actualAge)
-  await User.create(req.body)
-    .then(function (dbProfile) {
+
+  let { name, email, password, contactNumber, role, cohorte } = req.body
+  console.log(name, email, password, contactNumber, role, cohorte)
+
+  if (!name || !email || !password || !role || !contactNumber || !cohorte){
+    return res.status(400).json({ msg: 'Please fill in all fields.' })}
+
+  if (!validateEmail(email))
+      return res.status(400).json({ msg: 'Invalid emails.' })
+
+  const user = await User.findOne({ email })
+  if(user){
+    return res.status(400).json({ msg: 'This email already exists.' })
+  }
+
+  if (password.length < 6)
+      return res
+        .status(400)
+        .json({ msg: 'Password must be at least 6 characters.' })
+
+  const passwordHash = await bcrypt.hash(password, 12)
+
+  const newUser = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: passwordHash,
+    middleName: req.body.middleName,
+    lastName: req.body.lastName,
+    secondSurname: req.body.secondSurname,
+    contacNumber: req.body.contacNumber,
+    role: req.body.role,
+  })
+
+  // await User.create(req.body)
+
+  await newUser.save()
+  .then(function (dbProfile) {
       // If we were able to successfully create a Product, send it back to the client
       Profile.create({
         user_id: dbProfile.id,
@@ -79,7 +128,7 @@ updatedUserRouter.post('/', (req, res) => {
   const body = req.body
 
   User.updateOne(
-    { _id: body._id },
+    { _id: body.id },
     {
       $set: {
         name: body.name,
@@ -120,7 +169,10 @@ updatedProfileRouter.post('/:id', async (req, res) => {
     assignedMentor: req.body.assignedMentor
   }
 
-  const idprofile = await Profile.find({ user_id: req.params.id }, { _id: 1 })
+  const idprofile = await Profile.find(
+    { user_id: req.params.id },
+    { _id: 1 }
+  )
 
   // console.log(idprofile)
 
@@ -162,6 +214,7 @@ getInterestStudent.get('/:id', async (req, res) => {
 module.exports = {
   getAllStudentsRouter,
   getOneStudentRouter,
+  getAssiMentorRouter,
   updatedUserRouter,
   postUserRouter,
   updatedProfileRouter,

@@ -7,15 +7,22 @@
     "api",
     "client"
   ],
+  "engines": {
+    "npm":"7.23.0"
+  },
   "scripts": {
-    "build": "npm run build --workspace=client",
+    "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=client",
     "lint": "eslint ./api ./client",
     "start": "npm run start --workspace=api",
     "dev:api": "npm run build && npm run dev --workspace=api"
   },
   "eslintConfig": {
     "ignorePatterns": "build",
-    "extends": "./node_modules/standard/eslintrc.json",
+    "extends":[
+      "react-app",
+      "react-app/jest",
+      "./node_modules/standard/eslintrc.json"
+    ],
     "env": {
       "cypress/globals": true,
       "jest": true
@@ -31,8 +38,4 @@
   "keywords": [],
   "author": "The Best Team",
   "license": "ISC"
-<<<<<<< HEAD
-=======
-  
->>>>>>> b7c93e8d375a5076fbf44bb1675b64f3a8a2b8f6
 }

@@ -34,11 +34,21 @@ const profilEditRouter = require('../controllers/profilEdit')
 
 const notifMentorRouter = require('../controllers/notif-mentor')
 
+const matchRouter = require('../controllers/match')
+
 const router = Router()
 
 router.use('/api/formStudent', FormStudentRouter.FormStudentRouter)
 
 router.use('/api/answerform', FormStudentRouter.AnswerFormRouter)
+
+router.use('/api/formSession', FormStudentRouter.FormSessionRouter)
+
+router.use('/api/new/formSession', FormStudentRouter.FormSessionRouterPost)
+
+// 6197ce26f88d38494783ab98
+
+// 619b119ab7d52e9ae48a916e
 
 router.use('/api/votingCapsules', VotingCapsulesRouter.VotingCapsulesRouter)
 
@@ -56,6 +66,10 @@ router.use('/api/confirmDate', ConfirmDateRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
+<<<<<<< HEAD
+=======
+// brings all enabled sessions and those that coincide with the student's program
+>>>>>>> 7c52ce39ce7495fa999f4dc0a0fc09b2c32aeb04
 router.use('/api/session', sessionRouter)
 
 // login
@@ -75,11 +89,16 @@ router.use('/api/activation', userRouter.activateEmailRouter)
 //
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
+// formRouter
+
+
 // InterestStudent
 
 router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
 
 router.use('/api/one/student', StudentsRouter.getOneStudentRouter)
+
+router.use('/api/assigned-mentor', StudentsRouter.getAssiMentorRouter)
 
 router.use('/api/students-control-post', StudentsRouter.postUserRouter)
 
@@ -92,16 +111,8 @@ router.use(
 
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
-
-
-//others
-
-
+// others //
 // students controller
-
-
-
-
 // end
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)
@@ -113,14 +124,20 @@ router.use('/api/answerBank', answerBankRouter)
 router.use('/api/questionBank', questionBankRouter)
 
 //
-router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
+router.use('/api/dashboard/assigned-session', dashBoardRouter.assigSessionRouter)
+
+router.use('/api/dashboard/all/assigned-session', dashBoardRouter.allAssigSessionRouter)
 
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)
 
+<<<<<<< HEAD
 router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
 module.exports = router
 router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
+=======
+// router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
+>>>>>>> 7c52ce39ce7495fa999f4dc0a0fc09b2c32aeb04
 
 router.use('/api/profile-edit', profilEditRouter.profilEditRouter)
 
@@ -132,4 +149,10 @@ router.use(
 router.use('/api/notif-mentor', notifMentorRouter)
 
 router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
+<<<<<<< HEAD
+=======
+
+router.use('/api/match', matchRouter.assignedRouter)
+
+>>>>>>> 7c52ce39ce7495fa999f4dc0a0fc09b2c32aeb04
 module.exports = router

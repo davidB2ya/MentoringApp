@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import Footer from '../../../components/Footer/Footer'
-import Navbar from '../../../components/Navbar/Navbar'
+import { useParams } from "react-router"
 // import '../Form/FirstStudentForm.css';
 import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,7 +21,7 @@ const FirstStudentInform = () => {
 		.catch((error) => {
 		console.log(error);
 		});
-	}, [setList]);
+	}, [setList, id]);
 
 	return (
 		<div>

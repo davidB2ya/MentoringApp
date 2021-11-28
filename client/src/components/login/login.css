@@ -6,6 +6,7 @@
   align-items: center;
   height: 100vh;
   background-color: #fff9da;
+  margin-top: 82px;  
 }
 .container-login-page {
   height: 80vh;
@@ -15,11 +16,18 @@
   border-radius: 14px;
   padding: 50px;
   background-color: #fff;
+  
 }
-.logo {
+.logoLogin {
   width: 80%;
-  display: block;
+  display: flex;
   margin: auto;
+  margin-bottom: 20px;
+}
+.loginTitle{
+  display:flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .container-login-form-content {

@@ -171,6 +171,7 @@ useEffect(async()=>{
 
   return (
   <div>
+    
      <SearchContainer h1={"TABLA DE CONTROL DE SESIONES "} placeholder={"Busca un Estudiante"}
     onClick={()=>openedClosedModalInsertar()}/>
       <Table th={Articles.map((e) =>{
