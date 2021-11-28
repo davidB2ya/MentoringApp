@@ -31,7 +31,7 @@ export const SidebarData = [
   },
   {
     title: 'Match de estudiantes',
-    path: '/messages',
+    path: '/MatchForm',
     icon: <FaIcons.FaEnvelopeOpenText />,
 
     iconClosed: <RiIcons.RiArrowDownSFill />,
