@@ -219,9 +219,18 @@ function Gender (est, m) {
             })}
           </div>
           <button onClick={Match}>Hacer Match</button>
-          
-          
-      </div>
+          <div>
+              <h2>Lista de Match</h2>
+              {match.map(e => {
+                  return (
+                    <tr >
+                        <td>{e.nameEstudent}</td>
+                        <td>{e.nameMentor}</td>
+                    </tr>
+                  )
+                })}
+          </div>
+    </div>
     )
   }
   const ProgramAndCohort = () => {
@@ -233,7 +242,7 @@ function Gender (est, m) {
         <Card
           container={
             <>
-              <h3>Elige la cohorte para realizar el Match</h3>
+              <h3>Elige la cohorte y el programa para realizar el Match</h3>
               <p>Elige la cohorte</p>
 
               <Select
