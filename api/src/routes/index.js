@@ -66,10 +66,7 @@ router.use('/api/confirmDate', ConfirmDateRouter)
 
 router.use('/api/mentor-availability', menAvailRouter)
 
-<<<<<<< HEAD
-=======
 // brings all enabled sessions and those that coincide with the student's program
->>>>>>> 7c52ce39ce7495fa999f4dc0a0fc09b2c32aeb04
 router.use('/api/session', sessionRouter)
 
 // login
@@ -131,13 +128,7 @@ router.use('/api/dashboard/all/assigned-session', dashBoardRouter.allAssigSessio
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)
 
-<<<<<<< HEAD
-router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
-module.exports = router
-router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
-=======
 // router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
->>>>>>> 7c52ce39ce7495fa999f4dc0a0fc09b2c32aeb04
 
 router.use('/api/profile-edit', profilEditRouter.profilEditRouter)
 
@@ -149,10 +140,7 @@ router.use(
 router.use('/api/notif-mentor', notifMentorRouter)
 
 router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
-<<<<<<< HEAD
-=======
 
 router.use('/api/match', matchRouter.assignedRouter)
 
->>>>>>> 7c52ce39ce7495fa999f4dc0a0fc09b2c32aeb04
 module.exports = router

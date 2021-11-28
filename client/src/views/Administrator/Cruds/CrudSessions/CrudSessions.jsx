@@ -162,7 +162,7 @@ useEffect(async()=>{
     <TextField name="Género" className={Styles.inputMaterial} label="Sesión N°" onChange={InsertData} value={SavedData && SavedData.Nombres}/>
     <br /><br />
     <div  className={Styles.button}>
-      <Button className={Styles.Button } onClick={()=>petitionPost()}>Insertar</Button>
+      <Button className={Styles.Button }/* onClick={()=>petitionPost()}*/>Insertar</Button>
       <Button className={Styles.Button }  onClick={()=>openedClosedModalInsertar()}>Cancelar</Button>
     </div>
   </div>
