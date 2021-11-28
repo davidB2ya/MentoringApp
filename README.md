@@ -46,8 +46,7 @@ Este proyecto fue realizado en colaboracion de :
 * **Angelica Herrera, github: https://github.com/angelicahg**
 * **Daniela Ospina, github:https://github.com/DaniOspina**
 * **Camilo Mora, github:https://github.com/Camilomorah**
-* **Sebastián Vanegas, github:https://github.com/SebastianvanegasXd**
-* **Guillermo Garcia Soto,https://github.com/Gasogui**
+
 
 ## Agradecimientos 👏
 * **Lorena Guerrero** - *Formadora y Lider de Equipo*
