@@ -55,7 +55,6 @@ MentorFormRouter.post('/:id', (req, res) => {
         actualAge: body.actualAge,
         sons: body.sons,
         interestsMentor: body.interestsMentor,
-        numeStudents: body.numeStudents,
         numeStudents: body.numeStudents
       }
     }

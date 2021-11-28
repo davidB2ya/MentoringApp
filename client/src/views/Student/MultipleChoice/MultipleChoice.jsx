@@ -20,17 +20,9 @@ const MultipleChoice = () => {
   
   const auth = useSelector(state => state.auth)
 
-  const {isStudent, isAdmin} = auth
+  // const {user} = auth
 
-  const isMentor = () => {
-    if(!isStudent && !isAdmin){
-      navigate('/welcome-mentor')
-    }else if(isAdmin){
-      navigate('/calendar/:id')
-    }
-  }
 
-  isMentor()
 
   useEffect(() => {
     axios({
@@ -132,6 +124,21 @@ const MultipleChoice = () => {
   // console.log(auth)
 
   const { user }= auth
+
+  // console.log(user)
+
+
+  const isMentor = () => {
+    if(user){
+      if(user.role === 4){
+      navigate('/welcome-mentor')
+      }else if(user.role === 9){
+      navigate('/calendar/:id')
+      }
+    }
+  }
+
+  isMentor()
 
   // const navigate = useNavigate() 
 
