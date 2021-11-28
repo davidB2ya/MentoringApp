@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose')
 
+
 // schema creation for users
 const userSchema = new Schema(
   {
@@ -47,14 +48,9 @@ const userSchema = new Schema(
       default: 'Programate'
     },
 
-    cohorte: {
-      num: {
-        type: Number
-      },
-      name: {
-        type: String
-      }
-    },
+    cohorte: Number,
+      
+    
     state: {
       // habilitarlo
       type: Boolean,

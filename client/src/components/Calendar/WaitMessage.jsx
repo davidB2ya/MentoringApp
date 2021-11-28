@@ -1,9 +1,10 @@
 import React from 'react';
 import './waitmessage.css'
+import {Link} from 'react-router-dom'
 
 
 
-const WaitMessage = () => {
+const WaitMessage = ({header, message}) => {
 
     return (
         <div> 
@@ -12,10 +13,16 @@ const WaitMessage = () => {
                 <div className="card">
                   <div className="box">
                     <div className="content">
-                      <h3>¡Hemos recibido tus respuestas!</h3>
-                      <p>espera a que tu mentor asigne el rango de fechas en las que tiene disponibilidad para tu sesión</p>
+                      <h3>{header}</h3>
+                      <p>{message}</p>
                       
-                    </div>              
+                    </div>
+                    <Link 
+                    style={{textDecoration: "none", color: "#000"}} 
+                    to="/student-sessions"
+                    className="button-return">
+                        voler
+                    </Link>              
                   </div>
                   {/* <h1 className="little">.hola.</h1> */}
                 </div>

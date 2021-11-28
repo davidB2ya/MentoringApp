@@ -46,6 +46,7 @@ const Login = () => {
 
       navigate('/welcome-user')
     } catch (err) {
+      // console
       err.response.data.error &&
         setUser({ ...user, err: err.response.data.error, success: '' })
     }
@@ -54,14 +55,14 @@ const Login = () => {
   return (
     <div className='container-login-main'>
       <div className='container-login-page'>
-      <img className='logo' src={logo} alt='logo-programate' />
-      <h2>Ingresa a Okhlos</h2>
+      <img className='logoLogin' src={logo} alt='logo-programate' />
+      <h2 className="loginTitle">Ingresa a Okhlos</h2>
       {err && showErrMsg(err)}
       {success && showSuccessMsg(success)}
 
         <form className='form' onSubmit={handleSubmit}>
           <div className='container-login-form-content'>
-            <label htmlFor='email'>Email Address</label>
+            {/* <label htmlFor='email'>Email Address</label> */}
             <Input
               label='Correo'
               placeholder='Luis@hotmail.com'

@@ -11,8 +11,6 @@ const formSessionSchema = new Schema({
   idSession: { type: Schema.ObjectId, ref: Session },
   // the idStudent key store the id of the model User
   idStudent: { type: Schema.ObjectId, ref: Student },
-  // the idQuestionBank key store the id of the model QuestionBank
-  idQuestionBank: { type: Schema.ObjectId, ref: QuestionBank },
   // the FilledOut key stores if the form was filled out or not
   FilledOut: Boolean
 })

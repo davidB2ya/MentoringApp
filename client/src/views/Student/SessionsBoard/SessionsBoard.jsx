@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import SchedulledSession from '../../../components/schedulledSessionCard/schedulledSessionCard'
+import SchedulledSession from '../../../components/schedulledSessionCard/SchedulledSessionCard'
 import Styles from './SessionsBoard.module.css'
 import Axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector } from 'react-redux'
 // import NavRes from '../../../components/NavRes/NavRes'
+import WaitMessage from '../../../components/Calendar/WaitMessage';
 
 const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
 
@@ -69,7 +70,7 @@ function SessionsBoard () {
   const SessionNotExists = () => {
     return (
       <>
-        <p></p>
+        <WaitMessage header={"¡Muy pronto podras ver las sesiones habilitadas!"} message={"Espera a que las sesiones sean habilitadas"}></WaitMessage>
       </>
     )
   }

@@ -141,7 +141,7 @@ const MultipleChoice = () => {
       .post(`${baseUrl}/api/studentsPerfil-control-update/${idStudent}`, { interestsStudent:userinterestsStudent})
       navigate('/thanks-student')
     }else{
-      alert('Please select 3 interest')
+      alert('Por favor selecciona 3 intereses')
     }
     
   }

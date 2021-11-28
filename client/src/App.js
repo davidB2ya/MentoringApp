@@ -12,12 +12,12 @@ import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
 import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
-import Navbar from './components/Navbar/Navbar'
+import Navbar from './components/NavRes/NavRes'
 import Footer from './components/Footer/Footer'
 import FirstStudentForm from './views/Student/Form/FirstStudentForm';
 import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
 import MultipleChoice from './views/Student/MultipleChoice/MultipleChoice';
-import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
+
 import PrincipalView from './views/Principal/PrincipalView';
 import MatchForm from './views/Administrator/Match/MatchForm';
 import ListMentorstudent from './views/Administrator/Match/ListMentorstudent';
@@ -27,6 +27,14 @@ import FinalMessage from './views/Mentor/AsignedSessions/FinalMessage.jsx';
 import Calendar from './components/Calendar/calendar';
 import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard';
 import WaitMessage from './components/Calendar/WaitMessage';
+import WelcomeMentor from './views/Mentor/Welcome';
+// Administrator imports of CRUDS //
+import CrudMentors from './views/Administrator/Cruds/CrudMentor/CrudMentor'
+import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents';
+import CrudSessions from './views/Administrator/Cruds/CrudSessions/CrudSessions'
+import CrudSessionsDetail from './views/Administrator/Cruds/CrudSessionDetail/CrudSessionDetail'
+
+
 
 
 
@@ -119,23 +127,30 @@ function App() {
          {/* others */}
          <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
+         <Route path="/thanks-student" element={<Thanks/>}/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/calendar" element={<Calendar/>}/>
+         <Route path="/calendar/:id" element={<Calendar/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
          <Route path="/student-sessions" element={<StudentSession/>}/> 
          <Route path="/student-assignment-sessions" element={<AssigmentSessionBoard/>}/>
          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
-         <Route path="/CrudStudents" element={<CrudStudents/>}/>
+         
          <Route path="/MatchForm" element={<MatchForm/>}/>
          <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
          <Route path="/AsignedSessions" element={<AsignedSessions/>}/>
+         <Route path="/welcome-mentor" element={<WelcomeMentor/>}/>
          <Route path="/FormMentor" element={<FormMentor/>}/>
          <Route path="/FinalMessage" element={<FinalMessage/>}/>
          <Route path="/WaitMessage" element={<WaitMessage/>}/>
 
-        
+         <Route path="/CrudStudents" element={<CrudStudents/>}/>
+         <Route path="/crud-mentors" element={<CrudMentors/>}/>
+         <Route path="/crud-sessions-detail" element={<CrudSessionsDetail/>}/>
+         <Route path="/crud-sessions" element={<CrudSessions/>}/>
+         
+          
          <Route path="*" element={
          <main style={{ padding: "1rem" }}>
            <p>There's nothing here!</p>
@@ -146,7 +161,7 @@ function App() {
   
        </Routes>
        
-       <Footer></Footer>
+       <Footer/>
     </>
     
 
