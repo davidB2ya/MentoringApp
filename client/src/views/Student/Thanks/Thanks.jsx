@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import '../Thanks/thanks.css'
-import { useSelector } from 'react-redux'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import './thanks.css';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Thanks = () => {
 
@@ -28,9 +28,9 @@ const Thanks = () => {
     return (
         <div> 
             <div className="container">
-              <div className="back">
-                <div className="card">
-                  <div className="box">
+              <div className="backthanks">
+                <div className="cardthanks">
+                  <div className="boxthanks">
                     <div className="content">
                       <h3>¡Hemos recibido tus respuestas!</h3>
                       <p>Te notificaremos por correo cuándo se haya realizado la asignación de tu mentor.</p>
