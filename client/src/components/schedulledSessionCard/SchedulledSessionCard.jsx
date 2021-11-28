@@ -24,7 +24,7 @@ const SchedulledSessionCard = ({ numSession, startDate, endDate, id }) => {
       console.log(error)
       })
     }
-  }, [idStudent])
+  }, [ idStudent, id ])
 
   // console.log(sessionFilledOut)
 

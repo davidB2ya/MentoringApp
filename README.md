@@ -5,7 +5,7 @@ The project is an app to automatize the mentoring process in the educational boo
 
 ## Technologies 🛠️
 * **Mongo DB**
-* **Espress.JS**
+* **Express.JS**
 * **React.JS**
 * **Node.JS**
 
@@ -31,14 +31,13 @@ Mozilla Firefox
 _Aquí debajo dejamos el link del proyecto desplegado_
                  👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
 
-**https://**
+**https://fathomless-bastion-33135.herokuapp.com/**
 
 
 ## Collaboration 🤝🏻
 ***
 Este proyecto fue realizado en colaboracion de :
 * **Diego Ferro, github:https://github.com/daferrom**
-* **Guillermo Garcia Soto,https://github.com/Gasogui**
 * **Sebastian Ocampo, github:https://github.com/SebasO8**
 * **Jennifer Rojas, github:https://github.com/jenniferRojas**
 * **Nataly Estupiñan, github:https://github.com/Nataly1Estupinan**
@@ -48,6 +47,7 @@ Este proyecto fue realizado en colaboracion de :
 * **Daniela Ospina, github:https://github.com/DaniOspina**
 * **Camilo Mora, github:https://github.com/Camilomorah**
 * **Sebastián Vanegas, github:https://github.com/SebastianvanegasXd**
+* **Guillermo Garcia Soto,https://github.com/Gasogui**
 
 ## Agradecimientos 👏
 * **Lorena Guerrero** - *Formadora y Lider de Equipo*
