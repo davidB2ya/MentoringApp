@@ -43,6 +43,14 @@ router.use('/api/formStudent', FormStudentRouter.FormStudentRouter)
 
 router.use('/api/answerform', FormStudentRouter.AnswerFormRouter)
 
+router.use('/api/formSession', FormStudentRouter.FormSessionRouter)
+
+router.use('/api/new/formSession', FormStudentRouter.FormSessionRouterPost)
+
+// 6197ce26f88d38494783ab98
+
+// 619b119ab7d52e9ae48a916e
+
 router.use('/api/votingCapsules', VotingCapsulesRouter.VotingCapsulesRouter)
 
 router.use('/api/mentorViewStudent', ViewStudentRouter.ViewStudentRouter)
@@ -79,6 +87,9 @@ router.use('/api/activation', userRouter.activateEmailRouter)
 //
 router.use('/api/refresh_token', userRouter.getAccessToken)
 
+// formRouter
+
+
 // InterestStudent
 
 router.use('/api/students/control', StudentsRouter.getAllStudentsRouter)
@@ -111,7 +122,9 @@ router.use('/api/answerBank', answerBankRouter)
 router.use('/api/questionBank', questionBankRouter)
 
 //
-router.use('/api/dashboard/assignedsession', dashBoardRouter.assigSessionRouter)
+router.use('/api/dashboard/assigned-session', dashBoardRouter.assigSessionRouter)
+
+router.use('/api/dashboard/all/assigned-session', dashBoardRouter.allAssigSessionRouter)
 
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)

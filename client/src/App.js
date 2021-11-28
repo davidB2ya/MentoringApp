@@ -12,7 +12,7 @@ import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
 import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
-import Navbar from './components/Navbar/Navbar'
+import Navbar from './components/NavRes/NavRes'
 import Footer from './components/Footer/Footer'
 import FirstStudentForm from './views/Student/Form/FirstStudentForm';
 import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
@@ -27,6 +27,7 @@ import FinalMessage from './views/Mentor/AsignedSessions/FinalMessage.jsx';
 import Calendar from './components/Calendar/calendar';
 import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard';
 import WaitMessage from './components/Calendar/WaitMessage';
+import WelcomeMentor from './views/Mentor/Welcome';
 
 
 
@@ -119,8 +120,9 @@ function App() {
          {/* others */}
          <Route path="/principal-view" element={<PrincipalView/>}/>
          <Route path="/welcome-user" element={interest ? <Thanks/> : <MultipleChoice/> }/>
+         <Route path="/thanks-student" element={<Thanks/>}/>
          <Route path="/welcome-student" element={<WelcomeStudent/>}/>
-         <Route path="/calendar" element={<Calendar/>}/>
+         <Route path="/calendar/:id" element={<Calendar/>}/>
          <Route path="/form-student/:id" element={<FirstStudentForm/>}/>
          {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
          <Route path="/inform-student/:id" element={<FirstStudentInform/>}/> 
@@ -131,6 +133,7 @@ function App() {
          <Route path="/MatchForm" element={<MatchForm/>}/>
          <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
          <Route path="/AsignedSessions" element={<AsignedSessions/>}/>
+         <Route path="/welcome-mentor" element={<WelcomeMentor/>}/>
          <Route path="/FormMentor" element={<FormMentor/>}/>
          <Route path="/FinalMessage" element={<FinalMessage/>}/>
          <Route path="/WaitMessage" element={<WaitMessage/>}/>

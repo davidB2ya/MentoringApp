@@ -32,14 +32,14 @@ const NavRes = () => {
   return (
     <Nav>
             <Logo href="">
-                <img src={Image} alt="programate" />
+                <img className="LogoNavbar" src={Image} alt="programate" />
             </Logo>
             <Hamburger onClick={() => setIsOpen(!isOpen)}>
                 <span />
                 <span />
                 <span />
             </Hamburger>
-            <Menu isOpen={isOpen}>
+            <Menu isOpen={isOpen} isLogged={isLogged}>
                 <MenuLink href="">Sesiones Asignadas</MenuLink>
                 <MenuLink href="">Sesiones Habilitadas</MenuLink>
                 <MenuLink href="">Formularios</MenuLink>
@@ -52,7 +52,7 @@ const NavRes = () => {
                         }
                 </div>
             </Menu>
-            </Nav>
+    </Nav>
   );
 };
 
@@ -83,6 +83,7 @@ const Nav = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  margin-bottom: 20px;
 `;
 
 const Logo = styled.a`
@@ -98,7 +99,7 @@ const Logo = styled.a`
 `;
 
 const Menu = styled.div`
-  display: flex;
+  display: ${props => props.isLogged ? "flex": "none"};
   justify-content: space-between;
   align-items: center;
   position: relative;
