@@ -22,7 +22,7 @@ import PrincipalView from './views/Principal/PrincipalView';
 // import MatchForm from './views/Administrator/Match/MatchForm';
 import Calendar from './components/Calendar/calendar';
 import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard.jsx';
-
+import  sessionsBoard from './views/Student/SessionsBoard/sessionsBoard'
 
 
 
@@ -121,6 +121,7 @@ function App() {
          <Route path="/student-assignment-sessions" element={<AssigmentSessionBoard/>}/>
          <Route path="/MultipleChoice" element={<MultipleChoice/>}/>
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
+         <Route path="/sessionsBoard" element={<sessionsBoard/>}/>
         
         
          <Route path="*" element={

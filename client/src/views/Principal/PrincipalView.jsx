@@ -60,7 +60,8 @@ const PrincipalView = () => {
       <Link to="/WelcomeCard">| WelcomeCard |</Link>
       <Link to="/CrudStudents">| CrudStudents |</Link>
       <Link to="/MultipleChoice">| MultipleChoice |</Link>    
-      <Link to="/CrudMentor">| CrudMentor |</Link> 
+      <Link to="/CrudMentor">| CrudMentor |</Link>
+      <Link to="/sessionsBoard">| sessionsBoard |</Link> 
                                                  
     </div>  
     )

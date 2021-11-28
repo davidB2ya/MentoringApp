@@ -95,10 +95,16 @@ const CrudSessions = () => {
   const[modalinsertar,setmodalinsertar]=useState(false);
   //Insert saved module data
   const[SavedData,setSavedData]=useState({
-    IdEstudiante:"" ,
-  Estudiante:"",
-  FechaDiligenciamiento  :"",
-  SesiónN:""
+    id:"",
+    Nombres:"",
+    Apellidos:"",
+    Edad:"",
+    Género:"",
+    Intereses:"",
+    Programa:"",
+    Carrera:"",
+    Empresa:"",
+    AsignaciónEst:""
   })
 //Function to insert the data written in the module.
 const InsertData=e=>{
@@ -118,7 +124,7 @@ const InsertData=e=>{
 }
 useEffect(async()=>{
  await petitionGet();
-},[])*/
+},[])
 
 
 
