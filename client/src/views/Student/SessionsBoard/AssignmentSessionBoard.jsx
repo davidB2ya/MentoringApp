@@ -12,7 +12,7 @@ function SessionsBoard () {
 
   useEffect(() => {
     Axios({
-      url: `http://${baseUrl}/api/dashboard/assignedsession/${idStudent}`
+      url: `${baseUrl}/api/dashboard/assignedsession/${idStudent}`
     })
       .then(response => {
         setSessions(response.data)
