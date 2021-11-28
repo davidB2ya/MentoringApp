@@ -44,9 +44,12 @@ const Login = () => {
       )
       dispatch(dispatchLogin())
 
+
+
+
       navigate('/welcome-user')
-    } catch (err) {
-      // console
+    }
+    catch (err) {
       err.response.data.error &&
         setUser({ ...user, err: err.response.data.error, success: '' })
     }

@@ -1,8 +1,4 @@
-body{
-    background-color: gray;
-    height: 2000vw;
-    margin-left: 0vh;
-  }
+
   
   div.Welcome{
     margin-top: 8%;
@@ -37,7 +33,7 @@ body{
         ;
       }
   
-  button{
+  .btn-welcom-mentor{
     font-size: 17px;
     background-color:#FFCC02;
     border: transparent;
@@ -46,4 +42,6 @@ body{
     padding-bottom: 6px;
     padding-right: 40px;
     padding-left: 40px;
+    text-decoration: none;
+    color: #000;
   }

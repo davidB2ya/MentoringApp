@@ -18,7 +18,7 @@ FormStudentRouter.get('/:id', async (request, response) => {
   try {
     const formStudent = await FormStudent.find(
       { idSession: request.params.id, receiver: true },
-      { question: 1, question1: 1, question2: 1, question3: 1, question4: 1, question5: 1, question6: 1, question7: 1, question8: 1, question9: 1, question10: 1, question11: 1, question12: 1, question13: 1, respType: 1, option: 1, vote: 1, idUser: 1 }
+      { question: 1, respType: 1, option: 1, vote: 1, idUser: 1 }
     ).populate('idUser', { program: 1, cohorte: 1 })
 
     response.json(formStudent)
@@ -31,12 +31,13 @@ FormStudentRouter.get('/:id', async (request, response) => {
 AnswerFormRouter.get('/:idSession/:id', async(req, res) => {
   try {
     const answerFormStudent = await AnswerForm.find({idSession: req.params.idSession, idUser: req.params.id}).populate('idQuestion',{
-      question: 1
+      question: 1,
+      receiver: 1
     })
 
     res.json(answerFormStudent)
   } catch (err) {
-    return response.status(500).json({ msg: err.message })
+    return res.status(500).json({ msg: err.message })
   }
 })
 

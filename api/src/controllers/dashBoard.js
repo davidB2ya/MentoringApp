@@ -63,12 +63,13 @@ answerRouter.get('/', async (req, res, next) => {
 // Get all assignedsession
 assigSessionRouter.get('/:idUser/:idSession', async (req, res) => {
   try {
-    const assig = await assigSession.find({idStudent: req.params.idUser, idSession: req.params.idSession
-    }).populate('idSession',{
+    const assig = await assigSession.find({
+      idStudent: req.params.idUser, idSession: req.params.idSession
+    }).populate('idSession', {
       numSession: 1
     })
     res.json(assig)
-  } catch (err){
+  } catch (err) {
     res.json(err)
   }
 
@@ -77,12 +78,13 @@ assigSessionRouter.get('/:idUser/:idSession', async (req, res) => {
 //
 allAssigSessionRouter.get('/:idUser', async (req, res) => {
   try {
-    const assig = await assigSession.find({idStudent: req.params.idUser
-    }).populate('idSession',{
+    const assig = await assigSession.find({
+      idStudent: req.params.idUser
+    }).populate('idSession', {
       numSession: 1
     })
     res.json(assig)
-  } catch (err){
+  } catch (err) {
     res.json(err)
   }
 
