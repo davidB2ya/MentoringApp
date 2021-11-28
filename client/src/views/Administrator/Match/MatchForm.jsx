@@ -218,7 +218,6 @@ function Gender (est, m) {
               )
             })}
           </div>
-          <button onClick={Match}>Hacer Match</button>
           <div>
               <h2>Lista de Match</h2>
               {match.map(e => {
@@ -230,6 +229,8 @@ function Gender (est, m) {
                   )
                 })}
           </div>
+          <button onClick={Match}>Hacer Match</button>
+          
     </div>
     )
   }

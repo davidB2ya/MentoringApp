@@ -22,31 +22,31 @@ userRouter.get('/students-active', async (req, res, next) => {
 })
 
 // Get all mentor active
-// userRouter.get('/mentor-active', async (req, res, next) => {
-//   try {
-//     const mentor = await users.find(
-//       { state: true, role: 4 },
-//       { _id: 1, program: 1 }
-//     )
-//     res.json(mentor)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+userRouter.get('/mentor-active', async (req, res, next) => {
+  try {
+    const mentor = await users.find(
+      { state: true, role: 4 },
+      { _id: 1, program: 1 }
+    )
+    res.json(mentor)
+  } catch (error) {
+    next(error)
+  }
+})
 
 // Get all students with mentor
-// userRouter.get('/students-mentor', async (req, res, next) => {
-//   try {
-//     // const mentor = await profile.find({ assignedMentor: 1 }, { _id: 1, assignedMentor: 1 })
-//     const mentor = await profile.find(
-//       { assignedMentor: { $regex: '.*$' } },
-//       { assignedMentor: 1 }
-//     )
-//     res.json(mentor)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+userRouter.get('/students-mentor', async (req, res, next) => {
+  try {
+    // const mentor = await profile.find({ assignedMentor: 1 }, { _id: 1, assignedMentor: 1 })
+    const mentor = await profile.find(
+      { assignedMentor: { $regex: '.*$' } },
+      { assignedMentor: 1 }
+    )
+    res.json(mentor)
+  } catch (error) {
+    next(error)
+  }
+})
 
 // Get all answer
 answerRouter.get('/', async (req, res, next) => {
