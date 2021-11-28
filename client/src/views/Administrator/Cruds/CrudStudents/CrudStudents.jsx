@@ -6,12 +6,9 @@ import {FontAwesomeIcon}from'@fortawesome/react-fontawesome';
 import {faEdit,faTrashAlt} from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';
 import { Modal, Button,TextField} from '@material-ui/core';
-<<<<<<< HEAD
-import axios from 'axios';
-=======
 import Axios from 'axios';
 import Sidebar from '../../../../components/Sidebar/Sidebar';
->>>>>>> 7f42c828a49f79214b1dbd70d04205d7c440b875
+// import Sidebar from '../../../../components/Sidebar/Sidebar';
 
 const Articles=[{
   Id:"id" ,
@@ -80,6 +77,8 @@ const CrudStudents = () => {
     Empresa: "",
     AsignaciónEst: ""
   })
+  //base Url of deploy
+  const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
   //Function to insert the data written in the module.
   const InsertData = e => {
     const { name, value } = e.target;
@@ -104,7 +103,7 @@ const CrudStudents = () => {
 
   useEffect(() => {
     Axios({
-      url: 'http://localhost:3001/api/students/control'
+      url: `${baseUrl}/api/students/control`
     })
       .then(response => {
         setStudents(response.data)
@@ -170,7 +169,8 @@ const CrudStudents = () => {
 
 
   return (
-
+    <>
+    <Sidebar/>
     <div className={styles.container}>
       <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
         onClick={() => openedClosedModalInsertar()} />
@@ -217,63 +217,8 @@ const CrudStudents = () => {
 
 
     </div >
+    </>
 
-
- 
-  return (
-  <div className={styles.container}>
-     <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
-     onClick={()=>openedClosedModalInsertar()}/>
-      <Table th={Articles.map((e) =>{
-        return( 
-                <tr className={styles.column}>
-                  <th>{e.Id}</th>
-                  <th>{e.Estudiante}</th>
-                  <th>{e.Nombres}</th>
-                  <th>{e.Apellidos}</th>
-                  <th>{e.Edad}</th>
-                  <th>{e.Género}</th>
-                  <th>{e.Intereses}</th>
-                  <th>{e.Programa}</th>
-                  <th>{e.AsignacióndeMentor}</th>
-                  <th>Editar</th>
-                  <th>Eliminar</th>
-                 
-                </tr>
-              )})
-                } 
-          th2={Database.map((e) =>{
-            return(
-                    <tr className={styles.row}>
-                      <td className={styles.rowone}>{e.Id}</td>
-                      <td className={styles.rowone}>{e.Estudiante}</td>
-                      <td className={styles.rowone}>{e.Nombres}</td>
-                      <td className={styles.rowone}> {e.Apellidos}</td>
-                      <td className={styles.rowone}>{e.Edad}</td>
-                      <td className={styles.rowone}>{e.Género}</td>
-                      <td className={styles.rowone}>{e.Intereses}</td>
-                      <td className={styles.rowone}>{e.Programa}</td>
-                      <td className={styles.rowone}>{e.AsignacióndeMentor}</td>
-                      <>
-                      <td><button  className={styles.update}><FontAwesomeIcon icon={faEdit}/></button></td>
-                      <td><button  className={styles.delete}><FontAwesomeIcon icon={ faTrashAlt}/></button></td>
-                      </>
-                      </tr>
-                      
-                        
-                  
-                  )})}/>
-
-                  <Modal
-                  open={modalinsertar}
-                  onClose={openedClosedModalInsertar}>
-
-                   {bodyInsertar}
-                
-                  </Modal>
-
-  </div>
-    
   )
 }
 
