@@ -30,9 +30,8 @@ const answerBankRouter = require('../controllers/answerBank')
 
 const questionBankRouter = require('../controllers/questionBank')
 
-const SessionReportRouter = require('../controllers/sessionReport')
-
 const UpdateMentorRouter = require('../controllers/editMentor')
+const SessionReportRouter = require('../controllers/sessionReport')
 // const notifMentorRouter = require('../controllers/notif-mentor')
 
 const notifMentorRouter = require('../controllers/notif-mentor')
@@ -84,7 +83,8 @@ router.use('/api/mentorViewStudent', ViewStudentRouter.ViewStudentRouter)
 
 router.use('/api/questionFormRouter', ViewStudentRouter.QuestionFormRouter)
 
-router.use('/api/mentorControl', MentorControlRouter)
+router.use('/api/mentorControl', MentorControlRouter.MentorControlRouter)
+router.use('/api/formControl', MentorControlRouter.MentorFormRouter)
 
 router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
@@ -117,7 +117,9 @@ router.use('/api/questionBank', questionBankRouter)
 // router.use('/api/notif-mentor', notifMentorRouter)
 router.use('/api/editMentor', UpdateMentorRouter)
 
-// router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
+router.use('/api/sessionReport', SessionReportRouter.SessionReportRouter)
+module.exports = router
+router.use('/api/dashboard/infoStudent', dashBoardRouter.infoStudentRouter)
 
 router.use(
   '/api/updated-profile-edit',

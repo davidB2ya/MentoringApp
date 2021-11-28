@@ -19,18 +19,23 @@ const User = require('../db/models/User')
 const bcrypt = require('bcrypt')
 
 getAllStudentsRouter.get('/', async (req, res) => {
-  const getAllStudents = await Profile.find({})
-    .populate('user_id:', {
-      name: 1,
-      middleName: 1,
-      lastName: 1,
-      secondSurname: 1
-    })
-    // .then(getAllStudents => {
-    //   if (getAllStudents.length) return res.status(200).send({ getAllStudents })
-    //   return res.status(204).json({ message: 'NO CONTENT' })
-    // })
-    // .catch(err => res.status(500).json({ err }))
+  const getAllStudents = await Profile.find({}).populate('user_id', {
+    name: 1,
+    middleName: 1,
+    lastName: 1,
+    age: 1,
+    gender: 1,
+    secondSurname: 1,
+    role: 1,
+    email: 1,
+    interestsStudent: 1,
+    state: 1
+  })
+  // .then(getAllStudents => {
+  //   if (getAllStudents.length) return res.status(200).send({ getAllStudents })
+  //   return res.status(204).json({ message: 'NO CONTENT' })
+  // })
+  // .catch(err => res.status(500).json({ err }))
 
   res.json(getAllStudents)
 })

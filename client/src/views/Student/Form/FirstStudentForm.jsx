@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 
 const FirstStudentForm = () => {
-	
+
 	const [list, setList] = useState([]);
 
 	const [filledOut, setFillOut] = useState(false);
@@ -43,7 +43,7 @@ const FirstStudentForm = () => {
 
 
 	useEffect(() => {
-	  axios({
+		axios({
 			url: `http://localhost:3001/api/formStudent/${id}`,
 	  })
 		.then((response) => {
@@ -91,21 +91,21 @@ const FirstStudentForm = () => {
 	pushObject()
 
 
-	
+
 	//  console.log(initialState)
-	
+
 	// console.log(initialAnswer)
 
-	
+
 	const [answerState, setAnswerState] = useState(initialAnswer)
 
-	
+
 	const getValues = (e) => {
 		e.preventDefault();
 		const { name, value } = e.target
-		
-		setAnswerState({...answerState, [name]: value})
-		
+
+		setAnswerState({ ...answerState, [name]: value })
+
 		// 
 	}
 
@@ -114,10 +114,10 @@ const FirstStudentForm = () => {
 
 	const auth = useSelector(state => state.auth)
 
-	const navigate = useNavigate() 
+	const navigate = useNavigate()
 
 	const handleSubmit = async e => {
-		
+
 		e.preventDefault();
 
 		
@@ -126,13 +126,13 @@ const FirstStudentForm = () => {
 			const {user} = auth
 			for(const answer in answerState){
 				const finalAnswer = {
-					idSession : id,
-					idUser : user.id,
-					idQuestion : answer,
-					answer : answerState[answer]
+					idSession: id,
+					idUser: user.id,
+					idQuestion: answer,
+					answer: answerState[answer]
 				}
-	
-					await axios.post(`http://localhost:3001/api/answerBank`,{
+
+				await axios.post(`http://localhost:3001/api/answerBank`, {
 					idSession: finalAnswer.idSession,
 					idUser: finalAnswer.idUser,
 					idQuestion: finalAnswer.idQuestion,
@@ -154,14 +154,14 @@ const FirstStudentForm = () => {
 			
 		}
 		catch (err) {
-      err.response.data.error &&
-			console.log(err.response.data.error)
-    }
+			err.response.data.error &&
+				console.log(err.response.data.error)
+		}
 		// console.log("se envio los resultados:" )
-		
-		
+
+
 		// console.log(answerState)
-		
+
 	}
 
 
@@ -223,8 +223,8 @@ const FirstStudentForm = () => {
 			: 
 			<button type="submit">ENVIAR</button>}
 			</form>
-        </div>
-    )
+		</div>
+	)
 }
 
 export default FirstStudentForm
