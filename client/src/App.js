@@ -27,6 +27,7 @@ import FinalMessage from './views/Mentor/AsignedSessions/FinalMessage.jsx';
 import Calendar from './components/Calendar/calendar';
 import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard';
 import WaitMessage from './components/Calendar/WaitMessage';
+import WelcomeMentor from './views/Mentor/Welcome';
 
 
 
@@ -132,6 +133,7 @@ function App() {
          <Route path="/MatchForm" element={<MatchForm/>}/>
          <Route path="/ListMentorstudent" element={<ListMentorstudent/>}/>
          <Route path="/AsignedSessions" element={<AsignedSessions/>}/>
+         <Route path="/welcome-mentor" element={<WelcomeMentor/>}/>
          <Route path="/FormMentor" element={<FormMentor/>}/>
          <Route path="/FinalMessage" element={<FinalMessage/>}/>
          <Route path="/WaitMessage" element={<WaitMessage/>}/>

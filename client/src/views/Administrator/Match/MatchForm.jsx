@@ -191,7 +191,7 @@ function Gender (est, m) {
   }
     
     
-
+  console.log(students)
 
   const ListStudentMentor = () => {
     return(
@@ -200,7 +200,7 @@ function Gender (est, m) {
             <h2>Lista de Estudiantes</h2>
             {students.map(e => {
               return (
-                <tr >
+                <tr key={e.id} >
                     <td>{e.user_id.name}</td>
                     <td>{e.user_id.lastName}</td>
                 </tr>
@@ -211,7 +211,7 @@ function Gender (est, m) {
             <h2>Lista de Mentores</h2>
             {mentors.map(e => {
               return (
-                <tr >
+                <tr key={e.id} >
                     <td>{e.user_id.name}</td>
                     <td>{e.user_id.lastName}</td>
                 </tr>
