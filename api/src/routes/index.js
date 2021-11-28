@@ -86,6 +86,8 @@ router.use('/api/questionFormRouter', ViewStudentRouter.QuestionFormRouter)
 router.use('/api/mentorControl', MentorControlRouter.MentorControlRouter)
 router.use('/api/formControl', MentorControlRouter.MentorFormRouter)
 
+router.use('/api/one/mentor', MentorControlRouter.GetoneMentorRouter)
+
 router.use('/api/updateCapsules', VotingCapsulesRouter.updateCapsulesRouter)
 
 router.use('/api/confirmDate', ConfirmDateRouter)
