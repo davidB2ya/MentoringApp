@@ -7,26 +7,26 @@ import * as RiIcons from 'react-icons/ri';
 export const SidebarData = [
   {
     title: 'Control estudiantes',
-    path: '/overview',
+    path: '/CrudStudents',
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
     title: 'Control mentores',
-    path: '/reports',
+    path: '/crud-mentors',
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
   },
   {
     title: 'Sesiones asignadas',
-    path: '/products',
+    path: '/crud-sessions',
     icon: <IoIcons.IoMdHelpCircle />
   },
   {
     title: 'Detalle sesiones',
-    path: '/team',
+    path: '/crud-sessions-detail',
     icon: <IoIcons.IoMdPeople />
   },
   {
