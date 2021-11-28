@@ -2,7 +2,6 @@
 import {useState,  } from 'react';
 import styles from './CrudSessionDetail.module.css';
 import Table from '../../../../components/Table/Table';
-import SearchContainer from '../../../../components/SearchContainer/SearchContainer';
 import {FontAwesomeIcon}from'@fortawesome/react-fontawesome';
 import { faEdit,faTrashAlt }from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';

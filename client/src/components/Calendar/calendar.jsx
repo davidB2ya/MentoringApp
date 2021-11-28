@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-import '../Calendar/calendar.modules.css'
-import React from 'react'
-
-
-
-const Calendar = () => {
-  const [equipo, setEquipo] = React.useState([])
-
-  React.useEffect(() => {
-    //console.log('useEffect')
-    obtenerDatos()
-  }, [])
-
-  const obtenerDatos = async () => {
-    const data = await fetch('https://jsonplaceholder.typicode.com/users')
-    const Users = await data.json()
-    console.log(Users)
-    setEquipo(Users)
-  }
-
-  return (
-    <div className='calendar'>
-=======
 import '../Calendar/card-calendar.css'
 import React, { useState, useEffect} from "react";
 import { useParams } from "react-router";
@@ -136,7 +112,6 @@ const Calendar = () => {
   const MenAvailExist = (req, res) => {
     return(
     <div className='container-card'>
->>>>>>> develop
       <h3>Querido estudiante</h3>
       <p>
         Debes escoger el dìa de tu sesión de mentoría dentro del siguiente rango
@@ -146,30 +121,12 @@ const Calendar = () => {
       <div className='dates-calendar'>
         <div className='date-begin'>
           <h4>Fecha inicial</h4>
-<<<<<<< HEAD
-          <p>10-Noviembre /2021</p>
-        </div>
-
-        <div className='date-end'>
-          <h4>Fecha final</h4>
-          <p>21-Noviembre /2021</p>
-        </div>
-
-        <div className='hour-of-begin'>
-          <h4>Hora de inicio</h4>
-          <p>17:30</p>
-        </div>
-        <div className='hour of-end'>
-          <h4>Hora de finalizacion</h4>
-          <p>18:30</p>
-=======
           { date.map((Startdate, index) =>(<p key={index}>{Startdate.idSession.startDate}</p> ))}
         </div>
 
         <div className='date-end'>
           <h4>Fecha final</h4>
           { date.map((EndDate, index) =>(<p key={index}>{EndDate.idSession.endDate}</p> ))}
->>>>>>> develop
         </div>
 
         
@@ -183,24 +140,6 @@ const Calendar = () => {
         />
         <button  onClick={handleUpdateDate}>Finalizar</button>
       </div>
-<<<<<<< HEAD
-      <div>
-        <select className='select-date' value='seleccione una fecha'>
-          {equipo.map(item => (
-            <option key='item.id'>
-              {item.name} - {item.email}
-            </option>
-          ))}
-        </select>
-
-        <input
-          className='btn-selct-date'
-          type='button'
-          value='seleccione fecha'
-        />
-      </div>
-    </div>
-=======
     </div>
     )
   }
@@ -217,13 +156,8 @@ const Calendar = () => {
     <>
     {date.length > 0 ? <MenAvailExist/> : <NotMentAvail/>}
     </>
->>>>>>> develop
   )
 }
 
 
-<<<<<<< HEAD
 export default Calendar
-=======
-export default Calendar
->>>>>>> develop
