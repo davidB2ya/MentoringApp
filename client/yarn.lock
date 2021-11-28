@@ -2567,13 +2567,11 @@
     "safer-buffer" "^2.1.0"
 
 "asn1@~0.2.3":
-  "integrity" "sha512-jxwzQpLQjSmWXgwaCZE9Nz+glAG01yF1QnWgbhGwHI5A6FRIEY6IVqtHhIepHqI7/kyEyQEagBC5mBEFlIYvdg=="
   "version" "0.2.4"
   dependencies:
     "safer-buffer" "~2.1.0"
 
 "assert-plus@^1.0.0", "assert-plus@1.0.0":
-  "integrity" "sha1-8S4PPF13sLHN2RRpQuTpbB5N1SU="
   "version" "1.0.0"
 
 "assert@^1.1.1":
@@ -2640,11 +2638,9 @@
     "postcss-value-parser" "^4.1.0"
 
 "aws-sign2@~0.7.0":
-  "integrity" "sha1-tG6JCTSpWR8tL2+G1+ap8bP+dqg="
   "version" "0.7.0"
 
 "aws4@^1.8.0":
-  "integrity" "sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA=="
   "version" "1.11.0"
 
 "axe-core@^4.0.2":
@@ -2867,7 +2863,6 @@
   "version" "0.6.1"
 
 "bcrypt-pbkdf@^1.0.0":
-  "integrity" "sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4="
   "version" "1.0.2"
   dependencies:
     "tweetnacl" "^0.14.3"
@@ -3265,7 +3260,6 @@
   "version" "2.3.0"
 
 "caseless@~0.12.0":
-  "integrity" "sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw="
   "version" "0.12.0"
 
 "chalk@^2.4.1":
@@ -3500,7 +3494,6 @@
   "version" "1.2.1"
 
 "combined-stream@^1.0.6", "combined-stream@~1.0.6":
-  "integrity" "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg=="
   "version" "1.0.8"
   dependencies:
     "delayed-stream" "~1.0.0"
@@ -3929,7 +3922,6 @@
   "version" "3.0.0"
 
 "cssnano-preset-default@^4.0.7":
-  "integrity" "sha512-x0YHHx2h6p0fCl1zY9L9roD7rnlltugGu7zXSKQx6k2rYw0Hi3IqxcoAGF7u9Q5w1nt7vK0ulxV8Lo+EvllGsA=="
   "version" "4.0.7"
   dependencies:
     "css-declaration-sorter" "^4.0.1"
@@ -3986,7 +3978,6 @@
   "version" "4.0.1"
 
 "cssnano@^4.1.10":
-  "integrity" "sha512-5wny+F6H4/8RgNlaqab4ktc3e0/blKutmq8yNlBFXA//nSFFAqAngjNVRzUvCgYROULmZZUoosL/KSoZo5aUaQ=="
   "version" "4.1.10"
   dependencies:
     "cosmiconfig" "^5.0.0"
@@ -4012,7 +4003,6 @@
   "version" "0.3.8"
 
 "cssstyle@^2.2.0":
-  "integrity" "sha512-AZL67abkUzIuvcHqk7c09cezpGNcxUxU4Ioi/05xHk4DQeTkWmGYftIE6ctU6AEt+Gn4n1lDStOtj7FKycP71A=="
   "version" "2.3.0"
   dependencies:
     "cssom" "~0.3.6"
@@ -4046,7 +4036,6 @@
   "version" "1.0.6"
 
 "dashdash@^1.12.0":
-  "integrity" "sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA="
   "version" "1.14.1"
   dependencies:
     "assert-plus" "^1.0.0"
@@ -4120,7 +4109,6 @@
   "version" "1.2.0"
 
 "decimal.js@^10.2.0":
-  "integrity" "sha512-KaL7+6Fw6i5A2XSnsbhm/6B+NuEA7TZ4vqxnd5tXz9sbKtrN9Srj8ab4vKVdK8YAqZO9P1kg45Y6YLoduPf+kw=="
   "version" "10.2.1"
 
 "decode-uri-component@^0.2.0":
@@ -4416,7 +4404,6 @@
     "stream-shift" "^1.0.0"
 
 "ecc-jsbn@~0.1.1":
-  "integrity" "sha1-OoOpBOVDUyh4dMVkt1SThoSamMk="
   "version" "0.1.2"
   dependencies:
     "jsbn" "~0.1.0"
@@ -4567,7 +4554,6 @@
   "version" "2.0.0"
 
 "escodegen@^1.14.1":
-  "integrity" "sha512-qFcX0XJkdg+PB3xjZZG/wKSuT1PnQWx57+TVSjIMmILd2yC/6ByYElPwJnslDsuWuSAp4AwJGumarAAmJch5Kw=="
   "version" "1.14.3"
   dependencies:
     "esprima" "^4.0.1"
@@ -4886,7 +4872,6 @@
     "is-extendable" "^1.0.1"
 
 "extend@~3.0.2":
-  "integrity" "sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g=="
   "version" "3.0.2"
 
 "extglob@^2.0.4":
@@ -4904,7 +4889,6 @@
     "to-regex" "^3.0.1"
 
 "extsprintf@^1.2.0", "extsprintf@1.3.0":
-  "integrity" "sha1-lpGEQOMEGnpBT4xS48V06zw+HgU="
   "version" "1.3.0"
 
 "fast-glob@^3.1.1":
@@ -5045,7 +5029,6 @@
   "version" "1.0.2"
 
 "forever-agent@~0.6.1":
-  "integrity" "sha1-+8cfDEGt6zf5bFd60e1C2P2sypE="
   "version" "0.6.1"
 
 "fork-ts-checker-webpack-plugin@4.1.6":
@@ -5062,7 +5045,6 @@
     "worker-rpc" "^0.1.0"
 
 "form-data@~2.3.2":
-  "integrity" "sha512-1lLKB2Mu3aGP1Q/2eCOx0fNbRMe7XdwktwOruhfqqd0rIJWwN4Dh+E3hrPSlDCXnSR7UtZ1N38rVXm+6+MEhJQ=="
   "version" "2.3.3"
   dependencies:
     "asynckit" "^0.4.0"
@@ -5179,7 +5161,6 @@
   "version" "2.0.6"
 
 "getpass@^0.1.1":
-  "integrity" "sha1-Xv+OPmhNVprkyysSgmBOi6YhSfo="
   "version" "0.1.7"
   dependencies:
     "assert-plus" "^1.0.0"
@@ -5274,11 +5255,9 @@
   "version" "2.0.1"
 
 "har-schema@^2.0.0":
-  "integrity" "sha1-qUwiJOvKwEeCoNkDVSHyRzW37JI="
   "version" "2.0.0"
 
 "har-validator@~5.1.3":
-  "integrity" "sha512-nmT2T0lljbxdQZfspsno9hgrG3Uir6Ks5afism62poxqBM6sDnMEuPmzTq8XN0OEwqKLLdh1jQI3qyE66Nzb3w=="
   "version" "5.1.5"
   dependencies:
     "ajv" "^6.12.3"
@@ -5506,7 +5485,6 @@
     "requires-port" "^1.0.0"
 
 "http-signature@~1.2.0":
-  "integrity" "sha1-muzZJRFHcvPZW2WmCruPfBj7rOE="
   "version" "1.2.0"
   dependencies:
     "assert-plus" "^1.0.0"
@@ -5881,7 +5859,6 @@
     "isobject" "^3.0.1"
 
 "is-potential-custom-element-name@^1.0.0":
-  "integrity" "sha1-DFLlS8yjkbssSUsh6GJtczbG45c="
   "version" "1.0.0"
 
 "is-regexp@^1.0.0":
@@ -5949,7 +5926,6 @@
   "version" "3.0.1"
 
 "isstream@~0.1.2":
-  "integrity" "sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo="
   "version" "0.1.2"
 
 "istanbul-lib-coverage@^3.0.0":
@@ -6449,11 +6425,9 @@
   "version" "4.0.0"
 
 "jsbn@~0.1.0":
-  "integrity" "sha1-peZUwuWi3rXyAdls77yoDA7y9RM="
   "version" "0.1.1"
 
 "jsdom@^16.4.0":
-  "integrity" "sha512-lYMm3wYdgPhrl7pDcRmvzPhhrGVBeVhPIqeHjzeiHN3DFmD1RBpbExbi8vU7BJdH8VAZYovR8DMt0PNNDM7k8w=="
   "version" "16.4.0"
   dependencies:
     "abab" "^2.0.3"
@@ -6499,11 +6473,9 @@
   "version" "2.3.1"
 
 "json-schema@0.2.3":
-  "integrity" "sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM="
   "version" "0.2.3"
 
 "json-stringify-safe@~5.0.1":
-  "integrity" "sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus="
   "version" "5.0.1"
 
 "json3@^3.3.3":
@@ -6542,7 +6514,6 @@
     "graceful-fs" "^4.1.6"
 
 "jsprim@^1.2.2":
-  "integrity" "sha1-MT5mvB5cwG5Di8G3SZwuXFastqI="
   "version" "1.4.1"
   dependencies:
     "assert-plus" "1.0.0"
@@ -6780,7 +6751,6 @@
   "version" "4.1.2"
 
 "lodash.sortby@^4.7.0":
-  "integrity" "sha1-7dFMgk4sycHgsKG0K7UhBRakJDg="
   "version" "4.7.0"
 
 "lodash.template@^4.5.0":
@@ -7157,7 +7127,6 @@
   "version" "2.0.7"
 
 "nanoid@^3.1.30":
-  "integrity" "sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ=="
   "version" "3.1.30"
 
 "nanomatch@^1.2.9":
@@ -7349,7 +7318,6 @@
   "version" "2.2.0"
 
 "oauth-sign@~0.9.0":
-  "integrity" "sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ=="
   "version" "0.9.0"
 
 "object-assign@^4.0.1", "object-assign@^4.1.0", "object-assign@^4.1.1":
@@ -7582,7 +7550,6 @@
     "lines-and-columns" "^1.1.6"
 
 "parse5@5.1.1":
-  "integrity" "sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug=="
   "version" "5.1.1"
 
 "parseurl@~1.3.2", "parseurl@~1.3.3":
@@ -8373,7 +8340,6 @@
     "util-deprecate" "^1.0.2"
 
 "postcss-svgo@^4.0.2":
-  "integrity" "sha512-NoRbrcMWTtUghzuKSoIm6XV+sJdvZ7GZSc3wdBN0W19FTtp2ko8NqLsgoh/m9CzNhU3KLPvQmjIwtaNFkaFTvw=="
   "version" "4.0.3"
   dependencies:
     "postcss" "^7.0.0"
@@ -8553,7 +8519,6 @@
   "version" "1.0.1"
 
 "psl@^1.1.28":
-  "integrity" "sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ=="
   "version" "1.8.0"
 
 "public-encrypt@^4.0.0":
@@ -8609,7 +8574,6 @@
   "version" "1.5.1"
 
 "qs@~6.5.2":
-  "integrity" "sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA=="
   "version" "6.5.2"
 
 "qs@6.7.0":
@@ -8782,11 +8746,6 @@
   "integrity" "sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA=="
   "resolved" "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
   "version" "3.2.0"
-
-"react-icons@^4.3.1":
-  "integrity" "sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ=="
-  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
-  "version" "4.3.1"
 
 "react-is@^16.3.2":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
@@ -9141,13 +9100,11 @@
   "version" "1.6.1"
 
 "request-promise-core@1.1.4":
-  "integrity" "sha512-TTbAfBBRdWD7aNNOoVOBH4pN/KigV6LyapYNNlAPA8JwbovRti1E88m3sYAwsLi5ryhPKsE9APwnjFTgdUjTpw=="
   "version" "1.1.4"
   dependencies:
     "lodash" "^4.17.19"
 
 "request-promise-native@^1.0.8":
-  "integrity" "sha512-wcW+sIUiWnKgNY0dqCpOZkUbF/I+YPi+f09JZIDa39Ec+q82CpSYniDp+ISgTTbKmnpJWASeJBPZmoxH84wt3g=="
   "version" "1.0.9"
   dependencies:
     "request-promise-core" "1.1.4"
@@ -9155,7 +9112,6 @@
     "tough-cookie" "^2.3.3"
 
 "request@^2.34", "request@^2.88.2":
-  "integrity" "sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw=="
   "version" "2.88.2"
   dependencies:
     "aws-sign2" "~0.7.0"
@@ -9433,7 +9389,6 @@
   "version" "1.2.4"
 
 "saxes@^5.0.0":
-  "integrity" "sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw=="
   "version" "5.0.1"
   dependencies:
     "xmlchars" "^2.2.0"
@@ -9840,7 +9795,6 @@
     "extend-shallow" "^3.0.0"
 
 "sshpk@^1.7.0":
-  "integrity" "sha512-HXXqVUq7+pcKeLqqZj6mHFUMvXtOJt1uoUx09pFW6011inTMxqI8BA8PM95myrIyyKwdnzjdFjLiE6KBPVtJIg=="
   "version" "1.16.1"
   dependencies:
     "asn1" "~0.2.3"
@@ -9898,7 +9852,6 @@
   "version" "1.5.0"
 
 "stealthy-require@^1.1.1":
-  "integrity" "sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks="
   "version" "1.1.1"
 
 "stream-browserify@^2.0.1":
@@ -10336,14 +10289,12 @@
   "version" "1.0.0"
 
 "tough-cookie@^2.3.3":
-  "integrity" "sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g=="
   "version" "2.5.0"
   dependencies:
     "psl" "^1.1.28"
     "punycode" "^2.1.1"
 
 "tough-cookie@^3.0.1":
-  "integrity" "sha512-yQyJ0u4pZsv9D4clxO69OEjLWYw+jbgspjTue4lTQZLfV0c5l1VmK2y1JK8E9ahdpltPOaAThPcp5nKPUgSnsg=="
   "version" "3.0.1"
   dependencies:
     "ip-regex" "^2.1.0"
@@ -10351,14 +10302,12 @@
     "punycode" "^2.1.1"
 
 "tough-cookie@~2.5.0":
-  "integrity" "sha512-nlLsUzgm1kfLXSXfRZMc1KLAugd4hqJHDTvc2hDIwS3mZAfMEuMbc03SujMF+GEcpaX/qboeycw6iO8JwVv2+g=="
   "version" "2.5.0"
   dependencies:
     "psl" "^1.1.28"
     "punycode" "^2.1.1"
 
 "tr46@^2.0.2":
-  "integrity" "sha512-3n1qG+/5kg+jrbTzwAykB5yRYtQCTqOGKq5U5PE3b0a1/mzo6snDhjGS0zJVJunO0NrT3Dg1MLy5TjWP/UJppg=="
   "version" "2.0.2"
   dependencies:
     "punycode" "^2.1.1"
@@ -10401,13 +10350,11 @@
   "version" "0.0.0"
 
 "tunnel-agent@^0.6.0":
-  "integrity" "sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0="
   "version" "0.6.0"
   dependencies:
     "safe-buffer" "^5.0.1"
 
 "tweetnacl@^0.14.3", "tweetnacl@~0.14.0":
-  "integrity" "sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q="
   "version" "0.14.5"
 
 "type-check@~0.3.2":
@@ -10691,7 +10638,6 @@
   "version" "1.0.4"
 
 "verror@1.10.0":
-  "integrity" "sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA="
   "version" "1.10.0"
   dependencies:
     "assert-plus" "^1.0.0"
@@ -10908,7 +10854,6 @@
   "version" "2.3.0"
 
 "whatwg-url@^8.0.0":
-  "integrity" "sha512-vwTUFf6V4zhcPkWp/4CQPr1TW9Ml6SF4lVyaIMBdJw5i6qUUJ1QWM4Z6YYVkfka0OUIzVo/0aNtGVGk256IKWw=="
   "version" "8.4.0"
   dependencies:
     "lodash.sortby" "^4.7.0"
@@ -11137,7 +11082,6 @@
     "async-limiter" "~1.0.0"
 
 "ws@^7.2.3":
-  "integrity" "sha512-BAkMFcAzl8as1G/hArkxOxq3G7pjUqQ3gzYbLL0/5zNkph70e+lCoxBGnm6AW1+/aiNeV4fnKqZ8m4GZewmH2w=="
   "version" "7.5.5"
 
 "xml-name-validator@^3.0.0":
