@@ -38,8 +38,8 @@ assignedRouter.get('/students/:program/:cohort', async (req, res, next) => {
   for (let e = 0; e < studentsActive.length; e++) {
     for (let i = 0; i < usersNotAssigned.length; i++) {
       if (
-        studentsActive[e].contactNumber ===
-        usersNotAssigned[i].user_id.contactNumber
+        studentsActive[e].email ===
+        usersNotAssigned[i].user_id.email
       ) {
         arrayEstudentsNotAssigned.push(usersNotAssigned[i])
       }
