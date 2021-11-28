@@ -1,6 +1,4 @@
 
-
-
 footer {
   display: flex;
   flex-direction: column;
@@ -18,15 +16,10 @@ footer {
   background-color: #010101;
   padding: 10px;
  }
- .facebook {
+ .logoSocialMedia {
    margin: 0px 10px;
  }
- .instagram {
-  margin: 0px 10px;
-}
-.youtube {
-  margin: 0px 10px;
-}
+
 .footer-info__name {
   display: flex;
   margin: 0px 10px;

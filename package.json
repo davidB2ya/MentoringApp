@@ -7,6 +7,9 @@
     "api",
     "client"
   ],
+  "engines": {
+    "npm":"7.23.0"
+  },
   "scripts": {
     "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=client",
     "lint": "eslint ./api ./client",
@@ -15,7 +18,11 @@
   },
   "eslintConfig": {
     "ignorePatterns": "build",
-    "extends": "./node_modules/standard/eslintrc.json",
+    "extends":[
+      "react-app",
+      "react-app/jest",
+      "./node_modules/standard/eslintrc.json"
+    ],
     "env": {
       "cypress/globals": true,
       "jest": true

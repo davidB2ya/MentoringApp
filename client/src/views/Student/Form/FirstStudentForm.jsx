@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from 'react-router-dom'
 import '../Form/FirstStudentForm.css';
@@ -12,7 +12,7 @@ const FirstStudentForm = () => {
 	const [list, setList] = useState([]);
 
 	const [filledOut, setFillOut] = useState(true);
-
+	console.log(setFillOut)
 	let { id } = useParams();
 
 	// const initialState = []
@@ -124,7 +124,8 @@ const FirstStudentForm = () => {
 	// }
 
 	// prueba()
-	const prueba = "hola"
+
+	// const prueba= "hola"
 
 	const pruebaArray = [
 		{

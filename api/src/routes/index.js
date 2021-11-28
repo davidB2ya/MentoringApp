@@ -98,10 +98,8 @@ router.use(
 
 router.use('/api/student-interest', StudentsRouter.getInterestStudent)
 
-// others
-
+// others //
 // students controller
-
 // end
 
 router.use('/api/dashboard', dashBoardRouter.userRouter)

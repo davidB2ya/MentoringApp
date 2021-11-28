@@ -61,6 +61,7 @@ const PrincipalView = () => {
       <Link to="/CrudStudents">| CrudStudents |</Link>
       <Link to="/MultipleChoice">| MultipleChoice |</Link>
       <Link to="/SessionesMentor">| SessionesMentor |</Link>
+      <Link to="/formControl">| formControl |</Link>
     </div>
   )
 }

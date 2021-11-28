@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import AssignmentCard from '../../../components/schedulledSessionCard/AssignmentCard'
-import Styles from './sessionsBoard.module.css'
+import Styles from '../../../components/schedulledSessionCard/AssignmentCard'
 import Axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector } from 'react-redux'
 
-function SessionsBoard () {
+function SessionsBoard() {
   const idStudent = useSelector(state => state.auth.user.id)
   const [sessions, setSessions] = useState([])
 

@@ -24,7 +24,7 @@ function FormMentor() {
   }
 
   debugDat(data)
-
+  console.log(data)
   const interest = [
     { value: "IA", label: "IA" },
     { value: "Diseño", label: "Diseño" },

@@ -1,21 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import {
-  showErrMsg,
-  showSuccessMsg
-} from '../notification/Notification'
+import { showErrMsg, showSuccessMsg } from '../notification/Notification'
 import { dispatchLogin } from '../../redux/actions/authActions'
 import { useDispatch } from 'react-redux'
 import './login.css'
 import Input from '../Input/Input'
 import logo from '../assets/images/programate-fblanco.png'
 
-
 const Login = () => {
-
-
-
   //Inicializo hooks
   const [user, setUser] = useState({
     email: '',
@@ -30,12 +23,9 @@ const Login = () => {
   const navigate = useNavigate()
 
   const { email, password, err, success } = user
-  /*   console.log(user)
-   */
 
   const handleChangeInput = e => {
     const { name, value } = e.target
-    //console.log(name, value)
     setUser({ ...user, [name]: value, err: '', success: '' })
   }
 
@@ -64,7 +54,6 @@ const Login = () => {
         setUser({ ...user, err: err.response.data.error, success: '' })
     }
   }
-
 
   return (
     <div className='container-login-main'>
@@ -98,7 +87,6 @@ const Login = () => {
           <button className='button-login' type='submit'>
             INGRESAR
           </button>
-
         </form>
       </div>
     </div>

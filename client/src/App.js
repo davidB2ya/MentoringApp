@@ -10,9 +10,9 @@ import Login from './components/login/Login.jsx'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
 import WelcomeStudent from './views/Student/Welcome/WelcomeStudent'
-import StudentSession from './views/Student/SessionsBoard/SessionsBoard.jsx';
+import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
-import NavBar from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import FirstStudentForm from './views/Student/Form/FirstStudentForm';
 import FirstStudentInform from './views/Student/Inform/FirstStudentInform';
@@ -21,9 +21,13 @@ import CrudStudents from './views/Administrator/Cruds/CrudStudents/CrudStudents'
 import PrincipalView from './views/Principal/PrincipalView';
 import MatchForm from './views/Administrator/Match/MatchForm';
 import ListMentorstudent from './views/Administrator/Match/ListMentorstudent';
-import SessionsEnabled from './views/Mentor/SessionsEnabled';
-import SessionesMentor from './views/Mentor/FormMentor';
-
+import AsignedSessions from './views/Mentor/AsignedSessions/AsignedSessions';
+import FormMentor from './views/Mentor/FormMentor';
+import FinalMessage from './views/Mentor/AsignedSessions/FinalMessage.jsx';
+import Calendar from './components/Calendar/calendar';
+import AssigmentSessionBoard from './views/Student/SessionsBoard/AssignmentSessionBoard';
+import WaitMessage from './components/Calendar/WaitMessage';
+import WelcomeAdmin from './views/Administrator/PanelAdmin/WelcomeAdmi';
 
 
 
@@ -45,6 +49,8 @@ function App() {
   const { isLogged } = auth
   // this useState is used to see if the student has already filled the interests
   const [interest, setInterest] = useState(false)
+  // url constant //
+  const baseUrl = 'http://localhost:3001/api'
 
   useEffect(() => {
     // collects the value of loggedOkhlosUser from localStorage
@@ -93,7 +99,7 @@ function App() {
   useEffect(() => {
     if (idStudent) {
       axios
-        .get(`http://localhost:3001/api/student-interest/${idStudent}`)
+        .get(`${baseUrl}/student-interest/${idStudent}`)
         .then(res => {
           const interest = res.data
           // console.log(interest)
@@ -106,28 +112,30 @@ function App() {
 
   return (
     <>
-      <NavBar></NavBar>
+      <Navbar></Navbar>
       <Routes>
-        {/* login */}
-
         <Route path='/' element={isLogged ? <PrincipalView /> : <Login />} exact />
         <Route path='/forgot_password' element={isLogged ? <WelcomeUser /> : <ForgotPassword />} exact />
 
         {/* others */}
-        <Route path="/" element={<Login />} />
-        <Route path="/welcome-user" element={interest ? <WelcomeUser /> : <MultipleChoice />} />
+        <Route path="/principal-view" element={<PrincipalView />} />
+        <Route path="/welcome-user" element={interest ? <Thanks /> : <MultipleChoice />} />
         <Route path="/welcome-student" element={<WelcomeStudent />} />
+        <Route path="/calendar" element={<Calendar />} />
         <Route path="/form-student/:id" element={<FirstStudentForm />} />
-        <Route path="/thanks-student" element={<Thanks />} />
+        {/* <Route path="/thanks-student" element={<Thanks/>}/> */}
         <Route path="/inform-student/:id" element={<FirstStudentInform />} />
         <Route path="/student-sessions" element={<StudentSession />} />
+        <Route path="/student-assignment-sessions" element={<AssigmentSessionBoard />} />
         <Route path="/MultipleChoice" element={<MultipleChoice />} />
         <Route path="/CrudStudents" element={<CrudStudents />} />
         <Route path="/MatchForm" element={<MatchForm />} />
         <Route path="/ListMentorstudent" element={<ListMentorstudent />} />
-        <Route path="/SessionsEnabled" element={<SessionsEnabled />} />
-        <Route path="/SessionesMentor" element={<SessionesMentor />} />
-
+        <Route path="/AsignedSessions" element={<AsignedSessions />} />
+        <Route path="/FormMentor" element={<FormMentor />} />
+        <Route path="/FinalMessage" element={<FinalMessage />} />
+        <Route path="/WaitMessage" element={<WaitMessage />} />
+        <Route path="/WelcomeAdmin" element={<WelcomeAdmin />} />
 
 
         <Route path="*" element={
@@ -140,7 +148,7 @@ function App() {
 
       </Routes>
 
-      <Footer></Footer>
+      <Footer />
     </>
 
 
