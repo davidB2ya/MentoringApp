@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Form/FirstStudentForm.css';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 
 const FirstStudentForm = () => {
-	
+
 	const [list, setList] = useState([]);
 
 	const [filledOut, setFillOut] = useState(false);
@@ -43,7 +43,7 @@ const FirstStudentForm = () => {
 
 
 	useEffect(() => {
-	  axios({
+		axios({
 			url: `http://localhost:3001/api/formStudent/${id}`,
 	  })
 		.then((response) => {
@@ -54,24 +54,25 @@ const FirstStudentForm = () => {
 		.catch((error) => {
 		  console.log(error);
 		});
-	}, [list, id]);
+	}, [id]);
 
+	const [answerAndQues, setAnswerAndQues] = useState([])
 
-	// useEffect(() => {
-	// 	if(idUser){
-	//   	axios({
-	// 			url: `http://localhost:3001/api/formSession/${idUser}/${id}`,
-	//   	})
-	// 		.then((res) => {
-	// 	  	// setList(response.data);
-	// 			if(res.data[0].FilledOut === true)
-	// 			setFillOut(true)
-	// 		})
-	// 		.catch((error) => {
-	// 	  	console.log(error);
-	// 		});
-	// 	}
-	// }, [idUser, id]);
+	useEffect(() => {
+		if(idUser){
+	  	axios({
+				url: `http://localhost:3001/api/answerform/${id}/${idUser}`,
+	  	})
+			.then((res) => {
+		  	// setList(response.data);
+				
+				setAnswerAndQues(res.data)
+			})
+			.catch((error) => {
+		  	console.log(error);
+			});
+		}
+	}, [idUser, id]);
 
 	// console.log(list)
 
@@ -90,21 +91,21 @@ const FirstStudentForm = () => {
 	pushObject()
 
 
-	
+
 	//  console.log(initialState)
-	
+
 	// console.log(initialAnswer)
 
-	
+
 	const [answerState, setAnswerState] = useState(initialAnswer)
 
-	
+
 	const getValues = (e) => {
 		e.preventDefault();
 		const { name, value } = e.target
-		
-		setAnswerState({...answerState, [name]: value})
-		
+
+		setAnswerState({ ...answerState, [name]: value })
+
 		// 
 	}
 
@@ -113,10 +114,10 @@ const FirstStudentForm = () => {
 
 	const auth = useSelector(state => state.auth)
 
-	const navigate = useNavigate() 
+	const navigate = useNavigate()
 
 	const handleSubmit = async e => {
-		
+
 		e.preventDefault();
 
 		
@@ -125,43 +126,42 @@ const FirstStudentForm = () => {
 			const {user} = auth
 			for(const answer in answerState){
 				const finalAnswer = {
-					idSession : id,
-					idUser : user.id,
-					idQuestion : answer,
-					answer : answerState[answer]
+					idSession: id,
+					idUser: user.id,
+					idQuestion: answer,
+					answer: answerState[answer]
 				}
-	
-					await axios.post(`http://localhost:3001/api/answerBank`,{
+
+				await axios.post(`http://localhost:3001/api/answerBank`, {
 					idSession: finalAnswer.idSession,
 					idUser: finalAnswer.idUser,
 					idQuestion: finalAnswer.idQuestion,
 					answer: finalAnswer.answer
 				})
-				try{
-					await axios.post('http://localhost:3001/api/new/formSession',{
-						idSession: id,
-						idStudent: idUser,
-						FilledOut: true,
-					})
-					navigate('/student-sessions')
-				}
-				catch (err) {
-      		err.response.data.error &&
-					console.log(err.response.data.error)
-    		}
 			}
-			
+			try{
+				await axios.post('http://localhost:3001/api/new/formSession',{
+					idSession: id,
+					idStudent: idUser,
+					FilledOut: true,
+				})
+				navigate('/student-sessions')
+			}
+			catch (err) {
+				err.response.data.error &&
+				console.log(err.response.data.error)
+			}
 			
 		}
 		catch (err) {
-      err.response.data.error &&
-			console.log(err.response.data.error)
-    }
+			err.response.data.error &&
+				console.log(err.response.data.error)
+		}
 		// console.log("se envio los resultados:" )
-		
-		
+
+
 		// console.log(answerState)
-		
+
 	}
 
 
@@ -169,34 +169,28 @@ const FirstStudentForm = () => {
 
 	
 
- 	
 
-	const pruebaArray = [
-		{
-			question:1
-		
-		},
-		{
-			question:2
-		
-		},
-		{
-			question:3
-		
-		},
-		{
-			question:4
-		
-		}
-	]
 	
     return (
         <div>
            
 			<p className="do">Las siguientes preguntas te ayudaran a ti a tu mentor en el desarrollo de la sesión.</p>
 			<form onSubmit={handleSubmit} className="advice">
-				{filledOut ? pruebaArray.map((itemPrueba)=>(
-					<p>{itemPrueba.question}</p>
+				{filledOut ? answerAndQues.map((element)=>(
+					<div className="mb-3" key={element.id}>
+						<label className="form-label">{element.idQuestion.question}</label>
+						<br></br>
+						<textarea 
+						// onChange={getValues} 
+						name={element.id} 
+						className="form-control"
+						id="exampleFormControlTextarea1"
+						rows="3"
+						placeholder={element.answer}
+						required
+						disabled
+						></textarea>
+					</div>
 					)) : list.map((item) => (
 					<div className="mb-3" key={item.id}>
 						<label className="form-label">{item.question}</label>
@@ -218,16 +212,19 @@ const FirstStudentForm = () => {
 						onChange={getValues} 
 						name={item.id} 
 						className="form-control"
-						id="exampleFormControlTextarea1"
+						id="FormControlTextarea1"
 						rows="3"
 						required
 						></textarea>
 					</div>
 					))}
-			<button type="submit">ENVIAR</button>
+			{filledOut ? 
+			<Link className="btn-form" to="/student-assignment-sessions"> volver </Link> 
+			: 
+			<button type="submit">ENVIAR</button>}
 			</form>
-        </div>
-    )
+		</div>
+	)
 }
 
 export default FirstStudentForm

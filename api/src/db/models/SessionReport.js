@@ -2,19 +2,15 @@ const { Schema, model } = require('mongoose')
 
 // required models
 const Session = require('../models/Session')
-const Student = require('../models/User')
-const Mentor = require('../models/Mentor')
+const User = require('../models/User')
+
 
 // schema creation for session report
 const sessionReportSchema = new Schema({
   // the idSession key store the id of the model session
   idSession: { type: Schema.ObjectId, ref: Session },
   // the idStudent key store the id of the model User
-  idStudent: { type: Schema.ObjectId, ref: Student },
-  // the idMentor key store the id of the model mentor
-  idMentor: { type: Schema.ObjectId, ref: Mentor },
-  // The filledOut_date key stores the date on which the report was filled out
-  filledOut_date: Date,
+  idUser: { type: Schema.ObjectId, ref: User },
   // The filledOut key stores if the form was filled out
   filledOut: Boolean
 })

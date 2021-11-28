@@ -11,27 +11,27 @@ const PrincipalView = () => {
   const auth = useSelector(state => state.auth)
 
 
-  useEffect(()=> {
+  useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedAgoraUser')
     const firstLogin = localStorage.getItem('firstLogin')
     // console.log(firstLogin && loggedUserJSON)
-    if(firstLogin && loggedUserJSON){
+    if (firstLogin && loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       const refreshtoken = user.refresh_token
-      
-      const getToken = async () =>{
-        const res = await axios.post('http://localhost:3001/api/refresh_token', {refreshtoken})
+
+      const getToken = async () => {
+        const res = await axios.post('http://localhost:3001/api/refresh_token', { refreshtoken })
         // console.log(res)
-        dispatch({type:'GET_TOKEN', payload: res.data.access_token})
+        dispatch({ type: 'GET_TOKEN', payload: res.data.access_token })
       }
       getToken()
-      
+
     }
   }, [auth.isLogged, dispatch])
 
 
-  useEffect(()=> {
-    if(token){
+  useEffect(() => {
+    if (token) {
       // console.log(token, "user")
       const getUser = () => {
         dispatch(dispatchLogin())
@@ -41,16 +41,16 @@ const PrincipalView = () => {
       }
       getUser()
     }
-    
+
   }, [token, dispatch])
 
 
-    return (
+  return (
     <div className="App">
       <h1>Bienvenido Usuario genérico</h1>
-      
-      
-      
+
+
+
       <Link to="/welcome-user">| Pagina Bienvenida Usuario |</Link>
       <Link to="/welcome-student">| Pagina Bienvenida estudiante |</Link>
       <Link to="/student-profile-interests">| Perfil de estudiante |</Link>
@@ -59,9 +59,11 @@ const PrincipalView = () => {
       <Link to="/admin-panel">| admin |</Link>
       <Link to="/WelcomeCard">| WelcomeCard |</Link>
       <Link to="/CrudStudents">| CrudStudents |</Link>
-      <Link to="/MultipleChoice">| MultipleChoice |</Link>                                                
-    </div>  
-    )
+      <Link to="/MultipleChoice">| MultipleChoice |</Link>
+      <Link to="/SessionesMentor">| SessionesMentor |</Link>
+      <Link to="/formControl">| formControl |</Link>
+    </div>
+  )
 }
 
 export default PrincipalView
