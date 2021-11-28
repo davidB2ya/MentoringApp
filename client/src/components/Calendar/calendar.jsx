@@ -24,7 +24,7 @@ const Calendar = () => {
 
   useEffect(() => {
     if(idStudent){
-      axios.get(`http://localhost:3001/api/dashboard/assigned-session/${idStudent}/${id}`)
+      axios.get(`${baseUrl}/api/dashboard/assigned-session/${idStudent}/${id}`)
       .then(response => {
         // setSessions(response.data)
         if(response.data.length > 0){

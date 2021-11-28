@@ -1,51 +1,129 @@
 import './formmentor.css'
 
-function FormMentor () {
+import Card from '../../../src/components/Card/Card'
+import Select from 'react-select'
+import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
+
+function FormMentor() {
+  const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
+
+  const [updateMentor, setUpdateMentor] = useState({
+    email: '',
+    password: '',
+    err: '',
+    success: ''
+  })
+
+
+  const interest = [
+    { value: "IA", label: "IA" },
+    { value: "Diseño", label: "Diseño" },
+    { value: "Frontend", label: "Frontend" },
+    { value: "Backend", label: "Backend" },
+    { value: "Marketing", label: "Marketing" },
+
+  ]
+
+  // const handleChange = (selectedOption) => {
+
+  // }
+
+  const maxOptions = 3;
+
+  const [selectedOption, setSelectedOption] = useState([]);
+
+  const handleTypeSelect = e => {
+    setSelectedOption(e);
+  };
+
+  // console.log(selectedOption)
+
+  const sendSelect = []
+
+  selectedOption.map(option => {sendSelect.push(option.value) });
+  // console.log(sendSelect)
+
+  const auth = useSelector(state => state.auth)
+  // console.log(auth)
+
+  const { user } = auth
+
+  const navigate = useNavigate()
+
+  const handleUpdateInterest = () => {
+    const userinterestsMentor = sendSelect
+    // console.log(userinterestsStudent)
+    const idMentor = user.id
+    // console.log(idStudent)
+    axios
+      .post(`${baseUrl}/api/formControl/${idMentor}`, { 
+        gender: userinterestsMentor, 
+        academic_level: userinterestsMentor, 
+        ActualJobPosition: userinterestsMentor, 
+        Company: userinterestsMentor, 
+        sons: userinterestsMentor, 
+        interestsMentor: userinterestsMentor, 
+        numeStudents: userinterestsMentor, 
+        studentAssignment: userinterestsMentor })
+    navigate('/thanks-student')
+  }
+
+
+
   return (
+
     <div className='container-Q'>
       <div className='containerList'>
+
         <p>Estudios</p>
         <input></input>
         <p>Cargo actual</p>
         <input></input>
         <p>Empresa en donde trabajas</p>
         <input></input>
+        <p>Edad</p>
+        <input></input>
         <p>Género</p>
         <input></input>
         <p>Hijos</p>
         <input></input>
+
         <p>Cantidad de estudiantes que quieres en el proceso</p>
         <input></input>
       </div>
-      <div className='interest'>
-        <h2>Intereses generales</h2>
-        <p>Elige un máximo de tres Intereses</p>
-        <div className='list'>
-          <p>Intereses</p>
-          <div>
-            <label className='OPT1'>IA</label>
-            <input type='radio'></input>
-          </div>
-          <div>
-            <label className='OPT2'>Diseño</label>
-            <input type='radio'></input>
-          </div>
-          <div>
-            <label className='OPT3'>Frontend</label>
-            <input type='radio'></input>
-          </div>
-          <div>
-            <label className='OPT4'>Backend</label>
-            <input type='radio'></input>
-          </div>
-          <div>
-            <label className='OPT5'>Marketing</label>
-            <input type='radio'></input>
-          </div>
-        </div>
-        <button>Finalizar</button>
-      </div>
-      </div>
+
+      <Card
+        container={
+          <>
+            <h3>Intereses generales</h3>
+            <p>Elige máximo tres intereses</p>
+
+            <Select
+              name="interest"
+              options={selectedOption.length === maxOptions ? [] : interest}
+              isMulti
+              onChange={handleTypeSelect}
+
+              noOptionsMessage={() => {
+                return selectedOption.length === maxOptions
+                  ? 'You have reached the max options value'
+                  : 'No options available';
+              }}
+            />
+
+
+            <br />
+          </>
+        }
+        bottom={<button onClick={handleUpdateInterest}>Finalizar</button>}
+      />
+
+
+    </div>
   )
 }
 

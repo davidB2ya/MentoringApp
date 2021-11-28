@@ -21,7 +21,7 @@ const WaitMessage = ({header, message}) => {
                     style={{textDecoration: "none", color: "#000"}} 
                     to="/student-sessions"
                     className="button-return">
-                        voler
+                        volver
                     </Link>              
                   </div>
                   {/* <h1 className="little">.hola.</h1> */}

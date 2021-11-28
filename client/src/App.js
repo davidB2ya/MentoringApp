@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { dispatchGetUser, dispatchLogin, fetchUser } from './redux/actions/authActions'
@@ -9,7 +9,7 @@ import Login from './components/login/Login.jsx'
 // import NotFound from './views/General/NotFound'
 import ForgotPassword from './components/login/ForgotPassword.jsx'
 import WelcomeUser from './views/Student/Welcome/WelcomeStudent.jsx'
-import WelcomeStudent from './views/Student/Welcome/WelcomeStudent' 
+import WelcomeStudent from './views/Student/Welcome/WelcomeStudent'
 import StudentSession from './views/Student/SessionsBoard/SessionsBoard';
 import Thanks from './views/Student/Thanks/Thanks';
 import Navbar from './components/NavRes/NavRes'
@@ -43,8 +43,9 @@ import CrudSessionsDetail from './views/Administrator/Cruds/CrudSessionDetail/Cr
 
 
 
+
 function App() {
-  
+
 
   // it gives us the store's dispatch method as its result
   const dispatch = useDispatch()
@@ -52,7 +53,7 @@ function App() {
   const token = useSelector(state => state.token)
   // save auth state stored in redux store
   const auth = useSelector(state => state.auth)
-  // save isL0gged from auth
+  // save isLogged from auth
   const {isLogged} = auth
   // this useState is used to see if the student has already filled the interests
   const [interest, setInterest] = useState(false)
@@ -65,18 +66,18 @@ function App() {
     // collects the value of firstLogin from localStorage
     const firstLogin = localStorage.getItem('firstLogin')
     // if firstLogin and loggedUserJSON exist run the following
-    if(firstLogin && loggedUserJSON){
+    if (firstLogin && loggedUserJSON) {
       // convert received data to javascript object
       const user = JSON.parse(loggedUserJSON)
       // save the user's refresToken
       const refreshtoken = user.refresh_token
-      
-      
-      const getToken = async () =>{
+
+
+      const getToken = async () => {
         // send the refreshToken to the backend path
         const res = await axios.post(`${baseUrl}/api/refresh_token`, {refreshtoken})
         // calls an action to trigger a state change
-        dispatch({type:'GET_TOKEN', payload: res.data.access_token})
+        dispatch({ type: 'GET_TOKEN', payload: res.data.access_token })
       }
 
       // the getToken function is called
@@ -85,9 +86,9 @@ function App() {
   }, [auth.isLogged, dispatch])
 
 
-  useEffect(()=> {
+  useEffect(() => {
     // check if the token exists
-    if(token){
+    if (token) {
       // 
       const getUser = () => {
         //
@@ -163,10 +164,10 @@ function App() {
        
        <Footer/>
     </>
-    
 
-  ) 
-  
+
+  )
+
 }
 
 export default App
