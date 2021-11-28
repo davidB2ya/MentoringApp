@@ -22,15 +22,15 @@ const MultipleChoice = () => {
 
   const {isStudent, isAdmin} = auth
 
-  const isMentor = () => {
-    if(!isStudent && !isAdmin){
-      navigate('/welcome-mentor')
-    }else if(isAdmin){
-      navigate('/calendar/:id')
-    }
-  }
+  // const isMentor = () => {
+  //   if(!isStudent && !isAdmin){
+  //     navigate('/welcome-mentor')
+  //   }else if(isAdmin){
+  //     navigate('/calendar/:id')
+  //   }
+  // }
 
-  isMentor()
+  // isMentor()
 
   useEffect(() => {
     axios({

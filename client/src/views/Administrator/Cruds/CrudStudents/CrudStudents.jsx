@@ -6,7 +6,7 @@ import {FontAwesomeIcon}from'@fortawesome/react-fontawesome';
 import {faEdit,faTrashAlt} from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';
 import { Modal, Button,TextField} from '@material-ui/core';
-import axios from 'axios';
+import Axios from 'axios';
 import Sidebar from '../../../../components/Sidebar/Sidebar';
 
 const Articles=[{
