@@ -3,6 +3,7 @@ const User = require('../db/models/User')
 // constant for the get method
 const MentorControlRouter = require('express').Router()
 const MentorFormRouter = require('express').Router()
+const GetoneMentorRouter = require('express').Router()
 
 MentorControlRouter.get('/', async (req, res, next) => {
   try {
@@ -41,6 +42,15 @@ MentorControlRouter.get('/', async (req, res, next) => {
     res.status(200).send({ mentorform: mentorformStored })
   })
 }) */
+
+GetoneMentorRouter.get('/:id', async (req, res)=>{
+  const getOneMentor = await Profile.find({user_id: req.params.id}, {interestsMentor: 1, _id: 0})
+  res.json(getOneMentor)
+})
+
+
+
+
 MentorFormRouter.post('/:id', (req, res) => {
   const body = req.body
 
@@ -55,7 +65,6 @@ MentorFormRouter.post('/:id', (req, res) => {
         actualAge: body.actualAge,
         sons: body.sons,
         interestsMentor: body.interestsMentor,
-        numeStudents: body.numeStudents,
         numeStudents: body.numeStudents
       }
     }
@@ -75,7 +84,11 @@ MentorFormRouter.post('/:id', (req, res) => {
   })
 })
 
-module.exports = { MentorControlRouter, MentorFormRouter }
+module.exports = { 
+  MentorControlRouter, 
+  MentorFormRouter,
+  GetoneMentorRouter 
+}
 
 /*  Nombres
 ○ Apellidos

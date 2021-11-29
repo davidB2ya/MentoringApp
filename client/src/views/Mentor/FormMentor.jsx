@@ -11,19 +11,32 @@ import { useEffect, useState } from 'react'
 function FormMentor() {
 
   const [updateMentor, setUpdateMentor] = useState({
-    email: '',
-    password: '',
-    err: '',
-    success: ''
+    academic_level: '',
+    ActualJobPosition: '',
+    Company: '',
+    actualAge: '', 
+    gender: '1',
+    sons: '',
+    numeStudents: ''
   })
+  
 
 
-  const interest = [
-    { value: "IA", label: "IA" },
-    { value: "Diseño", label: "Diseño" },
-    { value: "Frontend", label: "Frontend" },
-    { value: "Backend", label: "Backend" },
-    { value: "Marketing", label: "Marketing" },
+  const interestMentor = [
+    { value: "React.JS", label: "React.JS" },
+    { value: "Angular.JS", label: "Angular.JS" },
+    { value: "Blockchain", label: "Blockchain" },
+    { value: "Vue.JS", label: "Vue.JS" },
+    { value: "MySQL", label: "MySQL" },
+    { value: "Mongo.db", label: "Mongo.db" },
+    { value: "Node.JS", label: "Node.JS" },
+    { value: "Express.JS", label: "Express.JS" },
+    { value: "Django", label: "Django" },
+    { value: "Next.JS", label: "Next.JS" },
+    { value: "Java", label: "Java" },
+    { value: "Machine Learning", label: "Machine Learning" },
+    { value: "Linux", label: "Linux" },
+    { value: "PHP", label: "PHP" }
 
   ]
 
@@ -39,12 +52,16 @@ function FormMentor() {
     setSelectedOption(e);
   };
 
+  const handleChangeInput = e => {
+    const { name, value } = e.target
+    setUpdateMentor({ ...updateMentor, [name]: value })
+  }
+
   // console.log(selectedOption)
 
-  const sendSelect = []
+  const sendSelect = selectedOption.map(option => (option.value));
 
-  selectedOption.map(option => { sendSelect.push(option.value) });
-  // console.log(sendSelect)
+  
 
   const auth = useSelector(state => state.auth)
   // console.log(auth)
@@ -53,22 +70,28 @@ function FormMentor() {
 
   const navigate = useNavigate()
 
-  const handleUpdateInterest = () => {
-    const userinterestsMentor = sendSelect
-    // console.log(userinterestsStudent)
-    const idMentor = user.id
-    // console.log(idStudent)
-    axios
+  const handleUpdateInterest = (e) => {
+    e.preventDefault()
+    if(sendSelect.length === 3){
+      const userinterestsMentor = sendSelect
+
+      const idMentor = user.id
+      
+      axios
       .post(`http://localhost:3001/api/formControl/${idMentor}`, { 
-        gender: userinterestsMentor, 
-        academic_level: userinterestsMentor, 
-        ActualJobPosition: userinterestsMentor, 
-        Company: userinterestsMentor, 
-        sons: userinterestsMentor, 
+        gender: updateMentor.gender, 
+        academic_level: updateMentor.academic_level, 
+        ActualJobPosition: updateMentor.ActualJobPosition, 
+        Company: updateMentor.Company,
+        actualAge: updateMentor.actualAge,
+        sons: updateMentor.sons, 
         interestsMentor: userinterestsMentor, 
-        numeStudents: userinterestsMentor, 
-        studentAssignment: userinterestsMentor })
-    navigate('/thanks-student')
+        numeStudents: updateMentor.numeStudents
+      })
+      navigate('/thanks-student')
+    }else{
+      alert('Por favor selecciona 3 intereses')
+    }
   }
 
 
@@ -76,52 +99,103 @@ function FormMentor() {
   return (
 
     <div className='container-Q'>
-      <div className='containerList'>
+      <form className="form-mentor" onSubmit={handleUpdateInterest}>
+        <div className='containerList'>
 
-        <p>Estudios</p>
-        <input></input>
-        <p>Cargo actual</p>
-        <input></input>
-        <p>Empresa en donde trabajas</p>
-        <input></input>
-        <p>Edad</p>
-        <input></input>
-        <p>Género</p>
-        <input></input>
-        <p>Hijos</p>
-        <input></input>
+          <label className="mg-bottom">
+            Estudios
+          </label>
+          <input 
+          onChange={handleChangeInput}
+          className="mg-bottom" 
+          name="academic_level"
+          required></input>
+          <label className="mg-bottom">
+            Cargo actual
+          </label>
+          <input
+          onChange={handleChangeInput} 
+          className="mg-bottom" 
+          name="ActualJobPosition"
+          required></input>
+          <label className="mg-bottom">
+            Empresa en donde trabajas
+          </label>
+          <input
+          onChange={handleChangeInput} 
+          className="mg-bottom" 
+          name="Company"
+          required></input>
+          <label className="mg-bottom"> 
+            Edad
+          </label>
+          <input
+          onChange={handleChangeInput} 
+          className="mg-bottom" 
+          name="actualAge"
+          required></input>
+          <label className="mg-bottom">
+            Género
+          </label>
+          <select 
+          onChange={handleChangeInput} name="gender"
+          className="mg-bottom"
+          required>
+            <option value="1">Hombre</option>
+            <option value="2">Mujer</option>
+            <option value="3">Personalizado</option>
+          </select>
+          {/* <input
+           
+          className="mg-bottom" 
+          name=""></input> */}
+          <label className="mg-bottom">
+            Hijos
+          </label>
+          <input
+          onChange={handleChangeInput} 
+          className="mg-bottom" 
+          name="sons"
+          required></input>
 
-        <p>Cantidad de estudiantes que quieres en el proceso</p>
-        <input></input>
-      </div>
+          <label className="mg-bottom">
+            Cantidad de estudiantes que quieres en el proceso
+          </label>
+          <input
+          onChange={handleChangeInput}  
+          className="mg-bottom" 
+          name="numeStudents"
+          required></input>
+        </div>
 
-      <Card
-        container={
-          <>
-            <h3>Intereses generales</h3>
-            <p>Elige máximo tres intereses</p>
+        <Card
+          container={
+            <>
+              <h3>Intereses generales</h3>
+              <p>Elige máximo tres intereses</p>
 
-            <Select
-              name="interest"
-              options={selectedOption.length === maxOptions ? [] : interest}
-              isMulti
-              onChange={handleTypeSelect}
+              <Select
+                name="interest"
+                options={selectedOption.length === maxOptions ? [] : interestMentor}
+                isMulti
+                onChange={handleTypeSelect}
 
-              noOptionsMessage={() => {
-                return selectedOption.length === maxOptions
+                noOptionsMessage={() => {
+                  return selectedOption.length === maxOptions
                   ? 'You have reached the max options value'
                   : 'No options available';
-              }}
+                }}
             />
 
 
             <br />
           </>
-        }
-        bottom={<button onClick={handleUpdateInterest}>Finalizar</button>}
-      />
-
-
+          }
+        />
+        <button className='button-login' type='submit'>
+            Enviar
+          </button>
+      </form>
     </div>
   )
 }
