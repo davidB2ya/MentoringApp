@@ -9,7 +9,8 @@ function AsignedSessions () {
   const interest = 'IA, Backend, Marketing'
 
   return (
-    <div className='container-card'>
+    <div className="studentsCardContainer">
+    <div className='container-card-assignedSessions'>
       <img
         className='photo'
         src='https://wp-growpro.s3-eu-west-1.amazonaws.com/media/2018/01/Visa-de-estudiante-Australia-5-buenas-razones-para-que-la-pidas.jpg'
@@ -39,6 +40,7 @@ function AsignedSessions () {
         <label>!Recuerda ingresar al formulario y enviar tus comentarios despues de la sesión!
         </label>
       </div>
+    </div>
     </div>
   )
 }
