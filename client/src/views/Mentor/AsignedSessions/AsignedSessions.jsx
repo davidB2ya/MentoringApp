@@ -2,14 +2,21 @@
 import './asignedsessions.css'
 
 function AsignedSessions () {
+
+  
+
+
+  const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
   const email = 'lalalanda123@gmail.com'
   const NoPhone = '315 123 6345'
   const prevStudies = 'Chamanismo, Alquimia.'
   const age = '23 años'
   const interest = 'IA, Backend, Marketing'
+  
 
   return (
-    <div className='container-card'>
+    <div className="studentsCardContainer">
+    <div className='container-card-assignedSessions'>
       <img
         className='photo'
         src='https://wp-growpro.s3-eu-west-1.amazonaws.com/media/2018/01/Visa-de-estudiante-Australia-5-buenas-razones-para-que-la-pidas.jpg'
@@ -39,6 +46,7 @@ function AsignedSessions () {
         <label>!Recuerda ingresar al formulario y enviar tus comentarios despues de la sesión!
         </label>
       </div>
+    </div>
     </div>
   )
 }
