@@ -42,7 +42,7 @@ function AsignedSessions () {
         <label>Link de sesión</label>
         <p>https://us02web.zoom.us/j/89970425043?</p>
         
-        <input className='button' value='Ver formulario'></input>
+        <button className='button' value='Ver formulario'></button>
         <label>!Recuerda ingresar al formulario y enviar tus comentarios despues de la sesión!
         </label>
       </div>
