@@ -204,11 +204,21 @@ const MatchForm = () => {
       <Sidebar/>
           <div>
             <h2>Lista de Estudiantes</h2>
+            <table>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+              </tr>
+              
             {students.map(e => {
-              return (
-              <p key={e.id}>{e.user_id.name} {e.user_id.lastName}</p>   
+              return ( 
+                <tr>
+                    <td key={e.id}>{e.user_id.name}</td>
+                    <td key={e.id}>{e.user_id.lastName}</td>
+                </tr> 
               )
             })}
+            </table>  
           </div>
           <div>
             <h2>Lista de Mentores</h2>
