@@ -153,7 +153,10 @@ const profileSchema = new Schema({
   sons: Number,
 
   // The interests key stores the mentor's interests
-  interestsMentor: [String],
+  interestsMentor: {
+    type: Array,
+    default: []
+  },
 
   // The numeStudents key stores the number of students the mentor wants
   numeStudents: Number,

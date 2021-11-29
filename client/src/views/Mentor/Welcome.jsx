@@ -26,14 +26,15 @@ const Welcome= () => {
 
   const navigate = useNavigate()
 
-  if(data.length > 0){
-    console.log(data[0])
-  }
+  
+   
   
   
   const getInterest = () => {
-    if(data[0].interestsMentor.length > 0) {
-      navigate('/')
+    if(data.length > 0){
+      if(data[0].interestsMentor.length > 0) {
+        navigate('/')
+      }
     }
   }
 
