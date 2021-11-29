@@ -2,9 +2,9 @@
 footer {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
   font-weight: bold;
- color: #0000
+ color: #0000;
+  bottom: 0%;
  
 }
 
