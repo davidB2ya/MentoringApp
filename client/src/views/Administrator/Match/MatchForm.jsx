@@ -201,6 +201,7 @@ const MatchForm = () => {
   const ListStudentMentor = () => {
     return(
       <div>
+      <Sidebar/>
           <div>
             <h2>Lista de Estudiantes</h2>
             {students.map(e => {
