@@ -11,72 +11,15 @@ import Sidebar from '../../../../components/Sidebar/Sidebar';
 
 const Articles=[{
    
-  Estudiante:"Estudiante",
-  Nombres :"Nombres" ,
-  Apellidos:"Apellidos",
-  Edad:"Edad",
-  Género:"Género",
-  Intereses :"Intereses ",
-  Programa :"Programa ",
-  AsignacióndeMentor:"Asignación de Mentor"
+  name:"Nombres",
+  Surnames:"Apellidos",
+  Age:"Edad",
+  Gender:"Género",
+  Interests:"Intereses",
+  Program:"Programa",
+  MentorAssignment:"Id Mentor"
 }]
 
-const Database = [{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
-},
-{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
-},
-{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
-},
-{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Programa ",
-  AsignacióndeMentor: "Asignación de Mentor"
-},
-{
-  Id: 121,
-  Estudiante: "Estudiante",
-  Nombres: "Nombres",
-  Apellidos: "Apellidos",
-  Edad: "Edad",
-  Género: "Género",
-  Intereses: "Intereses ",
-  Programa: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga ea animi vel nam esse ipsam soluta totam perspiciatis saepe accusamus quae consectetur, voluptatum earum recusandae perferendis. Eveniet laborum illo culpa. ",
-  AsignacióndeMentor: "Asignación de Mentor"
-}
-]
 
 
 //Modal styles
@@ -96,11 +39,13 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer'
   },
   inputMaterial: {
-    width: '100%'
+    width: '100%',
+    height: "2.5rem"
   },
   h3: {
     fontFamily: "Gilroy-ExtraBold ",
-    color: "#92C149"
+    color: "#92C149",
+     margin: "0"
   },
   Button: {
     backgroundColor: "#FFCC02",
@@ -117,47 +62,50 @@ const useStyles = makeStyles((theme) => ({
 
 
 const CrudStudents = () => {
+  
   const [data, setData] = useState([]);
   const Styles = useStyles();
   const [modalinsertar, setmodalinsertar] = useState(false);
+  const [modalEdit, setModalEdit]=useState(false);
   //Insert saved module data
   const [SavedData, setSavedData] = useState({
-    id: "",
-    Nombres: "",
-    Apellidos: "",
-    Edad: "",
-    Género: "",
-    Intereses: "",
-    Programa: "",
-    Carrera: "",
-    Empresa: "",
-    AsignaciónEst: ""
+    name:"",
+    middleName:"",
+    lastName:"",
+    secondSurname:"",
+    actualAge:"",
+    gender:"",
+    program:"",
+    email:"",
+    contactNumber:"",
+    cohorte:"",
+    role:1
   })
-//Function to insert the data written in the module.
-const InsertData=e=>{
-  const {name,value}=e.target;
-  setSavedData(prevState=>({
-   ...prevState,
-    [name]:value
-  }))
-  console.log(SavedData)
-}
-//function that searches the database for data
-const petitionGet=async()=>{
- await Axios.get(Database)
-  .then(response=>{
-    console.log(response.data)
-  })
-}
-useEffect(()=>{
-  petitionGet();
-},[])
+  //Function to insert the data written in the module.
+  const InsertData = e => {
+    const { name, value } = e.target;
+    setSavedData(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+    console.log(SavedData)
+  }
+  //function that searches the database for data
+  /* const petitionGet=async()=>{
+   await axios.get(Database)
+    .then(response=>{
+      console.log(response.data)
+    })
+  }
+  useEffect(async()=>{
+   await petitionGet();
+  },[]) */
 
   const [students, setStudents] = useState([])
 
   useEffect(() => {
     Axios({
-      url: 'http://localhost:3001/api/students/control'
+      url: 'http://localhost:3001/api/info/students'
     })
       .then(response => {
         setStudents(response.data)
@@ -172,14 +120,29 @@ useEffect(()=>{
 
   //function that inserts data into the database
 
-  const petitionPost = async () => {
-    await Axios.post(Database, SavedData)
-      .then(response => {
-        setData(data.concat(response.data),
-          openedClosedModalInsertar()
-        )
-      })
+    const petitionPost = async e => {
+      e.preventDefault();
+      try{
+        await Axios.post(`http://localhost:3001/api/students-control-post`,{
+          
+          gender:SavedData.gender ,
+          actualAge:SavedData.actualAge ,
+          name:SavedData.name,
+          middleName:SavedData.middleName,
+          lastName:SavedData.lastName,
+          secondSurname:SavedData.secondSurname,
+          email:SavedData.email,
+          password:SavedData.password,
+          contactNumber:SavedData.contactNumber,
+          role:SavedData.role,
+          cohorte:SavedData.cohorte
+        })
+      }catch(err){
+        console.log(err)
+      }
+      
   }
+
 
 
 
@@ -195,90 +158,106 @@ useEffect(()=>{
   const bodyInsertar = (
     <div className={Styles.modal}>
       <h3 className={Styles.h3} >AGREGAR NUEVO ESTUDIANTE   </h3>
-      <TextField name="id" className={Styles.inputMaterial} label="Id" onChange={InsertData} value={SavedData && SavedData.Nombres} />
+      
+      
+      
+      <TextField name="name" className={Styles.inputMaterial} label="Nombres" onChange={InsertData}  />
       <br />
-      <TextField name="Nombres" className={Styles.inputMaterial} label="Estudiante" onChange={InsertData} value={SavedData && SavedData.Nombres} />
+      <TextField name="middleName" className={Styles.inputMaterial} label="Segundo Nombre" onChange={InsertData}  />
       <br />
-      <TextField name="Apellidos" className={Styles.inputMaterial} label="Nombres" onChange={InsertData} value={SavedData && SavedData.Nombres} />
+      <TextField name="lastName" className={Styles.inputMaterial} label="Apellidos" onChange={InsertData} />
       <br />
-      <TextField name="Género" className={Styles.inputMaterial} label="Apellidos" onChange={InsertData} value={SavedData && SavedData.Nombres} />
+      <TextField name="secondSurname" className={Styles.inputMaterial} label="Segundo apellidos" onChange={InsertData} />
       <br />
-      <TextField name="Edad" className={Styles.inputMaterial} label="Edad" onChange={InsertData} />
+      <TextField name="actualAge" className={Styles.inputMaterial} label="Edad" onChange={InsertData} />
       <br />
-      <TextField name="Intereses" className={Styles.inputMaterial} label="Género" onChange={InsertData} value={SavedData && SavedData.Nombres} />
+      <TextField name="gender" className={Styles.inputMaterial} label="Género" onChange={InsertData}  />
       <br />
-      <TextField name="Programa" className={Styles.inputMaterial} label="Intereses" onChange={InsertData} value={SavedData && SavedData.Nombres} />
+      <TextField name="program" className={Styles.inputMaterial} label="Programa" onChange={InsertData}  />
       <br />
-      <TextField name="Carrera" className={Styles.inputMaterial} label="Programa" onChange={InsertData} value={SavedData && SavedData.Nombres} />
+      <TextField name="email" className={Styles.inputMaterial} label="Email" onChange={InsertData} />
       <br />
-      <TextField name="Empresa" className={Styles.inputMaterial} label="Asignación de Mentor" onChange={InsertData} value={SavedData && SavedData.Nombres} />
+      <TextField name="contactNumber" className={Styles.inputMaterial} label="Celular" onChange={InsertData} />
+      <br />
+      <TextField name="cohorte" className={Styles.inputMaterial} label="cohorte" onChange={InsertData} />
+      <br />
+      <TextField name="password" className={Styles.inputMaterial} label="Contraseña" onChange={InsertData} />
+    
 
       <br /><br />
       <div align="right">
-        <Button className={Styles.Button} onClick={() => petitionPost()}>Insertar</Button>
+        <Button className={Styles.Button}  onClick={petitionPost}>Insertar</Button>
+        <br />
+        <br />
         <Button className={Styles.Button} onClick={() => openedClosedModalInsertar()}>Cancelar</Button>
       </div>
     </div>
   )
 
+  
 
   return (
-    <>
-    <Sidebar/>
-  <div className={styles.container}>
-     <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
-     onClick={()=>openedClosedModalInsertar()}/>
-      <Table th={Articles.map((e) =>{
-        return( 
-                <tr className={styles.column}>
-                  <th>{e.Id}</th>
-                  <th>{e.Estudiante}</th>
-                  <th>{e.Nombres}</th>
-                  <th>{e.Apellidos}</th>
-                  <th>{e.Edad}</th>
-                  <th>{e.Género}</th>
-                  <th>{e.Intereses}</th>
-                  <th>{e.Programa}</th>
-                  <th>{e.AsignacióndeMentor}</th>
-                  <th>Editar</th>
-                  <th>Eliminar</th>
-                 
-                </tr>
-              )})
-                } 
-          th2={Database.map((e) =>{
-            return(
-                    <tr className={styles.row}>
-                      <td className={styles.rowone}>{e.Id}</td>
-                      <td className={styles.rowone}>{e.Estudiante}</td>
-                      <td className={styles.rowone}>{e.Nombres}</td>
-                      <td className={styles.rowone}> {e.Apellidos}</td>
-                      <td className={styles.rowone}>{e.Edad}</td>
-                      <td className={styles.rowone}>{e.Género}</td>
-                      <td className={styles.rowone}>{e.Intereses}</td>
-                      <td className={styles.rowone}>{e.Programa}</td>
-                      <td className={styles.rowone}>{e.AsignacióndeMentor}</td>
-                      <>
-                      <td><button  className={styles.update}><FontAwesomeIcon icon={faEdit}/></button></td>
-                      <td><button  className={styles.delete}><FontAwesomeIcon icon={ faTrashAlt}/></button></td>
-                      </>
-                      </tr>
-                      
-                        
-                  
-                  )})}/>
-
-                  <Modal
-                  open={modalinsertar}
-                  onClose={openedClosedModalInsertar}>
-
-                   {bodyInsertar}
-                
-                  </Modal>
-
-  </div>
-  </>
     
+  <>
+  <Sidebar/>
+    <div className={styles.container}>
+
+      
+      <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
+        onClick={() => openedClosedModalInsertar()} />
+      <Table th={Articles.map((e) => {
+        return (
+          <tr className={styles.column}>
+            <th>{e.name}</th>
+            <th>{e.Surnames}</th>
+             <th>{e.Age}</th>
+            <th>{e.Gender}</th>
+            <th>{e.Interests}</th> 
+            <th>{e.Program}</th>
+            <th>{e.MentorAssignment}</th>
+            <th>Editar</th> 
+            <th>Eliminar</th>
+             </tr>
+        )
+      })
+      }
+        th2={students.map((e) => {
+          return (
+            <tr className={styles.row}>
+              <br />
+              <td>{e.user_id.name +" "+ e.user_id.middleName  }</td>
+              <td>{e.user_id.lastName +" "+e.user_id.secondSurname}</td>
+              <td>{e.actualAge}</td>
+              <td>{e.gender}</td>
+              <td>{e.interestsStudent[0] + " "+e.interestsStudent[1]+" "+e.interestsStudent[2]}</td>
+              <td>{e.user_id.program }</td>
+              <td>{e.assignedMentor}</td>
+              <td><button className={styles.update}><FontAwesomeIcon icon={faEdit} /></button></td>
+              <td><button className={styles.delete}><FontAwesomeIcon icon={faTrashAlt} /></button></td><br />
+              
+             
+            </tr>
+                
+
+
+          )
+        })} />
+
+      <Modal
+        open={modalinsertar}
+        onClose={openedClosedModalInsertar}>
+        {bodyInsertar}
+
+      </Modal>
+
+      
+
+
+    </div >
+    </>
+  
+
+
   )
 }
 

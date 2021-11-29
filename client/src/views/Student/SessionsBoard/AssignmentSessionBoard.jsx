@@ -5,7 +5,7 @@ import Axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useSelector } from 'react-redux'
 
-function SessionsBoard () {
+function SessionsBoard() {
   const idStudent = useSelector(state => state.auth.user.id)
   const [sessions, setSessions] = useState([])
 

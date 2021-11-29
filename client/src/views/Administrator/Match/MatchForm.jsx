@@ -12,12 +12,12 @@ const MatchForm = () => {
   const [chosenProgram, setChosenProgram] = useState(false)
 
   const handleTypeSelect = e => {
-    cohort= e.label
+    cohort = e.label
     console.log(cohort)
   };
 
   const handleSelectPrograms = i => {
-    program= i.label
+    program = i.label
     console.log(program)
   };
 
@@ -86,104 +86,104 @@ const MatchForm = () => {
   let total = 0
   let count = 0
 
-function Interests (est, m) {
-  let count = 0
-  // Interests the student and mentor
-  for (let i = 0; i < 3; i++) {
-    // const result = students[est].interestsStudent[i].includes(mentors[m].interestsMentor)
-    const result = mentors[m].interestsMentor.includes(students[est].interestsStudent[i])
-    console.log("Result: " + result)
-    if (result === true) {
-      if (count === 0) {
-        count = 5
-      } else {
-        count += 10
+  function Interests(est, m) {
+    let count = 0
+    // Interests the student and mentor
+    for (let i = 0; i < 3; i++) {
+      // const result = students[est].interestsStudent[i].includes(mentors[m].interestsMentor)
+      const result = mentors[m].interestsMentor.includes(students[est].interestsStudent[i])
+      console.log("Result: " + result)
+      if (result === true) {
+        if (count === 0) {
+          count = 5
+        } else {
+          count += 10
+        }
       }
+      // debugger
+    } console.log(count)
+
+    return count
+  }
+
+  function Age(est, m) {
+    let count = 0
+    // Actual age the student and mentor
+    if (students[est].actualAge === mentors[m].actualAge) {
+      count = 25
+    } else if (students[est].actualAge + 5 >= mentors[m].actualAge & students[est].actualAge - 5 <= mentors[m].actualAge) {
+      count = 15
+    } else {
+      count = 5
     }
-    // debugger
-  }console.log(count)
-  
-  return count
-}
-    
-function Age (est, m){
-  let count = 0
-  // Actual age the student and mentor
-  if (students[est].actualAge === mentors[m].actualAge) {
-    count = 25
-  }else if (students[est].actualAge + 5 >= mentors[m].actualAge & students[est].actualAge - 5 <= mentors[m].actualAge){
-    count = 15
-  }else{
-    count = 5
+    return count
   }
-  return count
-}
 
-function Competencies (est, m) {
-  let count = 0
-  // Commitment the student and mentor
-  if(students[est].commitment === 3 && mentors[m].commitment === 1){
-    count += 10
-  }else if (students[est].commitment < 3 && mentors[m].commitment < 3){
-    count += 10
+  function Competencies(est, m) {
+    let count = 0
+    // Commitment the student and mentor
+    if (students[est].commitment === 3 && mentors[m].commitment === 1) {
+      count += 10
+    } else if (students[est].commitment < 3 && mentors[m].commitment < 3) {
+      count += 10
+    }
+    // Achievement Orientation the student and mentor
+    if (students[est].achievementOrientation === 3 && mentors[m].achievementOrientation === 1) {
+      count += 10
+    } else if (students[est].achievementOrientation < 3 && mentors[m].achievementOrientation < 3) {
+      count += 10
+    }
+    // Flexibility the student and mentor
+    if (students[est].flexibility === 3 && mentors[m].flexibility === 1) {
+      count += 10
+    } else if (students[est].flexibility < 3 && mentors[m].flexibility < 3) {
+      count += 10
+    }
+    // Communication the student and mentor
+    if (students[est].assertiveCommunication === 3 && mentors[m].assertiveCommunication === 1) {
+      count += 10
+    } else if (students[est].assertiveCommunication < 3 && mentors[m].assertiveCommunication < 3) {
+      count += 10
+    }
+    return count
   }
-  // Achievement Orientation the student and mentor
-  if(students[est].achievementOrientation === 3 && mentors[m].achievementOrientation === 1){
-    count += 10
-  }else if (students[est].achievementOrientation < 3 && mentors[m].achievementOrientation < 3){
-    count += 10
-  } 
-  // Flexibility the student and mentor
-  if(students[est].flexibility === 3 && mentors[m].flexibility === 1){
-    count += 10
-  }else if (students[est].flexibility < 3 && mentors[m].flexibility < 3){
-    count += 10
-  } 
-  // Communication the student and mentor
-  if(students[est].assertiveCommunication === 3 && mentors[m].assertiveCommunication === 1){
-    count += 10
-  }else if (students[est].assertiveCommunication < 3 && mentors[m].assertiveCommunication < 3){
-    count += 10
-  } 
-  return count
-}
 
-function Gender (est, m) {
-  let count = 0
-  if(students[est].studentsGenderPrefer === mentors[m].gender){
-    count = 10
+  function Gender(est, m) {
+    let count = 0
+    if (students[est].studentsGenderPrefer === mentors[m].gender) {
+      count = 10
+    }
+    return count
   }
-  return count
-}
 
   const Match = () => {
     for (let est = 0; est < students.length; est++) {
-      for (let m = count ; m < mentors.length; m++) {
-          // Interests the student and mentor
-          resultInterest = Interests(est,m)
-          console.log(resultInterest)
-          // Actual age the student and mentor
-          resultAge = Age(est, m)
-          console.log(resultAge)
-          // Competencies the student and mentor
-          competencies = Competencies(est, m)
-          console.log(competencies)
-          // Gender preference 
-          gender = Gender(est, m)
-          console.log(gender)
-          // Total
-          total = resultInterest + resultAge + competencies + gender
-          console.log("Total"+total)
-          console.log(students[est].user_id.name +"-"+ mentors[m].user_id.name)
-          if (total > 50){
-            match.push({
-              nameEstudent: students[est].user_id.name, 
-              nameMentor : mentors[m].user_id.name
-            })
-            count += 1
-            break
-          }
-          // debugger
+      for (let m = count; m < mentors.length; m++) {
+        // Interests the student and mentor
+        resultInterest = Interests(est, m)
+        console.log(resultInterest)
+        // Actual age the student and mentor
+        resultAge = Age(est, m)
+        console.log(resultAge)
+        // Competencies the student and mentor
+        competencies = Competencies(est, m)
+        console.log(competencies)
+        // Gender preference 
+        gender = Gender(est, m)
+        console.log(gender)
+        // Total
+        total = resultInterest + resultAge + competencies + gender
+        console.log("Total" + total)
+        console.log(students[est].user_id.name + "-" + mentors[m].user_id.name)
+        if (total > 50) {
+          match.push({
+            nameEstudent: students[est].user_id.name,
+            nameMentor: mentors[m].user_id.name
+          })
+          count += 1
+          break
+        }
+        // debugger
       }
     }
     console.log("El listado del Match")
@@ -212,14 +212,24 @@ function Gender (est, m) {
               )
             })}
           </div>
+          <div>
+              <h2>Lista de Match</h2>
+              {match.map(e => {
+                  return (
+                    <tr >
+                        <td>{e.nameEstudent}</td>
+                        <td>{e.nameMentor}</td>
+                    </tr>
+                  )
+                })}
+          </div>
           <button onClick={Match}>Hacer Match</button>
           
-          
-      </div>
+    </div>
     )
   }
   const ProgramAndCohort = () => {
-   
+
     return (
       <div className={Styles.contenedor}>
         <div className={Styles.heder}></div>
@@ -227,7 +237,7 @@ function Gender (est, m) {
         <Card
           container={
             <>
-              <h3>Elige la cohorte para realizar el Match</h3>
+              <h3>Elige la cohorte y el programa para realizar el Match</h3>
               <p>Elige la cohorte</p>
 
               <Select

@@ -12,6 +12,8 @@ const updatedProfileRouter = require('express').Router()
 
 const getInterestStudent = require('express').Router()
 
+const getInfoStudent = require('express').Router()
+
 const Profile = require('../db/models/Profile')
 
 const User = require('../db/models/User')
@@ -23,9 +25,12 @@ getAllStudentsRouter.get('/', async (req, res) => {
     name: 1,
     middleName: 1,
     lastName: 1,
+    age: 1,
+    gender: 1,
     secondSurname: 1,
     role: 1,
     email: 1,
+    interestsStudent: 1,
     state: 1
   })
   // .then(getAllStudents => {
@@ -211,6 +216,34 @@ getInterestStudent.get('/:id', async (req, res) => {
   res.json(interestsStudent)
 })
 
+getInfoStudent.get('/', async (req, res) => {
+  try {
+    const infoProfile = await Profile
+      .find({}, { actualAge: 1, assignedMentor: 1, actualAge: 1, gender: 1 ,assignedMentor: 1, interestsStudent: 1 })
+      .populate('user_id', { name: 1, email: 1, middleName: 1, lastName: 1, secondSurname: 1, contactNumber: 1, state: 1, program : 1, cohorte: 1, role: 1  })
+      
+    const infoUser = await User
+      .find({role: 1})
+     
+    const arrayInfoStudents = []
+
+      for (let e = 0; e < infoUser.length; e++) {
+        for (let i = 0; i < infoProfile.length; i++) {
+          if (
+            infoUser[e].email ===
+            infoProfile[i].user_id.email
+          ) {
+            arrayInfoStudents.push(infoProfile[i])
+          }
+        }
+      }
+    res.json(arrayInfoStudents)
+  } catch (error) {
+    next(error)
+  }
+})
+
+
 module.exports = {
   getAllStudentsRouter,
   getOneStudentRouter,
@@ -218,5 +251,6 @@ module.exports = {
   updatedUserRouter,
   postUserRouter,
   updatedProfileRouter,
-  getInterestStudent
+  getInterestStudent,
+  getInfoStudent
 }
