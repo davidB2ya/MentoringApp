@@ -21,7 +21,7 @@ function SessionsBoard () {
       Axios.get(`${baseUrl}/api/session/${studentProgram}`).then(
         res => {
           const sessionsResult = res.data
-          //  console.log(sessionsResult)
+           console.log(sessionsResult)
           setSessions(sessionsResult)
           if (sessionsResult.length > 0) {
             //  console.log("esta entrando al if")
