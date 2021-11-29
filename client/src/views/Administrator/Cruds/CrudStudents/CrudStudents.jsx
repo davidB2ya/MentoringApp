@@ -125,7 +125,7 @@ const CrudStudents = () => {
     const petitionPost = async e => {
       e.preventDefault();
       try{
-        await Axios.post(`http://localhost:3001/api/students-control-post`,{
+        await Axios.post(`${baseUrl}/api/students-control-post`,{
           
           gender:SavedData.gender ,
           actualAge:SavedData.actualAge ,
