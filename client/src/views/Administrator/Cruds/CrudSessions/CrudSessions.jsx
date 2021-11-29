@@ -8,6 +8,7 @@ import {faEdit,faTrashAlt,faPlusSquare}from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';
 import { Modal, Button,TextField} from '@material-ui/core';
 import axios from 'axios';
+import Sidebar from '../../../../components/Sidebar/Sidebar';
 
 
 const Articles=[{
@@ -171,7 +172,7 @@ const petitionPost=async()=>{
 
   return (
   <div>
-    
+    <Sidebar/>
      <SearchContainer h1={"TABLA DE CONTROL DE SESIONES "} placeholder={"Busca un Estudiante"}
     onClick={()=>openedClosedModalInsertar()}/>
       <Table th={Articles.map((e) =>{

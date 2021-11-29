@@ -7,6 +7,7 @@ import {faEdit,faTrashAlt,faPlusSquare}from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';
 import { Modal, Button,TextField} from '@material-ui/core';
 import axios from 'axios';
+import Sidebar from '../../../../components/Sidebar/Sidebar';
 
 
 
@@ -223,7 +224,7 @@ const petitionPost=async()=>{
   <div>
 
      { /*title and add button*/}
-
+    <Sidebar/>
      <SearchContainer h1={"TABLA DE CONTROL DE LOS MENTORES "} placeholder={"Busca un Mentor"}
     onClick={()=>openedClosedModalInsertar()}/>
 

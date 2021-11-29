@@ -35,7 +35,7 @@ import CrudSessions from './views/Administrator/Cruds/CrudSessions/CrudSessions'
 import CrudSessionsDetail from './views/Administrator/Cruds/CrudSessionDetail/CrudSessionDetail'
 
 
-
+// import WelcomeAdmin from './views/Administrator/PanelAdmin/WelcomeAdmi';
 
 
 
@@ -122,7 +122,7 @@ function App() {
     <>
       <Navbar></Navbar>
        <Routes>
-         <Route path= '/' element={ isLogged ? <PrincipalView/> :<Login/>} exact/>
+         <Route path= '/' element={ isLogged ? <StudentSession/> :<Login/>} exact/>
          <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
  
          {/* others */}
@@ -146,6 +146,7 @@ function App() {
          <Route path="/FinalMessage" element={<FinalMessage/>}/>
          <Route path="/WaitMessage" element={<WaitMessage/>}/>
 
+        
          <Route path="/CrudStudents" element={<CrudStudents/>}/>
          <Route path="/crud-mentors" element={<CrudMentors/>}/>
          <Route path="/crud-sessions-detail" element={<CrudSessionsDetail/>}/>

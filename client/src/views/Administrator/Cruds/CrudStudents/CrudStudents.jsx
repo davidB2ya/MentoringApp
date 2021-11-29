@@ -7,7 +7,7 @@ import {faEdit,faTrashAlt} from'@fortawesome/free-solid-svg-icons'
 import {makeStyles} from '@material-ui/core/styles';
 import { Modal, Button,TextField} from '@material-ui/core';
 import Axios from 'axios';
-// import Sidebar from '../../../../components/Sidebar/Sidebar';
+import Sidebar from '../../../../components/Sidebar/Sidebar';
 
 const Articles=[{
   Id:"id" ,
@@ -168,7 +168,8 @@ const CrudStudents = () => {
 
 
   return (
-
+    <>
+    <Sidebar/>
     <div className={styles.container}>
       <SearchContainer h1={"TABLA CONTROL ESTUDIANTES"} placeholder={"Busca un Estudiante"}
         onClick={() => openedClosedModalInsertar()} />
@@ -215,7 +216,7 @@ const CrudStudents = () => {
 
 
     </div >
-
+    </>
 
   )
 }
