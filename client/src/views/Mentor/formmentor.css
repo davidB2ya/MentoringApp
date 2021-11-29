@@ -1,4 +1,7 @@
   .container-Q{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     max-width:80%;
     min-width: fit-content;
     min-height: 400px;
@@ -10,7 +13,7 @@
     background-color:#FEFEFE;
     display: flex;
     padding: 2%;
-    box-shadow: 3px 10px #92C149;
+   
     flex-wrap: wrap;
     
   
@@ -27,7 +30,7 @@
     display: flex;
     flex-direction: column;
   }
-  .button{
+  /*.button-formMentor{
     font-size: 17px;
     background-color:#FFCC02;
     border: transparent;
@@ -36,12 +39,31 @@
     padding-bottom: 6px;
     padding-right: 40px;
     padding-left: 40px;
-  }
+  }*/
 
   .form-mentor{
     display:flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .mg-bottom{
     margin-bottom: 10px;  
+  }
+  .button-formMentor{
+    height:40px;
+    padding: 8px 20px;
+    background: #ffcc02;
+    color: #000;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
+    transition: 0.5s;
+    border: none;   
+    cursor: pointer; 
+    font-size: 22px;
+    align-items: center;
+
   }
