@@ -3,6 +3,7 @@ import Styles from './matchform.css'
 import Card from '../../../components/Card/Card'
 import Select from 'react-select'
 import axios from 'axios'
+import Sidebar from '../../../components/Sidebar/Sidebar'
 
 const MatchForm = () => {
   let cohort = 0
@@ -10,6 +11,7 @@ const MatchForm = () => {
   const [students, setStudents] = useState([])
   const [mentors, setMentors] = useState([])
   const [chosenProgram, setChosenProgram] = useState(false)
+  const [done, setDone] = useState(false)
 
   const handleTypeSelect = e => {
     cohort = e.label
@@ -78,7 +80,9 @@ const MatchForm = () => {
     }
   }
 
-  const match = []
+  const [match, setMatch] = useState([])
+  
+
   let resultInterest = 0
   let resultAge = 0
   let competencies = 0
@@ -188,6 +192,7 @@ const MatchForm = () => {
     }
     console.log("El listado del Match")
     console.log(match)
+    setDone(true)
   }
     
     
@@ -196,6 +201,7 @@ const MatchForm = () => {
   const ListStudentMentor = () => {
     return(
       <div>
+      <Sidebar/>
           <div>
             <h2>Lista de Estudiantes</h2>
             {students.map(e => {
@@ -212,22 +218,35 @@ const MatchForm = () => {
               )
             })}
           </div>
+          {done && 
+          <div>
+              <h2>Lista de Match</h2>
+              {match.map((e, i) => {
+                  return (
+                    <tr key={i}>
+                        <td>{e.nameEstudent}</td>
+                        <td>{e.nameMentor}</td>
+                    </tr>
+                  )
+                })}
+          </div>
+          }
           <button onClick={Match}>Hacer Match</button>
           
-          
-      </div>
+    </div>
     )
   }
   const ProgramAndCohort = () => {
 
     return (
       <div className={Styles.contenedor}>
+        <Sidebar/>
         <div className={Styles.heder}></div>
 
         <Card
           container={
             <>
-              <h3>Elige la cohorte para realizar el Match</h3>
+              <h3>Elige la cohorte y el programa para realizar el Match</h3>
               <p>Elige la cohorte</p>
 
               <Select

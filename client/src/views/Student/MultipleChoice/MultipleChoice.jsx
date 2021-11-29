@@ -23,7 +23,6 @@ const MultipleChoice = () => {
   // const {user} = auth
 
 
-
   useEffect(() => {
     axios({
       url: 'http://localhost:3001/api/profile-edit'

@@ -48,6 +48,8 @@ router.use('/api/login', userRouter.loginRouter)
 
 router.use('/api/one/student', StudentsRouter.getOneStudentRouter)
 
+router.use('/api/info/students', StudentsRouter.getInfoStudent)
+
 router.use('/api/profile-edit', profilEditRouter.profilEditRouter)
 
 router.use(

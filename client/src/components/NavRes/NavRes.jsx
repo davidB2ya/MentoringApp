@@ -99,7 +99,7 @@ const Logo = styled.a`
 `;
 
 const Menu = styled.div`
-  display: ${props => props.isLogged ? "flex": "none"};
+  display: ${props => props.isLogged ? "flex" : "none"};
   justify-content: space-between;
   align-items: center;
   position: relative;
@@ -109,6 +109,7 @@ const Menu = styled.div`
     max-height: ${({ isOpen }) => (isOpen ? "280px" : "0")};
     transition: max-height 0.3s ease-in;
     width: 100%;
+    z-index: 1000;
   }
 `;
 
