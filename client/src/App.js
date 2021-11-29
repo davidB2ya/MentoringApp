@@ -122,7 +122,7 @@ function App() {
     <>
       <Navbar></Navbar>
        <Routes>
-         <Route path= '/' element={ isLogged ? <PrincipalView/> :<Login/>} exact/>
+         <Route path= '/' element={ isLogged ? <StudentSession/> :<Login/>} exact/>
          <Route path= '/forgot_password' element={isLogged ? <WelcomeUser/> :<ForgotPassword/>} exact/>
  
          {/* others */}
