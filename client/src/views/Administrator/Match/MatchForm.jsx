@@ -11,6 +11,7 @@ const MatchForm = () => {
   const [students, setStudents] = useState([])
   const [mentors, setMentors] = useState([])
   const [chosenProgram, setChosenProgram] = useState(false)
+  const [done, setDone] = useState(false)
 
   const handleTypeSelect = e => {
     cohort = e.label
@@ -79,7 +80,9 @@ const MatchForm = () => {
     }
   }
 
-  const match = []
+  const [match, setMatch] = useState([])
+  
+
   let resultInterest = 0
   let resultAge = 0
   let competencies = 0
@@ -189,6 +192,7 @@ const MatchForm = () => {
     }
     console.log("El listado del Match")
     console.log(match)
+    setDone(true)
   }
     
     
@@ -197,6 +201,7 @@ const MatchForm = () => {
   const ListStudentMentor = () => {
     return(
       <div>
+      <Sidebar/>
           <div>
             <h2>Lista de Estudiantes</h2>
             {students.map(e => {
@@ -213,17 +218,19 @@ const MatchForm = () => {
               )
             })}
           </div>
+          {done && 
           <div>
               <h2>Lista de Match</h2>
-              {match.map(e => {
+              {match.map((e, i) => {
                   return (
-                    <tr >
+                    <tr key={i}>
                         <td>{e.nameEstudent}</td>
                         <td>{e.nameMentor}</td>
                     </tr>
                   )
                 })}
           </div>
+          }
           <button onClick={Match}>Hacer Match</button>
           
     </div>
