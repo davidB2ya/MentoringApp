@@ -2,11 +2,17 @@
 import './asignedsessions.css'
 
 function AsignedSessions () {
+
+  
+
+
+  const baseUrl = 'https://fathomless-bastion-33135.herokuapp.com'
   const email = 'lalalanda123@gmail.com'
   const NoPhone = '315 123 6345'
   const prevStudies = 'Chamanismo, Alquimia.'
   const age = '23 años'
   const interest = 'IA, Backend, Marketing'
+  
 
   return (
     <div className="studentsCardContainer">
