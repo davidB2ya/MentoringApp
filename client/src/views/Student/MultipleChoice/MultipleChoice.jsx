@@ -134,7 +134,7 @@ const MultipleChoice = () => {
       if(user.role === 4){
       navigate('/welcome-mentor')
       }else if(user.role === 9){
-      navigate('/calendar/:id')
+      navigate('/CrudStudents')
       }
     }
   }
