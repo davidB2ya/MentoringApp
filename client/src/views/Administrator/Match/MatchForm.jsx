@@ -248,7 +248,7 @@ const MatchForm = () => {
           </div>
           {done && 
           <div className="listStudent-Container margin-bottom">
-            <h2 className="listStudent-title mg-top">Macth Estudiante Mentor</h2>
+            <h2 className="listStudent-title mg-top">Match Estudiante Mentor</h2>
             <table>
               <tr className="listStudent-tr">
                 <th className="listStudent-th"> </th>
