@@ -291,7 +291,7 @@ const MatchForm = () => {
                 onChange={handleTypeSelect}
               />
 
-              <p>Elige el programa</p>
+              <p>Elige el programa.</p>
 
               <Select
                 name='programs'
